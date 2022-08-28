@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 7.2} \\
+		\textbf{Linear Algebra} \\
+		\textbf{Math 524} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 7.C.2: }Suppose $T$ is a positive operator on $V$. Suppose $v,w \in V$ are such that
+	\begin{align*}
+		Tv = w \qquad \text{and} \qquad Tw = v
+	\end{align*}
+Prove that $v = w$.
+\\ \\
+Because $T$ is a positive operator, $\langle Tv, v\rangle \geq 0$. Notice the following:
+	\begin{align*}
+		\langle T(v -w), (v-w) \rangle &\geq 0 \\
+		\langle Tv - Tw, v - w \rangle &= - \langle v - w, v - w \rangle \geq 0 \\
+		&= - || v - w ||^2 \geq 0
+	\end{align*}
+Because of the square, it means that $- || v - w ||^2 = 0 $.  Thus $|| v - w || = 0$, so $v = w$
+
+\newpage 
+
+\noindent \textbf{Problem 7.C.4: }Suppose $T \in \mathcal{L}(V,W)$. Prove that $T^*T$ is a positive operator on $V$ and $TT^*$ is a positive operator on W
+\\ \\
+Notice the following:
+	\begin{align*}
+		(T^*T)^* = T^*T^{**} = T^*T	&&	(TT^*)^* = T^{**}T^* = TT^*
+	\end{align*}
+Because of the following, we can see that both are self-adjoint. So now we can notice the following:
+	\begin{align*}
+		\langle T^*Tv, v \rangle &= \langle T^2v,v \rangle & 
+		\langle TT^*v, v \rangle &= \langle (T^*)^2v,v \rangle \\
+		&= \langle Tv,Tv \rangle & &= \langle T^*v,T^*v \rangle \\
+		&= || Tv ||^2 \geq 0 & 	&=  || T^*v ||^2 \geq 0
+	\end{align*}
+Thus $T^*T$ and $TT^*$ are positive operators on $V$ and $W$ respectively
+
+\newpage 
+
+\noindent \textbf{Problem 7.C.7: }Suppose $T$ is a positive operator on $V$. Prove that $T$ is invertible if and
+only if
+	$$
+	\langle Tv,v \rangle > 0  
+	$$
+for every $v \in V$, with $v \not = 0$
+\\ \\
+	\begin{proof}[$(=>)$]
+		Let $\langle Tv,v \rangle > 0$. 
+		\\ \\
+		If T is not invertible then there exists $v \not = 0 \in V$, such that $Tv = 0$. So we can see that $\langle Tv, v \rangle = 0$. This contradicts that $\langle Tv,v \rangle > 0$, so T has to be invertible
+		\\ \\
+		$(<=)$ Let T be invertible.
+		\\ \\
+		We can define an operator, $S^2 = T$, where S is the square root operator of T because T is a positive operator. So now we can notice the following
+			$$
+			\langle Tv,v \rangle = \langle S^2v,v \rangle = \langle Sv,Sv \rangle = ||Sv||^2 > 0
+			$$
+	\end{proof}
+
+\newpage 
+
+\noindent \textbf{Problem 7.D.1: }Fix $u,v \in V$ with $u \not= 0$. Define $T \in \mathcal{L}(V)$ by
+	$$
+	Tv = \langle v,u \rangle x
+	$$
+for every $v \in V$. Prove that 
+	$$
+	\sqrt{T^*T}v = \frac{||x||}{||u||}\langle v,u \rangle u
+	$$
+By definition of T, we can see the following:
+	\begin{align*}
+		T^*Tv = T^*\langle v,u \rangle x = \langle v,u \rangle T^*(x) = \langle v,u \rangle \langle x,x \rangle u = ||x||^2 \langle v,u \rangle u
+	\end{align*}
+We can see that the map $R \in \mathcal{L}(V)$, with:
+	$$
+	Rv = \frac{||x||}{||u||}\langle v,u \rangle u
+	$$
+is a square root of $T^*T$. We can also see that $\langle Rv,v \rangle \geq 0$.  If we let $e_1, ...,e_n$ be an orthonormal basis of V, then we can write the following:
+	$$
+	u = a_1e_1 + ... + a_ne_n
+	$$
+for some $a_1, ..., a_n$. So now we have: 
+	\begin{align*}
+		R(e_j) = \frac{||x||}{||u||}\langle e_j,u \rangle u = \frac{||x||}{||u||}\left(a_j\bar{a_1}e_1 + ... + a_j\bar{a_n}e_n \right)
+	\end{align*}
+Now we can see that $\mathcal{M}(R) = \frac{||x||}{||u||}a_j\bar{a_k}$. Now we can see that $\mathcal{M}(R) = \mathcal{M}(R^*)$.  Thus R is the square root of $T^*T$ and self-adjoint.  So the result below is true:
+	$$
+	\sqrt{T^*T}v = \frac{||x||}{||u||}\langle v,u \rangle u
+	$$ 
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\noindent \textbf{Problem 7.D.2: }Give an example of $T \in\mathcal{L}(\mathbb{C}^2)$ such that 0 is the only eigenvalue of T and the singular values of T are 5, 0.
+\\ \\
+Notice the following:
+	\begin{align*}
+		\mathcal{M}(T) = 
+		\begin{pmatrix}
+			0 & 0 \\
+			5 & 0
+		\end{pmatrix}
+	\end{align*}
+Because $\mathcal{M}(T)$ is a triangular matrix, the eigenvalues are its entries in the diagonal, being 0.
+\\ \\
+Also Notice that to find the singular values:
+	\begin{align*}
+		\mathcal{M}(T)\mathcal{M}(T^*) = 
+		\begin{pmatrix}
+		0 & 0 \\
+		5 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+		0 & 5 \\
+		0 & 0
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		0 &  0\\
+		0 & 25
+		\end{pmatrix}
+	\end{align*}
+Because $\mathcal{M}(T^*)\mathcal{M}(T)$ is a triangular matrix, the eigenvalues are its entries in the diagonal, being 0 and 25.  By 7.52, the singular values are the non-negative square root values of $\mathcal{M}(T^*)\mathcal{M}(T)$'s eigenvalues, which are 0 and 5
+
+\newpage 
+
+\noindent \textbf{Problem 7.D.5: }Suppose $T \in \mathcal{L}(\mathbb{C}^2)$ is defined by $T(x,y) = (-4y,x)$. Find the singular values of T.
+\\ \\
+Notice we can write $\mathcal{M}(T)$ as a matrix in respect to a basis $(x,y)$:
+	$$
+	\mathcal{M}(T) = 
+	\begin{pmatrix}
+		0 & -4 \\
+		1 & 0
+	\end{pmatrix}
+	$$ 
+Thus $\mathcal{M}(T^*) = \begin{pmatrix}
+	0 & 1 \\
+	-4 & 0
+\end{pmatrix}$.
+Now we can see the following:
+	$$
+	\mathcal{M}(T)\mathcal{M}(T^*) = 
+		\begin{pmatrix}
+	0 & -4 \\
+	1 & 0
+	\end{pmatrix}
+	\begin{pmatrix}
+	0 & 1 \\
+	-4 & 0
+	\end{pmatrix}
+	= 
+	\begin{pmatrix}
+	16 & 0 \\
+	0 & 1
+	\end{pmatrix}
+	$$
+The singular values are going to be the square root of the eigenvalues of $\mathcal{M}(T)\mathcal{M}(T^*)$, so they are 4 and 1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

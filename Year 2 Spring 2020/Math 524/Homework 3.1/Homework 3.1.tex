@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 3.1} \\
+		\textbf{Linear Algebra} \\
+		\textbf{Math 524} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\textbf{Section 3.A Problem 4: } Suppose $T \in \mathcal{L}(V,W)$ and $v_1, ..., v_m$ is a list of vectors in V such that $Tv_1, ..., Tv_m $ is a linearly independent list in W. Prove that $v_1, ..., v_m$ is linearly independent.
+
+	\begin{proof}[Solution 3.A.4]
+		Let $T \in \mathcal{L}(V,W)$ and $v_1, ..., v_m$ is a list of vectors in V such that $Tv_1, ..., Tv_m $ is a linearly independent list in W.
+		\begin{align*}
+			&\text{By Definition of Linearly Independent: } \\
+			& 0 = a_1Tv_1 + ... + a_mTv_m \qquad \text{ for } \{a_1, ..., a_m\} = 0 \in \mathbb{F} \\
+			& 0 = T (a_1v_1 + ... + a_mv_m)
+		\end{align*}
+		Because $\{a_1, ..., a_m\} = 0$, $v_1, ..., v_m$ is linearly independent. \\
+	\end{proof}
+
+\vspace{\baselineskip}
+\textbf{Section 3.A Problem 14: } Suppose V is finite-dimensional with dim $V \geq 2$. Prove that there exist
+S,T $\in \mathcal{L}(V,V)$ such that $ST \not = TS$.
+
+	\begin{proof}[Solution 3.A.14]
+		Let V be finite-dimensional with dim $V \geq 2$ and S,T $\in \mathcal{L}(V,V)$. Let $v_1, ..., v_m$ be a basis of V
+		\begin{align*}
+			&\text{Let } T(v_1) = v_2, \quad T(v_2) = v_1 \quad T(v_m) = v_{m}\\
+			&\text{Let } S(v_1) = v_1,\quad S(v_2) = 2v_2 \quad S(v_m) = mv_1 \\
+			&\text{By Theorem 3.5, there exists a unique linear map for T and S} \\
+			& ST(v_1) = S(T(v_1)) = S(v_2) = 2v_2 \\
+			& TS(v_1) = T(S(v_1)) = T(v_1) = v_2 
+		\end{align*}
+		Thus $ST \not = TS$. \\
+	\end{proof}
+
+\newpage
+\textbf{Section 3.B Problem 5: } Give an example of a linear map $T:R^4 \rightarrow R^4$ such that
+range T = null T.
+
+	\begin{proof}[Solution 3.B.5]
+		Let $T(v_1,v_2,v_3,v_4) = (v_3,v_4,0,0)$ 
+		\begin{align*}
+			&\text{Range(T)} = \{(v_1,v_2,v_3,v_4) \in \mathbb{R}^4: v_3 = v_4 = 0\} = \text{ null(T)}			
+		\end{align*}
+	\end{proof}
+
+\vspace{\baselineskip}
+\textbf{Section 3.B Problem 6: } Prove that there does not exist a linear map $T: R^5 \rightarrow R^5$ such that range T = null T.
+	
+	\begin{proof}[Solution 3.B.6] 
+		Let $T: R^5 \rightarrow R^5$ and range T = null T
+		\begin{align*}
+			&\text{By Theorem 3.22: dim $R^5$ = dim( null T ) + dim( range T ) } \\
+			&\text{dim($R^5$) = 5} \\
+			&\text{Because null T = range T, dim( null T ) = dim( range T ) } \\
+			&\text{Thus dim( null T ) = dim( range T ) = 2.5 $\not \in \mathbb{Z}$}
+		\end{align*}
+		Thus there does not exist a linear map $T: R^5 \rightarrow R^5$ such that range T = null T. \\
+	\end{proof}
+
+\vspace{\baselineskip}
+\textbf{Section 3.B Problem 9: } Suppose $T \in \mathcal{L}(V,W)$ is injective and $v_1,...,v_m$ is linearly independent
+in V. Prove that $Tv_1,...,Tv_m$ is linearly independent in W.
+
+	\begin{proof}[Solution 3.B.9]
+		Let $T \in \mathcal{L}(V,W)$ be injective and $v_1,...,v_m$ be linearly independent in V
+		\begin{align*}
+			&\text{Because $v_1,...,v_m$ is linearly independent in V: } \\
+			&0 = a_1v_1 + ... + a_mv_m \quad \text{ for } \{a_1,...,a_m\} = 0 \in \mathbb{F} \\
+			&\text{Because T is injective: } \\
+			&T(0) = T(a_1v_1 + ... + a_mv_m) \quad \text{ for } \{a_1,...,a_m\} = 0 \in \mathbb{F} \\
+			&0 = a_1Tv_1 + ... + a_mTv_m \quad \text{ for } \{a_1,...,a_m\} = 0 \in \mathbb{F} 
+		\end{align*}
+		By definition of Linearly Independence, $Tv_1,...,Tv_m$ is linearly independent in W \\
+	\end{proof}
+
+\newpage
+\textbf{Section 3.C Problem 2: } Suppose $D \in \mathcal{L}(P_3(\textbf{R}),P_2(\textbf{R}) $ is the differentiation map defined by $Dp = p'$. Find a basis of $P_3(\textbf{R})$ and a basis of $P_2(\textbf{R})$ such that the matrix of D with respect to these bases is 
+	$$\begin{pmatrix}
+		1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+	\end{pmatrix}$$
+	
+	\begin{proof}[Solution 3.C.2]
+		Let $D \in \mathcal{L}(P_3(\textbf{R}),P_2(\textbf{R}) $ be the differentiation map defined by $Dp = p'$
+		\begin{align*}
+			\text{Basis of $P_3(\textbf{R})$: } \{1,x,x^2,x^3\} \\
+			\text{Basis of $P_2(\textbf{R})$: } \{1,2x,3x^2\} 
+		\end{align*}
+	\end{proof}
+
+\vspace{\baselineskip}
+\textbf{Section 3.C Problem 3: } Suppose V and W are finite-dimensional and $T \in \mathcal{L}(V,W)$. Prove that there exist a basis of V and a basis of W such that with respect to these bases, all entries of $\mathcal{M}(T)$ are 0 except that the entries in row j , column j , equal 1 for $1 \leq j \leq$ dim range T. 
+
+	\begin{proof}[Solution 3.C.3]
+		Let V and W be finite-dimensional and $T \in \mathcal{L}(V,W)$. Let $v_1,...,v_m$ and $Tv_1, ..., Tv_m$ be bases of V and W respectively.
+		\begin{align*}
+			&\text{By Definition of the Matrix of a Linear Map: } \\
+			&Tv_k = \sum_{j=1}^{m} A_{j,k}Tv_j
+		\end{align*}
+		The only way for $\sum_{j=1}^{m} A_{j,k}Tv_j = Tv_k$ with $v_1,...,v_m$ being a basis of V and $Tv_1, ..., Tv_m$ being a basis of W is for $A_{j,k} = 0$ except when $j=k$, $A_{j,k} = 1$, where $A_{j,k}$ are the constants of $Tv_k$ as a linear combination of $Tv_j$ \\
+	\end{proof}
+
+
+\end{document}

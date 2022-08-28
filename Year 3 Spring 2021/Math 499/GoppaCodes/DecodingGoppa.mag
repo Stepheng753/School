@@ -1,0 +1,115 @@
+function Goppa(maxDegree, m, printCodes, printDetails )
+    F<B>:=GF(2^m);                    // creation of the field F (extension of GF(2)).
+    R<z>:=PolynomialRing(F);          // creation of the polynomial ring F[z].
+
+    // GoppaPolynomial with variable z and coefficients in F (B^n)
+    // For this we make our own Polynomial
+    // repeat
+    //     G:= 0;
+    //     for i in [0..maxDegree] do
+    //         powCoefficient := Random((2^m - 2));
+    //         G := G + B^powCoefficient * z^i;
+    //     end for;
+    // until IsIrreducible(G);
+    G := B^6*z^3 + B^8*z^2 + B*z + B^4;
+    
+    // Creates the locator set of the Goppa Code
+    L:= [x : x in F | Evaluate(G,x) ne 0];
+
+    r:= Degree(G);    // Degree of G
+    n:= #L;                // Length of locator set, and length of code
+    // C:=[Random(0,1) : i in [1..n]]; 
+    C:= [ 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0 ];
+    k:= n - m*r;        // Lower Bound for Dimension of Goppa Code
+    d:= r + 1;            // Minimum Distance
+    
+
+    // Finds the Multiplicative inverse of z - beta_i in G
+    S0:= [Modinv(z - L[i], G) : i in [1..n]];
+
+    // Ra is the syndrome of C, with parity check matrix S0
+    Ra:=0;
+    for i in [1..n] do
+        Ra:=Ra + (S0[i] * C[i]);
+    end for;
+
+    // Check to see if C is a goppa codeword.
+    GoppaCheck:= Ra mod G eq 0;
+
+    if GoppaCheck eq false then 
+        // Multiplicative inverse of the Syndrome Ra or f in Pattersons
+        h:=Modinv(Ra,G);
+
+        // Step 2
+        d:=(h + z)^(2^(m*r - 1) ) mod G;
+
+        function EuclideanAlgorithm(G, d)
+            ng := Degree(G);    // Degree of G
+            t_im2 := R!0;       // t_0 = 0
+            t_im1 := R!1;       // t_1 = 1
+            t_i := t_im1;       // t_i = t_{i-1}
+            r_i := d;
+
+            // Check degrees to see if we can stop function
+            if Degree(t_i) le Floor(ng/2) and Degree(r_i) le Floor((ng-1)/2) then
+                return r_i, t_i;
+            else
+            repeat
+                q, r_i := Quotrem(G, d); 
+                if r_i ne 0 then 
+                    G := d; 
+                    d := r_i; 
+                    // t_i = q t_{i-1} + t_{i-2}
+                    t_i := q * t_im1 + t_im2; 
+                    // Increment i by 1
+                    t_im2 := t_im1; 
+                    t_im1 := t_i; 
+                end if;  
+            until Degree(t_i) le Floor(ng/2) and Degree(r_i) le Floor((ng-1)/2);
+                return r_i, t_i;
+            end if;
+        end function; 
+
+        // Step 3
+        alpha, beta := EuclideanAlgorithm(G, d);
+
+        // Step 4
+        sigma:= z*beta^2 + alpha^2;
+
+        roots:= Roots(sigma);
+
+        if (printCodes) then
+            print "G: ", G;
+            print "C: ", C;
+        end if;
+
+        if (printDetails) then 
+            print "F: ", F;
+            print "R: ", R;
+            print "G is Irreducible: ", IsIrreducible(G);
+            print "L: ", L;
+            print "Degree of G: ", r;
+            print "Code Length: ", n;
+            print "Lower Bound for Dimension: ", k;
+            print "Minimum Distance: ", d;
+            print "S0: ", S0;
+            print "Ra: ", Ra;
+            print "C is a Goppa Code: ", GoppaCheck;
+            print "h: ", h;
+            print "d: ", d;
+            print "alpha: ", alpha;
+            print "beta: ", beta;
+            print "sigma: ", sigma;
+        end if;
+
+        return "roots: ", roots;
+    end if;
+
+    print "C: ", C;
+    return "GOPPA CODE!";
+
+end function;
+
+Goppa(3, 4, false, false);
+
+

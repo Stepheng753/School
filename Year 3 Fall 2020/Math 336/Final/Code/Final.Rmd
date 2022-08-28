@@ -1,0 +1,104 @@
+---
+title: "Final"
+author: "Stephen Giang"
+date: "12/11/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Prob5i}
+
+a = c(-1,-2.5,2.1,1, 2.9,-1.9,-3.8,-1,  1,1,-4,-3.1, -1,0,-3,-8.6)
+b = c(1, 2.1, 0, 2.5)
+
+A = matrix(a , ncol=4)
+B = matrix(b,ncol = 1)
+
+C = solve(A,b)
+# x1            x2          x3           x4
+# -0.963747260  0.009707986 -0.290922978 -0.299022560
+```
+
+```{r Prob5ii}
+
+MCSim = function(dim, n = 1e6) {
+  x = matrix(runif(dim*n, min= -1, max = 1), ncol = dim)
+  k = 0
+  for (i in 1 : n) {
+    if ( (t(x[i,]) %*% x[i,]) < 1) {
+      k = k + 1
+    }
+  }
+  return( (k/n) * 2^dim )
+}
+
+MCExact = function(n,R=1) {
+  numer = pi^(n/2)
+  denom = gamma((n/2) + 1)
+  return((numer/denom)*(R^n))
+}
+
+
+MCSim(6, 1e6) # 5.16736
+MCExact(6)    # 5.167713
+
+```
+
+```{r Prob5iii}
+
+
+integrateMc = function(f, lowBound, highBound, n = 1e6) {
+  x = runif(n , lowBound, highBound)
+  return ((highBound - lowBound) * mean(f(x)))
+}
+
+
+f = function(x) { (1 - (x^2) + (9*cos(x)) ) / ( x*( 1 + x + sin(x) ) )}
+
+integrateMc(f, 1, 2, 1e6)   # 0.05252009
+integrate(f,1,2)            # 0.05297656
+
+```
+
+```{r Prob5iv}
+
+setwd('C:/Users/Stephen Giang/Documents/Math336Files')
+readData = read.csv('EarthTemperatureData.csv')
+
+time = matrix(readData['YEAR'][[1]],nrow = 1)
+NovData = matrix(readData['NOV'][[1]],nrow = 1)
+
+plot(time, NovData, 'l',main = 'Stephen Giang\'s plot of November Temperature Anomalies', 
+     ylab = 'Temperature [deg C]', xlab = 'Year', col = 'orange', lwd = 3)
+
+trendLineData = subset(readData, YEAR >= 1901 & YEAR <= 2000)
+tlTime = trendLineData['YEAR'][[1]]
+tlNov = trendLineData['NOV'][[1]]
+linMod = lm(tlNov ~ tlTime)
+intercept = linMod$coefficients[1]
+slope = linMod$coefficients[2]
+
+tL = slope*tlTime + intercept
+lines(tlTime, tL, col = 'blue', lwd = 3)
+
+trendLabel = paste0('1901 - 2000 November Trend = ', round(slope * 100,4), ' deg C per Century')
+text(1900, .5, trendLabel)
+
+minTemp = min(NovData)                      # -0.753
+minTime = 1849 + which(NovData == minTemp)  # 1862
+maxTemp = max(NovData)                      # 0.81
+maxTime = 1849 + which(NovData == maxTemp)  # 2015
+
+
+```
+
+
+
+
+
+

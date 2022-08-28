@@ -1,0 +1,225 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 12} \\
+		\textbf{Abstract Algebra} \\
+		\textbf{Math 320} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 5.3.1: }Determine whether the given congruence-class ring is a field. Justify your answer. \\  
+	\begin{enumerate}[label = (\alph*)]
+		\item $\mathbb{Z}_3[x]/ (x^3 + 2x^2 + x + 1)$
+		\\ \\
+		Let $p(x) = x^3 + 2x^2 + x + 1$. Notice that the congruence class will be polynomials of degree 2 or less.  Also notice that the only factors of the $p(x)$ that meet those requirements are polynomials with degree 2 and its root.  Lastly notice the only numbers in $\mathbb{Z}_3$ are $0,1,2$
+			\begin{align*}
+				p(0) &= 1 \not = 0 \\
+				p(1) &= 5 \not = 0 \\
+				p(2) &= 19 \not = 0
+			\end{align*} 
+		This shows that $p(x)$ is irreducible and has no zero divisors, so by Theorem 5.10, (a) is a field. 
+		\\ \\
+		\item $\mathbb{Z}_5[x]/ (2x^3 - 4x^2 + 2x + 1)$
+		\\ \\
+		Let $p(x) = 2x^3 - 4x^2 + 2x + 1$. Notice that the congruence class will be polynomials of degree 2 or less.  Also notice that the only factors of the $p(x)$ that meet those requirements are polynomials with degree 2 and its root.  Lastly notice the only numbers in $\mathbb{Z}_5$ are $0,1,2,3,4$.
+			\begin{align*}
+				p(0) &= 1\\
+				p(1) &= 1\\
+				p(2) &= 5 = [0]\\
+				p(3) &= 25 = [0]\\
+				p(4) &= 73
+			\end{align*}
+		This shows that $p(x)$ is not irreducible, and has zero divisors, $(x-2),(x-3)$, so (b) is NOT a field
+		
+		\newpage 
+		
+		\item $\mathbb{Z}_2[x]/(x^4  + x^2 + 1)$
+		\\ \\
+		Let $p(x) = x^4  + x^2 + 1$.  Notice the only numbers in $\mathbb{Z}_2$ are $0$ and $1$. Notice that all factors of $p(x)$ have to be of degree 4 or less.  So it can consist of factors of degree 2 with another factor of the same degree or degree 3 with a root.   
+			\begin{align*}
+				p(0) = 1 \not = 0 \\
+				p(1) = 3 \not = 0 
+			\end{align*}
+		So this concludes that the only factors of $p(x)$ have to be degree 2. So notice that the only polynomials of degree 2 in $\mathbb{Z}_2[x]$ are:
+			\begin{align*}
+				x^2 &&&& x^2 + x &&&& x^2 + 1 &&&& x^2 + x + 1
+			\end{align*}
+		So we can see the multiplication table: \\ \\
+			\begin{tabular}{c | c c c c}
+				$\times$ & $x^2$ & $x^2 + x$ & $x^2 + 1$ & $x^2 + x + 1$  \\
+				\hline
+				$x^2$ & $x^4$ & $x^4 + x^3$ & $x^4 + x^2$ & $x^4 + x^3 + x^2$ \\
+				$x^2 + x$ & $x^4 + x^3$ & $x^4  + x^2$ & $x^4 + x^3 + x^2 + x$ & $x^4  + x$ \\
+				$x^2 + 1$ & $x^4 + x^2$ & $x^4 + x$ & $x^4 + 1$ & $x^4 + x^3 + x + 1$ \\
+				$x^2 + x + 1$ & $x^4 + x^3 + x^2$ & $x^4 + x$ & $x^4 + x^3 + x + 1$ & $x^4 + x^2  + 1$
+			\end{tabular}
+		\\ \\ \\
+		So because $[x^2 + x + 1]^2 = [x^4 + x^2  + 1] = [0]$, then $p(x)$ is not irreducible, thus meaning (c) is NOT a field
+	\end{enumerate}
+
+
+\newpage 
+
+\noindent \textbf{Problem 5.3.5 (b): }Show that $\mathbb{Q}(\sqrt{3})$ is isomorphic to $\mathbb{Q}[x]/(x^2 - 3)$.
+\\ \\
+	\begin{proof}[Solution]
+	Let $a + b\sqrt{3}, c + d\sqrt{3} \in \mathbb{Q}(\sqrt{3})$, with $a,b,c,d \in \mathbb{Q}$.  Let the function $\phi: \mathbb{Q}(\sqrt{3}) \rightarrow \mathbb{Q}[x]/(x^2 - 3)$, such that $\phi(a + b\sqrt{3}) = a + bx$. Also note that in $\mathbb{Q}[x]/(x^2 - 3)$, $[x^2] = [3]$  Notice the following homomorphic properties:
+		\begin{align*}
+			\phi((a + b\sqrt{3}) + (c + d\sqrt{3})) &= \phi((a+c) + (b + d)\sqrt{3}) = (a+c) + (b+d)x = a + c + bx + dx \\
+			&= (a + bx) + (c + dx) = \phi(a + b\sqrt{3}) + \phi(c + d\sqrt{3}) \\
+			\phi(a + b\sqrt{3})\phi(c + d\sqrt{3}) &= (a + bx)(c + dx) = a c + a d x + b c x + b dx^2 = a c + a d x + b c x + 3b d \\
+			&= (ac + 3bd) + (ad + bc)x = \phi((ac + 3bd) + (ad + bc)\sqrt{3}) \\
+			&= \phi((a + b\sqrt{3})(c + d\sqrt{3}))
+		\end{align*}
+	Now notice the following bijective properties:
+		\begin{align*}
+			\phi(a + b\sqrt{3}) = a + bx = c + dx = \phi(c + d\sqrt{3})
+		\end{align*}
+	The only way for the following to be true is if $a = c$ and $b = d$, thus proving injectivity.
+	\\ \\
+	Notice for any function in $\mathbb{Q}[x]/(x^2 - 3)$, $[e + fx]$, it can always be written as $\phi(e + b\sqrt{3})$.  Thus proving surjectivity. 
+	\\ \\
+	So $\mathbb{Q}(\sqrt{3})$ is isomorphic to $\mathbb{Q}[x]/(x^2 - 3)$ \\
+	\end{proof}
+
+\newpage 
+
+\noindent \textbf{Problem 6.1.2: }Show that the set $I$ of all polynomials with even constant terms is an ideal in
+$Z[x]$.
+	$$
+	I = \{ax^n + ... + 2k | a \in \mathbb{F}, k \in \mathbb{Z}\}
+	$$ 
+	Notice that zero is in this set:
+		$$
+		0_\mathbb{Z} = 0x^n + ... + 2(0)\in I
+		$$ 
+	\noindent Notice that the set is closed under subtraction, and let $r = a_1x^n + ... + 2k$, $s = a_2x^m + ... + 2j \in I$. Note: (It is implied that $a_1,a_2 \in \mathbb{F}$ and $k,j \in \mathbb{Z}$ because $r,s \in I$.  This is implied with other sets in other problems as well :) )
+		\begin{align*}
+			r  - s = a_1x^n + ... + 2k - (a_2x^m + ... + 2j) = a_1x^n - a_2x^m + ... + 2(k - j) \in I
+		\end{align*}
+	Notice that the set satisfies the absorption property, and let $r = a_1x^n + ... + 2k \in I$, $s \in \mathbb{Z}$.
+		\begin{align*}
+			rs = a_1sx^n + ... + 2sk = sr \in I
+		\end{align*}
+	Thus $I$ is an ideal in $Z[x]$.
+
+\newpage
+
+\noindent \textbf{Problem 6.1.3: }
+	\begin{enumerate}[label = (\alph*)]
+		\item Show that the set $I = \{(k, 0), k \in \mathbb{Z}\}$ is an ideal in the ring $\mathbb{Z} \times \mathbb{Z}$
+		\\ \\
+		Notice that zero is in this set:
+			$$
+			0_{\mathbb{Z} \times \mathbb{Z}} = (0,0) \in I
+			$$
+		Notice that the set is closed under subtraction, and let $r = (a, 0), s = (b,0) \in I$.
+			$$
+			r - s = (a,0) - (b,0) = (a-b,0) \in I
+			$$
+		Notice that the set satisfies the absorption property, and let $r = (a, 0) \in I$ and $s = (b,c) \in \mathbb{Z} \times \mathbb{Z}$
+			$$
+			rs = (a,0)(b,c) = (ab, 0) = (b,c)(a,0) = (ba, 0) = sr \in I
+			$$
+		Thus $I$ is an ideal in the ring $\mathbb{Z} \times \mathbb{Z}$
+		\\ 
+		\item Show that the set $T = \{(k, k), k \in \mathbb{Z}\}$ is not ideal in the ring $\mathbb{Z} \times \mathbb{Z}$
+		\\ \\
+		Notice that T does not satisfies the absorption property, and let $r = (1,1) \in I$ and $s = (2,3) \in \mathbb{Z} \times \mathbb{Z}$:
+			$$
+			rs = (1,1)(2,3) = (2 , 3) \not \in T
+			$$
+		Thus $I$ is not an ideal in the ring $\mathbb{Z} \times \mathbb{Z}$
+	\end{enumerate}	
+
+\newpage
+
+\noindent \textbf{Problem 6.1.8: }If $I$ is an ideal in $R$ and $J$ is an ideal in the ring $S$, prove that $I \times J$ is an ideal in the ring $R \times S$.
+	\\ \\
+	Let the following be true:
+		$$
+		T = \{(i,j) | i \in I, j \in J\} = I \times J
+		$$
+	Because $I$ is an ideal in $R$ and $J$ is an ideal in the ring $S$, $0_R \in I$ and $0_S \in J$, such that 
+		$$
+		0_{R \times S} = (0_R, 0_S) \in T
+		$$
+	Notice that the set is closed under subtraction, and let $a = (i_1, j_1), b = (i_2,j_2) \in T$.  
+		$$
+		a - b = (i_1, j_1) - (i_2,j_2) = (i_1 - i_2,j_1 - j_2) \in T
+		$$
+	Because $I$ and $R$ are ideals, notice that they also closed under subtraction with $i_1 - i_2 \in I$ and $j_1 - j_2 \in J$. \\\\
+	Notice that the set satisfies the absorption property, and let $a = (i,j) \in T$ and $b = (r,s) \in R \times S$, with $r \in R, s \in S$.
+		$$
+		rs = (i,j)(r,s) = (ir, js) = (ri,sj) = sr \in T
+		$$
+	Because $I$ is an ideal of $R$, $ir \in I$ and because $J$ is an ideal of $S$, $js \in R$
+	\\ \\
+	Thus $I \times J$ is an ideal in the ring $R \times S$.
+
+\newpage 
+
+\noindent \textbf{Problem 6.1.41: }
+	\begin{enumerate}[label = (\alph*)]
+		\item Prove that the set $S$ of rational numbers (in lowest terms) with odd denominators is a subring of $\mathbb{Q}$.
+		\\ \\
+		Let the following be true:
+			$$
+			S = \left\{\left.\frac{a}{2k + 1} \right| a \nmid (2k + 1), k \in \mathbb{Z}\right\}
+			$$
+		Notice that zero is in this set:
+			$$
+			0_\mathbb{Q} = \frac{0}{2k + 1} \in S
+			$$
+		Notice that the set is closed under subtraction, and let $r = \frac{a}{2k + 1}, s = \frac{b}{2j + 1} \in S$
+			$$
+			r - s = \frac{a}{2k + 1} - \frac{b}{2j + 1} = \frac{a(2j + 1) - b(2k + 1)}{2(2kj + k + j) + 1} \in S
+			$$ 
+		Notice that the set is closed under multiplication, and let $r = \frac{a}{2k + 1}, s = \frac{b}{2j + 1} \in S$
+			$$
+			rs = \frac{a}{2k + 1} * \frac{b}{2j + 1} = \frac{ab}{2(2kj + k + j) + 1} \in S
+			$$
+		Thus $S$ is a subring of $\mathbb{Q}$
+		\\
+		\item Let $I$ be the set of elements of $S$ with even numerators. Prove that $I$ is an ideal in $S$.
+		\\ \\
+		 Let the following be true:
+			 $$
+			 I = \left\{\left.\frac{2a}{2k + 1} \right| a, k \in \mathbb{Z}\right\}
+			 $$
+		 Notice that zero is in this set:
+			 $$
+			 0_{S} = \frac{2(0)}{2k + 1} \in I
+			 $$
+		 Notice that the set is closed under subtraction, and let $r = \frac{2a}{2k + 1}, s = \frac{2b}{2j + 1} \in I$
+		 	$$
+		 	r - s = \frac{2a}{2k + 1} - \frac{2b}{2j + 1} = \frac{2(a(2j + 1) - b(2k + 1))}{2(2kj + k + j) + 1} \in I
+		 	$$
+		 Notice that the set satisfies the absorption property and let $r = \frac{2a}{2k + 1} \in I, s = \frac{b}{2j + 1} \in S$
+		 	$$
+		 	rs = \frac{2a}{2k + 1} * \frac{b}{2j + 1} = \frac{2ab}{2(2kj + k + j) + 1} = \frac{2ba}{2(2kj + k + j) + 1} = sr \in I
+		 	$$
+		 Thus $I$ is an ideal in $S$
+	\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

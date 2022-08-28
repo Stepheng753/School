@@ -1,0 +1,431 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Systems 2D} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 11 (c): } 
+$$
+\begin{pmatrix}
+	\dot{x}_1 \\
+	\dot{x}_2
+\end{pmatrix} = 
+\begin{pmatrix}
+	0 & 2 \\
+	-3 & 5
+\end{pmatrix}
+\begin{pmatrix}
+	x_1 \\
+	x_2
+\end{pmatrix}
+$$
+\noindent \textbf{Solution 11 (c): } Let 
+$
+\begin{vmatrix}
+	0 - \lambda & 2 \\
+	-3 & 5 - \lambda
+\end{vmatrix} = 0
+$
+	\begin{align*}
+		(\lambda)(\lambda - 5) + 6 &=  \lambda^2 - 5\lambda + 6 = 0 \\
+		&= (\lambda - 3)(\lambda - 2) = 0 \\
+		& \qquad \lambda = 3, 2
+	\end{align*}
+Let $\lambda_1 = 3$
+$$\begin{pmatrix}
+	0 - 3  & 2 \\
+	-3 & 5 - 3
+\end{pmatrix}
+\begin{pmatrix}
+	x_1 \\
+	x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+	-3 & 2 \\
+	-3 & 2
+\end{pmatrix}
+\begin{pmatrix}
+	x_1 \\
+	x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+	0 \\
+	0
+\end{pmatrix} \qquad 
+\begin{pmatrix}
+	x_1 \\
+	x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+	2 \\
+	3
+\end{pmatrix}$$
+Let $\lambda_2 = 2$
+$$\begin{pmatrix}
+0 - 2  & 2 \\
+-3 & 5 - 2
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+-2 & 2 \\
+-3 & 3
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix} \qquad 
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}$$
+\\
+$$
+\boldmath
+\begin{pmatrix}
+x_1(t) \\
+x_2(t)
+\end{pmatrix} = 
+c_1
+\begin{pmatrix}
+	2 \\
+	3
+\end{pmatrix}
+e^{3t} + 
+c_2
+\begin{pmatrix}
+	1 \\
+	1
+\end{pmatrix}
+e^{2t}
+$$
+\\ \\
+Because the eigenvalues are both positive, we have an unstable node.  As $t \rightarrow \infty$, the phase portrait is going away from the origin, which is why it creates an unstable node. 
+\newpage
+
+\noindent \textbf{Problem 12 (c): } 
+$$
+\begin{pmatrix}
+\dot{x}_1 \\
+\dot{x}_2
+\end{pmatrix} = 
+\begin{pmatrix}
+-12 & -10 \\
+15 & 13
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix}
+$$
+\noindent \textbf{Solution 12 (c): } Let 
+$
+\begin{vmatrix}
+-12 - \lambda & -10 \\
+15 & 13 - \lambda
+\end{vmatrix} = 0
+$
+\begin{align*}
+(\lambda + 12)(\lambda - 13) + 150 &=  \lambda^2 - \lambda + 6 = 0 \\
+&= (\lambda - 3)(\lambda + 2) = 0 \\
+& \qquad \lambda = 3, -2
+\end{align*}
+Let $\lambda_1 = 3$
+$$\begin{pmatrix}
+-12 - 3  & -10 \\
+15 & 13 - 3
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+-15 & -10 \\
+15 & 10
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix} \qquad 
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+2 \\
+-3
+\end{pmatrix}$$
+Let $\lambda_2 = -2$
+$$\begin{pmatrix}
+-12 - -2  & -10 \\
+15 & 13 - -2
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+-10 & -10 \\
+15 & 15
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix} \qquad 
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix}$$
+\\
+$$
+\boldmath
+\begin{pmatrix}
+x_1(t) \\
+x_2(t)
+\end{pmatrix} = 
+c_1
+\begin{pmatrix}
+2 \\
+-3
+\end{pmatrix}
+e^{3t} + 
+c_2
+\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix}
+e^{-2t}
+$$
+\\ \\
+Because the eigenvalues have opposite signs, we have a saddle point.  As $t \rightarrow \infty$, the phase portrait is going away from the origin along one eigenvector and going towards the origin along the other eigenvector, which is why it creates a saddle point. 
+\newpage
+
+\noindent \textbf{Problem 13 (c): } 
+$$
+\begin{pmatrix}
+\dot{x}_1 \\
+\dot{x}_2
+\end{pmatrix} = 
+\begin{pmatrix}
+0 & -25 \\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix}
+$$
+\noindent \textbf{Solution 13 (c): } Let 
+$
+\begin{vmatrix}
+0 - \lambda & -25 \\
+1 & 0 - \lambda
+\end{vmatrix} = 0
+$
+\begin{align*}
+(\lambda)(\lambda) + 25 &=  \lambda^2 + 25 = 0 \\
+&= \lambda^2 = -25 \\
+& \qquad \lambda = \pm 5i
+\end{align*}
+Let $\lambda_1 = 5i$
+$$\begin{pmatrix}
+0 - 5i  & -25 \\
+1 & 0 - 5i
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+-5i & -25 \\
+1 & -5i
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix} \qquad 
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+5i \\
+1
+\end{pmatrix}$$
+$$
+x_1(t) = 
+\begin{pmatrix}
+	5i \\
+	1
+\end{pmatrix}
+\left( \cos(5t) + i\sin(5t) \right)
+$$
+$$
+u(t) + iw(t) = 
+\begin{pmatrix}
+	-5\sin(5t) \\
+	\cos(5t)
+\end{pmatrix} + 
+i \begin{pmatrix}
+	5\cos(5t) \\
+	\sin(5t)
+\end{pmatrix}
+$$
+\\ 
+$$
+\boldmath
+\begin{pmatrix}
+x_1(t) \\
+x_2(t)
+\end{pmatrix} = 
+c_1
+\begin{pmatrix}
+-5\sin(5t) \\
+\cos(5t)
+\end{pmatrix} + 
+c_2
+\begin{pmatrix}
+5\cos(5t) \\
+\sin(5t)
+\end{pmatrix}
+$$
+\\ \\
+Because the eigenvalues' real part is 0, we have a center or ellipse.  As $t \rightarrow \infty$, the phase portrait moves in a counter clockwise rotation. 
+
+\newpage
+
+\noindent \textbf{Problem 14 (c): } 
+$$
+\begin{pmatrix}
+\dot{x}_1 \\
+\dot{x}_2
+\end{pmatrix} = 
+\begin{pmatrix}
+6 & -9 \\
+1 & 6
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix}
+$$
+\noindent \textbf{Solution 14 (c): } Let 
+$
+\begin{vmatrix}
+6 - \lambda & -9 \\
+1 & 6 - \lambda
+\end{vmatrix} = 0
+$
+\begin{align*}
+(\lambda - 6)(\lambda - 6) + 9 &=  \lambda^2 - 12\lambda + 45 = 0 \\
+\lambda &= \frac{12 \pm \sqrt{144 - 180}}{2} \\
+&= 6 \pm 3i
+\end{align*}
+Let $\lambda_1 = 6 + 3i$
+$$\begin{pmatrix}
+6 - (6 + 3i)  & -9 \\
+1 & 6 - (6 + 3i)
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+-3i & -9 \\
+1 & -3i
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix} \qquad 
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} = 
+\begin{pmatrix}
+3i \\
+1
+\end{pmatrix}$$
+$$
+x_1(t) = 
+\begin{pmatrix}
+3i \\
+1
+\end{pmatrix}
+\left( \cos(3t) + i\sin(3t) \right) e^{6t}
+$$
+$$
+u(t) + iw(t) = 
+\begin{pmatrix}
+-3\sin(3t) \\
+\cos(3t)
+\end{pmatrix}e^{6t} + 
+i \begin{pmatrix}
+3\cos(3t) \\
+\sin(3t)
+\end{pmatrix}e^{6t}
+$$
+\\ 
+$$
+\boldmath
+\begin{pmatrix}
+x_1(t) \\
+x_2(t)
+\end{pmatrix} = 
+c_1
+\begin{pmatrix}
+-3\sin(3t) \\
+\cos(3t)
+\end{pmatrix}e^{6t} + 
+c_2
+\begin{pmatrix}
+3\cos(3t) \\
+\sin(3t)
+\end{pmatrix}e^{6t}
+$$
+\\ \\
+Because the eigenvalues' real part is positive, we have a spiral source.  As $t \rightarrow \infty$, the phase portrait is going away from the origin, which is why it creates a spiral source. 
+
+\end{document}

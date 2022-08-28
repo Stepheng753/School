@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 3} \\
+		\textbf{Differential Equation} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: }The lecture notes examined the negative feedback of glucose and insulin. A classic enzymatic negative feedback model satisfies the system:
+	\begin{align*}
+		\dot{x}_1 &= \frac{3}{1 + 0.2x_2} - 0.5x_1 \\
+		\dot{x}_2 &= 5x_1 - x_2
+	\end{align*}
+where $x_1$ is an enzyme and $x_2$ is the endproduct. Find the positive equilibrium for this model $(x_1 > 0$ and $x_2 > 0)$. Compute the Jacobian Matrix for this system. Evaluate the Jacobian matrix at the equilibrium. Determine the eigenvalues for this model and determine the qualitative behavior of this model near the equilibrium. Sketch a phase portrait for this model for non-negative $x_1$ and $x_2$ $(x_1 \geq 0$ and $x_2 \geq 0)$.
+\\ \\ \\
+\noindent \textbf{Positive Equilibrium Point $(x_1,x_2)$: }
+	\begin{align*}
+		0 &= \frac{3}{1 + 0.2x_2} - 0.5x_1 \\
+		0 &= 5x_1 - x_2
+	\end{align*}	
+So we can see that $5x_1 = x_2$, so the following holds: 
+	\begin{align*}
+		0 &= \frac{3}{1 + 0.2x_2} - 0.5x_1 \\
+		&= \frac{3}{1 + 0.2(5x_1)} - 0.5x_1 \\
+		&= \frac{3}{1 + x_1} - 0.5x_1 \\
+		&= 3 - 0.5x_1(1 + x_1) \\
+		&= 0.5x_1^2 + 0.5x_1 - 3 \\
+		&= x_1^2 + x_1 - 6 \\
+		&= (x_1 + 3)(x_1 - 2)
+	\end{align*}	
+So $x_1 = 2$ with $x_2 = 5x_1 = 10$ 
+
+\newpage
+
+\noindent \textbf{Jacobian Matrix and EigenValues: }
+	\begin{align*}
+	J(x_1,x_2) = 
+	\begin{pmatrix}
+		\frac{-1}{2} & \frac{-15}{(5 +x_2)^2} \\[10pt]
+		5 & -1
+	\end{pmatrix} &&
+	J(2,10) = 
+	\begin{pmatrix}
+		\frac{-1}{2} & \frac{-1}{15} \\[10pt]
+		5 & -1
+	\end{pmatrix}
+	\end{align*}
+	\begin{align*}
+		\begin{vmatrix}
+			\frac{-1}{2} - \lambda & \frac{-1}{15} \\[10pt]
+			5 & -1 - \lambda
+		\end{vmatrix}
+		&= (\lambda + 1)(\lambda + \frac{1}{2}) + \frac{1}{3} \\
+		&=\lambda^2 + \frac{3}{2}\lambda + \frac{1}{2} + \frac{1}{3} \\
+		&=\lambda^2 + \frac{3}{2}\lambda + \frac{5}{6} \\
+		&= 6\lambda^2 + 9\lambda + 5 = 0
+	\end{align*}
+	\begin{align*}
+		\lambda &= \frac{-9 \pm \sqrt{81 - 4(5)(6)}}{12} \\
+		&= \frac{-9 \pm \sqrt{39}i}{12} \\
+		&= \frac{-3}{4} \pm \frac{\sqrt{39}i}{12}
+	\end{align*}
+Near this equilibrium, because of the negative real parts of the eigenvalues, the phase portrait will be of a \textbf{stable focus} around this equilibrium point.
+
+\newpage 
+
+\noindent \textbf{Problem 2: }A very popular ecological model is the predator-prey model (Lotka-Volterra). Consider
+the system of ODEs:
+	\begin{align*}
+		\dot{x}_1 &= 0.1x_1 - 0.05x_1x_2 \\
+		\dot{x}_2 &= 0.001x_1x_2 - 0.04x_2
+	\end{align*}
+Associate each variable with the prey or the predator and explain briefly your reasoning. Find all equilibria for this model. Compute the Jacobian Matrix for this system. Evaluate the Jacobian matrix at all of the equilibria. Determine the eigenvalues at each of the equilibria for this model and determine the qualitative behavior of this model near these equilibria. Sketch a phase portrait for this model for non-negative $x_1$ and $x_2$ $(x_1 \geq 0$ and $x_2 \geq 0)$.	
+\\ \\ \\
+\noindent \textbf{Variable Reasoning: }$x_1$ is the prey and $x_2$ is the predator. We know that $x_1$ is the prey because $x_1$'s population declines with the presence of the other species $x_2$. And we know that $x_2$ is the predator because $x_2$'s population grows with the the presence of the other species $x_1$.
+\\ \\ \\
+\noindent \textbf{Equilibria $(x_1,x_2)$: }
+	\begin{align*}
+		0 &= x_1(0.1 - 0.05x_2) \\
+		0 &= x_2(0.001x_1 - 0.04)
+	\end{align*}
+	\begin{align*}
+		x_1 = 0 		&&&& x_2 = 0 	&&&& 0.001x_1 - 0.04 = 0		&&&& 0.1 - 0.05x_2 = 0\\
+		-0.04x_2  = 0	&&&& 0.1x_1 = 0	&&&& x_1 = 0.04 / 0.001 = 40	&&&& x_2 = 0.1 / 0.05 = 2\\
+		x_2 = 0 		&&&& x_1 = 0	&&&& x_2 = 2					&&&& x_1 = 40
+	\end{align*}
+So the equilibria holds as $(0,0)$ and $(40,2)$
+\newpage
+\noindent \textbf{Jacobian Matrix and EigenValues: }
+	\begin{align*}
+		J(x_1,x_2) = 
+		\begin{pmatrix}
+			0.1 - 0.05x_2 & -0.05x_1 \\
+			0.001x_2 & 0.001x_1 - 0.04
+		\end{pmatrix}
+	\end{align*}
+\vspace{\baselineskip}
+	\begin{align*}
+		J(0,0) = 
+		\begin{pmatrix}
+			0.1 & 0 \\
+			0 & -0.04
+		\end{pmatrix} &&
+		\begin{vmatrix}
+			0.1 - \lambda & 0 \\
+			0 & -0.04 - \lambda 
+		\end{vmatrix} = (\lambda - 0.1)(\lambda + 0.04) = 0
+	\end{align*}
+$$\lambda_1 = 0.1, \lambda_2 = -0.04$$
+Near this equilibrium, because of the opposite signs of the eigenvalues, the phase portrait will be of a saddle point. 
+\\ \\
+	\begin{align*}
+	J(40,2) = 
+	\begin{pmatrix}
+		0 & -2 \\
+		0.002 & 0
+	\end{pmatrix} &&
+	\begin{vmatrix}
+		- \lambda & -2 \\
+		0.002 & - \lambda 
+	\end{vmatrix} = (\lambda)(\lambda) + .004 = 0
+	\end{align*}
+$$ \lambda = \pm \frac{1}{5\sqrt{10}}i $$
+Near this equilibrium, because of the real parts of the eigenvalues being 0, the phase portrait will be of a counter clockwise center around this equilibrium point.
+
+
+
+
+
+
+
+
+
+\end{document}

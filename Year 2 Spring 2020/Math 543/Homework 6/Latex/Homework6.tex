@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{array}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 6} \\
+		\textbf{Numerical Matrix Analysis} \\
+		\textbf{Math 543} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem TB-18.1: }
+	\begin{align*}
+		A = 
+		\begin{bmatrix}
+			1 & 1 \\
+			1 & 1.0001 \\
+			1 & 1.0001
+		\end{bmatrix},
+		\qquad 
+		b = 
+		\begin{bmatrix}
+			2 \\
+			0.0001 \\
+			4.0001
+		\end{bmatrix}
+	\end{align*}
+	\begin{enumerate}[label = (\alph*)]
+		\item What are the matrices $A^+$ and $P$ for this example? Give exact answers.
+			\begin{align*}
+			A^+ = (A^*A)^{-1}A^* &=
+			\left(
+			\begin{bmatrix}
+				1  &  1  &  1 \\
+				1  &  1.0001  &  1.0001
+			\end{bmatrix}
+			\begin{bmatrix}
+				1 & 1 \\
+				1 & 1.0001 \\
+				1 & 1.0001
+			\end{bmatrix}
+			\right)^{-1}
+			\begin{bmatrix}
+				1  &  1  &  1 \\
+				1  &  1.0001  &  1.0001
+			\end{bmatrix} \\
+			&= 
+			\begin{bmatrix}
+				3 & 3.0002 \\
+				3.0002 &  3.00040002
+			\end{bmatrix}^{-1}
+			\begin{bmatrix}
+				1  &  1  &  1 \\
+				1  &  1.0001  &  1.0001
+			\end{bmatrix} \\
+			&= \frac{1}{2 * 10^{-8}}
+			\begin{bmatrix}
+				3.00040002 & -3.0002 \\
+				-3.0002 &  3
+			\end{bmatrix}
+			\begin{bmatrix}
+				1  &  1  &  1 \\
+				1  &  1.0001  &  1.0001
+			\end{bmatrix} \\
+			&= 50,000,000
+			\begin{bmatrix}
+				.00020002 & -.0001 & -.0001 \\
+				-.0002 & .0001 & .0001
+			\end{bmatrix} \\
+			&= 
+			\begin{bmatrix}
+				10,001 & -5,000 & -5,000 \\
+				-10,000 & 5,000 & 5,000
+			\end{bmatrix} \\
+			P = AA^+ &= 
+			\begin{bmatrix}
+				1 & 1 \\
+				1 & 1.0001 \\
+				1 & 1.0001
+			\end{bmatrix}
+			\begin{bmatrix}
+				10,001 & -5,000 & -5,000 \\
+				-10,000 & 5,000 & 5,000
+			\end{bmatrix} \\
+			&=
+			\begin{bmatrix}
+				1 & 0 & 0 \\
+				0 & 0.5 & 0.5  \\
+				0 & 0.5 & 0.5
+			\end{bmatrix}
+			\end{align*}
+		\item Find the exact solutions $x$ and $y = Ax$ to the least squares problem $Ax \approx b$
+			\begin{align*}
+				A^{+}Ax = x = A^+b &= 
+				\begin{bmatrix}
+					10,001 & -5,000 & -5,000 \\
+					-10,000 & 5,000 & 5,000
+				\end{bmatrix}
+				\begin{bmatrix}
+					2 \\
+					0.0001 \\
+					4.0001
+				\end{bmatrix}
+				=
+				\begin{bmatrix}
+					1 \\ 1
+				\end{bmatrix} \\
+				y = Ax = AA^+b = Pb &=
+				\begin{bmatrix}
+				 	1 & 0 & 0 \\
+					0 & 0.5 & 0.5  \\
+					0 & 0.5 & 0.5
+				\end{bmatrix}
+				\begin{bmatrix}
+					2 \\
+					0.0001 \\
+					4.0001
+				\end{bmatrix}
+				= 
+				\begin{bmatrix}
+					2 \\ 2.0001 \\ 2.0001
+				\end{bmatrix}
+			\end{align*}
+		
+		\newpage 
+		
+		\item What are $\kappa(A), \theta$, and $\eta$? From here on, numerical answers are acceptable.
+			\begin{align*}
+				\kappa(A) = ||A|| ||A^+|| &\approx 42429.2354161703 \\
+				\theta = \cos^{-1}\frac{||y||}{||b||} &\approx 0.684702873261185^R \\
+				\eta = \frac{||A|| ||x||}{||y||} &\approx 1.000000000555537
+			\end{align*}
+		\item What are the four condition numbers of Theorem 18.1?
+			\begin{center}
+				\renewcommand{\arraystretch}{2}
+				\begin{tabular}{ l| m{1cm}|m{3cm}|}
+					& $y$ & $x$ \\
+					\hline 
+					$b$ & $\frac{1}{\cos \theta}$ & $\frac{\kappa(A)}{\eta \cos \theta}$ \\
+					\hline
+					$A$ & $\frac{\kappa(A)}{\cos \theta}$ & $\kappa(A) + \frac{\kappa(A)^2\tan \theta}{\eta}$
+				\end{tabular}
+				 = 
+				\begin{tabular}{c|c|c|}
+					& $y$ & $x$ \\
+					\hline 
+					$b$ & $1.290977236078942$ & $54775.17703608065$ \\
+					\hline
+					$A$ & $54775.17706651028$ & $1469883252.863362$
+				\end{tabular}
+			\end{center}
+		\item  Give examples of perturbations $\delta b$ and $\delta A$ that approximately attain these
+		four condition numbers. 
+		\\ \\
+		Let $\delta b$ =
+		$
+		\begin{bmatrix}
+			a \\ 0 \\ 0	
+		\end{bmatrix}
+		$, with $a \in \mathbb{R}$, Now notice that $P\delta b = \delta b$, and $y = Pb$
+			\begin{align*}
+				\kappa _{b \rightarrowtail y} &= \frac{|| P(b + \delta b) - Pb ||}{|| y ||} \left/ \frac{||\delta b ||}{||b||} \right. \\
+				&= \frac{|| P \delta b = \delta b ||}{|| y||} * \frac{||b||}{||\delta b ||} \\
+				&= \frac{||b||}{||y||} \\
+				&= 1.290977236078942
+			\end{align*}
+		\\ \\
+		Let $\delta b$ =
+		$
+		\begin{bmatrix}
+		1 \\ -0.5 \\ -0.5	
+		\end{bmatrix}
+		$, so $||A^+ \delta b || = 21213.91056005508 = ||A^+||||\delta b ||$, and $x = A^+b$.
+			\begin{align*}
+				\kappa_{b \rightarrowtail x} &= \frac{||A^+\delta b||}{||A^+ b||} \left/ \frac{||\delta b||}{||b||}\right. = \frac{21213.91056005508}{1.414213562373095} * \frac{4.472225399060293}{1.224744871391589} = 54775.17703608065
+			\end{align*}
+		\newpage 
+		
+		Let $\delta A$ = 
+		$
+		\begin{bmatrix}
+			10^{-12} & -10^{-12} \\
+			-10^{-12} & 10^{-12} \\
+			10^{-12} & -10^{-12}
+		\end{bmatrix}
+		$, so $\tilde{A} = A + \delta A$, and $\tilde{y} = \tilde{A}(\tilde{A}^*\tilde{A})^{-1}\tilde{A}^*b = 
+		\begin{bmatrix}
+			2.000000080004251 \\
+			2.000099959999875 \\
+			2.000099960003150
+		\end{bmatrix}$
+		\begin{align*}
+			\kappa_{A \rightarrowtail y} = \frac{||\tilde{y} - y||}{||y||}\left/ \frac{||\delta A||}{||A||}\right. &= \frac{9.798024764246804 * 10^{-8}}{3.464217086160112} * \frac{2.449571394482489}{2.449489742783178 * 10^{-12}} \\
+			&= 28284.46119148417
+		\end{align*}
+		\\ \\ \\ \\
+		Let the above be true, so $\tilde{x} = \tilde{A}^+b =
+		\begin{bmatrix}
+			1.001200092248810 \\
+			0.998799987752254
+		\end{bmatrix}$.
+		\begin{align*}
+			\kappa_{A \rightarrowtail x} = \frac{||\tilde{x} - x ||}{||x||} \left/ \frac{||\delta A||}{||A||}\right. &= \frac{0.001697102831166}{1.414213562373095} * \frac{2.449571394482489}{2.449489742783178 * 10^{-12}} \\
+			&= 1200072922.383391
+		\end{align*}
+	\end{enumerate}
+
+\newpage 
+
+\noindent \textbf{Problem PB-14.1: }We could use these matrices $(A_k)$ to least-squares-fit polynomials (of matching degree $k$) to some data-set with 101 measurements. Is it necessarily better to have more model parameters (i.e. fitting a higher degree polynomial)? — Discuss.
+
+\vspace{\baselineskip}
+\noindent Based on my observations, it is not necessarily better to have more model parameters as the Vandermonde Matrix is very ill-conditioned.  So as k increases, (the degree of the polynomial gets higher), we reach larger and larger condition numbers showing us that the matrix is ill conditioned, meaning we lose a lot of accuracy when trying to use it.
+As you can see from the plot, you get insanely high condition numbers such as $10^{27}$
+\end{document}

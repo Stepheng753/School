@@ -1,0 +1,22 @@
+---
+title: "Chapter 3"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd('C:/Users/Stephen Giang/Google Drive/School/Year 3 Fall 2020/Math 336/Data')
+
+dat <- read.csv('LifeExpenctancyWorldBank2018clean.CSV')
+
+yr=1960:1989
+le = dat[76, 3:32]
+ler = as.numeric(le)
+par( mar = c(5,4.5,2,1.5) ) #Resize figure
+plot(yr, ler)
+```

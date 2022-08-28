@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="PA1Template">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Jar Files/PA1Template.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Jar Files/PA1Template.jar!/" />
+    </SOURCES>
+  </library>
+</component>

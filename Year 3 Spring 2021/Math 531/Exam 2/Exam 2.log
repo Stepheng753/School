@@ -1,0 +1,466 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.3.4)  25 APR 2021 22:50
+entering extended mode
+**"./Exam 2.tex"
+(Exam 2.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-03>
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\articl
+e.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size11
+.clo
+File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\ge
+ometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\ke
+yval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifv
+tex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ift
+ex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count176
+\Gm@cntv=\count177
+\c@Gm@tempcnt=\count178
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks16
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\ge
+ometry.cfg))
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\ams
+math.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\ams
+text.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\ams
+gen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen143
+))
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\ams
+bsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen144
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\ams
+opn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count179
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count180
+\leftroot@=\count181
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count182
+\DOTSCASE@=\count183
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen145
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count184
+\c@MaxMatrixCols=\count185
+\dotsspace@=\muskip16
+\c@parentequation=\count186
+\dspbrk@lvl=\count187
+\tag@help=\toks18
+\row@=\count188
+\column@=\count189
+\maxfields@=\count190
+\andhelp@=\toks19
+\eqnshift@=\dimen146
+\alignsep@=\dimen147
+\tagshift@=\dimen148
+\tagwidth@=\dimen149
+\totwidth@=\dimen150
+\lineht@=\dimen151
+\@envbody=\toks20
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\am
+ssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\am
+sfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amscls\amst
+hm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip52
+\thm@postskip=\skip53
+\thm@headsep=\skip54
+\dth@everypar=\toks27
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\gr
+aphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\gr
+aphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\tr
+ig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cf
+g\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-de
+f\pdftex.def
+File: pdftex.def 2020/08/26 v1.2 Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen152
+\Gin@req@width=\dimen153
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/enumitem\en
+umitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip55
+\enit@outerparindent=\dimen154
+\enit@toks=\toks28
+\enit@inbox=\box47
+\enit@count@id=\count191
+\enitdp@description=\count192
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/parskip\par
+skip.sty
+Package: parskip 2020-06-15 v2.0f non-zero parskip adjustments
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\k
+voptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\l
+txcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys
+\kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/etoolbox\et
+oolbox.sty
+Package: etoolbox 2020/08/24 v2.5j e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count193
+))
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\li
+stings.sty
+\lst@mode=\count194
+\lst@gtempboxa=\box48
+\lst@token=\toks29
+\lst@length=\count195
+\lst@currlwidth=\dimen155
+\lst@column=\count196
+\lst@pos=\count197
+\lst@lostspace=\dimen156
+\lst@width=\dimen157
+\lst@newlines=\count198
+\lst@lineno=\count199
+\lst@maxwidth=\dimen158
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\ls
+tmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count266
+\lst@skipnumbers=\count267
+\lst@framebox=\box49
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\li
+stings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\cap
+tion.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\cap
+tion3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen159
+\captionmargin@=\dimen160
+\captionwidth=\dimen161
+\caption@tempdima=\dimen162
+\caption@indent=\dimen163
+\caption@parindent=\dimen164
+\caption@hangindent=\dimen165
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count268
+\c@continuedfloat=\count269
+Package caption Info: listings package is loaded.
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\sub
+caption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+\c@subfigure=\count270
+\c@subtable=\count271
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inpute
+nc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks30
+\inpenc@posthook=\toks31
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcol
+or.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cf
+g\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l
+3backend-pdftex.def
+File: l3backend-pdftex.def 2020-09-01 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count272
+\l__pdf_internal_box=\box50
+) (Exam 2.aux)
+\openout1 = `"Exam 2.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii
+\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count273
+\scratchdimen=\dimen166
+\scratchbox=\box51
+\nofMPsegments=\count274
+\nofMParguments=\count275
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count276
+\MPscratchDim=\dimen167
+\MPnumerator=\count277
+\makeMPintoPDFobject=\count278
+\everyMPtoPDFconversion=\toks33
+)
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pk
+g\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+)
+\c@lstlisting=\count279
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\um
+sa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+
+
+(C:\Users\Stephen Giang\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\um
+sb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (13.74791pt too wide) in paragraph at lines 67--69
+\OT1/cmr/m/n/10.95 represents the steady-state heat equa-tion with-out sources.
+ Us-ing cir-cu-lar cylin-dri-cal co-or-di-nates, 
+ []
+
+[1
+
+{C:/Users/Stephen Giang/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Overfull \hbox (40.63591pt too wide) detected at line 93
+[]
+ []
+
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 93--93
+[] 
+ []
+
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 112--117
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 131--135
+
+ []
+
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
+
+ []
+
+[7]
+<Prob3b.png, id=34, 216.05719pt x 181.42781pt>
+File: Prob3b.png Graphic file (type png)
+<use Prob3b.png>
+Package pdftex.def Info: Prob3b.png  used on input line 185.
+(pdftex.def)             Requested size: 187.90558pt x 162.61081pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--187
+
+ []
+
+[8 <./Prob3b.png>] [9] [10] [11]
+<Prob5.png, id=49, 204.01219pt x 199.49532pt>
+File: Prob5.png Graphic file (type png)
+<use Prob5.png>
+Package pdftex.def Info: Prob5.png  used on input line 241.
+(pdftex.def)             Requested size: 187.90828pt x 162.6131pt.
+ [12 <./Prob5.png>] [13] [14] [15] [16]
+[17] [18] (Exam 2.aux) ) 
+Here is how much of TeX's memory you used:
+ 7083 strings out of 481180
+ 106426 string characters out of 2899291
+ 373968 words of memory out of 3000000
+ 22626 multiletter control sequences out of 15000+200000
+ 540044 words of font info for 48 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 39i,10n,43p,818b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Stephen Giang/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Stephen Giang/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Ste
+phen Giang/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><C:/Users/Stephen Giang/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmmi6.pfb><C:/Users/Stephen Giang/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Stephen Giang/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/S
+tephen Giang/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr6.pfb><C:/Users/Stephen Giang/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb><C:/Users/Stephen Giang/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Stephen Giang/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on "Exam 2.pdf" (18 pages, 197544 bytes).
+PDF statistics:
+ 105 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,1041 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Final} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: }Consider the differential equation
+	$$
+	t \frac{dy}{dt} - 2y = -4t^6, \qquad y(1) = -3
+	$$
+Find the solution to this differential equation.
+\\ \\
+So we can write the differential equation as the following:
+	$$
+	\frac{dy}{dt} - \frac{2}{t}y = -4t^5
+	$$
+We can solve this differential equations using the integrating factor: $\mu(t) = e^{-\int 2t^{-1}} = t^{-2}$
+	\begin{align*}
+		t^{-2}\frac{dy}{dt} - t^{-2}\frac{2}{t}y &= -4t^3 \\
+		\frac{d}{dt}\left(t^{-2}y\right) &= -4t^3 \\
+		t^{-2}y &= -t^4 + C \\
+		y &= -t^6 + Ct^2
+	\end{align*}
+Using our initial value, we get 
+	\boldmath
+	$$
+	y(t) = -t^6 - 2t^2
+	$$
+	\unboldmath
+
+\newpage
+
+\noindent \textbf{Problem 2: }Consider the initial value problem
+	$$
+	x \frac{dy}{dx} + y = -8xy^2, \qquad y(1) = -7
+	$$
+Solve the differential equation for $y$.
+\\ \\
+So we can write the differential equation as the following:
+	$$
+	\frac{dy}{dx} + \frac{1}{x}y = -8y^2
+	$$
+We can solve this differential equations using Bernoulli's Method: $u = y^{1-2} = y^{-1}$\\ $\frac{du}{dx} = -y^{-2}\frac{dy}{dt}
+	$
+	\begin{align*}
+		-y^{-2}\frac{dy}{dx} + (-y^{-2})\frac{1}{x}y &= -8y^2(-y^{-2}) \\
+		\frac{du}{dx} - \frac{1}{x}u &= 8
+	\end{align*}
+Now we can solve this differential equations using the integrating factor: $\mu(t) = e^{-\int x^{-1}} = x^{-1}$
+	\begin{align*}
+		x^{-1}\frac{du}{dx} - (x^{-1})\frac{1}{x}u &= 8x^{-1} \\
+		\frac{d}{dx}(x^{-1}u) &= \frac{8}{x} \\
+		x^{-1}u &= 8\ln(x) + C \\
+		u(t) &= 8x\ln(x) + Cx
+	\end{align*}
+Thus resubstituting, we get:
+	$$
+	y(t) = \frac{1}{8x\ln(x) + Cx}
+	$$
+Using our initial value, we get 
+	\boldmath
+	$$
+	y(t) = \frac{1}{8x\ln(x) - \frac{1}{7}x}
+	$$
+	\unboldmath
+
+\newpage
+
+\noindent \textbf{Problem 3: }Consider the following initial value problem: 
+	$$
+	\frac{dy}{dt} = (1 - 0.4t)\sqrt{y}, \qquad y(0) = 9
+	$$
+	\begin{enumerate}[label = (\alph*)]
+		\item Solve this initial value problem.
+		\\ \\
+		So we can write the differential equation as the following:
+			$$
+			y^{-\frac{1}{2}}\,dy = (1 - 0.4t)\,dt
+			$$
+		So now we can just integrate both sides:
+			\begin{align*}
+				\int y^{-\frac{1}{2}}\,dy &= \int (1 - 0.4t)\,dt \\
+				2\sqrt{y} &= t - 0.2t^2 + C \\
+				y(t) &= \frac{(t - 0.2t^2 + C)^2}{4}
+			\end{align*}
+		Using our initial value, we get 
+			\boldmath
+			$$
+			y(t) = \frac{(t - 0.2t^2 + 6)^2}{4}
+			$$
+			\unboldmath
+		Plugging in $t=1$, we get
+			\boldmath
+			$$
+			y(1) = \frac{(1-0.2+6)^2}{4} = \frac{6.8^2}{4} = 11.56
+			$$
+			\unboldmath
+		\item Use Euler's method to approximate the solution $y(1)$ using a stepsize of $h = 0.2$ for $t \in [0,1]$.
+		\\ \\
+		So we can use the following equations to approximate with Euler's Method:
+			$$
+			y_{n+1} = y_n + h(1 - 0.4t_n)\sqrt{y_n}
+			$$
+		So we get the following:
+			\begin{align*}
+				y(0) &= 9 \\
+				y(0.2) \approx y_1 &= 9 + 0.2(1 - 0.4(0))\sqrt{9} = \text{\boldmath $9.6$} \\
+				y(0.4) \approx y_2 &= 9.6 + 0.2(1 - 0.4(0.2))\sqrt{9.6} = \text{\boldmath $10.17010315$} \\
+				y(0.6) \approx y_3 &= 10.17010315 + 0.2(1 - 0.4(0.4))\sqrt{10.17010315} = \text{\boldmath $10.70586522$} \\
+				y(0.8) \approx y_4 &= 10.70586522 + 0.2(1 - 0.4(0.6))\sqrt{10.70586522} = \text{\boldmath $11.20320646$} \\
+				y(1.0) \approx y_5 &= 11.20320646 + 0.2(1 - 0.4(0.8))\sqrt{11.20320646} =  \text{\boldmath $11.65841466$}
+			\end{align*}
+		Compute the error between the actual solution and the approximate solution using Euler's method at $t=1$:
+			\boldmath
+			$$
+			\textbf{Percent Error} = \frac{11.65841466 - 11.56}{11.56}*100\% = 0.8513378893\%
+			$$
+			\unboldmath
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 4: }A toxic chemical is spread on fields upstream to a lake that maintains a constant volume of $4,000,000\,m^3$ and has one stream flowing in at $f= 2500\,m^3$/day. This stream is found to contain this toxic chemical with a decaying concentration of $Q(t) = 18 e^{-0.0004 t}$ ppb. The lake is well-mixed and water leaves at the same rate that it flows in from this stream. If the lake is initially clean ( $c(0) = 0$ ), then set up the differential equation for the concentration of the pollutant in the lake.
+\\ \\
+So we can set up the following differential equation for the lakes concentration.  The change in concentration is just the change in amount (Amount In - Amount out) divided by the Volume.  The amount coming in is the flow stream in times the concentration $Q(t)$ and the amount coming out is the same flow times an arbitrary concentration, $c$
+	\boldmath
+	$$
+	\frac{dc}{dt} = \frac{2500(18e^{-0.0004 t} - c)}{4,000,000} = \frac{45}{4(10^3)}e^{-0.0004 t} - \frac{25}{4(10^4)}c
+	$$
+	\unboldmath
+So now we can rewrite the following differential equation:
+	$$
+	\frac{dc}{dt} + 0.000625c = 0.01125e^{-0.0004 t}
+	$$
+We can solve this differential equations using the integrating factor: 
+	$$
+	\mu(t) = e^{\int 0.000625} = e^{0.000625t}
+	$$
+	\begin{align*}
+		e^{0.000625t}\frac{dc}{dt} + e^{0.000625t}0.000625c &= 0.01125e^{-0.0004t + 0.000625t} \\
+		\frac{d}{dt}(e^{0.000625t}c) &= 0.01125e^{0.000225t} \\
+		e^{0.000625t}c &= 50e^{0.000225t} + C \\
+		c(t) &= 50e^{-0.0004t} + Ce^{-0.000625t}
+	\end{align*}
+Using our initial value, we get 
+	\boldmath
+		$$
+		c(t) = 50e^{-0.0004t} - 50e^{-0.000625t}
+		$$
+	\unboldmath
+
+\newpage
+
+\noindent \textbf{Problem 5: }Most of the Western European countries are having a dramatic decline in their growth rate to the point where their populations will actually begin to decline early in this century. Consider the case of Spain. Its population was 28.1 million in 1950, 34 million in 1970, and 39.2 million in 1990.
+
+	\begin{enumerate}[label = (\alph*)]
+		\item Use the nonautonomous Malthusian growth model given by
+			$$
+			\frac{dP}{dt} = (b - at)P, \qquad P(0) = 28.1.
+			$$
+		Let t be the number of years after 1950, then solve this differential equation.
+			\begin{align*}
+				\int P^{-1}\,dP &= \int (b - at)\,dt \\
+				\ln P &= bt - \frac{at^2}{2} + C \\
+				P(t) &= e^{bt - \frac{at^2}{2} + C} = Ce^{bt - \frac{at^2}{2}}
+			\end{align*}
+		Evaluating the initial condition, we get 
+			\boldmath
+			$$
+			P(t) = 28.1e^{bt - \frac{at^2}{2}}
+			$$
+			\unboldmath
+		Notice the we can build a System of Equations:
+			\begin{align*}
+				P(20) = 34 = 28.1e^{20b - 200a} && 20b - 200a = \ln\left(\frac{34}{28.1}\right)\\
+				P(40) = 39.2 = 28.1e^{40b - 800a} && 40b - 800a = \ln\left(\frac{39.2}{28.1}\right)
+			\end{align*}
+		Solving that system just takes reducing of the matrix version:
+			$$
+			rref
+			\begin{bmatrix}
+				20 & -200 & \ln\left(\frac{34}{28.1}\right) \\
+				40 & -800 & \ln\left(\frac{39.2}{28.1}\right)
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				1 & 0 & 0.0107364156 \\
+				0 & 1 & 0.000120686
+			\end{bmatrix}
+			$$
+			So we get \boldmath$b = 0.0107364156$, and $a = 0.000120686$\unboldmath
+			\newpage
+			\item The population for Spain was 40.7 million in 2000. Use the model above to estimate the population of Spain, then compute the percent error from the actual census data
+			\\ \\
+			So we get our complete Population equation:
+				$$
+				P(t) = 28.1e^{0.0107364156t - \frac{0.000120686t^2}{2}}
+				$$
+			Thus we get the population estimate in 2000:
+				\boldmath
+				$$
+				P(50) = 41.33596138
+				$$
+				\unboldmath
+			This gives us a percent error of:
+				\boldmath
+				$$
+				\textbf{Percent Error} = \frac{41.33596138 - 40.7}{40.7}*100\% = 1.562558673\%
+				$$
+				\unboldmath
+			\item When does the model predict that Spain will have its largest population (value of $t$) and what is that population?
+			\\ \\
+			We know that the population will reach a max when its derivative is equal to $0$. $P(t) \not = 0$ for all t, so we just set $b - at = 0$, and get \boldmath$t = 88.96156638$\unboldmath
+			\\ \\
+			The population at this time is \boldmath$P(88.96156638) = 45.30121035$\unboldmath
+	\end{enumerate}
+
+
+\newpage
+
+\noindent \textbf{Problem 6: }
+	\begin{enumerate}[label = (\alph*)]
+		\item Bacterial cells often use the process of induction to stimulate certain genes for catabolic functions. Let $x$ be the concentration of a protein controlled by induction satisfying the ODE:
+			$$
+			\frac{dx}{dt} = \frac{6.5x^2}{22 + x^2} -0.5x
+			$$
+		Find all equilibria:
+			\begin{align*}
+				\frac{6.5x^2}{22 + x^2} -0.5x &= 0\\
+				6.5x^2 - 0.5x(22 + x^2) &= 0 \\
+				0.5x^3 - 6.5x^2 + 11x &= 0 \\
+				x(x^2 - 13x + 22) &= 0 \\
+				x(x-11)(x-2) &= 0
+			\end{align*}
+		Thus we get the following equilibrium values:
+			\boldmath
+			\begin{align*}
+				x_{1e} = 0 \textbf{ - Stable} && x_{2e} = 2 \textbf{ - Unstable} && x_{3e} = 11 \textbf{ - Stable}
+			\end{align*}
+			\unboldmath
+		\item Use this model to find the concentration of the protein when the gene is turned ON (stable nonzero concentration) and determine the critical threshold concentration, below which the gene is OFF. In your written work briefly describe what happens to the gene for all initial concentrations of $x \in [0, 20]$.
+		\\ \\
+		When $x  = 2$, the gene is OFF, and when $x = 11$, the gene is ON.  From $x \in (0,2)$, the concentration is decreasing, which will lead to turn the gene OFF. Then from $x \in (2,11)$, the concentration increases, which will lead to turn the gene ON. From $x \in (11,20)$, the concentration begin to decrease again.
+		
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 7: }
+	\begin{enumerate}[label = (\alph*)]
+		\item Consider the system of differential equations given by:
+		$$
+		\dot{y}
+		=
+		\left\lbrack
+		\begin{array}{rr}
+		3 & 18 \\
+		-1 & - \alpha
+		\end{array}
+		\right\rbrack y, \quad
+		\left\lbrack
+		\begin{array}{r}
+		y_1(0) \\
+		y_2(0)
+		\end{array}
+		\right\rbrack
+		=
+		\left\lbrack
+		\begin{array}{r}
+		-3 \\
+		2
+		\end{array}
+		\right\rbrack,
+		$$
+		where some initial conditions are given. You are given that this system generates a CENTER. There is a parameter, $\alpha$, in the matrix, which you must find, so that this system is a CENTER.
+		\\ \\
+		Notice the eigenvalues' real parts have to be equal to 0, so we find the eigenvalues through the characteristic equation: $(\lambda - 3)(\lambda + \alpha) + 18 = \lambda^2 + (\alpha-3)\lambda + (-3\alpha + 18) = 0$
+			\begin{align*}
+				\lambda &= \frac{-(\alpha - 3) \pm \sqrt{(\alpha-3)^2 - 4(-3\alpha + 18)}}{2}
+			\end{align*}
+		The real part is determined by $(\alpha - 3)$, so \boldmath$\alpha = 3$ \unboldmath
+		\\ \\
+		So we get the following:
+			$$
+			\begin{bmatrix}
+				3 - \lambda & 18 \\
+				-1 & -3 - \lambda
+			\end{bmatrix}
+			=
+			\lambda^2 - 9 + 18 = \lambda^2 + 9 = 0
+			$$
+		So we get \boldmath$\lambda = \pm 3i$\unboldmath. Now let $\lambda_1 = 3i$
+			\begin{align*}
+				\begin{bmatrix}
+					3 - 3i & 18 \\
+					-1 & -3 - 3i
+				\end{bmatrix}
+				\begin{bmatrix}
+					y_1 \\
+					y_2
+				\end{bmatrix} =
+				\begin{bmatrix}
+					0 \\ 0
+				\end{bmatrix}
+				, \qquad
+				\text{\boldmath $ 
+				\begin{bmatrix}
+					y_1 \\ y_2
+				\end{bmatrix} = 
+				\begin{bmatrix}
+					3 + 3i \\ -1
+				\end{bmatrix}$}
+			\end{align*}
+		From $\lambda_1$, we know that the eigenvector for $\lambda_2 = -3i$ will be the complex conjugate of the eigenvector for $\lambda_1$, which will be 
+			\boldmath
+			$
+			\begin{bmatrix}
+				y_1 \\ y_2
+			\end{bmatrix} = 
+			\begin{bmatrix}
+				3 - 3i \\ -1
+			\end{bmatrix}		
+			$\unboldmath.	
+		Now $\lambda_1$ gives us the following:
+			\begin{align*}
+				y_1(t) &= 
+				\begin{bmatrix}
+				3 + 3i \\ -1
+				\end{bmatrix}
+				\left(\cos(3t) + i\sin(3t)\right) \\
+				u(t) + iw(t) &= 
+				\begin{bmatrix}
+					3\cos(3t) - 3\sin(3t) \\
+					-\cos(3t)
+				\end{bmatrix}
+				+ 
+				i\begin{bmatrix}
+					3\cos(3t) + 3\sin(3t) \\
+					-\sin(3t)
+				\end{bmatrix}
+			\end{align*}
+		Thus we get the following solutions:
+			$$
+			\begin{bmatrix}
+				y_1(t) \\ y_2(t)	
+			\end{bmatrix}
+			= c_1
+			\begin{bmatrix}
+			3\cos(3t) - 3\sin(3t) \\
+			-\cos(3t)
+			\end{bmatrix}
+			+ c_2
+			\begin{bmatrix}
+			3\cos(3t) + 3\sin(3t) \\
+			-\sin(3t)
+			\end{bmatrix}
+			$$
+		\item Now if we evaluate the solution with the initial conditions, we get:
+			\begin{align*}
+				\begin{bmatrix}
+				y_1(0) \\ y_2(0)	
+				\end{bmatrix}
+				= 
+				\begin{bmatrix}
+				3 & 3\\
+				-1 & 0
+				\end{bmatrix}
+				\begin{bmatrix}
+					c_1 \\ c_2
+				\end{bmatrix}
+				= 
+				\begin{bmatrix}
+					-3 \\ 2
+				\end{bmatrix}
+			\end{align*}
+		Now we can see that $c_1 = -2$, which leads to $c_2 = 1$, for the complete solution:
+			\boldmath
+			$$
+			\begin{bmatrix}
+			y_1(t) \\ y_2(t)	
+			\end{bmatrix}
+			= -2
+			\begin{bmatrix}
+			3\cos(3t) - 3\sin(3t) \\
+			-\cos(3t)
+			\end{bmatrix}
+			+ 
+			\begin{bmatrix}
+			3\cos(3t) + 3\sin(3t) \\
+			-\sin(3t)
+			\end{bmatrix}
+			$$
+			\unboldmath
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 8: }
+	\begin{enumerate}[label = (\alph*)]
+		\item Consider the initial value problem given by the system of differential equations:
+			$$
+			\dot{y}
+			=
+			\left\lbrack
+			\begin{array}{rr}
+			-3 & -2 \\
+			6 & 4
+			\end{array}
+			\right\rbrack y, \quad
+			\left\lbrack
+			\begin{array}{r}
+			y_1(0) \\
+			y_2(0)
+			\end{array}
+			\right\rbrack
+			=
+			\left\lbrack
+			\begin{array}{r}
+			0 \\
+			-1
+			\end{array}
+			\right\rbrack.
+			$$
+		Find the eigenvalues and eigenvectors of the matrix above. If the eigenvalue is repeated, then write this value in both entries for $\lambda_i$ and use the second vector for any generalized eigenvectors for this particular case.	
+		\\ \\
+		So we can find the eigenvalues through the characteristic equation:
+			\begin{align*}
+				(\lambda + 3)(\lambda - 4) + 12 &= 0 \\
+				\lambda^2 - \lambda &= 0 \\
+				\lambda(\lambda - 1) &= 0
+			\end{align*}
+		So we get \boldmath$\lambda_1 = 0$\unboldmath, the following eigenvector is:
+			$$
+			\begin{bmatrix}
+				-3 & -2 \\
+				6 & 4
+			\end{bmatrix}
+			\begin{bmatrix}
+				y_1 \\ y_2
+			\end{bmatrix} 
+			= 
+			\begin{bmatrix}
+				0 \\ 0
+			\end{bmatrix}
+			, \qquad 
+			\text{\boldmath $
+			\begin{bmatrix}
+				y_1 \\ y_2
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+				-2 \\ 3
+			\end{bmatrix}$}
+			$$
+		So we get \boldmath$\lambda_2 = 1$\unboldmath, the following eigenvector is:
+			$$
+			\begin{bmatrix}
+			-4 & -2 \\
+			6 & 3
+			\end{bmatrix}
+			\begin{bmatrix}
+			y_1 \\ y_2
+			\end{bmatrix} 
+			= 
+			\begin{bmatrix}
+			0 \\ 0
+			\end{bmatrix}
+			, \qquad 
+			\text{\boldmath $
+			\begin{bmatrix}
+			y_1 \\ y_2
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+			1 \\ -2
+			\end{bmatrix}$}
+			$$
+		Thus we get the following solutions:
+			$$
+			\begin{bmatrix}
+				y_1(t) \\ y_2(t)
+			\end{bmatrix}
+			= 
+			c_1
+			\begin{bmatrix}
+				-2 \\ 3
+			\end{bmatrix} + 
+			c_2
+			\begin{bmatrix}
+				1 \\ -2
+			\end{bmatrix}e^{t}
+			$$
+		\item Now if we evaluate the solution with the initial conditions, we get: 
+			$$
+			\begin{bmatrix}
+			y_1(0) \\ y_2(0)
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				-2 & 1 \\
+				3 & -2
+			\end{bmatrix}
+			\begin{bmatrix}
+				c_1 \\ c_2
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				0 \\ -1
+			\end{bmatrix}
+			$$
+		Now we can see the reduction:
+			$$
+			\begin{bmatrix}
+				-2 & 1 & 0 \\
+				3 & -2 & -1
+			\end{bmatrix}
+			=>
+			\begin{bmatrix}
+				-4 & 2 & 0 \\
+				3 & -2 & -1
+			\end{bmatrix}
+			=>
+			\begin{bmatrix}
+				4 & -2 & 0 \\
+				-1 & 0 & -1
+			\end{bmatrix}
+			$$
+			So we get \boldmath $c_1 = 1$ and then we can see that $c_2 = 2$ 
+				$$
+				\begin{bmatrix}
+				y_1(t) \\ y_2(t)
+				\end{bmatrix}
+				= 
+				\begin{bmatrix}
+				-2 \\ 3
+				\end{bmatrix} + 
+				2
+				\begin{bmatrix}
+				1 \\ -2
+				\end{bmatrix}e^{t}
+				$$
+				\unboldmath
+			\item \textbf{Qualitative Behavior: Because one of the eigenvalues is 0, this results in an unstable degenerate}
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 9: }
+	\begin{enumerate}[label = (\alph*)]
+		\item Consider the initial value problem given by the system of differential equations:
+			$$
+			\dot{y}
+			=
+			\left\lbrack
+			\begin{array}{rr}
+			0 & 1 \\
+			\beta & 1
+			\end{array}
+			\right\rbrack y, \quad
+			\left\lbrack
+			\begin{array}{r}
+			y_1(0) \\
+			y_2(0)
+			\end{array}
+			\right\rbrack
+			=
+			\left\lbrack
+			\begin{array}{r}
+			-6 \\
+			-3
+			\end{array}
+			\right\rbrack.
+			$$
+		You are given that one eigenvalue is $\lambda_1 = -1$. There is a parameter, $\beta$, in the matrix, which you must find, so that this system has $\lambda_1 = -1$.
+		\\ \\
+		So we can begin to find the characteristic equation: $\lambda(\lambda - 1) - \beta = 0$. Now we can evaluate this with $\lambda = -1$, and get \boldmath$\beta = 2$\unboldmath.
+		\\ \\
+		Now we get the both eigenvalues from the evaluated characteristic equation:
+			\begin{align*}
+				\lambda(\lambda - 1) - 2 &= 0 \\
+				\lambda^2 - \lambda - 2 &= 0 \\
+				(\lambda  - 2)(\lambda + 1)
+			\end{align*}
+		So we get \boldmath$\lambda_1 = -1$\unboldmath, the following eigenvector is:
+			$$
+			\begin{bmatrix}
+			1 & 1 \\
+			2 & 2
+			\end{bmatrix}
+			\begin{bmatrix}
+			y_1 \\ y_2
+			\end{bmatrix} 
+			= 
+			\begin{bmatrix}
+			0 \\ 0
+			\end{bmatrix}
+			, \qquad 
+			\text{\boldmath $
+				\begin{bmatrix}
+				y_1 \\ y_2
+				\end{bmatrix}
+				=
+				\begin{bmatrix}
+				-1 \\ 1
+				\end{bmatrix}$}
+			$$
+		So we get \boldmath$\lambda_2 = 2$\unboldmath, the following eigenvector is:
+			$$
+			\begin{bmatrix}
+			-2 & 1 \\
+			2 & -1
+			\end{bmatrix}
+			\begin{bmatrix}
+			y_1 \\ y_2
+			\end{bmatrix} 
+			= 
+			\begin{bmatrix}
+			0 \\ 0
+			\end{bmatrix}
+			, \qquad 
+			\text{\boldmath $
+				\begin{bmatrix}
+				y_1 \\ y_2
+				\end{bmatrix}
+				=
+				\begin{bmatrix}
+				1 \\ 2
+				\end{bmatrix}$}
+			$$
+		Thus we get the following solutions:
+			$$
+			\begin{bmatrix}
+			y_1(t) \\ y_2(t)
+			\end{bmatrix}
+			= 
+			c_1
+			\begin{bmatrix}
+			-1 \\ 1
+			\end{bmatrix}e^{-t} + 
+			c_2
+			\begin{bmatrix}
+			1 \\ 2
+			\end{bmatrix}e^{2t}
+			$$
+		\item Now if we evaluate the solution with the initial conditions, we get: 
+			$$
+			\begin{bmatrix}
+			y_1(0) \\ y_2(0)
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+			-1 & 1 \\
+			1 & 2
+			\end{bmatrix}
+			\begin{bmatrix}
+			c_1 \\ c_2
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+			-6 \\ -3
+			\end{bmatrix}
+			$$
+		Now we can see the reduction:
+			$$
+			\begin{bmatrix}
+				-1 & 1 & -6 \\
+				1 & 2 & -3
+			\end{bmatrix}
+			=>
+			\begin{bmatrix}
+				-1 & 1 & -6 \\
+				0 & 3 & -9	
+			\end{bmatrix}
+			$$
+		So we get \boldmath $c_2 = -3$ and then we can see that $c_1 = 3$
+			$$
+			\begin{bmatrix}
+			y_1(t) \\ y_2(t)
+			\end{bmatrix}
+			= 
+			3
+			\begin{bmatrix}
+			-1 \\ 1
+			\end{bmatrix}e^{-t} + 
+			-3
+			\begin{bmatrix}
+			1 \\ 2
+			\end{bmatrix}e^{2t}
+			$$
+			\unboldmath 
+		\newpage
+		\item Now consider the nonhomogeneous system of differential equations given by:
+			$$
+			\dot{x}
+			=
+			\left\lbrack
+			\begin{array}{rr}
+			0 & 1 \\
+			\beta & 1
+			\end{array}
+			\right\rbrack x +
+			\left\lbrack  
+			\begin{array}{r}
+			2 \\
+			6 
+			\end{array}
+			\right\rbrack .
+			$$
+		Find the equilibrium, $(x_{1e}, x_{2e})^T$, for this nonhomogeneous system of differential equations.
+		\\ \\
+		So we know that $\beta = 2$, and because we are trying to solve for the equilibrium values, we set $\dot{x} = (0,0)^T$.Then we can subtract the non-coefficient matrix to the left side and get:	
+			$$
+			\begin{bmatrix}
+				-2 \\ -6
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				0 & 1 \\
+				2 & 1
+			\end{bmatrix}
+			\begin{bmatrix}
+				x_{1e} \\ x_{2e}
+			\end{bmatrix}
+			$$
+		We can see that \boldmath $x_{2e} = -2$ and from that we get $x_{1e} = -2$\unboldmath
+		\\ 
+		\item \textbf{Qualitative Behavior: Because the eigenvalues have opposite signs, this results in an saddle point} 
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 10: }This problem uses the Method of Undetermined Coefficients to analyze and find the solution. You are given the form of the particular solution that must be used to solve this problem, which allows one to solve for unknown constants in the differential equation. Subsequently, you are asked to find the general solution to this problem. In your written answer be sure to show all of the steps for obtaining your answer.
+	\begin{enumerate}[label = (\alph*)]
+		\item Consider the following nonhomogeneous differential equation, which contains unknown constants $\alpha$ and $\beta$:
+			$$
+			y'' + \alpha y' + \beta y = 8 x + 9 e^{2x} + 9 e^{-x}
+			$$
+		Suppose the form of the particular solution to this differential equation as prescribed by the method of undetermined coefficients satisfies:
+			$$
+			y_p(x) = A_1x + A_0 + B_1x e^{2x} + C_1x e^{-x}
+			$$
+		Notice the derivatives of $y_p$
+			\begin{align*}
+				y_p' &= A_1 + 2B_1xe^{2x} + B_1e^{2x} + -C_1xe^{-x} + C_1e^{-x} \\
+				y_p'' &= 4B_1e^{2x} + 4B_1xe^{2x} +  C_1xe^{-x} -2C_1e^{-x} 
+			\end{align*}
+		Now reevaluating this, we get:
+			\begin{align*}
+				&(4 + \alpha)B_1e^{2x} + (4 + 2\alpha + \beta)B_1xe^{2x} + (1-\alpha + \beta)C_1xe^{-x} + (-2 + \alpha)C_1 e^{-x} + \beta A_1 x + (\alpha A_1 + \beta A_0) \\
+				&= 8 x + 9 e^{2x} + 9 e^{-x}
+			\end{align*}
+		This gives us the systems of equations, after some algebra:
+			\begin{align*}
+				4B_1 + \alpha B_1 &= 9  & -2C_1 + \alpha C_1 &= 9 \\
+				2\alpha B_1 + \beta B_1 &= -4B_1 & \beta A_1 &= 8 \\
+				-\alpha C_1 + \beta C_1 &= -C_1 & \alpha A_1 + \beta A_0 &= 0
+			\end{align*}
+		From this, we can see the two equations: $2\alpha B_1 + \beta B_1 = -4B_1, \quad -\alpha C_1 + \beta C_1 = -C_1$.  We can solve this system by simple reduction:
+			$$
+			\begin{bmatrix}
+				2 & 1 & -4 \\
+				-1 & 1 & -1
+			\end{bmatrix}
+			=> 
+			\begin{bmatrix}
+				2 & 1 & -4 \\
+				3 & 0 & -3
+			\end{bmatrix}
+			$$
+		Thus we get \boldmath $\alpha = -1$ and $\beta = -2$ \unboldmath
+		\newpage
+		\item With these constants $\alpha$ and $\beta$, find the most general solution to the associated homogeneous differential equation. 
+		\\ \\
+		We can find the homogeneous solution by solving the characteristic equation:
+			\begin{align*}
+				\lambda^2 - \lambda - 2 &= 0 \\
+				(\lambda - 2)(\lambda + 1) &= 0 \\
+				\lambda = 2, -1
+			\end{align*}
+		Thus our homogeneous solution is:
+			\boldmath
+			$$
+			y_h = c_1e^{-x} + c_2e^{2x}
+			$$
+			\unboldmath
+		\item With the form of the particular solution above use the Method of Undetermined Coefficients to find the unknown coefficients, $A_1, A_0, B_1,$ and $C_1$, thus, finding the general solution to the original nonhomogeneous differential equation.
+		\\ \\
+		We can use our previous systems of equations to find the coefficients:
+			\begin{align*}
+				-2A_1 &= 8 & &\text{\boldmath $A_1 = -4$} \\
+				4 - 2A_0 &= 0 & &\text{\boldmath $A_0 = 2$} \\
+				3B_1 &= 9 & &\text{\boldmath $B_1 = 3$} \\
+				-3C_1 &= 9 & &\text{\boldmath $C_1 = -3$}
+			\end{align*}
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 11: }For this problem use the Variation of Parameters method to solve this problem. In your written answer be sure to show all of the steps for obtaining your answer.
+	\begin{enumerate}[label = (\alph*)]
+		\item Find a particular solution to the nonhomogeneous differential equation
+			$$
+			x^2y'' - xy' - 3y = 32 x^{3}
+			$$
+		We can use Cauchy-Euler's Method and let the following be true:
+			\begin{align*}
+				y = x^r && y' = rx^{r-1} && y'' = (r^2 - r)x^{r-2}
+			\end{align*}
+		Now we can resubsitute this into the homogeneous equation and get:
+			\begin{align*}
+				x^2(r^2 - r)x^{r-2} - xrx^{r-1} - 3x^r &= 0 \\
+				x^r(r^2 - 2r - 3) &= 0 \\
+				(r-3)(r+1) &= 0 
+			\end{align*}
+		Now we get our two solutions:
+			\begin{align*}
+				y_1 = x^{-1} && y_2 = x^3 
+			\end{align*}
+		Notice the Wronskian of the two solutions:
+			\begin{align*}
+				W_{[y_1,y_2]}(t) = 
+				\begin{vmatrix}
+					x^{-1} & x^3 \\
+					-x^{-2} & 3x^2
+				\end{vmatrix} 
+				= 3x + x = 4x
+			\end{align*}
+		Notice we can rewrite the differential equation in the following form:
+			$$
+			y'' - \frac{1}{x} - \frac{3}{x^2} = 32x
+			$$
+		From here, we can substitute this into the formula for Variation of Parameters:
+			\begin{align*}
+				y_p &= -x^{-1} \int^x \frac{s^3(32s)}{4s}\,ds + x^3 \int^x \frac{s^{-1}(32s)}{4s}\,ds \\
+				&= -8x^{-1}\int^x s^3\,ds + 8x^3 \int^x s^{-1}\,ds \\
+				&= \text{\boldmath $-2x^{3} + 8x^3 \ln(x)$}
+			\end{align*}
+		\item Find the most general solution to the associated homogeneous differential equation.
+		\\ \\
+		This is just a linear combination of our solutions:
+			\boldmath
+			$$
+			y_h = c_1x^{-1} + c_2x^{3}
+			$$
+			\unboldmath
+		\item Find the most general solution to the original nonhomogeneous differential equation.
+		\\ \\
+		This is just our homogeneous solution plus our particular:
+			\boldmath
+			$$
+			y(t) = c_1x^{-1} + c_2x^{3} -2x^{3} + 8x^3 \ln(x)
+			$$
+			\unboldmath
+	\end{enumerate}
+
+\newpage 
+
+\noindent \textbf{Problem 12: } Consider the initial value problem
+	$$
+	y\,'' + 6 y\,' + 13 y = 8 e^{-3 t}, \quad \quad y(0) = 5, \quad y\,'(0) = -3.
+	$$
+	\begin{enumerate}[label = (\alph*)]
+		\item Take the Laplace transform of both sides of the given differential equation to create the corresponding algebraic equation
+			\begin{align*}
+				s^2Y(s) -sy(0) - y'(0) + 6sY(s) - 6y(0) + 13Y(s) &= \frac{8}{s+3} \\
+				\text{\boldmath $(s^2 + 6s + 13)Y(s) - (5s + 27)$} &= \text{\boldmath $\frac{8}{s+3}$}
+			\end{align*}
+		\item Solve your equation for $Y(s)$.
+			\boldmath
+			$$
+			Y(s) =\frac{5s + 27}{s^2 + 6s + 13} + \frac{8}{(s+3)(s^2 + 6s + 13)}
+			$$
+			\unboldmath
+		\item Take the inverse Laplace transform of both sides of the previous equation to solve for $y(t)$.
+		\\ \\
+		Notice the partial fractions decomposition:
+			\begin{align*}
+				\frac{8}{(s+3)(s^2 + 6s + 13)} &= \frac{A}{s+3} + \frac{Bs + C}{s^2 + 6s + 13} \\
+				8 &= (A+B)s^2 + (6A + 3B + C)s + (13A + 3C) 
+			\end{align*}
+		So we get that $B = -A$, which leads to:
+			\begin{align*}
+				3A + C &= 0 \\
+				13A + 3C &= 8 
+			\end{align*}
+		This can be reduced:
+			$$
+			\begin{bmatrix}
+				3 & 1 & 0 \\
+				13 & 3 & 8
+			\end{bmatrix}
+			=> 
+			\begin{bmatrix}
+				-9 & -3 & 0 \\
+				13 & 3 & 8
+			\end{bmatrix}
+			=>
+			\begin{bmatrix}
+				3 & 1 & 0 \\
+				4 & 0 & 8
+			\end{bmatrix}
+			$$
+		Thus we get $A = 2$, $B = -2$, and $C = -6$ 
+		\\ \\
+		Now we get the following after some algebra:
+			$$
+			Y(s) = \frac{3(s+3)}{(s+3)^2 + 4} + \frac{12}{(s+3)^2 + 4} + \frac{2}{(s+3)}
+			$$
+		Thus we take the Laplace inverse of each term and get:
+			\boldmath
+			$$
+			y(t) = 3e^{-3t}\cos(2t) + 6e^{-3t}\sin(2t) + 2e^{-3t} 
+			$$
+			\unboldmath
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 13: }Consider the initial value problem
+	$$
+	y\,'' + 16 y = \left\lbrace \begin{array}{ l l } 0 & \mbox{ if } 0\leq t < 2 \\ 48 & \mbox{ if } 2 \leq t < 6 \\ 0 & \mbox{ if } 6 \leq t < \infty, \end{array} \right. \quad \quad y(0) = 5, \quad y\,'(0) = 8.
+	$$
+	\begin{enumerate}[label = (\alph*)]
+		\item Take the Laplace transform of both sides of the given differential equation to create the corresponding algebraic equation.
+			\begin{align*}
+				s^2Y(s) - sy(0) - y'(0) + 16Y(s) &= \frac{48(e^{-2s} - e^{-6s})}{s} \\
+				\text{\boldmath $(s^2 + 16)Y(s) - (5s + 8)$} &= \text{\boldmath $\frac{48(e^{-2s} - e^{-6s})}{s}$}
+			\end{align*}
+		\item Solve your equation for $Y(s)$
+			\boldmath
+			$$
+			Y(s) = \frac{5s + 8}{s^2 + 16} + \frac{48(e^{-2s} - e^{-6s})}{s(s^2 + 16)}
+			$$
+			\unboldmath
+		\item Take the inverse Laplace transform of both sides of the previous equation to solve for $y(t)$.
+		\\ \\
+		Notice the partial fractions decomposition:
+			\begin{align*}
+				\frac{48}{s(s^2 + 16)} &= \frac{A}{s} + \frac{Bs + C}{s^2 + 16} \\
+				48 &= (A+B)s^2 + Cs + 16A 
+			\end{align*}
+		We can see that $A = 3, B = -3$, and $C = 0$.
+		\\ \\
+		Now we ge the following after some algebra:
+			$$
+			Y(s) = \frac{5s}{s^2 + 16} + \frac{8}{s^2 + 16} + \left(\frac{3}{s} + \frac{-3s}{s^2 + 16}\right)e^{-2s} - \left(\frac{3}{s} + \frac{-3s}{s^2 + 16}\right)e^{-6s}
+			$$
+		Thus we take the Laplace inverse of each term and get:
+			\boldmath
+			$$
+			y(t) = 5\cos(4t) + 2\sin(4t) + (3  -3\cos(4(t-2)))h(t-2) - (3 - 3\cos(4(t-6)))h(t-6)
+			$$
+			\unboldmath
+	\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 14: }Consider the initial value problem:
+	$$
+	(4 - x^2)y\,'' - 2xy\,' + 12 y = 0, \qquad y(0) = 9, \quad y\,'(0) = 8.
+	$$
+Assume a power series solution of the form:
+	$$
+	y = \sum_{n=0}^{\infty} a_n x^n .
+	$$
+Use our power series method for solving this differential equation about its ordinary point $x_0 = 0$. In your written work, show the steps for finding the recurrence relation for this problem. Use the initial conditions in the recurrence relation to find the following coefficients:		
+\\ \\
+We can evaluate the differential equation in the form of the power series solution:
+	\begin{align*}
+		&\sum_{n=2}^{\infty} 4(n)(n-1)a_nx^{n-2} - \sum_{n=2}^{\infty} n(n-1)a_nx^n - \sum_{n=1}^{\infty} 2na_nx^n + \sum_{n=0}^{\infty} 12a_nx^n \\
+		&= \sum_{n=0}4(n+2)(n+1)a_{n+2}x^n - \sum_{n=2}^{\infty} n(n-1)a_nx^n - \sum_{n=1}^{\infty} 2na_nx^n + \sum_{n=0}^{\infty} 12a_nx^n \\
+		&= \sum_{n=2} (4(n+2)(n+1)a_{n+2} - (n^2 + n - 12)a_n)x^n + (8a_2 + 12a_0) + (24a_3 + 10a_1)x
+	\end{align*}
+Now we get the following recurrence relation:
+	\begin{align*}
+		4(n+2)(n+1)a_{n+2} - (n^2 + n - 12)a_n &= 0 \\
+		a_{n+2} = \frac{n^2 + n - 12}{4(n+2)(n+1)}a_n &= \frac{(n+4)(n-3)}{4(n+2)(n+1)}a_n \\
+		a_2 &= \frac{-3}{2}a_0 \\
+		a_3 &= \frac{-5}{12}a_1
+	\end{align*}
+So using the recurrence relation, we get the following coefficients:
+	\begin{align*}
+		a_0 &= \text{\boldmath $9$} & a_4 &= \frac{-6(1)}{4(4)(3)}a_2 = \frac{-6(1)}{4(4)(3)}\frac{-4(3)}{4(2)(1)}a_0 = \text{\boldmath $\frac{27}{16}$}\\
+		a_1 &= \text{\boldmath $8$} & a_5 &= \frac{7(0)}{4(5)(4)}a_3 =\text{\boldmath $ 0$}\\
+		a_2 &= \frac{-(4)(3)}{4(2)(1)}a_0 = \text{\boldmath $\frac{-27}{2}$} & a_6 &= \frac{8(1)}{4(6)(5)}\frac{-6(1)}{4(4)(3)}\frac{-4(3)}{4(2)(1)}a_0 = \text{\boldmath $\frac{9}{80}$} \\
+		a_3 &= \frac{-5(2)}{4(3)(2)}a_1 = \text{\boldmath $\frac{-10}{3}$} & a_7 &= \frac{(9)(6)}{4(7)(6)}a_5 =\text{\boldmath $ 0$}
+	\end{align*}
+\newpage
+\noindent In your written work write the expressions for the two linearly independent solutions up to and including powers of $x^7$. Briefly discuss the convergence of these two solutions. Give the radius of convergence for any infinite series, showing how you apply the Ratio Test.
+\\ \\
+So we can see that the two linearly independent solutions are:
+	\begin{align*}
+	y_1(x) = 1 + \sum_{n=0}^{\infty} \frac{[(2n+4)(2n-3)][(2n+2)(2n-5)]...[(4)(-3)]}{4^{n+1}(2n+2)!}x^{2(n+1)}&& y_2(x) =  x - \frac{5}{12}x^3  
+	\end{align*}
+The general solution goes:
+	\begin{align*}
+		y(x) = a_0\left(1 + \frac{-3}{2}x^2 + \frac{3}{16}x^4 + \frac{1}{80}x^6 + ... \right) + a_1\left(x - \frac{5}{12}x^3\right)
+	\end{align*}
+Notice the ratio test:
+	$$
+	\lim\limits_{n \rightarrow \infty} \left|\frac{a_{n+2}}{a_n}\right|x^2 = \lim\limits_{n \rightarrow \infty} \left|\frac{(n+4)(n-3)}{4(n+2)(n+1)}\right|x^2 = \frac{x^2}{4} < 1
+	$$
+So the polynomial solution converge for all $x$, while the infinite series solution converges for $|x| < 2$, so the radius of convergence $\rho = 2$
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

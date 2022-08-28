@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Exam 3} \\
+		\textbf{Algebraic Coding Theory} \\
+		\textbf{Math 525} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{5}
+		Using \textit{idempotents}, determine the number of proper cyclic codes of length 17. Show your work leading to the answer.
+		\\ \\
+		Notice the following: $n = 2^r * s = 17 = 2^0 * 17$. So we get $r = 0, s = 17$.  Notice that $x^{17} + 1$ has 3 irreducible factors, such that $z = 3$.  Now we get that number of proper cyclic codes of length 17 is $(2^0 + 1)^3 - 2 = -1$
+		\\ \\
+		
+	\end{problem}
+
+
+\end{document}

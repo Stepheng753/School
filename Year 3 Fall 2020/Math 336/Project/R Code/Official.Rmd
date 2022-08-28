@@ -1,0 +1,235 @@
+---
+title: "Project"
+author: "Stephen Giang"
+date: "11/5/2020"
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Functions}
+# Functions
+
+MonthlyPayment = function(P, AIR, Term) {
+  r = AIR / (100 * 12)
+  k = Term * 12
+  x = (P * (1 + r)^k) / ( (1 - (1 + r)^k) / (1 - (1 + r)) )
+  
+  return(x)
+}
+
+PlotInfo = function(P, AIR, Term) {
+  Principle = P
+  r = AIR / (100 * 12)
+  k = Term * 12
+  x = MonthlyPayment(P, AIR, Term)
+  
+  P = matrix(0, nrow = k + 1)
+  i = 1
+  P[i] = Principle
+  MonthPPaid = 0
+  AccPPaid = 0
+  Interest = 0
+  AccInterest = 0
+  
+  table = matrix( c( (i - 1), P[i], MonthPPaid, AccPPaid, Interest,
+                     AccInterest), nrow = 1)
+  for (i in 2 : (k+1)) {
+    P[i] = P[i - 1]*(1 + r) - x
+    MonthPPaid = P[i-1] - P[i]
+    AccPPaid = AccPPaid + MonthPPaid
+    Interest = x - MonthPPaid
+    AccInterest = AccInterest + Interest
+    table = rbind(table, c( (i - 1), P[i], MonthPPaid, AccPPaid, Interest,
+                     AccInterest))
+  }
+  colnames(table) = c('Month', 'Principle', 'Monthly Principle Paid', 
+                      'Total Principle Paid', 'Monthly Interest Paid', 
+                      'Total Interest Paid')
+  return(table)
+}
+
+creditToRate = function(creditScore) {
+  interestRates = seq(2.5, 3.5, length = 9) 
+  creditScores = seq(800, 680, length = 9)
+  
+  smallest = 800
+  j = 0
+  for (i in 1 : 9) {
+    diff = abs(creditScore - creditScores[i])
+    if (diff < smallest) {
+      smallest = diff
+      j = i
+    }
+  }
+  
+  return(interestRates[j])
+}
+
+principleMax = function(S, AIR, Term) {
+  r = AIR / (100 * 12)
+  months = Term * 12
+  
+  numerator = .30 * S * (1 - (1 + r)^months)
+  denominator = 12 * (1 + r)^months * (1 - (1 + r))
+  P_max = numerator / denominator
+  
+  return(P_max)
+}
+
+```
+
+```{r Scenario}
+
+credit = 800
+salary = 130000
+term = 15
+
+AIR = creditToRate(credit)
+P_max = principleMax(salary, AIR, term)
+
+Principles = sort(c(seq(500000,1000000,by=100000),750000)) * (1 - .2)
+smallest = 1000000
+j = 0
+for (i in 1 : 7) {
+  diff = abs(P_max - Principles[i])
+  if (diff < smallest) {
+    smallest = diff
+    j = i
+  }
+}
+P = Principles[j]
+mP = MonthlyPayment(P, AIR, term)
+
+
+sprintf('Based on a Credit Score of: %.0f, we get an Annual Interest Rate of %.3f%%', credit, AIR)
+sprintf('Based on the AIR: %.3f%%, Salary: $%.0f, and Term: %.0f years', AIR, salary, term)
+sprintf('We get a Max Principle of $%.2f', P_max)
+sprintf('So we round this to a Principle of: $%.2f', P)
+sprintf('With a 20%% down payment, we can get a home value of $%.2f', P/ (1 - .2))
+sprintf('This leads to a monthly payment of $%.2f', mP)
+sprintf('You would pay in total: $%.2f', mP * term * 12)
+sprintf('You would pay in total interest: $%.2f', mP * term * 12 - P)
+
+lastRow = term * 12 + 1
+Info = PlotInfo(P, AIR, term)
+months = Info[2:lastRow,1]
+MPP = matrix(Info[2:lastRow, 3])
+APP = matrix(Info[2:lastRow, 4])
+MI = matrix(Info[2:lastRow, 5])
+AI = matrix(Info[2:lastRow, 6])
+
+i = 1
+while (APP[i] < AI[i]) {
+  i = i + 1
+}
+sprintf('At %.0f months, or %.0f years and %.0f months, You would have finally paid more principle than interest',
+        i, i/12, i %% 12)
+
+i = 1
+while(MPP[i] < MI[i]) {
+  i = i + 1
+} 
+sprintf('At %.0f months, or %.0f years and %.0f months, You begin to pay more principle than interest monthly', 
+        i, i/12, i %% 12)
+
+leg1Height = 572000
+leg2Height = 3640
+
+plot(Info[,1], Info[,2], 'l', col='red', lwd = 2,
+     ylim = c(0,550000), xlim = c(0,180),
+     main = 'Principle over Time',
+     xlab = 'Months since Mortgage Began', ylab = '',
+     panel.first = grid())
+lines(months, APP, 'l', col = 'blue', lwd = 2,)
+lines(months, AI, 'l', col = 'black', lwd = 2,)
+legend(0,leg1Height, 'Principle Left', 
+       lwd=2, col = 'red', cex = .75)
+legend(35,leg1Height, 'Accumalitive Principle Paid', 
+       lwd=2, col = 'blue', cex = .75)
+legend(90,leg1Height, 'Accumalitive Interest Paid', 
+       lwd=2, col = 'black', cex = .75)
+
+plot(months, MPP, 'l', col='red', lwd = 2,
+     ylim = c(0,3500), xlim = c(0,180), 
+     main = 'Principle v Interest', 
+     xlab = 'Months Since Mortgage Began', ylab = '',
+     panel.first = grid())
+lines(months, MI, 'l', col='blue', lwd = 2)
+legend(0,leg2Height,'Principle Paid Monthly', lwd = 2, col = 'red', cex = .75)
+legend(50,leg2Height, 'Interest Paid Monthly', lwd = 2, col = 'blue', cex = .75)
+
+```
+
+
+```{r Sensitivity}
+# Generalized Results
+
+Sensitive = function(HomeValues, Down, InterestRates, Terms) {
+  Principles = HomeValues*(1 - Down)
+  STable = matrix(0, nrow = length(InterestRates) * length(Principles) * length(Terms), 
+                 ncol = 15)
+  colnames(STable) = c('Term', 'Home Value','Principle', 
+                      'Annual Interest Rate', 'Change in Annual Interest Rate', '% Change in Annual Interest Rate', 
+                      'Monthly Payment','Change in Monthly Payment', '% Change in Monthly Payment', 
+                      'Total Amount Paid', 'Change in Total Amount Paid', '% Change in Total Amount Paid', 
+                      'Total Interest', 'Change in Total Interest', '% Change in Total Interest')
+  i = 1
+  for (t in Terms) {
+    for (p in Principles) {
+      for (iR in InterestRates) {
+        x = MonthlyPayment(p, iR, t)
+        STable[i,1] = t          
+        STable[i,2] = p / (1 - Down)
+        STable[i,3] = p          
+        STable[i,4] = iR         
+        STable[i,7] = x          
+        STable[i,10] = x*t*12     
+        STable[i,13] = x*t*12 - p 
+        i = i + 1
+      }
+      i = i - length(InterestRates)
+      middle = length(InterestRates) %/% 2
+      midIR = STable[i+middle,4]
+      midMP = STable[i+middle,7]
+      midTP = STable[i+middle,10]
+      midTI = STable[i+middle,13]
+      for (iR in InterestRates) {
+        STable[i,5]  = STable[i,4] - midIR
+        STable[i,6]  = STable[i,5] * 100 / midIR
+        STable[i,8]  = STable[i,7] - midMP
+        STable[i,9]  = STable[i,8] * 100 / midMP
+        STable[i,11] = STable[i,10] - midTP
+        STable[i,12] = STable[i,11] * 100 / midTP
+        STable[i,14] = STable[i,13] - midTI
+        STable[i,15] = STable[i,14] * 100 / midTI
+        i = i + 1
+      }
+    }
+  }
+  return(STable)
+}
+
+HomeValues = sort(c(seq(500000,1000000,by=100000),750000))
+InterestRates = seq(2.50, 3.50, length = 9)
+Terms = c(15,30)
+
+down = c(3.5, seq(5,20,by=2.5)) / 100
+Data = list()
+i = 1
+for (x in down) {
+  strx = paste('d', toString(x*100), sep = '')
+  Data[[strx]] = Sensitive(HomeValues, x, InterestRates, Terms)
+  i = i + 1
+}
+
+
+
+
+```

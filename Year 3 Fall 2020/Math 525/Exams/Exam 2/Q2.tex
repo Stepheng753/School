@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\newcommand{\cvector}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\smatrix}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}}
+\newcommand{\bmath}[1]{\text{\boldmath#1\unboldmath}}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Exam 2} \\
+		\textbf{Algebraic Coding Theory} \\
+		\textbf{Math 525} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{2}
+		Let $C$ be the linear code with parity-check matrix
+		\[H = \left[\begin{array}{cccc}
+			0&1&0&1 \\
+			\noalign{\medskip} 0&0&1&1 \\
+			\noalign{\medskip} 1&0&1&1 \\
+			\noalign{\medskip} 0&0&0&1 \\
+			\noalign{\medskip} 0&1&1&1 \\
+			\noalign{\medskip} 1&0&0&0 \\
+			\noalign{\medskip} 1&0&0&1 \\
+			\noalign{\medskip} 1&1&0&1 \\
+			\noalign{\medskip} 1&1&1&0 \\
+			\noalign{\medskip} 0&1&1&0 \\
+		\end{array}\right]\]	
+		\begin{enumerate}[label = (\alph*)]
+			\item The minimum distance $d$ of $C$. 
+			\\ \\
+			Let $i,j \in \{0,1,2,3,...,9,10\}$, and let $h_i$ represent the rows of parity-check matrix, $H$.
+			\\ \\
+			Notice the following: 
+			\\ \\
+			Suppose we had a minimum distance of 1, then we would have a row $h_i = 0\,\,0\,\,0\,\,0$, which is not the case.  
+			\\ \\
+			Suppose we had a minimum distance of 2, then we would have two rows such that $h_i + h_j = \vec{0}$.  However, the only way for this to be true is for $h_i = h_j$, which again is not the case.  
+			\\ \\
+			So notice that $h_4 + h_6 + h_7 = \vec{0}$. \textbf{\boldmath Thus we get a minimum distance of $d = 3$}.  
+			\\ \\
+			\item Determine a codeword in $C$ of weight $d$, where $d$ denotes the value you found in part (a).
+			\\ \\
+			Notice the codeword in $C$, $v = 01010001$
+		\end{enumerate}	
+	\end{problem}
+
+
+\end{document}

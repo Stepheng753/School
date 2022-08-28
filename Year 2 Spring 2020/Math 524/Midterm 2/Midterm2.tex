@@ -1,0 +1,362 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\everymath{\displaystyle}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Midterm 2} \\
+		\textbf{Linear Algebra} \\
+		\textbf{Math 524} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: }Let $T \in \mathcal{L}(\mathbb{F}^3)$ be defined by $T(z_1,z_2,z_3) = (2z_2,0,5z_3)$
+	\begin{enumerate}[label = (\alph*)]
+		\item Find all eigenvalues and eigenspaces of T
+		\\ \\
+		Notice: 
+		We can define the matrix of T with respect to the basis $z_1, z_2, z_3$
+		$$ 
+		M(T) = 
+			\begin{pmatrix}
+			0 & 2 & 0 \\
+			0 & 0 & 0 \\
+			0 & 0 & 5
+			\end{pmatrix}
+		$$
+		Because $M(T)$ is an upper triangular matrix, we can see that $\lambda_1 = 0, \lambda_2 = 5$ \\ \\
+		When $\lambda_1 = 0$
+		$$
+		M(T) - 0I = 
+			\begin{pmatrix}
+				0 & 2 & 0 \\
+				0 & 0 & 0 \\
+				0 & 0 & 5
+			\end{pmatrix}
+		$$
+		$$
+		\begin{pmatrix}
+		0 & 2 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 5
+		\end{pmatrix}
+		\begin{pmatrix}
+			z_1 \\
+			z_2 \\
+			z_3
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+		0 \\
+		0 \\
+		0
+		\end{pmatrix}
+		$$
+		So $\vec{x} = \begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix}$, for $(M(T) - \lambda I)\vec{x} = \vec{0}$ and $\lambda = 0$, so the eigenspace for this eigenvalue is $\vec{x}$ and the zero vector. \\ \\
+		When $\lambda_2 = 5$
+		$$
+		M(T) - 5I = 
+		\begin{pmatrix}
+			-5 & 2 & 0 \\
+			0 & -5 & 0 \\
+			0 & 0 & 0
+		\end{pmatrix}
+		$$
+		$$
+		\begin{pmatrix}
+		-5 & 2 & 0 \\
+		0 & -5 & 0 \\
+		0 & 0 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+		z_1 \\
+		z_2 \\
+		z_3
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+		0 \\
+		0 \\
+		0
+		\end{pmatrix}
+		$$
+		So $\vec{x} = \begin{pmatrix}
+		0 \\
+		0 \\
+		1
+		\end{pmatrix}$, for $(M(T) - \lambda I)\vec{x} = \vec{0}$ and $\lambda = 5$, so the eigenspace for this eigenvalue is $\vec{x}$ and the zero vector. \\ \\
+		\item Find a Basis for range(T) \\ \\
+		range(T) = span\{ 
+		$
+		\begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix},
+		\begin{pmatrix}
+			0 \\
+			0 \\
+			1
+		\end{pmatrix}
+		$
+		\}
+		\item Find a Basis for the null(T) \\ \\
+		null(T) = span\{
+		$
+		\begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix}
+		$
+		\}
+		\item Is $\mathbb{F}^3 =$ null(T) $\oplus$ range(T)? \\
+		Because null(T) $\cap$ range(T) = 
+		$
+		\begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix} \not = \vec{0}
+		$: \qquad 
+		$\mathbb{F}^3 \not =$ null(T) $\oplus$ range(T)
+		\item Is $\mathbb{F}^3 = E(\lambda_1,T) \oplus E(\lambda_2,T)$? \\
+		Because $E(\lambda_1,T) = 
+		span\{
+		\begin{pmatrix}
+			1 \\
+			0 \\
+			0
+		\end{pmatrix} 
+		\}
+		$ and $E(\lambda_2,T) = span \{
+		\begin{pmatrix}
+		0 \\
+		0 \\
+		1
+		\end{pmatrix} 
+		\}
+		$, such that $E(\lambda_1,T) + E(\lambda_2,T) = \text{span} \{ 
+		\begin{pmatrix}
+		1 \\
+		0 \\
+		0
+		\end{pmatrix},
+		\begin{pmatrix}
+		0 \\
+		0 \\
+		1
+		\end{pmatrix} \}$,
+		 $\mathbb{F}^3 \not = E(\lambda_1,T) \oplus E(\lambda_2,T)$
+		 \item Is T diagonalizable? Why/Why not? \\ \\
+		We can define the matrix of T with respect to the basis $z_2, z_1, z_3$
+		$$
+		M(T) = 
+		\begin{pmatrix}
+		2 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 5
+		\end{pmatrix}
+		$$ 
+		Because the only non zero entries lie in the diagonal, T is diagonalizable
+		\newpage 
+		\item let $S = T^2$ (T from above)
+			\begin{enumerate}[label = (\roman*)]
+				\item Find all eigenvalues and eigenspaces of S
+				\\
+				Notice:
+				$$
+				S(z_1,z_2,z_3) = T(T(z_1,z_2,z_3)) = T(2z_2,0,5z_3) = (0,0,25z_3)
+				$$
+				We can define the matrix of S with respect to the basis $z_1, z_2, z_3$
+				$$ 
+				M(S) = 
+				\begin{pmatrix}
+				0 & 0 & 0 \\
+				0 & 0 & 0 \\
+				0 & 0 & 25
+				\end{pmatrix}
+				$$
+				Because $M(S)$ is an upper triangular matrix, we can see that $\lambda = 25$ \\ \\
+				$$
+				M(S) - 25I = 
+				\begin{pmatrix}
+					-25 & 0 & 0 \\
+					0 & -25 & 0 \\
+					0 & 0 & 0
+				\end{pmatrix}
+				$$
+				$$
+				\begin{pmatrix}
+					-25 & 0 & 0 \\
+					0 & -25 & 0 \\
+					0 & 0 & 0
+				\end{pmatrix}
+				\begin{pmatrix}
+					z_1 \\
+					z_2 \\
+					z_3
+				\end{pmatrix}
+				= 
+				\begin{pmatrix}
+				0 \\
+				0 \\
+				0
+				\end{pmatrix}
+				$$
+				So $\vec{x} = \begin{pmatrix}
+				0 \\
+				0 \\
+				1
+				\end{pmatrix}$, for $(M(S) - \lambda I)\vec{x} = \vec{0}$ and $\lambda = 25$, so the eigenspace for this eigenvalue is $\vec{x}$ and the zero vector. 
+				\newpage
+				\item Find a Basis for range(S) \\ \\
+				range(S) = span\{ 
+				$
+				\begin{pmatrix}
+				0 \\
+				0 \\
+				1
+				\end{pmatrix}
+				$
+				\}
+				\item Find a Basis for the null(S) \\ \\
+				null(S) = span\{
+				$
+				\begin{pmatrix}
+				1 \\
+				0 \\
+				0
+				\end{pmatrix},
+				\begin{pmatrix}
+				0 \\
+				1 \\
+				0
+				\end{pmatrix}
+				$
+				\}
+				\item Is $\mathbb{F}^3 =$ null(S) $\oplus$ range(S)? 
+				\\ \\
+				null(S) + range(S) = span\{
+				$
+				\begin{pmatrix}
+					1 \\
+					0 \\
+					0 
+				\end{pmatrix},
+				\begin{pmatrix}
+					0 \\
+					1 \\
+					0
+				\end{pmatrix},
+				\begin{pmatrix}
+					0 \\
+					0 \\
+					1
+				\end{pmatrix}
+				$
+				\}, and null(S) $\cap$ range(S) = {0}, then $\mathbb{F}^3 =$ null(S) $\oplus$ range(S)?
+				\item Is $\mathbb{F}^3 = E(\lambda, S)$
+				\\ \\
+				$E(\lambda, S) = 
+				span \{
+				\begin{pmatrix}
+					0 \\
+					0 \\
+					1
+				\end{pmatrix} \} \not = span\{
+				\begin{pmatrix}
+				1 \\
+				0 \\
+				0 
+				\end{pmatrix},
+				\begin{pmatrix}
+				0 \\
+				1 \\
+				0
+				\end{pmatrix},
+				\begin{pmatrix}
+				0 \\
+				0 \\
+				1
+				\end{pmatrix}
+				\}$, so  $\mathbb{F}^3 \not = E(\lambda, S)$
+				\item Is S diagonalizable? Why/Why not? 
+				\\ \\
+				Because M(S) can be written as a matrix with its only non zero entries being on its diagonal, M(S) is diagonalizable.
+			\end{enumerate}
+		
+	\end{enumerate}
+\newpage
+\noindent \textbf{Problem 2: }Consider $(x_1,...,x_n) \in \mathbb{R}^n$, where $x_\ell > 0, \forall \ell \in \{1, ..., n\}$; find a lower bound for 
+$$
+\left( \sum_{k = 1}^{n} x_k	\right)\left( \sum_{k = 1}^{n} \frac{1}{x_k}\right)
+$$ 
+Notice the following:  \\
+(n = 1)
+$$
+\left( \sum_{k = 1}^{n} x_k	\right)\left( \sum_{k = 1}^{n} \frac{1}{x_k}	\right) = \left( \sum_{k = 1}^{1} x_k	\right)\left( \sum_{k = 1}^{1} \frac{1}{x_k}	\right) = \frac{x_1}{x_1} = 1
+$$
+(n = 2)
+$$
+\left( \sum_{k = 1}^{n} x_k	\right)\left( \sum_{k = 1}^{n} \frac{1}{x_k}	\right) = \left( \sum_{k = 1}^{2} x_k	\right)\left( \sum_{k = 1}^{2} \frac{1}{x_k}	\right) = (x_1 + x_2)\left(\frac{1}{x_1} + \frac{1}{x_2}\right) = 1 + 1 + \frac{x_1}{x_2} + \frac{x_2}{x_1}
+$$
+(n = 3)
+\begin{align*}
+\left( \sum_{k = 1}^{n} x_k	\right)\left( \sum_{k = 1}^{n} \frac{1}{x_k}	\right) = \left( \sum_{k = 1}^{3} x_k	\right)\left( \sum_{k = 1}^{3} \frac{1}{x_k}	\right) &= (x_1 + x_2 + x_3)\left(\frac{1}{x_1} + \frac{1}{x_2} + \frac{1}{x_3} \right) \\
+&= 1 + 1 + 1 + \frac{x_1}{x_2} + \frac{x_1}{x_3} + \frac{x_2}{x_1} + \frac{x_2}{x_3} + \frac{x_3}{x_1} + \frac{x_3}{x_2} 
+\end{align*}
+Thus the following is true:
+$$
+\left( \sum_{k = 1}^{n} x_k	\right)\left( \sum_{k = 1}^{n} \frac{1}{x_k}\right) = n + \sum_{k=1}^{n} \left(x_k \sum_{j = 1, j \not = k}^{n} \frac{1}{x_j}\right)
+$$ 
+Thus the lower bound is $n$ and also the infinum, no matter the value of n, 
+$$
+n \leq \left( \sum_{k = 1}^{n} x_k	\right)\left( \sum_{k = 1}^{n} \frac{1}{x_k}\right) = n + \sum_{k=1}^{n} \left(x_k \sum_{j = 1, j \not = k}^{n} \frac{1}{x_j}\right)  
+$$ 
+with 
+$$
+\sum_{k=1}^{n} \left(x_k \sum_{j = 1, j \not = k}^{n} \frac{1}{x_j}\right)   > 0, \text{ as }x_\ell > 0
+$$
+Note: Messy Notation: 
+$$
+\sum_{k=1}^{n} \left(x_k \sum_{j = 1, j \not = k}^{n} \frac{1}{x_j}\right)  = \left( \frac{x_1}{x_2} + ... + \frac{x_1}{x_n} \right)+ \left( \frac{x_2}{x_1} + \frac{x_2}{x_3} + ... + \frac{x_2}{x_n} \right)+ ... + \left(\frac{x_n}{x_1} + ... \frac{x_n}{x_{n-1}}\right)
+$$
+\newpage 
+
+\noindent \textbf{Problem 3: }Consider the inner product $<p,q> = \int_{0}^{1} p(x)q(x) dx$ for $p,q \in \mathcal{P}(\mathbb{R})$. On $\mathcal{P}_2(\mathbb{R})$ our friends Gram \& Schmidt kindly provide an orthonormal basis:
+\begin{align*}
+	\{ \qquad u_1(x) = 1 &&& u_2(x) = \sqrt{3}(-1 + 2x) &&& u_3(x) = \sqrt{5}(1 - 6x + 6x^2) \qquad \}
+\end{align*}
+Find a polynomial $q \in \mathcal{P}_2(\mathbb{R})$ so that $\forall p \in \mathcal{P}_2(\mathbb{R})$:
+$$
+p\left(\frac{1}{2}\right) = \int_{0}^{1} p(x)q(x) dx
+$$
+Let $\phi(p(x)) = <p,q> = \int_{0}^{1} p(x)q(x) dx = p\left(\frac{1}{2}\right)$ \\ \\
+By (6.43) in the textbook, 
+	\begin{align*}
+		q(x) &= \phi(u_1(x))u_1(x) + \phi(u_2(x))u_2(x) + \phi(u_3(x))u_3(x) \\
+		&= u_1\left(\frac{1}{2}\right)u_1(x) + u_2\left(\frac{1}{2}\right)u_2(x) +u_3\left(\frac{1}{2}\right)u_3(x) \\
+		&= 1 + 0(\sqrt{3}(-1 + 2x)) + \frac{-\sqrt{5}}{2}(\sqrt{5}(1 - 6x + 6x^2)) \\
+		&= 1 + \frac{-5}{2}(1 - 6x + 6x^2)
+	\end{align*}
+
+
+
+
+
+
+
+
+\end{document}

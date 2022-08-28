@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 1} \\
+		\textbf{Numerical Matrix Analysis} \\
+		\textbf{Math 543} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+	\begin{align}
+		&\qquad \text{Spring 1, } k_{12} \text{, } l_{12} &\text{Spring 2, } k_{23} \text{, } l_{23} \qquad   &\qquad \text{Spring 3, } k_{34} \text{, } l_{34} &\\ 
+		&m_1 ----------&m_2 \quad --------- \quad &m_3 \quad -------m_4& \\
+		&f_1=>\qquad\qquad\qquad<=f_1&f_2=>\qquad\qquad\qquad<=f_2\quad &f_3=>\qquad\qquad\quad<=f_3&
+	\end{align}
+
+	\begin{align}
+		&\text{Let } f_1 = k_{12}(-x_1 + x_2 - l_{12}) \\
+		&\text{Let } f_2 = k_{23}(-x_2 + x_3 - l_{23}) \\
+		&\text{Let } f_3 = k_{34}(-x_3 + x_4 - l_{34})
+	\end{align}
+	\begin{align}
+		&F_1 = -k_{12}x_1 + k_{12}x_2 - k_{12}l_{12} \\
+		&F_2 = k_{12}x_1 +( -k_{12} - k_{23}) x_2 + k_{23}x_3 + k_{12}l_{12} - k_{23}l_{23} \\
+		&F_3 = k_{23}x_2 +( -k_{23} - k_{34}) x_3 + k_{34}x_4 + k_{23}l_{23} - k_{34}l_{34} \\
+		&F_4 = k_{34}x_3 - k_{34}x_4 + k_{34}l_{34} 
+	\end{align}
+\vspace{\baselineskip}
+	$$ 
+	\begin{pmatrix}
+		F_1 \\
+		F_2 \\
+		F_3 \\
+		F_4
+	\end{pmatrix} 
+	=
+	\begin{pmatrix}
+		-k_{12}  & k_{12} & 0 & 0 \\
+		k_{12}   & -k_{12} - k_{23} & k_{23} & 0 \\
+		0   & k_{23} & -k_{23} - k_{34} & k_{34} \\
+		0   &  0 &  k_{34} & -k_{34} 
+	\end{pmatrix}
+	\begin{pmatrix}
+		x_1 \\
+		x_2 \\
+		x_3 \\
+		x_4
+	\end{pmatrix} 
+	+
+	\begin{pmatrix}
+		-k_{12}l_{12} \\
+		k_{12}l_{12} - k_{23}l_{23} \\
+		k_{23}l_{23} - k_{34}l_{34} \\
+		k_{34}l_{34}
+	\end{pmatrix}
+	$$
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+	
+\textbf{F} is Newtons and \textbf{x} is meters, so \textbf{K} is, or the dimensions of the entries of \textbf{K} are of $\frac{\text{Newtons}}{\text{Meters}}$.   \\
+
+The det(\textbf{K}) is of $\frac{\text{Newtons}}{\text{Meters}}^4$.  I know this because the determinant would be a product of the diagonal, which is made of 4 entries. \\
+
+\textbf{K'} is $10^-1$ of the meters of \textbf{K},$10^-3$ of the grams of \textbf{K}, and the same as the seconds of \textbf{K}. The dimensions of the The det(\textbf{K}) is the same as the det(\textbf{K'}) because the dimensions of the matrix doesn't change when multiplied by scalar multiples.
+
+
+\end{document}

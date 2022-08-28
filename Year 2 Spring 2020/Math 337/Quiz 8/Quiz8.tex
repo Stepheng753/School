@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 8} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: }The Fourier sine transform is defined by:
+	$$
+	F(\omega) = \frac{2}{\pi} \int_{0}^{\infty} f(x)\sin(\omega x)dx
+	$$
+while its inverse transform is given by:
+	$$
+	f(x) = \int_{0}^{\infty} F(\omega)\sin(\omega x)d\omega 
+	$$
+Consider $F(\omega) = e^{-\beta \omega}, \beta > 0 (\omega \geq 0)$. Find the inverse Fourier sine transform by evaluating:
+	$$
+	f(x) = \int_{0}^{\infty} e^{-\beta \omega}\sin(\omega x)d\omega 
+	$$
+Show your integration methods (integration by parts) in solving this problem. This result gives
+you one \textit{transform pair for a Fourier sine transform} table.  
+\\ \\ \\
+Notice the following:
+	$$
+	f(x) = \int_{0}^{\infty} e^{-\beta \omega}\sin(\omega x)d\omega
+	$$
+Using integration by parts, let $u = \sin(\omega x), dV = e^{-\beta \omega}$, we get
+	$$
+	\int_{0}^{\infty} e^{-\beta \omega}\sin(\omega x)d\omega = \sin(\omega x)\left(\frac{-e^{-\beta \omega}}{\beta}\right) + \frac{\omega}{\beta}\int_{0}^{\infty} e^{-\beta \omega} \cos(\omega x)d\omega 
+	$$
+Now we use integration by parts again, and let $u = \cos(\omega x), dV = e^{-\beta \omega}$, we get
+	$$
+	\int_{0}^{\infty} e^{-\beta \omega} \cos(\omega x)d\omega = \cos(\omega x)\left(\frac{-e^{-\beta \omega}}{\beta}\right) - \frac{\omega}{\beta}\int_{0}^{\infty} e^{-\beta \omega} \sin(\omega x)d\omega 
+	$$
+After substituting the previous equation into the original we get:
+	\begin{align*}
+		\int_{0}^{\infty} e^{-\beta \omega}\sin(\omega x)d\omega &= \sin(\omega x)\left(\frac{-e^{-\beta \omega}}{\beta}\right) + \frac{\omega}{\beta}\left(\cos(\omega x)\left(\frac{-e^{-\beta \omega}}{\beta}\right) - \frac{\omega}{\beta}\int_{0}^{\infty} e^{-\beta \omega} \sin(\omega x)d\omega\right)\\
+		&= \left(\sin(\omega x) + \frac{\omega}{\beta} \cos(\omega x)\right)\left(\frac{-e^{-\beta \omega}}{\beta}\right) - \frac{\omega^2}{\beta^2}\int_{0}^{\infty} e^{-\beta \omega} \sin(\omega x)d\omega 
+	\end{align*}
+Now we can add the last term on the right side to the left side and get:
+	\begin{align*}
+		\frac{\beta^2 + \omega^2}{\beta^2}\int_{0}^{\infty} e^{-\beta \omega}\sin(\omega x)d\omega &= \left(\sin(\omega x) + \frac{\omega}{\beta} \cos(\omega x)\right)\left(\frac{-e^{-\beta \omega}}{\beta}\right) \\
+	\end{align*}
+Thus we get the result:
+	$$
+	f(x) = \int_{0}^{\infty} e^{-\beta \omega}\sin(\omega x)d\omega = \lim\limits_{A \rightarrow \infty} \left.\left(\sin(\omega x) + \frac{\omega}{\beta} \cos(\omega x)\right)\left(\frac{-\beta e^{-\beta \omega}}{\beta^2 + \omega^2}\right)\right|^{\omega = A}_{\omega = 0}
+	$$
+	
+\newpage
+
+\noindent \textbf{Problem 2: }Use the definition of the Laplace transform to find:	
+	$$
+	\mathcal{L}(\cosh(\beta t)), \qquad s>\beta
+	$$
+form the integrals in the definition and solve them. Use the definition of $\cosh(\beta t)$ in terms of the appropriate sum of exponentials to work your integrals. Write your answer with one common denominator
+\\ \\ \\
+Notice the following:
+	\begin{align*}
+		\mathcal{L}(\cosh(\beta t)) &= \int_{0}^{\infty} e^{-st}\cosh(\beta t)\,dt \\
+		&= \int_{0}^{\infty} e^{-st}\frac{e^{\beta t} + e^{-\beta t}}{2}\,dt \\
+		&= \frac{1}{2}\int_{0}^{\infty} e^{-(s-\beta)t}\,dt + \frac{1}{2}\int_{0}^{\infty} e^{-(s+\beta)t}\,dt \\
+		&= \lim\limits_{A \rightarrow \infty}\left.\left( \frac{1}{-2(s-\beta)} e^{-(s-\beta)t} + \frac{1}{-2(s+\beta)} e^{-(s+\beta)t} \right)\right|^{t=A}_{t=0} \\
+		&= -\left(\frac{1}{-2(s-\beta)} + \frac{1}{-2(s+\beta)} \right) \\
+		&= -\left(\frac{s+\beta}{-2(s-\beta)(s+\beta)} + \frac{s-\beta}{-2(s-\beta)(s+\beta)} \right) \\ 
+		&= \frac{s}{s^2 - \beta^2}
+	\end{align*}	
+
+\newpage 
+
+\noindent \textbf{Problem 3: }Use the result in Question 2 to solve the initial value problem with Laplace transforms:
+	$$
+	y'' - 9y = 0, \qquad y(0)=6, \qquad y'(0) = 0
+	$$
+Thus, your answer should include the cosh function.
+\\ \\ \\
+Notice the following, and let $\mathcal{L}(y) = Y(s)$:
+	\begin{align*}
+		\mathcal{L}\left(y'' - 9y = 0\right) &\rightarrow s^2Y(s) - sy(0) - y'(0) - 9Y(s) = 0
+	\end{align*}
+So through simple algebra:
+	\begin{align*}
+		(s^2-9)Y(s) - 6s &= 0 \\
+		Y(s) &= \frac{6s}{s^2 - 9} \\
+		&= 6*\frac{s}{s^2 - 3^2}
+	\end{align*}
+Thus we get the result that 
+	$$
+	\mathcal{L}^{-1}(Y(s)) = y = \mathcal{L}^{-1}\left(6*\frac{s}{s^2 - 3^2}\right) = 6\cosh(3t)
+	$$
+	
+\newpage
+
+\noindent \textbf{Problem 4: }Solve the following initial value problem with \textit{Laplace transforms}:
+	$$
+	y'' + 2y' + y = 12te^{-t}, \qquad y(0) = 3, \qquad y'(0) = -2
+	$$
+\\ \\ \\
+Notice the following, and let $\mathcal{L}(y) = Y(s)$, with ($\mathcal{L}(e^{-t}f(t)) = F(s+1)$):
+	$$
+	\mathcal{L}\left(y'' + 2y' + y = 12te^{-t}\right) \rightarrow s^2Y(s) - sy(0) - y'(0) + 2sY(s) - y(0) + Y(s) = \frac{12}{(s+1)^2}
+	$$
+So through simple algebra:
+	\begin{align*}
+		(s^2 + 2s + 1)Y(s) - (3s + 1) &= \frac{12}{(s+1)^2} \\
+		Y(s) &= \frac{12}{(s+1)^2(s+1)^2} + \frac{3s + 1}{(s+1)^2} \\
+		&= \frac{12}{(s+1)^4} + \frac{3(s + 1)}{(s+1)^2} - \frac{2}{(s+1)^2} \\
+		&= \frac{12}{(s+1)^4} + \frac{3}{s+1} - \frac{2}{(s+1)^2}
+	\end{align*}
+Thus we get the result that
+	$$
+	\mathcal{L}^{-1}(Y(s)) = y = \mathcal{L}^{-1}\left(\frac{12}{(s+1)^4} + \frac{3}{s+1} - \frac{2}{(s+1)^2}\right) = (2t^3 + 3- 2t)e^{-t}
+	$$
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

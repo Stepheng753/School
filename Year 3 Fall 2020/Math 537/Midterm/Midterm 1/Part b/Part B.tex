@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Midterm Part B} \\
+		\textbf{Ordinary Differential Equations} \\
+		\textbf{Math 537} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{1 (9:00am - 9:05am), (9:37am - 9:50am)}
+		Consider the following two systems, including a single first order ODE:
+		\[\frac{dz}{dt} = f(z) = \alpha z^2 + \beta z \tag{1.1}\]
+		and a system of two first-order ODEs:
+		\begin{align*}
+			\frac{dx}{dt} &= ax, \\
+			\frac{dy}{dt} &= by. \tag{1.2}
+		\end{align*}
+		\begin{enumerate}[label = (\alph*)]
+			\item  The trivial critical point $z = 0$ in Eq. (1.1) may be a source,
+			a sink, or a saddle point. Select a pair of $(\alpha, \beta)$ that produces each of
+			the three types of critical points. [Hint: Either $\alpha$ or $\beta$ can be zero for
+			simplicity.]
+			\\ \\
+			Let $(\alpha, \beta) = (0, 1)$.  Notice that we get:
+			\[\frac{dz}{dt} = z\]
+			From $z < 0$, we get $\frac{dz}{dt} < 0$, and from $z > 0$, we get $\frac{dz}{dt} > 0$.  This means we get a \textbf{sink}.
+			\\ \\
+			Let $(\alpha, \beta) = (0, -1)$.  Notice that we get:
+			\[\frac{dz}{dt} = -z\]
+			From $z < 0$, we get $\frac{dz}{dt} > 0$, and from $z > 0$, we get $\frac{dz}{dt} < 0$.  This means we get a \textbf{source}.
+			\\ \\
+			Let $(\alpha, \beta) = (1, 0)$.  Notice that we get:
+			\[\frac{dz}{dt} = z^2\]
+			From $z < 0$, we get $\frac{dz}{dt} > 0$, and from $z > 0$, we get $\frac{dz}{dt} > 0$.  This means we get a \textbf{saddle}. 
+			\newpage
+			\item Within the planar system in Eq. (1.2), discuss the characteristics of the trivial critical point $(x, y) = (0, 0)$ in $a - b$ space.
+			\skipline
+			Notice we get an upper triangular matrix such that $\lambda_1 = a$, $\lambda_2 = b$. \\ \\
+			
+			When ($a > 0$, $b > 0$), we get two positive eigenvalues leading to a \textbf{source} \\ \\
+			When ($a < 0$, $b > 0$), we get two positive eigenvalues leading to a \textbf{saddle} \\ \\
+			When ($a < 0$, $b < 0$), we get two positive eigenvalues leading to a \textbf{sink} \\ \\
+			When ($a > 0$, $b < 0$), we get two positive eigenvalues leading to a \textbf{saddle} 
+		\end{enumerate}
+	\end{problem}
+
+	\begin{problem}{3 (9:05am - 9:37am)}
+		Consider the following system:
+		\[X' = AX, \tag{3.1}\]
+		where
+		\[A = \begin{pmatrix}
+			-0.1 & 1.1 \\
+			1.1 & -0.1
+		\end{pmatrix} \text{ and } X = \begin{pmatrix}
+			x \\ y
+		\end{pmatrix}\]
+		\begin{enumerate}[label = (\alph*)]
+			\item  Solve for eigenvalue(s) and eigenvector(s).
+			\\ \\
+			Notice we can get the characteristic equation from $A - \lambda I$:
+			\begin{align*}
+				(\lambda + 0.1)(\lambda + 0.1) - 1.1(1.1) &= 0\\
+				\lambda^2 + 0.2\lambda + .01 - 1.21 &= 0 \\
+				\lambda^2 + 0.2\lambda - 1.2 &= 0 
+			\end{align*}
+			Notice the following eigenvalues:
+			\begin{align*}
+				\lambda_1 &= \frac{-0.2 + \sqrt{.04 - 4(-1.2)}}{2} = \frac{-0.2 + 2.2}{2} = 1 \\
+				\lambda_2 &= \frac{-0.2 - \sqrt{.04 - 4(-1.2)}}{2} = \frac{-0.2 - 2.2}{2} = -1.2 \\
+			\end{align*}
+			Notice the eigenvectors found from $A - \lambda I$ \\
+			\begin{align*}
+				\begin{pmatrix}
+					-0.1 - \lambda_1 & 1.1 \\
+					1.1 & -0.1 - \lambda_1
+				\end{pmatrix}\begin{pmatrix}
+					x \\ y
+				\end{pmatrix} &=
+				\begin{pmatrix}
+				-1.1 & 1.1 \\
+				1.1 & -1.1
+				\end{pmatrix}\begin{pmatrix}
+				x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+				 0 \\ 0
+				\end{pmatrix}, &
+				v_1 = \begin{pmatrix}
+					x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+					1 \\ 1
+				\end{pmatrix} \\
+				\begin{pmatrix}
+				-0.1 - \lambda_2 & 1.1 \\
+				1.1 & -0.1 - \lambda_2
+				\end{pmatrix}\begin{pmatrix}
+				x \\ y
+				\end{pmatrix} &=
+				\begin{pmatrix}
+				1.1 & 1.1 \\
+				1.1 & 1.1
+				\end{pmatrix}\begin{pmatrix}
+				x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+				0 \\ 0
+				\end{pmatrix}, &
+				v_2 = \begin{pmatrix}
+				x \\ y
+				\end{pmatrix} = \begin{pmatrix}
+				1 \\ -1
+				\end{pmatrix} 
+			\end{align*}
+			\item  Construct $T$ using the results from problem (3a) and calculate $T^{-1}AT$
+			\\ \\
+			Notice that the eigenvalues were real and different.  So we can construct T from the eigenvectors, such that:
+			\[T = \begin{pmatrix}
+				1 & 1 \\
+				1 & -1
+			\end{pmatrix}\]
+			Notice $T^{-1}AT$:
+			\begin{align*}
+				T^{-1}AT &= \begin{pmatrix}
+					\frac{-1}{2} & \frac{1}{2} \\
+					\frac{1}{2} & \frac{1}{2}
+				\end{pmatrix}
+				\begin{pmatrix}
+					-0.1 & 1.1 \\
+					1.1 & -0.1
+				\end{pmatrix}\begin{pmatrix}
+					1 & 1 \\
+					1 & -1
+				\end{pmatrix} \\
+				&= 
+				\begin{pmatrix}
+					1 & 0 \\
+					0 & -1.2
+				\end{pmatrix}
+			\end{align*}
+			\newpage
+			\item Let $X = T Y$ . Show
+			\[Y' = (T^{-1}AT)Y,\tag{3.2}\]
+			Here $Y$ is a column vector and its transpose is defined as $Y^T = (u, w)$. 
+			\\ \\
+			Notice the following:
+			\[\begin{pmatrix}
+				u' \\ w'
+			\end{pmatrix} = \begin{pmatrix}
+				1 & 0 \\
+				0 & -1.2
+			\end{pmatrix}\begin{pmatrix}
+				u \\ w
+			\end{pmatrix} = \begin{pmatrix}
+				u \\ -1.2w
+			\end{pmatrix}\]
+			Because we have that $u' = \lambda_1 u $ and $w' =\lambda_2 w$, we have shown the above statement to be true.
+			\\ \\
+			\item Solve Eq. (3.2) for Y.
+			\\ \\
+			We can see the eigenvalues because $T^{-1}AT$ is an upper triangular matrix. So we get that $\lambda_1 = 1$ and $\lambda_2 = -1.2$.  We can also easily see the eigenvectors being $v_1 = \begin{pmatrix}
+				1 \\ 0
+			\end{pmatrix}, v_2 = \begin{pmatrix}
+				0 \\ 1
+			\end{pmatrix}$.
+			\\ \\
+			So we get 
+			\[Y = Ae^{t}\begin{pmatrix}
+				1 \\ 0
+			\end{pmatrix} + Be^{-1.2t}\begin{pmatrix}
+				0 \\ 1
+			\end{pmatrix}\]
+			\item Find the solution $X$ to Eq. (3.1).
+			\\ \\
+			\[X = TY = \begin{pmatrix}
+				1 & 1 \\
+				1 & -1
+			\end{pmatrix}\begin{pmatrix}
+				Ae^{t} & 0 \\
+				0 & Be^{-1.2t}
+			\end{pmatrix} = \begin{pmatrix}
+				Ae^t & Be^{-1.2t} \\
+				Ae^{t} & -Be^{-1.2t}
+			\end{pmatrix}\]
+		\end{enumerate}
+
+\end{problem}
+
+	\begin{problem}{6 (9:50am - 10am)}
+		\begin{enumerate}[label = (\alph*)]
+			\item Notice the characteristic equation:
+			\begin{align*}
+				(\lambda - 2)(\lambda - 1) + 1/4 &= 0 \\
+				\lambda^2 - 3\lambda + 9/4 &= 0
+			\end{align*}
+			So we get the eigenvalues:
+			\begin{align*}
+				\lambda &= \frac{3 \pm \sqrt{9 - 4(9/4)}}{2} = \frac{3}{2}
+			\end{align*}
+			So we can get the eigenvalues from $A - \lambda I$
+			\[v_1 = \begin{pmatrix}
+				1 \\ -1/2
+			\end{pmatrix}, v_2 = \begin{pmatrix}
+				0 \\ 1
+			\end{pmatrix}\].
+			\item \[T = \begin{pmatrix}
+				1 & 0 \\
+				-1/2 & 1
+			\end{pmatrix},\hspace{2cm} T^{-1}AT = \begin{pmatrix}
+				3/2 & 1 \\
+				0 &  3/2
+			\end{pmatrix}\]
+		\end{enumerate}
+	\end{problem}
+
+\end{document}

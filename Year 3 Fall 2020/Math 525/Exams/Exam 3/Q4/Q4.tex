@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Exam 3} \\
+		\textbf{Algebraic Coding Theory} \\
+		\textbf{Math 525} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{4}
+		Given that $x^7+1 = (x+1)\cdot (x^3+x+1)\cdot (x^3+x^2+1)$, determine the generator polynomial for a cyclic code of length 14 and dimension 10, if such a code exists. Show your work leading to the answer.
+		\\ \\
+		Notice we get the degree of the generator polynomial is $t = 14 - 10 = 4$.  So we gave two choices for the generator polynomial:
+		\[g(x) = (x^3+x^2+1)(x+1) \text{ or } (x^3+x+1)(x+1) \]
+		\[g(x) = {x}^{4}+{x}^{2}+x+1 \text{ or } {x}^{4}+{x}^{3}+{x}^{2}+1\]
+	\end{problem}
+
+
+\end{document}

@@ -1,0 +1,231 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Laplace} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 18: }Consider the initial value problem:
+	$$
+	y' + 3y = 
+	\begin{cases}
+	0 & 0 \leq t  < 1 \\
+	12 & 1 \leq t < 5 \\
+	0 & 5 \leq t < \infty
+	\end{cases},
+	\qquad y(0) = 8.
+	$$
+	
+	\begin{enumerate}[label = (\alph*)]
+		\item Take the Laplace transform of both sides of the given differential equation to create the corresponding algebraic equation. Denote the Laplace transform of $y(t)$ by $Y(s)$. Do not move any terms from one side of the equation to the other (until you get to part (b) below).
+		\\ \\
+		Using the definition of Laplace Transforms of derivatives:
+			$$
+			\mathcal{L}(y' + 3y) = sY(s) - y(0) + 3Y(s) = sY(s) - 8 + 3Y(s)
+			$$
+		We can convert the piece-wise into the following Heaviside function:
+			$$
+			12(h(t-1) - h(t-5))
+			$$
+		Using the definition of Laplace Transforms of Heaviside functions:
+			$$
+			\mathcal{L}(12(h(t-1) - h(t-5))) = \frac{12(e^{-s} - e^{-5s})}{s}
+			$$ 
+		Thus we get the following equality:
+			$$
+			sY(s) - 8 + 3Y(s) = 12(e^{-s} - e^{-5s})
+			$$
+		\item Solve your equation for $Y(s)$
+		\\ \\
+		Through simple algebra, we get:
+			$$
+			Y(s) = \frac{12e^{-s}}{s(s+3)} + \frac{12e^{-5s}}{s(s+3)} + \frac{8}{s+3}
+			$$
+		\newpage
+		\item Take the inverse Laplace transform of both sides of the previous equation to solve for $y(t)$. Use $h(t-a)$ for the Heaviside function shifted a units horizontally. (Class notes have $u_a(t) = h(t-a)$.)
+		\\ \\
+		Notice the partial fraction decomposition:
+			$$
+			\frac{12}{s(s+3)} = \frac{A}{s} + \frac{B}{s+3} = \frac{(A+B)s + 3A}{12}
+			$$
+		So we get $A = 4$ and $B = -4$
+			$$
+			\frac{12}{s(s+3)} = \frac{4}{s} - \frac{4}{s+3}
+			$$
+		So now to find $y(t)$, we take the inverse Laplace Transform of each term:
+			\begin{align*}
+			\mathcal{L}^{-1}(Y(s)) &= \mathcal{L}^{-1}\left(e^{-s}\frac{4}{s}\right) - \mathcal{L}^{-1}\left(e^{-s}\frac{4}{s+3}\right) + \mathcal{L}^{-1}\left(e^{-5s}\frac{4}{s}\right) - \mathcal{L}^{-1}\left(e^{-5s}\frac{4}{s+3}\right) + \mathcal{L}^{-1}\left(\frac{8}{s+3}\right) \\
+			&= 4h(t-1) - 4h(t-1)e^{-3(t-1)} + 4h(t-5) - 4h(t-5)e^{-3(t-5)} + 8e^{-3t} \\
+			&= 4h(t-1)(1 - e^{-3(t-1)}) + 4h(t-5) (1 -e^{-3(t-5)}) + 8e^{-3t}
+			\end{align*}
+	\end{enumerate}
+	
+\newpage 
+
+\noindent \textbf{Problem 23: }Consider the initial value problem:
+	$$
+	y'' + 16y = 64t,
+	\qquad y(0) = 8, \qquad y'(0) = 2.
+	$$
+
+\begin{enumerate}[label = (\alph*)]
+	\item Take the Laplace transform of both sides of the given differential equation to create the corresponding algebraic equation. Denote the Laplace transform of $y(t)$ by $Y(s)$. Do not move any terms from one side of the equation to the other (until you get to part (b) below).
+	\\ \\
+	Using the definition of Laplace Transforms of derivatives:
+	\begin{align*}
+		\mathcal{L}(y'' + 16y) &= s^2Y(s) - sy(0) - y'(0) + 16Y(s) = s^2Y(s) - 8s - 2 + 16Y(s) \\
+		\mathcal{L}(64t) &= \frac{64}{s^2}
+	\end{align*}
+	Thus we get the following equality:
+	$$
+	(s^2 + 16)Y(s) - (8s + 2) = \frac{64}{s^2}
+	$$
+	\item Solve your equation for $Y(s)$
+	\\ \\
+	Through simple algebra, we get:
+	$$
+	Y(s) = \frac{64}{s^2(s^2 + 16)} + \frac{8s}{s^2 + 16} + \frac{2}{s^2 + 16}
+	$$
+	\item Take the inverse Laplace transform of both sides of the previous equation to solve for $y(t)$.
+	\\ \\
+	Notice the partial fraction decomposition:
+	\begin{align*}
+	\frac{64}{s^2(s^2 + 16)} &= \frac{A}{s} + \frac{B}{s^2} + \frac{Cs + D}{s^2+16} \\
+	64 &= As^3 + 16As + Bs^2 + 16B + Cs^3 + Ds^2 \\
+	&= (A+C)s^3 + (B+D)s^2 + 16As + 16B
+	\end{align*}
+	So we get $B = 4, D = -4, A = C = 0$
+	$$
+	\frac{64}{s^2(s^2 + 16)} = \frac{4}{s^2} - \frac{4}{s^2+16}
+	$$
+	So now to find $y(t)$, we take the inverse Laplace Transform of each term:
+	\begin{align*}
+	\mathcal{L}^{-1}(Y(s)) &= \mathcal{L}^{-1}\left(\frac{4}{s^2}\right) + \mathcal{L}^{-1}\left( \frac{-4}{s^2+16}\right) + \mathcal{L}^{-1}\left(\frac{8s}{s^2 + 16}\right) + \mathcal{L}^{-1}\left(\frac{2}{s^2 + 16}\right) \\
+	&= \mathcal{L}^{-1}\left(\frac{4}{s^2}\right) - \frac{1}{2}\mathcal{L}^{-1}\left( \frac{4}{s^2+16}\right) + \mathcal{L}^{-1}\left(\frac{8s}{s^2 + 16}\right) \\
+	&= 4t - \frac{1}{2}\sin(4t) + 8\cos(4t)
+	\end{align*}
+\end{enumerate}
+
+\newpage 
+
+\noindent \textbf{Problem 24: }Consider the initial value problem:
+$$
+y'' + 25y = \cos(5t),
+\qquad y(0) = 6, \qquad y'(0) = 9.
+$$
+
+\begin{enumerate}[label = (\alph*)]
+	\item Take the Laplace transform of both sides of the given differential equation to create the corresponding algebraic equation. Denote the Laplace transform of $y(t)$ by $Y(s)$. Do not move any terms from one side of the equation to the other (until you get to part (b) below).
+	\\ \\
+	Using the definition of Laplace Transforms of derivatives:
+	\begin{align*}
+	\mathcal{L}(y'' + 25y) &= s^2Y(s) - sy(0) - y'(0) + 25Y(s) = s^2Y(s) - 6s - 9 + 25Y(s) \\
+	\mathcal{L}(\cos(5t)) &= \frac{s}{s^2 + 25}
+	\end{align*}
+	Thus we get the following equality:
+	$$
+	(s^2 + 25)Y(s) - (6s + 9) = \frac{s}{s^2 + 25}
+	$$
+	\item Solve your equation for $Y(s)$
+	\\ \\
+	Through simple algebra, we get:
+	$$
+	Y(s) = \frac{s}{(s^2 + 25)^2} + \frac{6s}{s^2 + 25} + \frac{9}{s^2 + 25}
+	$$
+	\item So now to find $y(t)$, we take the inverse Laplace Transform of each term:
+	\begin{align*}
+	\mathcal{L}^{-1}(Y(s)) &= \mathcal{L}^{-1}\left(\frac{s}{(s^2 + 25)^2}\right) + \mathcal{L}^{-1}\left( \frac{6s}{s^2 + 25}\right) + \mathcal{L}^{-1}\left(\frac{9}{s^2 + 25}\right) \\
+	\end{align*}
+	Notice the following ($\mathcal{L}^{-1}(-F'(s)) = t\mathcal{L}(F(s))$):
+		\begin{align*}
+			\frac{d}{dx}\left(\frac{-1}{2(s^2 + 25)}\right) = \frac{s}{(s^2 + 25)^2} \\
+			\mathcal{L}^{-1}\left(\frac{s}{(s^2 + 25)^2}\right) = -t\mathcal{L}\left(\frac{-1}{2(s^2 + 25)}\right) = \frac{t}{10}\sin(5t)
+		\end{align*}
+	Thus we get the equality:
+		$$
+		y(t) = \frac{t}{10}\sin(5t) + 6\cos(5t) + \frac{9}{5}\sin(5t)
+		$$
+\end{enumerate}
+
+\newpage
+
+\noindent \textbf{Problem 25: }Consider the initial value problem:
+$$
+y'' + 16y = 
+\begin{cases}
+t & 0 \leq t  < 3 \\
+0 & 3 \leq t < \infty
+\end{cases},
+\qquad y(0) = 0, \qquad y'(0) = 0.
+$$
+
+\begin{enumerate}[label = (\alph*)]
+	\item Take the Laplace transform of both sides of the given differential equation to create the corresponding algebraic equation. Denote the Laplace transform of $y(t)$ by $Y(s)$. Do not move any terms from one side of the equation to the other (until you get to part (b) below).
+	\\ \\
+	Using the definition of Laplace Transforms of derivatives:
+	$$
+	\mathcal{L}(y'' + 16y) = s^2Y(s) - sy(0) - y''(0) + 16Y(s) = s^2Y(s) + 16Y(s)
+	$$
+	We can convert the piece-wise into the following Heaviside function:
+	$$
+	t(h(t) - h(t-3))
+	$$
+	Using the definition of Laplace Transforms of Heaviside functions:
+	$$
+	\mathcal{L}(t(h(t) - h(t-3))) = \frac{1}{s^2} - \frac{e^{-3s}}{s^2} - \frac{3e^{-3s}}{s}
+	$$ 
+	Thus we get the following equality:
+	$$
+	(s^2 + 16)Y(s) = \frac{1}{s^2} - \frac{e^{-3s}}{s^2} - \frac{3e^{-3s}}{s}
+	$$
+	\item Solve your equation for $Y(s)$
+	\\ \\
+	Through simple algebra, we get:
+	$$
+	Y(s) = \frac{1}{s^2(s^2 + 16)} - \frac{e^{-3s}}{s^2(s^2 + 16)} - \frac{3e^{-3s}}{s(s^2 + 16)}
+	$$
+	\newpage
+	\item Take the inverse Laplace transform of both sides of the previous equation to solve for $y(t)$. Use $h(t-a)$ for the Heaviside function shifted a units horizontally. (Class notes have $u_a(t) = h(t-a)$.)
+	\\ \\
+	Notice the partial fraction decomposition:
+	\begin{align*}
+		\frac{1}{s^2(s^2 + 16)} &= \frac{A}{s} + \frac{B}{s^2} + \frac{Cs + D}{s^2+16} \\
+		1 &= As^3 + 16As + Bs^2 + 16B + Cs^3 + Ds^2 \\
+		&= (A+C)s^3 + (B+D)s^2 + 16As + 16B
+	\end{align*}
+	So we get $B = \frac{1}{16}, D = -\frac{1}{16}, A = C = 0$
+	$$
+	\frac{1}{s^2(s^2 + 16)} = \frac{1}{16s^2} - \frac{1}{16(s^2+16)}
+	$$
+	Notice the another partial fraction decomposition:
+	\begin{align*}
+		\frac{3}{s(s^2 + 16)} &= \frac{A}{s} + \frac{Bs + C}{s^2 + 16} \\
+		3 &= As^2 + 16A + Bs^2 + Cs
+	\end{align*}
+	So we get $A = \frac{3}{16}, B = \frac{-3}{16}, C = 0$
+		$$
+		\frac{3}{s(s^2 + 16)} = \frac{3}{16s} + \frac{-3s}{16(s^2 + 16)}
+		$$
+	So now to find $y(t)$, we take the inverse Laplace Transform of each term:
+	\begin{align*}
+	\mathcal{L}^{-1}(Y(s)) &= \mathcal{L}^{-1}\left(\frac{1}{16s^2}\right) - \mathcal{L}^{-1}\left(\frac{1}{16(s^2 + 16)}\right) - \mathcal{L}^{-1}\left(\frac{e^{-3s}}{16s^2}\right) + \mathcal{L}^{-1}\left(\frac{e^{-3s}}{16(s^2 + 16)}\right) \\
+	&- \mathcal{L}\left(\frac{3e^{-3s}}{16s}\right) + \mathcal{L}\left(\frac{3se^{-3s}}{16(s^2 + 16)}\right) \\
+	&= \frac{t}{16} - \frac{\sin(4t)}{64} + \frac{h(t-3)\sin(4(t-3))}{64} - \frac{h(t-3)(t-3)}{16} \\
+	&- \frac{3h(t-3)}{16} + \frac{3h(t-3)\cos(4(t-3))}{16}  
+	\end{align*}
+	
+\end{enumerate}
+
+
+\end{document}

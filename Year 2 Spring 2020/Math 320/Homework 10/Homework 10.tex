@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 10} \\
+		\textbf{Abstract Algebra} \\
+		\textbf{Math 320} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 4.5 - 1(a): }Use the Rational Root Test to write each polynomial as a product of irreducible polynomials in $\mathbb{Q}[x]$:
+	$$
+	-x^4 +x^3 + x^2 + x + 2
+	$$
+	
+The Rational Root Test says that the possible roots of this equation are $\pm 1, \pm 2$. If we let $f(x) = -x^4 +x^3 + x^2 + x + 2$, we notice the following:
+	\begin{align*}
+		f(1) = 4 && f(-1) = 0 \\
+		f(2) = 0 && f(-2) = -20 
+	\end{align*}
+So we know now that $(x + 1)$ and $(x-2)$ are factors of $f(x)$.  After long division, we can see:
+	$$
+	f(x) = -x^4 +x^3 + x^2 + x + 2 = (x+1)(x-2)(-x^2 - 1)
+	$$	
+We also know that $(-x^2 - 1)$ is also irreducible, as its factors can only be of degree one, meaning that if it is irreducible, then it has no roots.  This is true as its roots are $\pm i \not \in \mathbb{Q}$.  Thus we are done.
+
+\newpage 
+
+\noindent \textbf{Problem 4.5 - 4(b): }Show that each polynomial is irreducible in $\mathbb{Q}[x]$, as in Example 3.
+	$$
+	x^4 - 2x^2 + 8x + 1
+	$$
+We can see through the Rational Root Test, that the only possible roots would be $\pm 1$.  By evaluating it at these values, we can see that the equation does not have any roots. Thus the only factors out of $f(x) = x^4 - 2x^2 + 8x + 1$ are of degree 2, such that for some $a,b,c,d \in \mathbb{Z}$:
+	\begin{align*}
+	f(x) &= x^4 - 2x^2 + 8x + 1 = (x^2 + ax + b)(x^2 + cx + d) \\
+	&= x^4 + (a+c)x^3 + (ac + b + d)x^2 + (bc + ad)x + bd
+	\end{align*}
+Now we just need to solve for $a,b,c,d$
+	\begin{align}
+		a + c &= 0 \\
+		ac + b + d &= -2 \\
+		bc + ad &= 8 \\
+		bd &= 1	
+	\end{align}
+So we can see that $a = -c$ from $(1)$.  We can also see that the only choices for $b,d$ is $b=d=1$ or $b=d=-1$ from $(4)$. After evaluating this into $(3)$, we get $c(b-d) = -8$.  Because $b=d$, then the following is impossible as $b-d = 0$, and anything times $0$ is $0$.  Thus we have proved that there does not exist a factorization in $\mathbb{Z}[x]$, and hence also in $\mathbb{Q}[x]$.
+
+\newpage 
+
+\noindent \textbf{Problem 4.5 - 5: }Use Eisenstein's Criterion to show that each polynomial is irreducible in $\mathbb{Q}[x]$.
+	\begin{enumerate}[label = (\alph*)]
+		\item $x^5 - 4x + 22$.
+		\\ \\
+		By Eisenstein's Criterion, we can choose a prime number $p = 2$.  Because 2 does not divide the coefficient of $x^5$, 1 , but does divide the other coefficients, -4 and 22, as well as $p^2 = 4$ also does not divide the constant term, 22 , $(a)$ is irreducible.
+		\begin{align*}
+			2 \not | \text{ }1 && 2 | \{-4, 22\} && 4 \not | \text{ }22 \\
+		\end{align*}
+		\item $-7x^4 + 25x^2 - 15x + 10$.
+		\\ \\
+		By Eisenstein's Criterion, we can choose a prime number $p = 5$.  Because 5 does not divide the coefficient of $-7x^4$, -7 , but does divide the other coefficients, \{25, -15, and 10\}, as well as $p^2 = 25$ also does not divide the constant term, 10 , $(b)$ is irreducible.
+		\begin{align*}
+		5 \not | \text{ }-7 && 5 | \{25, -15, 10\} && 25 \not | \text{ } 10 \\
+		\end{align*}
+		\item $5x^{11} - 6x^4 + 12x^3 + 36x - 6$
+		\\ \\
+		By Eisenstein's Criterion, we can choose a prime number $p = 3$.  Because 3 does not divide the coefficient of $5x^{11}$, 5 , but does divide the other coefficients, \{-6, -12, 36, and -6\}, as well as $p^2 = 9$ also does not divide the constant term, -6 , $(c)$ is irreducible.
+		\begin{align*}
+		3 \not | \text{ }5 && 3 | \{-6, -12, 36, -6\} && 9 \not | \text{ } -6 \\
+		\end{align*}
+	\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

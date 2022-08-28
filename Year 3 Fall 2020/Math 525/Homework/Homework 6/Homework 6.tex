@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 6} \\
+		\textbf{Algebraic Coding Theory} \\
+		\textbf{Math 525} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{1}
+		\begin{enumerate}[label = (\alph*)]
+			\item \textbf{Exercise 3.3.3:} Find a generator matrix in standard form for a Hamming code of length 15, then encode the message 11111100000. 
+			\\ \\
+			Notice the code length 15, can be written as $2^r - 1$ with $r = 4$.  So we can write a Parity Check Matrix with dimension $15 \times 4$.
+			\\ \\
+			Notice we can write Parity Check Matrix as the binary representation of 1 - 15 and then convert it into standard form:
+			\[H = \left[\begin{array}{cccc}
+				0 & 0 & 0 & 1 \\
+				\spacer 0 & 0 & 1 & 0 \\
+				\spacer 0 & 0 & 1 & 1 \\
+				\spacer 0 & 1 & 0 & 0 \\
+				\spacer 0 & 1 & 0 & 1 \\
+				\spacer 0 & 1 & 1 & 0 \\
+				\spacer 0 & 1 & 1 & 1 \\
+				\spacer 1 & 0 & 0 & 0 \\
+				\spacer 1 & 0 & 0 & 1 \\
+				\spacer 1 & 0 & 1 & 0 \\
+				\spacer 1 & 0 & 1 & 1 \\
+				\spacer 1 & 1 & 0 & 0 \\
+				\spacer 1 & 1 & 0 & 1 \\
+				\spacer 1 & 1 & 1 & 0 \\
+				\spacer 1 & 1 & 1 & 1
+			\end{array}\right] \qquad \Longrightarrow \qquad  H = \left[\begin{array}{cccc}
+				0 & 0 & 1 & 1 \\
+				\spacer 0 & 1 & 0 & 1 \\
+				\spacer 0 & 1 & 1 & 0 \\
+				\spacer 0 & 1 & 1 & 1 \\
+				\spacer 1 & 0 & 0 & 1 \\
+				\spacer 1 & 0 & 1 & 0 \\
+				\spacer 1 & 0 & 1 & 1 \\
+				\spacer 1 & 1 & 0 & 0 \\
+				\spacer 1 & 1 & 0 & 1 \\
+				\spacer 1 & 1 & 1 & 0 \\
+				\spacer 1 & 1 & 1 & 1 \\
+				\spacer 1 & 0 & 0 & 0 \\
+				\spacer 0 & 1 & 0 & 0 \\
+				\spacer 0 & 0 & 1 & 0 \\
+				\spacer 0 & 0 & 0 & 1
+			\end{array}\right]\]
+			From this we get the Generator Matrix is:
+			\[G = \left[\begin{array}{ccccccccccccccc}
+			1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+			\spacer 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+			\spacer 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
+			\spacer 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+			\spacer 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\
+			\spacer 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+			\spacer 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 \\
+			\spacer 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 \\
+			\spacer 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 \\
+			\spacer 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+			\spacer 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+			\end{array}\right]\]
+			Finally to encode the message $u = 11111100000$, we get that $uG = 111111000000100$
+			\newpage
+			\item \textbf{Exercise 3.3.6:} Show that each of the following is a  parity check matrix for a Hamming code of length 7, and that the codes are both equivalent to the one in Example 3.3.1.
+			\\ \\
+			Notice both of them have codewords of length 3 because $7 = 2^3 - 1$.  They share the same codewords so they are both parity check matrices for a Hamming code of length 7. 
+			\\ \\
+			\item \textbf{Exercise 3.3.8:} No, because $H$ have 2 identical rows $0110$. 
+			\\ \\
+			\item \textbf{Exercise 3.3.9:} Show that the Hamming code of length $2^r -1$ for r = 2 is a trivial code.
+			\\ \\
+			Notice the length = 3, and $r = 2$, such that
+			\[H = \left[\begin{array}{cc}
+				1 & 1 \\
+				\spacer 1 & 0 \\
+				\spacer 0 & 1
+			\end{array}\right] \qquad G = \left[\begin{array}{ccc}
+				1 & 1 & 1	
+			\end{array}\right]\]
+			From this we get any codeword $u = uG$, so thus the trivial code.
+		\end{enumerate}
+	\end{problem}
+
+	\begin{problem}{2}
+		\textbf{Exercise 3.3.4:} Construct an SDA for a Hamming code of length 7, and use it to decode the following words: $1101011$.
+		 Note: Do not use the SDA for decoding; instead, use the method presented on slide \# 6 of Section 3.3 (the latter is much less effort).
+		 \\ \\
+		 Notice the following:
+		 \[H = \left[\begin{array}{ccc}
+		 	0 & 0 & 1 \\
+		 	\spacer 0 & 1 & 0 \\
+		 	\spacer 0 & 1 & 1 \\
+		 	\spacer 1 & 0 & 0 \\
+		 	\spacer 1 & 0 & 1 \\
+		 	\spacer 1 & 1 & 0 \\
+		 	\spacer 1 & 1 & 1 \\
+		 \end{array}\right] \]
+	 	So we have that $r = 1101011 = c + e_i$. So we get that
+	 	\begin{align*}
+	 		syn(1101011) = (c + e_i)\cdot H_3 = e_i \cdot H_3 = \text{ith row of $H_3$}
+	 	\end{align*}
+ 		Notice that $rH = 110$ which is the 6th row.  Thus we get $c = 1101011 + 0000010 = 1101001$
+	\end{problem}
+
+	\begin{problem}{3}
+		\begin{enumerate}[label = (\alph*)]
+			\item \textbf{Exercise 3.4.3:} Find generating and parity check matrices for an extended Hamming code of length 8.
+			\[H = \left[\begin{array}{ccc|c}
+				0 & 0 & 1 & 1 \\
+				0 & 1 & 0 & 1 \\
+				0 & 1 & 1 & 1 \\
+				1 & 0 & 0 & 1 \\
+				1 & 0 & 1 & 1 \\
+				1 & 1 & 0 & 1 \\
+				1 & 1 & 1 & 1 \\
+				\hline
+			    0 & 0 & 0 & 1
+			\end{array}\right] \qquad G = \left[\begin{array}{ccccccc|c}
+				1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+				0 & 1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+				0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 \\
+				0 & 0 & 0 & 1 & 1 & 1 & 1 & 0
+			\end{array}\right]\]
+			\item \textbf{Exercise 3.4.4:} Construct an SDA for an extended Hamming code of length 8, and use it to decode the following words: 10101010
+			\\ \\
+			Notice that we have $2^4$ cosets. 
+			\begin{figure}[h!]
+				\centering
+				\begin{tabular}{c|c}
+					Coset Leader $u$ & $syn(u)$ \\
+					\hline
+					00000000 & 0000\\
+					10000000 & 0011\\
+					01000000 & 0101\\
+					00100000 & 0111\\
+					00010000 & 1001\\
+					00001000 & 1011\\
+					00000100 & 1101\\
+					00000010 & 1111\\
+					00000001 & 0001\\
+					00000000 & \\
+					00000000 & \\
+					00000000 & \\
+					00000000 & \\
+					00000000 & \\
+					00000000 & \\
+					00000000 & 
+				\end{tabular}
+			\end{figure}
+			\newpage
+			\item \textbf{Exercise 3.4.5:} Show that an extended Hamming code of length 8 is a self-dual code (that is, show $C = C^\perp$).
+		\end{enumerate}
+	\end{problem}
+
+
+\end{document}

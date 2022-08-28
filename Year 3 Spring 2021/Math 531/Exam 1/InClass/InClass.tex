@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newcommand{\approches}{\rightarrow}
+\newcommand{\qarrow}{\quad \rightarrow \quad}
+\newcommand{\qqarrow}{\qquad \rightarrow \qquad}
+\newcommand{\qqtext}[1]{\qquad \text{ #1 } \qquad}
+\newcommand{\pard}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\answer}[1]{\textbf{\boldmath #1}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Midterm - In Class} \\
+		\textbf{Partial Differential Equations} \\
+		\textbf{Math 531} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{1}
+		Given the following partial differential equation:
+		\[\pard{u}{t} = c^2\left(\pard{^2u}{x^2} + \pard{^2u}{y^2} \right), \qquad 0 < x < a, \qquad 0 < y < b, \qquad t > 0 \]
+		with boundary conditions
+		\[u(0,y,t) = 0, \qquad u(a,y,t) = 0 \qquad 0 < y < b, \qquad t > 0\]
+		\[u(x,0,t) = 0, \qquad u(x,b,t) = 0 \qquad 0 < x < a, \qquad t > 0\]
+		and initial conditions
+		\[u(x,y,0) = f(x,y), \qquad 0 < x < a, \qquad 0 < y < b\]
+		\begin{enumerate}[label = (\alph*)]
+			\item If we separate the variables by letting $u = \phi(x)g(y)h(t)$, we obtain the following three
+			ODEs:
+			\[\phi'' + \mu^2\phi = 0, \qquad \phi(0) = 0, \qquad \phi(a) = 0,\]
+			\[g'' + \nu^2g = 0, \qquad g(0) = 0, \qquad g(b) = 0,\]
+			\[h' + c^2(\mu^2 + \nu^2)h = 0\]
+			Solve the three ODEs and obtain the product solution for $u$.
+			\begin{enumerate}[label = (\roman*)]
+				\item Notice the first ODE:
+				\[\phi'' + \mu^2\phi = 0, \qquad \phi(0) = 0, \qquad \phi(a) = 0,\]
+				Using the characteristic equation, we get:
+				\[\phi(x) = c_1\cos(\mu x) + c_2\sin(\mu x)\]
+				Using the boundary conditions, we get:
+				\[\phi(0) = c_1 = 0 \qquad \phi(a) = c_2\sin(\mu a) = 0\]
+				If we assume, that $c_2 = 0$, we get the trivial solution:
+				\[\phi(x) = 0 \qqarrow u(x,y,t) = 0\]
+				If we assume that $c_2 \not = 0$, we get the following $n$ eigenvalues:
+				\[\sin(\mu a) = 0 \qqarrow \mu a = n\pi \qqarrow \mu_n = \frac{n\pi}{a}\]
+				Thus we would get the following $n$ eigenfunctions:
+				\[\phi_n(x) = B_n \sin \left(\frac{n\pi}{a}x\right)\]
+				\item Notice the second ODE:
+				\[g'' + \nu^2g = 0, \qquad g(0) = 0, \qquad g(b) = 0,\]
+				Using the characteristic equation, we get:
+				\[g(x) = c_1\cos(\nu y) + c_2\sin(\nu y)\]
+				Using the boundary conditions, we get:
+				\[g(0) = c_1 = 0 \qquad g(b) = c_2\sin(\nu b) = 0\]
+				If we assume, that $c_2 = 0$, we get the trivial solution:
+				\[g(y) = 0 \qqarrow u(x,y,t) = 0\]
+				If we assume that $c_2 \not = 0$, we get the following $n$ eigenvalues:
+				\[\sin(\nu b) = 0 \qqarrow \nu b = n\pi \qqarrow \nu_n = \frac{n\pi}{b}\]
+				Thus we would get the following $n$ eigenfunctions:
+				\[g_n(x) = B_n \sin \left(\frac{n\pi}{b}y\right)\]
+				\item Notice the third ODE:
+				\[h' + c^2(\mu^2 + \nu^2)h = 0\]
+				Using some simple algebra, we get:
+				\[\frac{h'}{h} = -c^2(\mu^2 + \nu^2) \qqarrow \ln(h) = -c^2(\mu^2 + \nu^2)t + C\]
+				Thus we get the following for $h$, and we can resubstitute the following $\mu$ and $\nu$ values:
+				\[h(t) = Ce^{-c^2(\mu^2 + \nu^2)t} \qqarrow h_n(t) = C_ne^{-c^2\left( \left(\frac{n\pi}{b}\right)^2 +\left(\frac{n\pi}{a}\right)^2 \right)t }\]
+			\end{enumerate}
+			Thus we get the following for $u_n$:
+			\[u_n(x,y,t) = B_n \sin \left(\frac{n\pi}{a}x\right)\sin \left(\frac{n\pi}{b}y\right)e^{-c^2\left( \left(\frac{n\pi}{b}\right)^2 +\left(\frac{n\pi}{a}\right)^2\right)t}\]
+			Thus we get the following product solution for $u$:
+			\[u(x,y,t) = u_1 + u_2 + \cdots  \qarrow u(x,y,t) = \sum_{n=1}^{\infty} B_n \sin \left(\frac{n\pi}{a}x\right)\sin \left(\frac{n\pi}{b}y\right)e^{-c^2\left( \left(\frac{n\pi}{b}\right)^2 +\left(\frac{n\pi}{a}\right)^2 \right)t}\]
+			Now we can include our initial condition, and get the following:
+			\[u(x,y,0) = f(x,y) = \sum_{n=1}^{\infty} B_n \sin \left(\frac{n\pi}{a}x\right)\sin \left(\frac{n\pi}{b}y\right)\]
+			Now we can solve for our coefficients:
+			\[B_n = \frac{4}{ab}\int_{0}^{a}\int_{0}^b f(x,y)\sin \left(\frac{n\pi}{a}x\right)\sin \left(\frac{n\pi}{b}y\right) \,dy\,dx\]
+			\newpage
+			\item Show that if we assume $u = \phi(x)g(y)h(t)$, then the separation of variables method yields:
+			\[\phi'' + \mu^2\phi = 0, \qquad \phi(0) = 0, \qquad \phi(a) = 0,\]
+			\[g'' + \nu^2g = 0, \qquad g(0) = 0, \qquad g(b) = 0,\]
+			\[h' + c^2(\mu^2 + \nu^2)h = 0\]
+			Notice the following substitution of $u$ into our original equation:
+			\[\phi(x)g(y)h'(t) = c^2\phi''(x)g(y)h(t) + c^2\phi(x)g''(y)h(t) \]
+			\[\frac{h'(t)}{h(t)} = c^2\frac{\phi''(x)}{\phi(x)} + c^2\frac{g''(y)}{g(y)}\]
+			Notice that because this is a steady state problem, we get:
+			\[c^2\frac{\phi''(x)}{\phi(x)} + c^2\frac{g''(y)}{g(y)} = 0\]
+			From here we get:
+			\[c^2\frac{\phi''(x)}{\phi(x)} = -c^2\frac{g''(y)}{g(y)} = -c^2\mu^2\]
+			Solving this, we get the first ODE:
+			\[\phi''(x) + \mu^2\phi(x) = 0 \]
+			If we let $\nu^2 = -\mu^2$, we get the second ODE:
+			\[g''(y) - \mu^2g(y) = 0 \qqarrow g''(y) + \nu^2g(y)\]
+			Then we get the following:
+			\[\frac{\phi''(x)}{\phi(x)} = -\mu^2 \qquad \frac{g''(y)}{g(y)} = -\nu^2 \]
+			From here, we get:
+			\[h'(t) = c^2\left(\frac{\phi''(x)}{\phi(x)} + \frac{g''(y)}{g(y)}\right)h(t) \qqarrow h'(t) - c^2\left(-\mu^2 + -\nu^2\right)h(t) = 0\]
+			Thus we get the the third ODE:
+			\[h'(t) + c^2\left(\mu^2 + \nu^2\right)h(t) = 0 \]
+		\end{enumerate}
+	\end{problem}
+
+
+\end{document}

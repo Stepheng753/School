@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\newcommand{\di}{i}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 1} \\
+		\textbf{Linear Algebra} \\
+		\textbf{Math 524} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent\textbf{Section 1.A Problem 5: } Show that $(\alpha + \beta) + \lambda = \alpha + (\beta + \lambda) \text{, } \quad \forall \text{ } \alpha \text{, } \beta \text{, } \lambda \text{ } \in \mathbb{C}$. \\
+
+\noindent \textbf{Solution 1.A Problem 5: } Let $\alpha = a + b\di \text{, } \beta = c + d\di \text{, }  \lambda = e + f\di$
+
+	\begin{align} 
+		(\alpha + \beta) + \lambda &= (a+b\di +c+d\di) + e+f\di \\
+		&= a+b\di +c+d\di + e+f\di \\
+		&= a+b\di +(c+d\di + e+f\di) \\
+		&= \boldmath{\text{$ \alpha +(\beta + \lambda) $} } 
+	\end{align}
+	
+\vspace{\baselineskip}
+	
+\noindent\textbf{Section 1.A Problem 6: } Show that $(\alpha \beta) \lambda = \alpha (\beta \lambda) \text{, } \quad  \forall \text{ } \alpha \text{, } \beta \text{, } \lambda \text{ } \in \mathbb{C}$. \\
+	
+\noindent \textbf{Solution 1.A Problem 6: } Let $\alpha = a + b\di \text{, } \beta = c + d\di \text{, }  \lambda = e + f\di$
+
+	\begin{align} 
+		(\alpha \beta) \lambda &= ((a+b\di)(c+d\di))(e+f\di) \\
+		&= ((ac - bd) + \di(ad + bc))(e+f\di) \\
+		&= (ac - bd)e + (ad + bc)e\di + (ac - bd)f\di - (ad + bc)f  \\
+		&= ace - bde + ade\di + bce\di + acf\di - bdf\di - adf - bcf 
+	\end{align}
+	
+	\begin{align} 
+		(\alpha \beta) \lambda &= (a+b\di)((c+d\di)(e+f\di)) \\
+		&= (a+b\di)((ce - df)+\di(cf + ed)) \\
+		&= (ce - df)a +(cf + ed)a\di + (ce - df)b\di -(cf + ed)b \\
+		&= ace - adf + acf\di + aed\di + bce\di - bdf\di - bcf - bde	
+	\end{align}
+	
+\noindent So \text{ \boldmath $(\alpha \beta) \lambda = \alpha (\beta \lambda)$} \\
+
+
+\vspace{\baselineskip}
+\noindent\textbf{Section 1.B Problem 1: } Prove that $-(-v)=v \text{, } \qquad \forall v \in V$ \\
+
+\noindent \textbf{Solution 1.B Problem 1: } \\
+	\begin{align}
+		-(-v) + (-v) &= 0 \\
+		-(-v) + (-v) + v &= v \\
+		-(-v) + 0 &= v \\
+		\text{\boldmath $-(-v) $} &= \text{\boldmath $v$}
+	\end{align}
+	
+\vspace{\baselineskip}
+\noindent\textbf{Section 1.B Problem 3: } Suppose $v$, $w \in V$. Explain why $\exists ! x \in V$ such that $v+3x =w$ \\ 
+
+\noindent \textbf{Solution 1.B Problem 3: } Let $v$, $w \in V$. Suppose $\exists \text{ }x_1 \text{, } x_2 \in V$ such that $v+3x_1 =w$ and $v+3x_2 =w$ \\
+
+	\begin{align}
+		w &= v + 3x_1 = v + 3x_2	\\
+		v + 3x_1 &= v + 3x_2 \\
+		\text{\boldmath $x_1$} &= \text{\boldmath $x_2$}
+	\end{align}
+Because $v + 3x = w$ resembles a linear equation in terms of x, there is only a single input per each output, $w$. \\
+
+\vspace{\baselineskip}
+\noindent\textbf{Section 1.C Problem 10: }Suppose $U_1$ and $U_2$ are subspaces of V. Prove that the intersection $U_1 \cap U_2$ is a subspace of V. \\
+
+\noindent\textbf{Solution 1.C Problem 10: } Let $u_1, u_2 \in U_1 \cap U_2$
+
+	\begin{align}
+		& \text{Additive Identity: } 0 \in U_1 \text{ and } 0 \in U_2 \text{, so } 0 \in U_1 \cap U_2 \\
+		& \text{Closed under Addition: } u_1 + u_2 \in U_1 \text{ and } u_1 + u_2 \in U_2 \text{, so } u_1 + u_2 \in U_1 \cap U_2 \\
+		& \text{Closed under Scalar Multi: } cu_1 \in U_1 \text{ and } cu_1 \in U_2 \text{, so } cu_1 \in U_1 \cap U_2 \quad \forall c \in \mathbb{C}
+	\end{align}
+	
+\noindent Thus $U_1 \cap U_2$ is a subspace of $V$ as it follows the given conditions
+
+\vspace{\baselineskip}
+\noindent\textbf{Section 1.C Problem 20: }Suppose $U = \{(x,x,y,y) \in \mathbb{F}^4: x, y \in \mathbb{F}\}$.  Find a subspace $W$ of $\mathbb{F}^4$ such that $\mathbb{F}^4$ = $U \oplus W$. \\
+
+\noindent\textbf{Solution 1.C Problem 20: }
+	\begin{align}
+		& \text{Let } (w,x,y,z) \in \mathbb{F}^4 \\
+		& \text{Let } (x-w, 0, 0, y-z) \in W \\
+		& \text{So } U \oplus W = (x,x,y,y) \in \mathbb{F}^4 
+	\end{align}
+	\begin{align}
+		& \text{Let } UW = (uw_1, uw_2, uw_3, uw_4 ) \in U \cap W. \\
+		& \text{Because } UW \in W \text{, } uw_2, uw_3 = 0 \\
+		& \text{Because } UW \in U \text{, } uw_1 = uw_2 = 0 \text{ and } uw_3 = uw_4 = 0 \\
+		& \text{Thus } U \cap W = \{ \emptyset \}
+	\end{align}
+	
+Because W and U meet the given conditions of direct sum, W is a subspace of $\mathbb{F}^4$ such that $\mathbb{F}^4$ = $U \oplus W$. 
+	
+	
+	
+\end{document}

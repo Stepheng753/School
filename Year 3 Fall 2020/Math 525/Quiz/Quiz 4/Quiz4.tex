@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 4} \\
+		\textbf{Algebraic Coding Theory} \\
+		\textbf{Math 525} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{1}
+		Consider the set
+		\[ S = \{0011010,1010110,0000011,1010101\}\]
+		of words in $K^7$.
+		\begin{enumerate}[label = (\alph*)]
+			\item Calculate the dimension of the code $C= <S>$
+			\\ \\
+			Notice the dimension of the code $C$ is 4.
+			\item Find a basis for $C^{\perp}$, the dual of $C$
+			The basis of $C^{\perp}$ is:
+			\[H = \begin{bmatrix}
+				0 & 0 & 0 \\
+				1 & 1 & 0 \\
+				1 & 0 & 0 \\
+				0 & 1 & 1 \\
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 
+			\end{bmatrix}\]
+		\end{enumerate}
+	\end{problem}
+
+
+\end{document}

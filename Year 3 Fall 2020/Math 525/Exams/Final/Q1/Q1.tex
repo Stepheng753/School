@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Final} \\
+		\textbf{Algebraic Coding Theory} \\
+		\textbf{Math 525} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{1}
+		\begin{enumerate}[label = (\alph*)]
+			\item  Find a parity-check matrix $H$ for a cyclic Hamming code of length 15 using GF($2^4$)constructed from $1 + x + x^4$(see Table 5.1, p.  114), where the generator polynomial is $m_7(x)$.   Each  entry  of $H$ must be expressed as a  power of $\beta$,  where $\beta$ is  the  primitive element of the field, exactly as in Table 5.1.
+			\\ \\
+			Notice the generator polynomial: $m_7(x)$
+			\[[\beta^7] \Rightarrow [\beta^{14}] \Rightarrow [\beta^{28} = \beta^{13}] \Rightarrow [\beta^{26} = \beta^{11}] \Rightarrow [\beta^{22} = \beta^{7}]\]
+			\begin{align*}
+				m_7(x) &= (x + \beta^7)(x + \beta^{14})(x + \beta^{13})(x + \beta^{11}) \\
+				&= \bigg(x^2 + (\beta^7 + \beta^{14})x + \beta^{21}\bigg)\bigg(x^2 + (\beta^{13} + \beta^{11})x + \beta^{24}\bigg) \\
+				&= \bigg(x^2 + \beta x + \beta^6\bigg)\bigg(x^2 + \beta^4x + \beta^9\bigg) \\
+				&= x^4 + \bigg(\beta + \beta^4\bigg)x^3 + \bigg(\beta^9 + \beta^5 + \beta^6\bigg)x^2 + \bigg(\beta^{10} + \beta^{10}\bigg)x + \beta^{15} \\
+				&= x^4 + x^3 + 1
+			\end{align*}
+			We get the Parity Check Matrix below:
+			\[H = \begin{bmatrix}
+				1 \\ \beta^7 \\ \beta^{14}
+			\end{bmatrix}\]
+			\item Now suppose $r$ is received, where $r$ is the word of length 15 that you obtained from your last name.  Find the most likely codeword transmitted.
+			\\ \\
+			Notice my last name is GIANG, so we get
+			\[r(x) = \{00100\,10010\,01010\} (ANG) = x^2 + x^5 + x^8 + x^{11} + x^{13}\]
+			Notice the following:
+			\begin{align*}
+				r(\beta) &= \beta^2 + \beta^5 + \beta^8 + \beta^{11} + \beta^{13} = \beta^2
+			\end{align*}
+			Thus we get the most likely codeword is \{01100\,10010\,01010\} (ING).
+		\end{enumerate}
+	\end{problem}
+
+
+\end{document}

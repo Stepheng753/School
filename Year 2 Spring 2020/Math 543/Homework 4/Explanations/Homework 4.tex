@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{graphicx}
+%\usepackage{subfig}
+%\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 4} \\
+		\textbf{Numerical Matrix Analysis} \\
+		\textbf{Math 543} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: } \\
+	$$\text{Let } 
+	A = 
+	\begin{bmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9
+	\end{bmatrix} 
+	\text{ $\rightarrow$ } 
+	Q = 
+	\begin{bmatrix}
+		0.1231  &  0.9045  & -0.1111 \\
+		0.4924  &  0.3015  & -0.4444 \\
+		0.8616  & -0.3015  & -0.8889
+	\end{bmatrix}
+	\text{ , }
+	R = 
+	\begin{bmatrix}
+		8.1240  &  9.6011  & 11.0782 \\
+		0  &  0.9045  &  1.8091 \\
+		0    &     0  &  0.0000
+	\end{bmatrix}$$
+	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\noindent \textbf{Problem 9.1 (a): }
+Run the six-line MATLAB program of Experiment 1 to produce a
+plot of approximate Legendre polynomials.  
+\\ \\
+\noindent \textbf{Problem 9.1 (b): } For k = 0,1,2,3, plot the difference on the 257-point grid between these
+approximations and the exact polynomials (7.11). How big are the errors, and how are they distributed? \\
+
+\noindent \textbf{Solution 9.1 (b): } The errors when k = 0, and k = 1, are 0.  The errors for the other k values are in between $\pm$ 0.015. The errors get larger as the degree of each polynomial gets bigger, or for greater k values. \\ \\
+\\ \\
+\noindent \textbf{Problem 9.2: } In Experiment 2, the singular values of A match the diagonal elements of a QR factor R approximately. Consider now a very different example. Suppose Q = I and A = R, the m x m matrix (a Toeplitz matrix) with 1 on the main diagonal, 2 on the first superdiagonal, and 0 everywhere else \\
+
+\noindent \textbf{Solution 9.2 (a): } What are the eigenvalues, determinant, and rank of A? \\
+	\begin{align*}
+		&\text{All }eig(A) = 1 \\
+		&det(A) = 1 \\
+		&rank(A) = m 
+	\end{align*}
+\noindent \textbf{Solution 9.2 (b): } What is $A^{-1}$? \\
+	\begin{align*}
+		A^{-1} = m \times m \text{ matrix with diagonal entries being 1, and its superdiagonal entries being -2}
+	\end{align*}
+
+
+\end{document}
