@@ -1,0 +1,148 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 2} \\
+		\textbf{Ordinary Differential Equations} \\
+		\textbf{Math 537} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+	\begin{problem}{1}
+		Introduce a new time variable $\tau$ to convert the following ODE:
+		$$\frac{dy}{dt} = \sigma y$$
+		into
+		$$\frac{dy}{d\tau} = y$$
+		Notice the following:
+		\begin{align*}
+			\frac{dy}{dt} &= \frac{\frac{dy}{d\tau}}{\frac{dt}{d\tau}} = \sigma y \\
+			\frac{dy}{d\tau} &= \frac{dt}{d \tau} \sigma y = y \\
+		\end{align*}
+		From this, we can conclude that 
+		$$\frac{dt}{d \tau} \sigma = 1, \qquad \frac{dt}{d \tau} = \frac{1}{\sigma}$$
+		So it is now clear that if we introduce a variable $\tau = t\sigma$, we can convert the original equation into the equation we want.
+	\end{problem}
+
+	\begin{problem}{2}
+		Consider the following Logistic equation
+		$$\frac{dy}{dt} = \alpha y - \beta y^2$$
+		Convert the above ODE into the following ODE
+		$$\frac{dz}{d \tau} = z - z^2$$
+		by introducing a new time variable $\tau$ and a new time-dependent variable $z$.
+		Find $\tau$ and $z$. 
+		\\ \\
+		Notice the following:
+		\begin{align*}
+			\frac{dy}{dt} &= \alpha y - \beta y^2 = \alpha y \left(1 - \frac{\beta}{\alpha}y\right)
+		\end{align*}
+		Let $z = \frac{\beta}{\alpha}y$.  This means that $y = \frac{\alpha}{\beta}z, \frac{dy}{dz} = \frac{\alpha}{\beta}$. Let $\frac{d\tau}{dt} = \alpha$
+		\begin{align*}
+			\frac{dy}{dt} &= \frac{\frac{dy}{dz}}{\frac{dt}{dz}} = \frac{dy}{dz} \frac{dz}{dt} \\
+			&= \frac{dy}{dz} \frac{\frac{dz}{d\tau}}{\frac{dt}{d\tau}} = \frac{dy}{dz}\frac{dz}{d\tau}\frac{d\tau}{dt} \\
+			&= \frac{\alpha}{\beta}\frac{dz}{d\tau}\alpha = \frac{\alpha^2}{\beta}\frac{dz}{d\tau} \\
+			\alpha y \left(1 - \frac{\beta}{\alpha}y\right) &= \frac{\alpha^2}{\beta}z(1- z) = \frac{\alpha^2}{\beta}\frac{dz}{d\tau} \\
+			\frac{dz}{d\tau} &= z(1-z) = z - z^2
+		\end{align*}
+		\newpage
+		Now we can solve for $\tau$ and $z$:
+			\begin{align*}
+				\frac{dz}{d \tau} - z &= -z^2 
+			\end{align*}
+			Let $\mu(\tau) = \frac{1}{z}$ and $\frac{d\mu}{d\tau} = \frac{-1}{z^2}\frac{dz}{d\tau}$, and multiply both sides of the equation by $\frac{-1}{z^2}$:
+			\begin{align*}
+				\frac{-1}{z^2}\frac{dz}{d \tau} + \frac{1}{z} &= 1 \\
+				\frac{d\mu}{d\tau} + \mu &= 1
+			\end{align*}
+			This now becomes a separable equation and we get:
+			\begin{align*}
+				\frac{d\mu}{1 - \mu} &= d\tau \\
+				-\ln(1 - \mu) &= \tau + C	\\
+				\mu &= Ce^{-\tau} + 1 \\
+				\frac{1}{z} &= Ce^{-\tau} + 1 \\
+				z &= \frac{1}{Ce^{-\tau} + 1}
+			\end{align*}
+			We can solve for $C$ by finding $z(0) = z_0 = \frac{1}{C + 1} \Longleftrightarrow C = \frac{1}{z_0} - 1$.  Furthermore, we get:
+			\begin{align*}
+				z = \frac{1}{\left(\frac{1}{z_0} - 1\right)e^{-\tau} + 1}
+			\end{align*}
+			We also find $\tau$ by integrating our let statement, and get $\tau = \alpha t$
+	\end{problem}
+
+	\begin{problem}{3}
+		 Consider the improper integral
+		 \[\int_{-1}^{1} \frac{1}{x} \, dx \tag{3}\]
+		 \begin{enumerate}[label = (\alph*)]
+		 	\item  Verify whether the following derivations are correct.
+		 	The above has the following two parts: 
+		 	$$\int_{-1}^{0} \frac{1}{x}\,dx + \int_{0}^{1} \frac{1}{x}\,dx$$
+		 	By introducing $y = -x$ for the first part, we have
+		 	$$\int_{1}^{0} \frac{1}{y}\,dy + \int_{0}^{1} \frac{1}{x}\,dx$$
+		 	which becomes
+		 	$$-\int_{0}^{1} \frac{1}{y}\,dy + \int_{0}^{1} \frac{1}{x}\,dx = 0.$$
+		 	\\ \\
+		 	We can verify the first step by noticing:
+		 	\[\int_{a}^{b} f(x)\,dx = \int_{a}^{c} f(x)\,dx + \int_{c}^{b} f(x)\,dx \tag{by Prop. of Integrals} \]
+		 	We can verify the second step by noticing:
+		 	\begin{align*}
+		 		y &= -x, \qquad x = -y \\
+		 		dy &= -dx, \qquad dx = -dy \\
+		 		\int_{x = -1}^{x = 0} \frac{1}{x}\,dx &= \int_{-y = -1}^{-y = 0} \frac{1}{-y}(-1)\,dy \tag{by Subsitution}\\
+		 		&= \int_{1}^{0} \frac{1}{y}\,dy \tag{Simplify}
+		 	\end{align*}
+		 	We can verify the third step by noticing:
+		 	\begin{align*}
+		 		\int_{1}^{0} \frac{1}{y}\,dy &= -\int_{0}^{1} \frac{1}{y}\,dy \tag{by the F.T.C}\\
+		 		\lim\limits_{a \rightarrow 0}\left[ -\int_{a}^{1} \frac{1}{y}\,dy + \int_{a}^{1} \frac{1}{x}\right] &= \lim\limits_{a \rightarrow 0} \left[\left.-\ln(y)\right|_a^1 + \left.\ln(x)\right|_a^1\right] \tag{Use Limits for Improper Int}\\
+		 		&= \lim\limits_{a \rightarrow 0}\left[ -\ln(1) + \ln(a) + \ln(1) - \ln(a) \right] = 0  \tag{Evaluate}
+		 	\end{align*}
+		 	\newpage
+		 	\item Represent Eq. (3) as follows:
+			$$\lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-\epsilon} \frac{1}{x}\,dx + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx$$
+			Complete the above integrals.
+			\\ \\
+			Notice we can represent Eq. (3) as follows:
+				\begin{align*}
+					\int_{-1}^{1} \frac{1}{x} \, dx = \int_{-1}^{0} \frac{1}{x}\,dx + \int_{0}^{1} \frac{1}{x}\,dx = \lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-\epsilon} \frac{1}{x}\,dx + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx
+				\end{align*}
+			Notice the following:
+				\begin{align*}
+					\lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-\epsilon} \frac{1}{x}\,dx &= \lim\limits_{\epsilon \rightarrow 0} \int_{-y = -1}^{-y = -\epsilon} \frac{1}{-y}(-1)\,dy \tag{Subsitute $x = -y$}\\
+					&= \lim\limits_{\epsilon \rightarrow 0} \int_{1}^{\epsilon} \frac{1}{y}\,dy \\
+					&= \lim\limits_{\epsilon \rightarrow 0} -\int_{\epsilon}^{1} \frac{1}{y}\,dy \\
+					\lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-\epsilon} \frac{1}{x}\,dx + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx &= \lim\limits_{\epsilon \rightarrow 0} -\int_{\epsilon}^{1} \frac{1}{y}\,dy + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx  \\
+					&= \lim\limits_{\epsilon \rightarrow 0} \left[- \ln(1) + \ln(\epsilon) + \ln(1) - \ln(\epsilon)\right] = 0
+				\end{align*}
+			\item Represent Eq. (3) as follows:
+			$$\lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-2\epsilon} \frac{1}{x}\,dx + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx$$
+			Complete the above integrals.
+			\\ \\
+			Notice we can represent Eq. (3) as follows:
+				\begin{align*}
+					\int_{-1}^{1} \frac{1}{x} \, dx = \int_{-1}^{0} \frac{1}{x}\,dx + \int_{0}^{1} \frac{1}{x}\,dx = \lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-2\epsilon} \frac{1}{x}\,dx + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx
+				\end{align*}
+			Following the same steps as (3b), we can skip to the following step:
+				\begin{align*}
+					\lim\limits_{\epsilon \rightarrow 0} \int_{-1}^{-2\epsilon} \frac{1}{x}\,dx + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx &= \lim\limits_{\epsilon \rightarrow 0} -\int_{2\epsilon}^{1} \frac{1}{y}\,dy + \lim\limits_{\epsilon \rightarrow 0} \int_{\epsilon}^{1} \frac{1}{x}\,dx  \\
+					&= \lim\limits_{\epsilon \rightarrow 0} \left[ - \ln(1) + \ln(2\epsilon) + \ln(1) - \ln(\epsilon) \right] = \ln(2)
+				\end{align*}
+			\item Compare the answers in (b) and (c) to provide justifications to your analysis in (a).
+			\\ \\
+			I was able to get the same result in (b) and (a).  The answers both equal 0, which makes sense graphically because the original equation is symmetric about the origin $(0,0)$, meaning the integral on each side of its vertical asymptote would cancel each other.  In (c), because the middle bounds were not the same, one being $\epsilon$ and the other being $2\epsilon$, this results in a different answer.  Because $\epsilon$ only approaches 0 and not actually equals 0, we cannot say that $2\epsilon = \epsilon$, so (c) cannot be the same result as (b) and (a).
+		 \end{enumerate}
+	\end{problem}
+
+
+\end{document}

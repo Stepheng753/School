@@ -1,0 +1,61 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+x <- rnorm(10)
+x
+mean(x)
+var(x)
+sd(x)
+median(x)
+quantile(x)
+range(x)
+boxplot(x)
+hist(x)
+w <- rnorm(1000)
+mean(w)
+sd(w)
+z <- rnorm(1000,mean=10,sd = 5)
+mean(z)
+sd(z)
+hist(z,breaks=51)
+summary(rnorm(12))
+rchisq(10,df=3)
+```
+
+```{r}
+A <- matrix(c(9,6,8,-20),nrow=2)
+b <- matrix(c(87,126))
+x <- solve(A,b)
+A%*%x
+```
+
+```{r}
+v <- seq(1,5)
+v1 <- seq(1,5,by=2)
+v2 <- seq(1,5,len=11)
+v3 <- seq(1991,1995,len = 48)
+v4 <- 1:5
+b <- solve(A)
+b%*%A
+A%*%b
+```
+
+```{r}
+#A = UDV'
+svdA = svd(A)
+D = diag(svdA$d)
+U = svdA$u
+V = svdA$v
+U%*%D%*%t(V)
+
+#significance of SVD: Data matrix A
+#rows are for spatial locations
+#columns for temporal time measurements
+#SVD decomposes space in U and time inV, variance in D
+
+```
+

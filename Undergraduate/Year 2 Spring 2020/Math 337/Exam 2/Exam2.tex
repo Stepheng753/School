@@ -1,0 +1,992 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Exam 2} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1 (a): }In the written work show the key steps required to find the eigenvalues and eigenvectors (not how a computer program finds them). Also, give the general real-valued solution to the linear system of differential equations.
+	\begin{align*}
+		\dot{x} = 
+		\begin{bmatrix}
+		27 & 14 \\ -42 & -22
+		\end{bmatrix}
+		x 
+		&& 
+		\begin{bmatrix}
+			x_1(0) \\ x_2(0)
+		\end{bmatrix}
+		= 
+		\begin{bmatrix}
+			-9 \\ 15
+		\end{bmatrix}
+	\end{align*}
+To get the eigenvalues, we solve the characteristic equation made by:
+	\begin{align*}
+		\begin{vmatrix}
+			27 - \lambda & 14 \\
+			-42 & -22 - \lambda 
+		\end{vmatrix}
+		&= (\lambda -27)(\lambda + 22) + 14(42) \\
+		&= \lambda^2 - 5\lambda - 6 \\
+		&= (\lambda - 6)(\lambda + 1) \\
+		\lambda &= 6,-1
+	\end{align*}
+\\
+To get the eigenvectors, we plug in our eigenvalues and solve $(A - \lambda I)\vec{v} = \vec{0}$
+\\ \\
+For $\lambda_1 = 6$
+	\begin{align*}
+		\begin{bmatrix}
+			21 & 14 \\ -42 & -28
+		\end{bmatrix}
+		\begin{bmatrix}
+			v_{11} \\ v_{21}
+		\end{bmatrix}
+		= 
+		\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix}
+	\end{align*} 
+We can set $v_{11} = 2$, and we'll get $v_{21} = -3$. Thus $\vec{v}_1 = \begin{bmatrix}	2 \\ -3	\end{bmatrix}$ for $\lambda_1 = 6$
+\\ \\ 
+For $\lambda_2 = -1$
+	\begin{align*}
+		\begin{bmatrix}
+			28 & 14 \\ -42 & -21
+		\end{bmatrix}
+		\begin{bmatrix}
+			 v_{21} \\ v_{22}
+		\end{bmatrix}
+		= 
+		\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix}
+	\end{align*} 
+We can set $v_{21} = 1$, and we'll get $v_{22} = -2$. Thus $\vec{v}_2 = \begin{bmatrix}	1 \\ -2	\end{bmatrix}$ for $\lambda_2 = -1$
+\\ \\ \\ \\
+From these eigenvalues and eigenvectors, we get the general real-valued solution:
+	$$
+	\begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix} =
+	c_1 \begin{bmatrix}	2 \\ -3	\end{bmatrix} e^{6t} +
+	c_2 \begin{bmatrix}	1 \\ -2	\end{bmatrix} e^{-t}
+	$$
+
+\newpage 
+
+\noindent \textbf{Problem 1 (b): }In your written work show how you find the arbitrary constants (without a computer).
+\\ \\
+From part(a), we got the following:
+	$$
+	\begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix} =
+	c_1 \begin{bmatrix}	2 \\ -3	\end{bmatrix} e^{6t} +
+	c_2 \begin{bmatrix}	1 \\ -2	\end{bmatrix} e^{-t}
+	$$	
+Plugging in the initial conditions we get:
+	\begin{align*}
+		\begin{bmatrix} -9 \\ 15 \end{bmatrix} =
+		\begin{bmatrix}	2  & 1 \\ -3 & -2	\end{bmatrix}
+		\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix}
+	\end{align*}
+We can now solve for $c_1$ and $c_2$:
+	\begin{align*}
+		rref
+		\begin{bmatrix}
+			2  & 1 & -9 \\ 
+			-3 & -2	& 15
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			1 & 0 & -3 \\
+			0 & 1 & -3
+		\end{bmatrix}
+	\end{align*}
+Thus we get
+	$$
+	\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix} = \begin{bmatrix}	-3 \\ -3	\end{bmatrix}
+	$$
+Thus we can get the unique solution to the IVP:
+	$$
+	\begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix} =
+	-3 \begin{bmatrix}	2 \\ -3	\end{bmatrix} e^{6t} +
+	-3 \begin{bmatrix}	1 \\ -2	\end{bmatrix} e^{-t}
+	$$
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\noindent \textbf{Problem 1 (c): }In the written part of this problem include a reasonable Phase Portrait for this system of differential equations. The Phase Portrait needs to include all equilibria, show the position and direction of flow for all real eigenvectors or show the direction of flow with clockwise or counter-clockwise flow for complex eigenvalue problems. Include several typical trajectories (at least 4), including the one for the given initial condition. Describe the qualitative behavior, such as stable node, unstable spiral, etc.
+\\ \\
+The qualitative behavior can be described as a saddle point because of the opposite signs of the eigenvalues. Along the first eigenvector, the graph is going away from the origin as $t \rightarrow \infty$, and along the second, the graph is going towards the origin as $t \rightarrow \infty$
+
+\newpage 
+	
+\noindent \textbf{Problem 2 (a): }In the written work show the key steps required to find the eigenvalues and eigenvectors (not how a computer program finds them). Also, give the general real-valued solution to the linear system of differential equations.
+	\begin{align*}
+		\dot{y} = 
+		\begin{bmatrix}
+			6 & 1 \\ -1 & 4
+		\end{bmatrix}
+		y 
+		&& 
+		\begin{bmatrix}
+			y_1(0) \\ y_2(0)
+		\end{bmatrix}
+		= 
+		\begin{bmatrix}
+			3 \\ -4
+		\end{bmatrix}
+	\end{align*}
+To get the eigenvalues, we solve the characteristic equation made by:
+	\begin{align*}
+		\begin{vmatrix}
+			6 - \lambda & 1 \\
+			-1 & 4 - \lambda 
+		\end{vmatrix}
+		&= (\lambda - 6)(\lambda - 4) + 1 \\
+		&= \lambda^2 - 10\lambda + 25 \\
+		&= (\lambda - 5)^2 \\
+		\lambda &= 5
+	\end{align*}
+\\
+To get the eigenvectors, we plug in our eigenvalues and solve $(A - \lambda I)\vec{v} = \vec{0}$
+\\ \\
+For $\lambda = 5$
+	\begin{align*}
+		\begin{bmatrix}
+			1 & 1 \\ -1 & -1
+		\end{bmatrix}
+		\begin{bmatrix}
+			v_{11} \\ v_{21}
+		\end{bmatrix}
+		= 
+		\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix}
+	\end{align*} 
+We can set $v_{11} = 1$, and we'll get $v_{21} = -1$. Thus $\vec{v}_1 = \begin{bmatrix}	1 \\ -1	\end{bmatrix}$ for $\lambda_1 = 5$
+\\ \\
+The second eigenvector comes from extending the first eigenvector to a standard basis.  So we add $\vec{v}_{2} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+\\ \\ \\ \\
+From these eigenvalues and eigenvectors, we get the general real-valued solution (Lecture Sys2D-B, Slide 46):
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1 \begin{bmatrix}	1 \\ -1	\end{bmatrix} e^{5t} +
+c_2  \left[ \begin{bmatrix}	1 \\ -1	\end{bmatrix}t + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right]e^{5t}
+$$
+
+\newpage 
+
+\noindent \textbf{Problem 2 (b): }In your written work show how you find the arbitrary constants (without a computer).
+\\ \\
+From part(a), we got the following:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1 \begin{bmatrix}	1 \\ -1	\end{bmatrix} e^{5t} +
+c_2  \left[ \begin{bmatrix}	1 \\ -1	\end{bmatrix}t + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right]e^{5t}
+$$	
+Plugging in the initial conditions we get:
+\begin{align*}
+\begin{bmatrix} 3 \\ -4 \end{bmatrix} =
+\begin{bmatrix}	1  & 0 \\ -1 & 1	\end{bmatrix}
+\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix}
+\end{align*}
+We can now solve for $c_1$ and $c_2$:
+	\begin{align*}
+		c_1 &= 3 \\
+		-4 &= -1(3) + c_2 \\
+		c_2 &= -1 
+	\end{align*}
+Thus we get
+$$
+\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix} = \begin{bmatrix}	3 \\ -1	\end{bmatrix}
+$$
+Thus we can get the unique solution to the IVP:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+3 \begin{bmatrix}	1 \\ -1	\end{bmatrix} e^{5t} +
+(-1)  \left[ \begin{bmatrix}	1 \\ -1	\end{bmatrix}t + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right]e^{5t}
+$$
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\noindent \textbf{Problem 2 (c): }In the written part of this problem include a reasonable Phase Portrait for this system of differential equations. The Phase Portrait needs to include all equilibria, show the position and direction of flow for all real eigenvectors or show the direction of flow with clockwise or counter-clockwise flow for complex eigenvalue problems. Include several typical trajectories (at least 4), including the one for the given initial condition. Describe the qualitative behavior, such as stable node, unstable spiral, etc.
+\\ \\
+The qualitative behavior can be described as an unstable improper node because of the repeated eigenvalues. Along the eigenvectors, the graph is going away from the origin as $t \rightarrow \infty$.
+
+\newpage 
+
+\noindent \textbf{Problem 3 (a): }In the written work show the key steps required to find the eigenvalues and eigenvectors (not how a computer program finds them). Also, give the general real-valued solution to the linear system of differential equations.
+\begin{align*}
+\dot{y} = 
+\begin{bmatrix}
+-3 & -2 \\ 6 & 4
+\end{bmatrix}
+y
+&& 
+\begin{bmatrix}
+y_1(0) \\ y_2(0)
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2 \\ -2
+\end{bmatrix}
+\end{align*}
+To get the eigenvalues, we solve the characteristic equation made by:
+\begin{align*}
+\begin{vmatrix}
+-3 - \lambda & -2 \\
+6 & 4 - \lambda 
+\end{vmatrix}
+&= (\lambda + 3)(\lambda - 4) + 12 \\
+&= \lambda^2 - \lambda  \\
+&= \lambda (\lambda - 1) \\
+\lambda &= 0,1
+\end{align*}
+\\
+To get the eigenvectors, we plug in our eigenvalues and solve $(A - \lambda I)\vec{v} = \vec{0}$
+\\ \\
+For $\lambda_1 = 0$
+\begin{align*}
+\begin{bmatrix}
+-3 & -2 \\ 6 & 4
+\end{bmatrix}
+\begin{bmatrix}
+v_{11} \\ v_{21}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}
+\end{align*} 
+We can set $v_{11} = 2$, and we'll get $v_{21} = -3$. Thus $\vec{v}_1 = \begin{bmatrix}	2 \\ -3	\end{bmatrix}$ for $\lambda_1 = 0$
+\\ \\ 
+For $\lambda_2 = 1$
+\begin{align*}
+\begin{bmatrix}
+-4 && -2 \\ 6 && 3
+\end{bmatrix}
+\begin{bmatrix}
+v_{21} \\ v_{22}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}
+\end{align*} 
+We can set $v_{21} = 1$, and we'll get $v_{22} = -2$. Thus $\vec{v}_2 = \begin{bmatrix}	1 \\ -2	\end{bmatrix}$ for $\lambda_2 = 1$
+\\ \\ \\ \\
+From these eigenvalues and eigenvectors, we get the general real-valued solution:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1 \begin{bmatrix}	2 \\ -3	\end{bmatrix} +
+c_2 \begin{bmatrix}	1 \\ -2	\end{bmatrix} e^{t}
+$$
+
+\newpage 
+
+\noindent \textbf{Problem 3 (b): }In your written work show how you find the arbitrary constants (without a computer).
+\\ \\
+From part(a), we got the following:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1 \begin{bmatrix}	2 \\ -3	\end{bmatrix} +
+c_2 \begin{bmatrix}	1 \\ -2	\end{bmatrix} e^{t}
+$$	
+Plugging in the initial conditions we get:
+\begin{align*}
+\begin{bmatrix} 2 \\ -2 \end{bmatrix} =
+\begin{bmatrix}	2  & 1 \\ -3 & -2	\end{bmatrix}
+\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix}
+\end{align*}
+We can now solve for $c_1$ and $c_2$:
+\begin{align*}
+rref
+\begin{bmatrix}
+2  & 1 & 2 \\ 
+-3 & -2	& -2
+\end{bmatrix} = 
+\begin{bmatrix}
+1 & 0 & 2 \\
+0 & 1 & -2
+\end{bmatrix}
+\end{align*}
+Thus we get
+$$
+\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix} = \begin{bmatrix}	2 \\ -2	\end{bmatrix}
+$$
+Thus we can get the unique solution to the IVP:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+2 \begin{bmatrix}	2 \\ -3	\end{bmatrix} +
+-2 \begin{bmatrix}	1 \\ -2	\end{bmatrix} e^{t}
+$$
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\noindent \textbf{Problem 3 (c): }In the written part of this problem include a reasonable Phase Portrait for this system of differential equations. The Phase Portrait needs to include all equilibria, show the position and direction of flow for all real eigenvectors or show the direction of flow with clockwise or counter-clockwise flow for complex eigenvalue problems. Include several typical trajectories (at least 4), including the one for the given initial condition. Describe the qualitative behavior, such as stable node, unstable spiral, etc.
+\\ \\
+The qualitative behavior can be described as an unstable degenerate case because of the 0 eigenvalue, and positive other eigenvalue. the graph is going away from the line $x_2 = \frac{-3}{2}x_1$ as $t \rightarrow \infty$.
+
+\newpage 
+
+\noindent \textbf{Problem 4 (a): }In the written work give the characteristic equation and eigenvalues in terms of $\alpha$ for this system
+	$$
+	\dot{y} = 
+	\begin{bmatrix}
+		1 & \alpha - 9 \\
+		1 & 1
+	\end{bmatrix}y
+	$$
+To get the eigenvalues, we solve the characteristic equation made by:
+	\begin{align*}
+		\begin{vmatrix}
+			1 - \lambda & \alpha - 9 \\
+			1 & 1 -\lambda 
+		\end{vmatrix}
+		&= (\lambda - 1)^2 - \alpha + 9 \\
+		&= \lambda^2 - 2\lambda - \alpha + 10
+	\end{align*}
+	\begin{align*}
+		\lambda &= \frac{2 \pm \sqrt{4 + 4\alpha - 40}}{2} \\
+		&= \frac{2 \pm \sqrt{-36 + 4\alpha}}{2} \\
+		&= 1 \pm \sqrt{-9 + \alpha}
+	\end{align*}
+\noindent \textbf{Problem 4 (b): }In the written work, characterize the values of the eigenvalues for $\alpha < \alpha_1, \alpha = \alpha_1, \alpha \in (\alpha_1, \alpha_2), \alpha = \alpha_2$, and $\alpha > \alpha_2$. State clearly the type of behavior (such as a STABLE NODE) for each of these five values or ranges of $\alpha$.
+\\ \\
+By making $\dot{y} = \vec{0}$, we were able to find that $\alpha _1 = 9$ and $\alpha _2 = 10$.
+\\ \\
+When $(\alpha < 9)$, we get 2 complex eigenvalues with positive real parts, so the type of behavior would be \textbf{Unstable Focus}. 
+\\ \\
+When $(\alpha = 9)$, we get a positive repeated eigenvalue, so the type of behavior would be \textbf{Unstable Improper Node}
+\\ \\
+When $(\alpha \in (9,10))$, we get 2 positive eigenvalues, so the type of behavior would be \\ 
+\textbf{Unstable Node}. 
+\\ \\
+When $(\alpha = 10)$, we get a zero eigenvalue and positive eigenvalue, so the type of behavior would be \textbf{Unstable Degenerate}
+\\ \\
+When $(\alpha > 10)$, we get opposite signs on the 2 eigenvalues, so the type of behavior would be \textbf{Saddle Point}
+
+\newpage 
+
+
+\noindent \textbf{Problem 4 (c): }In the written work show the key steps required to find the eigenvalues and eigenvectors (not how a computer program finds them). Also, give the general real-valued solution to the linear system of differential equations.
+\begin{align*}
+\dot{y} = 
+\begin{bmatrix}
+1 & -9 \\ 1 & 1
+\end{bmatrix}
+x 
+&& 
+\begin{bmatrix}
+y_1(0) \\ y_2(0)
+\end{bmatrix}
+= 
+\begin{bmatrix}
+-3 \\ 1
+\end{bmatrix}
+\end{align*}
+To get the eigenvalues, we solve the characteristic equation made by:
+\begin{align*}
+\begin{vmatrix}
+1 - \lambda & -9 \\
+1 & 1 - \lambda 
+\end{vmatrix}
+= (\lambda - 1)^2 + 9 && \lambda = \frac{2 \pm \sqrt{4 - 40}}{2} \\
+= \lambda^2 - 2\lambda + 10 &&  \lambda = 1 \pm 3i\\
+\end{align*}
+To get the eigenvectors, we plug in our eigenvalues and solve $(A - \lambda I)\vec{v} = \vec{0}$
+\\ \\
+For $\lambda_1 = 1 + 3i$
+\begin{align*}
+\begin{bmatrix}
+-3i & -9 \\ 1 & -3i
+\end{bmatrix}
+\begin{bmatrix}
+v_{11} \\ v_{21}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}
+\end{align*} 
+We can set $v_{11} = 3i$, and we'll get $v_{21} = 1$. Thus $\vec{v}_1 = \begin{bmatrix}	3i \\ 1	\end{bmatrix}$ for $\lambda_1 = 1 + 3i$
+\\ \\ 
+For $\lambda_2 = 1 -3i$
+\begin{align*}
+\begin{bmatrix}
+3i & -9 \\ 1 & 3i
+\end{bmatrix}
+\begin{bmatrix}
+v_{21} \\ v_{22}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}
+\end{align*} 
+We can set $v_{21} = -3i$, and we'll get $v_{22} = 1$. Thus $\vec{v}_2 = \begin{bmatrix} -3i \\ 1	\end{bmatrix}$ for $\lambda_2 = 1 - 3i$
+\\ \\ 
+From $\lambda_1$ and $\vec{v}_1$, we get 
+$$
+y_1(t) = 
+\begin{bmatrix}
+3i \\ 1
+\end{bmatrix}e^t \left(\cos(3t) + i\sin(3t)\right) = 
+\begin{bmatrix}
+	-3\sin(3t) \\
+	\cos(3t)
+\end{bmatrix}e^t +
+i \begin{bmatrix}
+	3\cos(3t) \\
+	\sin(3t)
+\end{bmatrix}e^t
+$$
+So now we can write the general real valued solution as:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1 \begin{bmatrix}
+		-3\sin(3t) \\
+		\cos(3t)
+	\end{bmatrix}e^t +
+c_2 \begin{bmatrix}
+		3\cos(3t) \\
+		\sin(3t)
+	\end{bmatrix}e^t
+$$
+
+\newpage 
+
+\noindent \textbf{Problem 4 (d): }In your written work show how you find the arbitrary constants (without a computer).
+\\ \\
+From part(c), we got the following:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1 \begin{bmatrix}
+-3\sin(3t) \\
+\cos(3t)
+\end{bmatrix}e^t +
+c_2 \begin{bmatrix}
+3\cos(3t) \\
+\sin(3t)
+\end{bmatrix}e^t
+$$
+Plugging in the initial conditions we get:
+\begin{align*}
+\begin{bmatrix} -3 \\ 1 \end{bmatrix} =
+\begin{bmatrix}	0  & 3 \\ 1 & 0	\end{bmatrix}
+\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix}
+\end{align*}
+Thus we get
+$$
+\begin{bmatrix}	c_1 \\ c_2	\end{bmatrix} = \begin{bmatrix}	1 \\ -1	\end{bmatrix}
+$$
+Thus we can get the unique solution to the IVP:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+\begin{bmatrix}
+-3\sin(3t) \\
+\cos(3t)
+\end{bmatrix}e^t +
+(-1)\begin{bmatrix}
+3\cos(3t) \\
+\sin(3t)
+\end{bmatrix}e^t
+$$
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\noindent \textbf{Problem 4 (e): }In the written part of this problem include a reasonable Phase Portrait for this system of differential equations. The Phase Portrait needs to include all equilibria, show the position and direction of flow for all real eigenvectors or show the direction of flow with clockwise or counter-clockwise flow for complex eigenvalue problems. Include several typical trajectories (at least 4), including the one for the given initial condition. Describe the qualitative behavior, such as stable node, unstable spiral, etc.
+\\ \\
+The qualitative behavior can be described as an unstable focus because of the complex eigenvalues with real parts. The graph is going away from the origin as $t \rightarrow \infty$ in a counter clockwise way.
+
+\newpage 
+
+\noindent \textbf{Problem 5 (a): }In the written work, show how you found your equilibria.
+	\begin{align*}
+		\dot{x} = 
+		\begin{bmatrix} 3 & 2 \\ -5 & -3 \end{bmatrix}x + 
+		\begin{bmatrix} -7 \\ 11 \end{bmatrix}
+	\end{align*}
+To get to equilibrium, we set $\dot{x} = \vec{0}$
+	\begin{align*}
+		\begin{bmatrix} 0 \\ 0 \end{bmatrix} &= 
+		\begin{bmatrix} 3 & 2 \\ -5 & -3 \end{bmatrix}
+		\begin{bmatrix} x_{1e} \\ x_{2e}\end{bmatrix} + 
+		\begin{bmatrix} -7 \\ 11 \end{bmatrix} \\
+		\begin{bmatrix} 7 \\ -11 \end{bmatrix} &= 
+		\begin{bmatrix} 3 & 2 \\ -5 & -3 \end{bmatrix}
+		\begin{bmatrix} x_{1e} \\ x_{2e}\end{bmatrix}
+	\end{align*}
+To solve for $\begin{bmatrix} x_{1e} \\ x_{2e}\end{bmatrix}$, we do the following:
+	\begin{align*}
+		rref 
+		\begin{bmatrix}
+			3 & 2 & 7 \\
+			-5 & -3 & -11
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			1 & 0 & 1 \\
+			0 & 1 & 2
+		\end{bmatrix}
+	\end{align*} 
+So we get $\begin{bmatrix} x_{1e} \\ x_{2e}\end{bmatrix} = \begin{bmatrix} 1 \\ 2\end{bmatrix}$ 
+\\ \\ \\ \\
+\noindent \textbf{Problem 5 (b): }In the written work, show that the change of variables,$y_i(t) = x_i(t) - x_{ie}, i = 1,2$, transforms the nonhomogeneous system of differential equations into the homogeneous system of differential equations:
+$$
+\dot{y}
+=
+\left\lbrack
+\begin{array}{rr}
+	3 & 2 \\
+	-5 & -3
+\end{array}
+\right\rbrack y, \quad
+\left\lbrack
+\begin{array}{r}
+	y_1(0) \\
+	y_2(0)
+\end{array}
+\right\rbrack
+=
+\left\lbrack
+\begin{array}{r}
+	-3 \\
+	10
+\end{array}
+\right\rbrack
+$$
+Notice the following:
+	\begin{align*}
+		x_i(t) = y_i(t) + x_{ie} && \dot{x}_i(t) = \dot{y}_i'(t)
+	\end{align*}
+So now we change the variables of the non homogeneous system:
+	\begin{align*}
+		\begin{bmatrix}
+			\dot{x}_1(t) \\
+			\dot{x}_2(t)
+		\end{bmatrix}
+		&= 
+		\begin{bmatrix}
+			3 & 2 \\
+			-5 & -3
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1(t) \\
+			x_2(t)
+		\end{bmatrix} +
+		\begin{bmatrix}
+			-7 \\ 11
+		\end{bmatrix} \\
+		\begin{bmatrix}
+		\dot{y}_1(t) \\
+		\dot{y}_2(t)
+		\end{bmatrix}
+		&= 
+		\begin{bmatrix}
+		3 & 2 \\
+		-5 & -3
+		\end{bmatrix}
+		\begin{bmatrix}
+		y_1(t) + 1 \\
+		y_2(t) + 2
+		\end{bmatrix} +
+		\begin{bmatrix}
+		-7 \\ 11
+		\end{bmatrix} \\
+		&= \begin{bmatrix}
+			3y_1(t) +3 + 2y_2(t) + 4 - 7  \\
+			-5y_1(t) - 5 + -3y_2(t) - 6 + 11
+		\end{bmatrix} \\
+		&= \begin{bmatrix}
+			3 & 2 \\
+			-5 & -3
+		\end{bmatrix}y
+	\end{align*}
+\newpage 
+
+\noindent \textbf{Problem 5 (b) cont. : }In the written work show the key steps required to find the eigenvalues and eigenvectors (not how a computer program finds them). Also, give the general real-valued solution to the linear system of differential equations
+\\ \\
+To get the eigenvalues, we solve the characteristic equation made by:
+\begin{align*}
+\begin{vmatrix}
+3 - \lambda & 2 \\
+-5 & -3 - \lambda 
+\end{vmatrix}
+&= (\lambda - 3)(\lambda + 3) + 10  \\
+&= \lambda^2 + 1 \\
+\lambda &= \pm i
+\end{align*}
+To get the eigenvectors, we plug in our eigenvalues and solve $(A - \lambda I)\vec{v} = \vec{0}$
+\\ \\
+For $\lambda_1 = i$
+\begin{align*}
+\begin{bmatrix}
+3 - i & 2 \\ -5 & -3 - i
+\end{bmatrix}
+\begin{bmatrix}
+v_{11} \\ v_{21}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}
+\end{align*} 
+We can set $v_{11} = -2$, and we'll get $v_{21} = 3-i$. Thus $\vec{v}_1 = \begin{bmatrix}	-2 \\ 3-i	\end{bmatrix}$ for $\lambda_1 = i$
+\\ \\ 
+For $\lambda_2 = -i$
+\begin{align*}
+\begin{bmatrix}
+3 + i & 2 \\ -5 & -3 + i
+\end{bmatrix}
+\begin{bmatrix}
+v_{21} \\ v_{22}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix}
+\end{align*} 
+We can set $v_{21} = -2$, and we'll get $v_{22} = 3+i$. Thus $\vec{v}_2 = \begin{bmatrix} -2 \\ 3+i	\end{bmatrix}$ for $\lambda_2 = -i$
+\\ \\ 
+From $\lambda_1$ and $\vec{v}_1$, we get 
+$$
+y_1(t) = 
+\begin{bmatrix}
+-2 \\ 3-i
+\end{bmatrix} \left(\cos(t) + i\sin(t)\right) = 
+\begin{bmatrix}
+-2\cos t \\
+3\cos t + \sin t
+\end{bmatrix} +
+i \begin{bmatrix}
+-2\sin t \\
+3\sin t - \cos t
+\end{bmatrix}
+$$
+So now we can write the general real valued solution as:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1\begin{bmatrix}
+-2\cos t \\
+3\cos t + \sin t
+\end{bmatrix} +
+c_2 \begin{bmatrix}
+-2\sin t \\
+3\sin t - \cos t
+\end{bmatrix}
+$$
+
+\newpage 	
+\noindent \textbf{Problem 5 (c): }In your written work show how you find the arbitrary constants (without a computer).
+\\ \\
+From part(c), we got the following:
+$$
+\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+c_1\begin{bmatrix}
+-2\cos t \\
+3\cos t + \sin t
+\end{bmatrix} +
+c_2 \begin{bmatrix}
+-2\sin t \\
+3\sin t - \cos t
+\end{bmatrix}
+$$
+Plugging in the initial conditions, we get:
+	\begin{align*}
+		\begin{bmatrix}
+			-3 \\ 10			
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			-2 & 0 \\
+			3 & -1
+		\end{bmatrix}
+		\begin{bmatrix}
+			c_1 \\ c_2
+		\end{bmatrix}
+	\end{align*}
+So we get
+	\begin{align*}
+		c_1 = \frac{3}{2} &&
+		\frac{20}{2} = \frac{9}{2} - c_2 &&
+ 		c_2 = \frac{-11}{2}
+	\end{align*}
+Thus we get our unique solution to the IVP:
+	$$
+	\begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix} =
+	\frac{3}{2}\begin{bmatrix}
+		-2\cos t \\
+		3\cos t + \sin t
+	\end{bmatrix} +
+	\frac{-11}{2} \begin{bmatrix}
+		-2\sin t \\
+		3\sin t - \cos t
+	\end{bmatrix}
+	$$
+	
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\noindent \textbf{Problem 5 (d): }In the written part of this problem include a reasonable Phase Portrait for this system of differential equations. The Phase Portrait needs to include all equilibria, show the position and direction of flow for all real eigenvectors or show the direction of flow with clockwise or counter-clockwise flow for complex eigenvalue problems. Include several typical trajectories (at least 4), including the one for the given initial condition. Describe the qualitative behavior, such as stable node, unstable spiral, etc.
+\\ \\
+The qualitative behavior can be described as a center because of the complex eigenvalues with no real parts. The graph is going clockwise around the origin as $t \rightarrow \infty$.
+
+\newpage 
+
+\noindent \textbf{Problem 6 (a): }In the written work, give a brief explanation of each species' ecological behavior. Describe each term on the right hand side of the differential equations.
+	\begin{align*}
+	\frac{dX}{dt} = X(0.49 - 0.033 X - 0.0358 Y) \\
+	\frac{dY}{dt} = Y(0.4 - 0.017 Y - 0.0379 X)
+	\end{align*}
+For each equation, the first term on the right side represents \textbf{Malthusian Growth} as there are no other species to interact with it, and their rate of growth increases.
+\\ \\
+For each equation, the second term on the right side represents \textbf{Intraspecies Competition} as the same species interacts with each other, their rate of growth decreases. 	
+\\ \\ 
+For each equation, the third term on the right side represents \textbf{Interspecies Competition} as the different species interacts with each other, their rate of growth decreases. 	
+\\ \\ \\
+\noindent \textbf{Problem 6 (b): }In the written work, state or show how you obtained these values 
+	\begin{align*}
+	0 = X(0.49 - 0.033 X - 0.0358 Y) \\
+	0 = Y(0.4 - 0.017 Y - 0.0379 X)
+	\end{align*}
+When both goes toward extinction, that means $X = 0$ and $Y = 0$, so we get $(0,0)$.
+\\ \\
+When the only species alive is $X$, that means $X \not = 0$ and $Y = 0$, so we get:
+	\begin{align*}
+		0.49 - 0.033X = 0
+	\end{align*}
+So we get as a result $\left(\frac{.49}{0.033},0\right)$
+\\ \\
+When the only species alive is $Y$, that means $X = 0$ and $Y \not = 0$, so we get:
+\begin{align*}
+0.4 - 0.017Y = 0
+\end{align*}
+So we get as a result $\left(0,\frac{.4}{0.017}\right)$
+When both species reach coexistence, that means $X \not = 0$ and $Y \not = 0$, so we get:
+	\begin{align*}
+		0.49 - 0.033 X - 0.0358 Y &= 0 \\
+		0.4 - 0.0379 X - 0.017 Y &= 0
+	\end{align*} 
+So we do the following to solve for $X$ and $Y$,
+	\begin{align*}
+		rref
+		\begin{bmatrix}
+			 0.033 & 0.0358 & 0.49 \\
+			 0.0379 & 0.017 & 0.4 
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			1 & 0 & 7.5268 \\
+			0 & 1 & 6.7490
+		\end{bmatrix}
+	\end{align*}
+So we get as a result $(7.5268, 6.7490)$
+	
+\newpage 
+
+\noindent \textbf{Problem 6 (c): }In the written work, give your Jacobian matrix for this system. Write the Jacobian matrix with the numerical values at each of the four equilibria. 
+	\begin{align*}
+		J(X,Y) = 
+		\begin{bmatrix}
+			 0.49- 0.066\,X - 0.0358\,Y & - 0.0358\,X \\
+			 - 0.0379\,Y &  0.4- 0.034\,Y- 0.0379\,X
+		\end{bmatrix}
+	\end{align*}
+For the extinction case, we have:
+	\begin{align*}
+		J(0,0) = 
+		\begin{bmatrix}
+			0.49 & 0 \\
+			0 & 0.4
+		\end{bmatrix}
+	\end{align*}
+By looking at the diagonal of the upper triangular matrix, we get $\lambda_1 = .4, \lambda_2 = .49$.
+	\begin{align*}
+		\begin{bmatrix}
+		0.49 - \lambda_1 & 0 \\
+		0 & 0.4 - \lambda_1
+		\end{bmatrix}v_1 = 
+		\begin{bmatrix}
+		0.09 & 0 \\
+		0 & 0
+		\end{bmatrix}v_1 = 
+		\begin{bmatrix}
+			0 \\ 0
+		\end{bmatrix} && 
+		v_1 = 
+		\begin{bmatrix}
+			0 \\ 1
+		\end{bmatrix} \\
+		\begin{bmatrix}
+		0.49 - \lambda_2 & 0 \\
+		0 & 0.4 - \lambda_2
+		\end{bmatrix}v_2 = 
+		\begin{bmatrix}
+		0 & 0 \\
+		0 & -0.09
+		\end{bmatrix}v_2 = 
+		\begin{bmatrix}
+		0 \\ 0
+		\end{bmatrix} && 
+		v_2 = 
+		\begin{bmatrix}
+		1 \\ 0
+		\end{bmatrix}
+	\end{align*}
+Because of the positive eigenvalues, the qualitative behavior will be of type \textbf{Unstable Node}
+\\ \\
+For the Only Species $X$ case, we have:
+\begin{align*}
+J\left(\frac{.49}{0.033},0\right)= 
+\begin{bmatrix}
+-0.4900 & -0.5316 \\
+0 & -0.1628
+\end{bmatrix}
+\end{align*}
+By looking at the diagonal of the upper triangular matrix, we get $\lambda_1 = -0.49, \lambda_2 = -0.1628$.
+	\begin{align*}
+\begin{bmatrix}
+-0.4900 - \lambda_1 & -0.5316 \\
+0 & -0.1628 - \lambda_1
+\end{bmatrix}v_1 = 
+\begin{bmatrix}
+0 &  -0.5316 \\
+0 &   0.3272
+\end{bmatrix}v_1 = 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix} && 
+v_1 = 
+\begin{bmatrix}
+1 \\ 0
+\end{bmatrix} \\
+\begin{bmatrix}
+-0.4900 - \lambda_2 & -0.5316 \\
+0 & -0.1628 - \lambda_2
+\end{bmatrix}v_2 = 
+\begin{bmatrix}
+-0.3272  & -0.5316 \\
+0 & 0
+\end{bmatrix}v_2 = 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix} && 
+v_2 = 
+\begin{bmatrix}
+1 \\ \frac{0.3272}{-0.5316}
+\end{bmatrix}
+\end{align*}	
+Because of the negative eigenvalues, the qualitative behavior will be of type \textbf{Stable Node}
+\\ \\
+For the Only Species $Y$ case, we have:
+\begin{align*}
+J\left(0,\frac{.4}{0.017}\right)= 
+\begin{bmatrix}
+-0.3524 & 0 \\
+-0.8918 & -.400
+\end{bmatrix}
+\end{align*}
+By looking at the diagonal of the upper triangular matrix, we get $\lambda_1 = -0.400, \lambda_2 = -0.3524$.
+\begin{align*}
+\begin{bmatrix}
+-0.3524 - \lambda_1 & 0 \\
+-0.8918 & -.400 - \lambda_1
+\end{bmatrix}v_1 = 
+\begin{bmatrix}
+ 0.0476 &  0 \\
+-0.8918    &  0
+\end{bmatrix}v_1 = 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix} && 
+v_1 = 
+\begin{bmatrix}
+1 \\ 0
+\end{bmatrix} \\
+\begin{bmatrix}
+-0.3524 - \lambda_2 & 0 \\
+-0.8918 & -.400 - \lambda_2
+\end{bmatrix}v_2 = 
+\begin{bmatrix}
+ 0  &       0 \\
+-0.8918  &  -0.04759
+\end{bmatrix}v_2 = 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix} && 
+v_2 = 
+\begin{bmatrix}
+1 \\ \frac{.04759}{-0.8918}
+\end{bmatrix}
+\end{align*}	
+Because of the negative eigenvalues, the qualitative behavior will be of type \textbf{Stable Node}
+\newpage 
+
+For the Coexistence case, we have:
+	\begin{align*}
+J(7.5268, 6.7490) = 
+\begin{bmatrix}
+-0.2484  & -0.2695 \\
+-0.2558  & -0.1147
+\end{bmatrix}
+\end{align*}
+We can get the eigenvalues by using the characteristic equation:
+	\begin{align*}
+		(\lambda + 0.2484)(\lambda + 0.1147) - (0.2695)(0.2558) &= 0 \\
+		\lambda^2 + 0.3631\lambda - 0.0404 &= 0 \\
+		\lambda &= \frac{-0.3631 \pm \sqrt{0.3631^2 - 4(- 0.0404)}}{2} \\
+		&= -0.4525, 0.0893
+	\end{align*}
+\begin{align*}
+\begin{bmatrix}
+-0.2484 - \lambda_1  & -0.2695 \\
+-0.2558  & -0.1147 - \lambda_1
+\end{bmatrix}v_1 = 
+\begin{bmatrix}
+ 0.2041 &  -0.2695 \\
+-0.2558  &  0.3377
+\end{bmatrix}v_1 = 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix} && 
+v_1 = 
+\begin{bmatrix}
+1 \\ \frac{0.2041}{0.2695}
+\end{bmatrix} \\
+\begin{bmatrix}
+-0.2484 - \lambda_2  & -0.2695 \\
+-0.2558  & -0.1147 - \lambda_2
+\end{bmatrix}v_2 = 
+\begin{bmatrix}
+-0.3377 &  -0.2695 \\
+-0.2558 &  -0.2041
+\end{bmatrix}v_2 = 
+\begin{bmatrix}
+0 \\ 0
+\end{bmatrix} && 
+v_2 = 
+\begin{bmatrix}
+1 \\ \frac{-0.3377}{0.2695}
+\end{bmatrix}
+\end{align*}	
+Because of the opposite signs of the eigenvalues, the qualitative behavior will be of type \textbf{Saddle Point}	
+	
+	
+\end{document}

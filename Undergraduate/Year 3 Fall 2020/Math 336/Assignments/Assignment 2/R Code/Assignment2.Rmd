@@ -1,0 +1,294 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r} 
+# Problem 1 Model
+
+v = 853
+g = 9.8
+t = seq(-25,200)
+y = function(t) v*t - (g*t^2 / 2) + 3
+ykm = function(t) y(t) / 1000
+dy = function(t) v - g*t
+
+
+plot(t, ykm(t), 'l', col='blue', 
+     xlab = 'Time (sec)', ylab = 'Height from the Ground (km)', 
+     main = 'Height of Bullet from Ground over time', panel.first=grid())
+lines(t, 0*t, col='black')
+
+sprintf("Bullet Reaches Maximum Height at t = %.4f sec", 
+        uniroot(dy, c(0,200))[[1]] )
+sprintf("Bullet Reaches a Maximum Height of %.4f km", 
+        ykm(uniroot(dy, c(0,200))[[1]]))
+sprintf("Bullet Touches the Ground at t = %.f sec", 
+        uniroot(ykm,c(100,200))[1])
+
+
+x = 1
+v = seq(813,893, by = 20)
+SY = seq(1, length(v))
+perChange583 = seq(1, length(v))
+perChange87 = seq(1, length(v))
+for (val in v) {
+  perChange583[x] = round( (val - 853) * 100 / 853, digits = 4) 
+  SY[x] = round( val / 9.8 , digits = 4 )
+  perChange87[x] = round( (SY[x] - (853 / 9.8)) * 100 / (853 / 9.8), digits = 4) 
+  x = x + 1
+}
+
+table = cbind(v, perChange583, SY, perChange87)
+colnames(table) = c('v', '% from 583', 'SY', '% from 87.041')
+table
+
+
+```
+
+```{r}
+# Problem 2
+
+k = 600
+r = .05 / 12
+y = 1000
+
+M = function(P) {
+  P * ((1 + r)^k) - y*( (1 - (1 + r)^k) / (1 - (1 + r)) )
+}
+P = uniroot(M,c(200000,300000))[[1]]
+sprintf('By the Age of 68, He will need P = $%.02f in his Retirement Account',P)
+
+k = 456
+N = function(x) {
+  x * ( (1 - (1 + r)^k) / (1 - (1 + r)) ) - P
+}
+x = uniroot(N, c(0,1000))[[1]]
+sprintf('He will need to pay $%.02f a month to retire correctly',x)
+
+
+```
+
+```{r}
+# Problem 3
+
+EBM = function(beta, theta) {
+  lat = beta * pi / 180
+  lon = theta * pi / 180
+  S = 1368
+  alpha = 0.12
+  k = 7.4 * 10^(-4)
+  T0 = 260
+  h = 0.4
+  sigma = 5.670367*10^(-8)
+  ep = 0.98
+  
+  fEBM = function(T) { (1 - alpha) * S * cos(lat) * cos(lon) - 
+                       ( ep * sigma * T^4 + k * (T - T0) / h ) }
+  
+  sprintf("The Lunar Surface Temperature of the Moon at %.2f degrees latitude and %.2f degrees longitude is %.4f K",
+          beta, theta, uniroot(fEBM,c(100,420))[[1]])
+}
+
+EBM(30, 45)
+
+
+```
+
+```{r}
+# Problem 4
+
+EBM = function(theta) {
+  lat = 0
+  lon = theta * pi / 180
+  alpha = 0.12
+  k = 7.4 * 10^(-4)
+  T0 = 260
+  sigma = 5.670367*10^(-8)
+  ep = 0.98
+  h = 0.4
+  S = 1368
+  if (theta > 90 && theta < 270 ) {
+    h = 0.02
+    S = 0
+  }
+  
+  fEBM = function(T) { (1 - alpha) * S * cos(lat) * cos(lon) - 
+                     (ep * sigma * T^4 + k * (T - T0) / h ) }
+  
+  sprintf("The Lunar Surface Temperature of the Moon at %.2f degrees is %.4f K", 
+          theta, uniroot(fEBM,c(0,500))[[1]])
+  
+  return(uniroot(fEBM,c(0,500))[[1]])
+}
+
+x = 1
+longitude = matrix(seq(0,359,by=15),ncol=1)
+Ktemp = matrix(seq(1, length(longitude)), ncol = 1)
+Ctemp = matrix(seq(1, length(longitude)), ncol = 1)
+for (i in longitude) {
+  Ktemp[x] = EBM(i)
+  Ctemp[x] = Ktemp[x] - 273
+  x = x + 1
+}
+
+table = cbind(longitude, Ktemp, Ctemp)
+colnames(table) = c('Long', 'Temp (K)', 'Temp (C)')
+table
+
+
+```
+
+```{r}
+# Problem 5
+
+x = 1
+Ep = matrix(seq(.55, .65, by=.01), ncol = 1)
+perChange60 = matrix(seq(0,10), ncol = 1)
+ST = matrix(seq(0,10), ncol = 1)
+perChange119 = matrix(seq(0,10), ncol = 1)
+
+sigma = 5.670367*10^(-8)
+S = 1368
+alpha = 0.32
+
+for (val in Ep){
+  dT = function(val) { (-1/4) * (( (S / (4 * sigma) ) * (1 - alpha) )^(1/4)) * ((val)^(-5/4)) }
+
+  perChange60[x] = round(( val - .60 ) * 100 / .60, digits = 4) 
+  ST[x] = dT(val)
+  perChange119[x] = round(( ST[x] - dT(.60) ) * 100 / dT(.60), 
+                          digits = 4  ) 
+  x = x + 1
+}
+
+table = cbind(Ep, perChange60, ST, perChange119)
+colnames(table) = c('Epsilon', '% from .60', 'ST', '% from ST(.60)')
+table
+```
+
+```{r}
+# Problem 6
+
+a = matrix(c(1,0,-9000,-9000,-9000,-1,0,-6000,0,0,-1,1,0,-3000,-3000,
+             0,-1,0,-4000,0,0,-1,0,0,-12000), nrow = 5)
+b = matrix(c(0,0,-12,-12,-12),ncol = 1)
+x = solve(a,b)
+x
+```
+
+```{r}
+# Problem 8
+
+InOutPut = matrix(c(1 - 0.245, -0.099,	-0.433, -0.102, 1 - 0.291, -0.372, 
+                    -0.051, -0.279, 1 - 0.011 ), nrow = 3)
+D = matrix(c(2.88, 31.45, 30.91),ncol = 1)
+x = solve(InOutPut,D)
+x
+```
+
+```{r}
+# Problem 10
+
+setwd('C:/Users/Stephen Giang/Documents/Math336Files/data')
+readData = read.csv('NOAAGlobalT.csv')
+
+pacific1 = subset(readData, LAT >= -20 & LAT <= 20)   #20S  - 20N
+pacific1 = subset(pacific1, LON >= 160 & LON <= 260)  #160E - 100W
+pacific1 = pacific1[, 856:1455]   # 01/1951 - 12/2000
+
+# -999.9 means missing data so set to 0
+for ( i in 1:dim(pacific1)[1] ) {
+  for ( j in 1:dim(pacific1)[2] ) {
+    if (pacific1[i,j] < -800) {
+      pacific1[i,j] = 0
+    }
+  }
+}
+
+yearDiff = 2000 - 1951 
+pacific = matrix(0,nrow = dim(pacific1)[1], ncol = yearDiff)
+# Annual (July - June) Mean Sea Temp
+for (k in 1:yearDiff) {
+  pacific[, k] = rowMeans(pacific1[, (12*k - 5) : (12*k + 6) ])
+}
+
+svdPacific = svd(pacific)
+D = diag(svdPacific$d)
+U = svdPacific$u
+V = svdPacific$v
+
+eigVals = (svdPacific$d[1:10])^2 / yearDiff
+eigVals
+
+x = seq(-17.5, 17.5, by=5)  # lat
+y = seq(162.5, 257.5, by=5) # lon
+numLatVals = length(x)
+numLonVals = length(y)
+time = 1951 : 1999
+
+int=seq(-0.2,0.2,length.out=81)
+rgb.palette=colorRampPalette(c('black','blue', 'darkgreen',
+                               'green', 'yellow','pink','red','maroon'),
+                             interpolate='spline')
+suppressWarnings(library(maps))
+
+umat = matrix(U[,1], nrow = numLonVals)
+filled.contour(y, x, umat, color.palette=rgb.palette, levels=int,
+               xlim=c(120,300),ylim=c(-40,40),
+               plot.title=title(main="EOF1 of the Tropical Pacific Temp Data",
+                                xlab="Latitude",ylab="Longitude"),
+               plot.axes={axis(1); axis(2); map('world2', add=TRUE); grid()},
+               key.title=title(main="[oC]"))
+
+umat = matrix(U[,2], nrow = numLonVals)
+filled.contour(y, x, umat, color.palette=rgb.palette, levels=int,
+               xlim=c(120,300),ylim=c(-40,40),
+               plot.title=title(main="EOF2 of the Tropical Pacific Temp Data",
+                                xlab="Latitude",ylab="Longitude"),
+               plot.axes={axis(1); axis(2); map('world2', add=TRUE); grid()},
+               key.title=title(main="[oC]"))
+
+umat = matrix(U[,3], nrow = numLonVals)
+filled.contour(y, x, umat, color.palette=rgb.palette, levels=int,
+               xlim=c(120,300),ylim=c(-40,40),
+               plot.title=title(main="EOF3 of the Tropical Pacific Temp Data",
+                                xlab="Latitude",ylab="Longitude"),
+               plot.axes={axis(1); axis(2); map('world2', add=TRUE); grid()},
+               key.title=title(main="[oC]"))
+
+plot(time, V[,1], 'l', col = 'black',
+     xlab = 'Year', ylab = 'PC Scale', ylim=c(-0.4,0.4), 
+     main = 'The First Three PCs', panel.first=grid())
+lines(time, V[,2], type="l", col="blue")
+lines(time, V[,3], type="l", col="red")
+
+
+legend(1950,0.4325, 'PC1',lwd=2 )
+legend(1960,0.4325, 'PC2',lwd=2, col="blue")
+legend(1970,0.4325, 'PC3',lwd=2, col="red")
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

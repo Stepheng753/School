@@ -1,0 +1,147 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 7} \\
+		\textbf{Abstract Algebra} \\
+		\textbf{Math 320} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Section 3.2 Problem 9: }Show that the set S of matrices of the form 
+	$\begin{pmatrix}
+		a & 4b \\
+		b & a
+	\end{pmatrix}$
+, with $a$ and $b$ real numbers is a subring of $\mathbb{M(R)}$ 
+\\ \\
+
+\begin{proof}[Solution]
+\noindent Let A $\in S = 
+	\begin{pmatrix}
+		a_1 & 4b_1 \\
+		b_1 & a_1
+	\end{pmatrix}$, and B $\in S = 
+	\begin{pmatrix}
+		a_2 & 4b_2 \\
+		b_2 & a_2
+	\end{pmatrix}$ with $a$ and $b \in \mathbb{R}$
+\\
+	\begin{align*}
+		&\text{1) Notice: Let $a_1 = 0, b_1 = 0$ , so } 
+		\\ \\
+		&\indent \qquad A =
+		\begin{pmatrix}
+		0 & 0 \\
+		0 & 0
+		\end{pmatrix} = 0_S \in S
+		 \\ \\
+		&\text{2) }A + B = 
+		\begin{pmatrix}
+		a_1 & 4b_1 \\
+		b_1 & a_1
+		\end{pmatrix} + 
+		\begin{pmatrix}
+		a_2 & 4b_2 \\
+		b_2 & a_2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		a_1 + a_2 & 4(b_1 + b_2) \\
+		b_1 + b_2 & a_1 + a_2
+		\end{pmatrix} 
+		\in S
+		\\ \\
+		&\text{3) Notice: Let -B = }
+		\begin{pmatrix}
+			-a_2 & -4b_2 \\
+			-b_2 & -a_2
+		\end{pmatrix}, \text{so -B} \in S
+		\\ \\
+		&\indent \qquad A + -B = 
+		\begin{pmatrix}
+			a_1 & 4b_1 \\
+			b_1 & a_1
+		\end{pmatrix} + 
+		\begin{pmatrix}
+			-a_2 & -4b_2 \\
+			-b_2 & -a_2
+		\end{pmatrix}
+		= \begin{pmatrix}
+			a_1 - a_2 & 4(b_1 - b_2) \\
+			b_1 - b_2 & a_1 - a_2
+		\end{pmatrix} \in S
+		\\ \\
+		&\text{4) } A*B = 
+		\begin{pmatrix}
+			a_1 & 4b_1 \\
+			b_1 & a_1
+		\end{pmatrix} 
+		\begin{pmatrix}
+			a_2 & 4b_2 \\
+			b_2 & a_2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			a_1a_2 + 4b_1b_2 & 4(a_1b_2 + b_1a_2) \\
+			b_1a_2 + a_1b_2 & 4b_1b_2 + a_1a_2
+		\end{pmatrix}
+		\\ \\
+		&\noindent \qquad \qquad \qquad \qquad \qquad \qquad \qquad \quad = 		
+		\begin{pmatrix}
+			a_1a_2 + 4b_1b_2 & 4(a_1b_2 + b_1a_2) \\
+			a_1b_2 + b_1a_2 & a_1a_2 + 4b_1b_2
+		\end{pmatrix} \in S
+	\end{align*}
+\\ \\
+\textbf{Thus S is a subring of $\mathbb{M(R)}$ as it holds closure under subtraction, \\multiplication and contains 0} \\
+\end{proof}
+\newpage
+
+\noindent \textbf{Section 3.2 Problem 12: } Let a and b be elements of a ring R.
+\begin{enumerate}[label = (\alph*)]
+	\item Prove that the equation $a + x = b$ has a unique solution in R. (You must prove that there is a solution and that this solution is the only one.)
+	\item If R is a ring with identity and a is a unit, prove that the equation $ax = b$ has a unique solution in R. 
+\end{enumerate}
+\vspace{\baselineskip}
+\begin{proof}[Solution a)]
+Notice: Because R is a ring, $\forall a \in R, \exists (-a)$ such that $a + -a = 0_R$ 
+	\begin{align*}
+		&a + x = b \\
+		&x = b - a
+	\end{align*}
+Thus there exists a solution to the equation, $a + x = b$ \\ \\
+Let $x_1, x_2$ both be solutions to the equation, $a + x = b$
+	\begin{align*}
+		&a + x_1 = b \\
+		&a + x_2 = b \\
+		&x_1 = b - a \\
+		&x_2 = b - a \\
+		&x_1 = x_2
+	\end{align*}
+\textbf{\boldmath Thus there exists a unique solution to the equation, $a + x = b$}
+\end{proof}
+\vspace{\baselineskip}
+\begin{proof}[Solution b)]
+Let R be a ring with identity and a be a unit. So $\exists 1_R$ and $\exists x $ such that $ax = 1_R$ \\ \\
+Let $x_1, x_2$ both be solutions to the equation $ax = b$
+	\begin{align*}
+		&ax_1 = b \\
+		&ax_2 = b \\
+		&ax_1 = ax_2 \\
+		&ax_1 - ax_2 = 0 \\
+		&a(x_1 - x_2) = 0 \\
+		&a^{-1}a(x_1 - x_2) = a^{-1}0 \\
+		&x_1 - x_2 = 0 \\
+		&x_1 = x_2 
+	\end{align*}
+\textbf{\boldmath Thus there exists a unique solution to the equation $ax = b$ \\}
+\end{proof}
+
+
+
+\end{document}

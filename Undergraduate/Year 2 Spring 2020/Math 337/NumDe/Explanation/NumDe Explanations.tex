@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework NumDe} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 8 (c): } 
+\\ \\
+When Looking at Euler's Method's Implementaion, the error at the endpoint, t = 2.9, from h= 0.1 to h = 0.05, the error went from -68.149\% to -55.561\%.  By changing the step size, the error was able to decrease by 12.588\%. 
+\\ \\
+When Looking at the Improved Euler's Method's Implementaion, the error at the endpoint, t = 2.9, from h= 0.1 to h = 0.05, the error went from -20.461\% to -8.028\%.  By changing the step size, the error was able to decrease by 12.433\%. 
+\\ \\
+When looking at the two method's Implementation, the error at the endpoint, t = 2.9 with h = 0.1, the error went was -68.149\% with Euler's Method and -20.461\% with Improved Euler's Method. Improved Euler's Method reduced the error, or increased the accuracy, by 47.688\%    
+\\ \\ 
+When looking at the two method's Implementation, the error at the endpoint, t = 2.9 with h = 0.05, the error went was -55.561\% with Euler's Method and -8.028\% with Improved Euler's Method. Improved Euler's Method reduced the error, or increased the accuracy, by 47.533\%  
+\\ \\
+Based off the data, Choosing Improved Euler's Method's v. Choosing a Different h-step, Choosing Improved Euler's seems to dramatically decrease the error and increase the accuracy over choosing different h-steps.
+\\ \\ \\
+\noindent \textbf{Problem 8 (f): }
+\\ \\
+Euler's Method's Implementation has the solution shifted to the right a little, whereas the Improved Euler's resembled the actual solution more accurately.  Because of the shift, Euler's Solution shows an inaccurate approximation of the maximum population. Improved Euler's Solution is more accurate, but still isn't exactly accurate on calculating the maximum population. Changing the step size to h= 0.1, the Improved Euler's gets a lot more accurate and can calculate the maximum population very closely. An increase in the h-step only does worse at approximating the true solution.
+
+\newpage
+\noindent \textbf{Problem 9 (c): }
+\\ \\
+The original drug is useful in the case of immediate injection, and only needing the drug for a few days, whereas the new drug lasts a lot longer, but takes a few days to accumulate in your body. As for which treatment is more superior is dependent on the situation. If someone needs the drug immediately, the original is best, whereas if the treatment is for treatment in the long term, the second is best.
+\\ \\
+\noindent \textbf{Problem 9 (e): }
+\\ \\
+The numerical solution is very accurate in representing the actual solution.  Their error over time between the approximation and the actual solution goes only from 0.023\% to 0.034\% error. That gives you at least 2 decimal points of accuracy.
+\\ \\ \\ 
+\noindent \textbf{Problem 10 (b): }
+\\ \\
+The change in concentration is the amount being produced minus the amount leaving all over the volume.
+	\begin{align*}
+		\frac{dc(t)}{dt} &= \frac{.005}{1700} - \frac{10c}{1700} \\
+		\frac{dc(t)}{dt} + \frac{10c}{1700} &= \frac{.005}{1700} \\
+		\frac{d}{dt}(e^{\frac{t}{170}}c) &= (e^{\frac{t}{170}})\frac{.005}{1700} \\
+		e^{\frac{t}{170}}c &= \frac{.005}{100}e^{\frac{t}{170}} + C \\
+		c(t) &= \frac{.005}{100} + Ce^{\frac{-t}{170}} \\
+		c(0) &= 0 = \frac{.005}{100} + C \\
+		C &= -\frac{.005}{100} \\
+		c(t) &= \frac{.005}{100} - \frac{.005}{100}e^{\frac{-t}{170}} 
+	\end{align*}
+\\
+\noindent \textbf{Problem 10 (f): }
+\\ \\
+The Approximation solution increases throughout the day, but then stops creating more Carbon Monoxide towards the end, letting the Carbon Monoxide exhaust less over time. In the original solution, it only took 46 hours to create an unhealthy air environment, whereas the approximation solution takes 104 hours. It takes more than double the time before the air becomes unhealthy. 
+
+
+
+
+\end{document}

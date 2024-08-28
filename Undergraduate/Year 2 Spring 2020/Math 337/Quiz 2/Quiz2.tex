@@ -1,0 +1,377 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 2} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: }Use the information in the lecture notes for the salt mixing problem to verify that the
+Example on Slide 10 satisfies the conditions required to maintain a constant volume in each vessel.
+Also, show steps (Gaussian elimination, row-reduce echelon, or some other technique from Linear
+Algebra) to verify that the equilibrium given on Slide 11 follows from the salt mixing model for the
+Example from Slide 10. (Slides 5-12).
+
+	\begin{proof}[Solution]
+		Constant Volume Conditions: 
+		\begin{align*}
+			f_1 + f_2 = f_6 && .20 + .15 = .35 \qquad \checkmark \\
+			f_1 + f_3 = f_4 && .20 + .25 = .45 \qquad \checkmark \\
+			f_2 + f_5 = f_3 && .15 + .10 = .25 \qquad \checkmark \\
+			f_5 + f_6 = f_4 && .10 + .35 = .45 \qquad \checkmark
+		\end{align*}
+		\begin{align*}
+		\begin{pmatrix}
+			\dot{c}_1 \\
+			\dot{c}_2
+		\end{pmatrix} &=
+		\begin{pmatrix}
+			\frac{-.45}{100} & \frac{.25}{100} \\ \\
+			\frac{.10}{60} & \frac{-.25}{60}
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1 \\ 
+			c_2
+		\end{pmatrix} + 
+		\begin{pmatrix}
+			\frac{.2(7)}{100} \\ \\
+			\frac{.15(12)}{60}
+		\end{pmatrix} 
+		= 
+		\begin{pmatrix}
+			-0.0045 & 0.0025 \\
+			0.00167 & -0.004617
+		\end{pmatrix}
+		\begin{pmatrix}
+			c_1 \\
+			c_2 
+		\end{pmatrix} + 
+		\begin{pmatrix}
+			0.014 \\
+			0.03
+		\end{pmatrix}
+		\end{align*}
+		\begin{align*}
+			\begin{pmatrix}
+				0 \\
+				0
+			\end{pmatrix} &= 
+			\begin{pmatrix}
+				-0.0045 & 0.0025 \\
+				0.00167 & -0.004617
+			\end{pmatrix}
+			\begin{pmatrix}
+				c_{1e} \\
+				c_{2e}  
+			\end{pmatrix} + 
+			\begin{pmatrix}
+				0.014 \\
+				0.03
+			\end{pmatrix} \\
+			\begin{pmatrix}
+				-0.014 \\
+				-0.03
+			\end{pmatrix} &= 
+			\begin{pmatrix}
+				-0.0045 & 0.0025 \\
+				0.00167 & -0.004617
+			\end{pmatrix}
+			\begin{pmatrix}
+				c_{1e} \\
+				c_{2e} 
+			\end{pmatrix} 
+		\end{align*}
+		\begin{align*}
+			\begin{pmatrix}
+				-0.0045 & 0.0025 & -0.014 \\
+				\frac{.10}{60} & \frac{-.25}{60} & -0.03
+			\end{pmatrix} &\rightarrow 
+			\begin{pmatrix}
+				-1 & .5556 & -3.1111 \\
+				1 & -2.5 & -18 
+			\end{pmatrix} &&\rightarrow 
+			\begin{pmatrix}
+				-1 & .5556 & -3.1111 \\
+				0 & -1.9444 & -21.1111 
+			\end{pmatrix} \\ \\
+			\begin{pmatrix}
+				-1 & .5556 & -3.1111 \\
+				0 & 1 & 10.85714
+			\end{pmatrix} &\rightarrow 
+			\begin{pmatrix}
+				-1 & .5556 & -3.1111 \\
+				0 & -.5556 & -6.0317
+			\end{pmatrix} &&\rightarrow
+			\begin{pmatrix}
+				1 & 0 & 9.14286 \\
+				0 & 1 & 10.85714
+			\end{pmatrix}
+		\end{align*} 
+	\end{proof}
+
+\newpage
+
+\noindent \textbf{Problem 2: }The pharmokinetic model is presented on Slides 14-15. It is stated that the $trace$ satisfies
+$tr(\textbf{A}) < 0$, the $determinant$ is det$|\textbf{A}| > 0$, and the $discriminant$ is $D > 0$. Provide details that
+verify these conditions, assuming all parameters in the matrix A are positive.
+$$
+	\begin{pmatrix}
+		\dot{d}_1 \\
+		\dot{d}_2
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		-(K_{pb} + K_e) & K_{bp} \\
+		K_{pb} &  -K_{bp}
+	\end{pmatrix} 
+	\begin{pmatrix}
+		d_1 \\
+		d_2
+	\end{pmatrix}
+$$
+\begin{proof}[Solution]
+	Let $K_{bp}, K_{pb}, K_e > 0$
+	\begin{align*}
+		\text{Trace(A) }&= -(K_{pb} + K_e) + -K_{bp} = -(K_{pb} + K_e + K_{bp}) < 0 \\ \\
+		\text{det$|A|$ }&= K_{pb}K_{bp} + K_{bp}K_e - K_{pb}K_{bp} = K_{bp}K_e > 0 \\ \\
+		\text{D }&= (-K_{pb} - K_e + K_{bp})^2 + 4K_{bp}K_{pb} > 0\\
+		&= K_{pb}^2 + K_e^2 + K_{bp}^2 - 2K_{bp}K_e + 2K_{pb}K_e - 2K_{bp}K_{pb} + 4K_{bp}K_{pb} \\
+		&= K_{pb}^2 + K_e^2 + K_{bp}^2 - 2K_{bp}K_e + 2K_{pb}K_e + 2K_{bp}K_{pb} \\
+		&= K_{pb}^2 + K_e^2 + K_{bp}^2 + 2K_{bp}K_e + 2K_{pb}K_e + 2K_{bp}K_{pb} - 4K_{bp}K_e \\
+		&= (K_{pb} + K_e + K_{bp})^2 - 4K_{bp}K_e > 0
+	\end{align*}
+\end{proof}
+
+\newpage
+
+\noindent \textbf{Problem 3: }Consider the pharmokinetic model:
+$$
+	\begin{pmatrix}
+		\dot{d}_1 \\
+		\dot{d}_2
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		-(K_{pb} + K_e) & K_{bp} \\
+		K_{pb} &  -K_{bp}
+	\end{pmatrix} 
+	\begin{pmatrix}
+		d_1 \\
+		d_2
+	\end{pmatrix}
+$$
+where $K_{pb} = 2, K_{bp} = 5$, and $K_e = 0.5$. Assume the initial conditions: 
+$
+\begin{pmatrix}
+	d_1(0) \\
+	d_2(0)
+\end{pmatrix} = 
+\begin{pmatrix}
+	10 \\ 
+	0
+\end{pmatrix}
+$
+Find the Solution to this initial value problem. State clearly the eigenvalues and eigenvectors.
+\begin{proof}[Solution]
+	$$
+	\begin{pmatrix}
+		\dot{d}_1 \\
+		\dot{d}_2
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		-(2 + 0.5) & 5 \\
+		2 &  -5
+	\end{pmatrix} 
+	\begin{pmatrix}
+		d_1 \\
+		d_2
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		-2.5 & 5 \\
+		2 &  -5
+	\end{pmatrix} 
+	\begin{pmatrix}
+		d_1 \\
+		d_2
+	\end{pmatrix}
+	$$
+	\begin{align*}
+		\begin{vmatrix}
+			-2.5 - \lambda & 5 \\
+			2 &  -5 - \lambda
+		\end{vmatrix} &= (\lambda + 2.5)(\lambda + 5) -10 \\
+		&= \lambda^2 + 7.5\lambda + 12.5 - 10 \\
+		&= \lambda^2 + 7.5\lambda + 2.5 = 0\\
+		\lambda &= \frac{-7.5 \pm \sqrt{56.25 - 10}}{2} \\
+		&= \frac{-7.5 \pm \sqrt{46.25}}{2} \\
+		&= -0.3496, -7.1504 
+	\end{align*}
+	Let $\lambda_1 = -0.3496$
+		$$
+		\begin{pmatrix}
+			0 \\
+			0
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			-2.5 - (-0.3496) & 5 \\
+			2 & -5 - (-0.3496)
+		\end{pmatrix}
+		\begin{pmatrix}
+			d_1 \\
+			d_2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			-2.1504 & 5 \\
+			2 & -4.6504
+		\end{pmatrix}
+		\begin{pmatrix}
+			d_1 \\
+			d_2
+		\end{pmatrix} 
+		$$
+		$$
+		\begin{pmatrix}
+			d_1 \\
+			d_2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			5 \\
+			2.1504
+		\end{pmatrix}
+		$$
+		
+		Let $\lambda_2 = -7.1504$
+		$$
+		\begin{pmatrix}
+		0 \\
+		0
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		-2.5 - (-7.1504) & 5 \\
+		2 & -5 - (-7.1504)
+		\end{pmatrix}
+		\begin{pmatrix}
+		d_1 \\
+		d_2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		4.6504 & 5 \\
+		2 & 2.1504
+		\end{pmatrix}
+		\begin{pmatrix}
+		d_1 \\
+		d_2
+		\end{pmatrix} 
+		$$
+		$$
+		\begin{pmatrix}
+		d_1 \\
+		d_2
+		\end{pmatrix} = 
+		\begin{pmatrix}
+		5 \\
+		-4.6504
+		\end{pmatrix}
+		$$
+		\newpage
+		$$
+		\begin{pmatrix}
+			d_1 \\
+			d_2
+		\end{pmatrix} = 
+		c_1
+		\begin{pmatrix}
+			5 \\
+			2.1504
+		\end{pmatrix} 
+		e^{-0.3496t} + 
+		c_2 
+		\begin{pmatrix}
+			5 \\
+			-4.6504
+		\end{pmatrix}
+		e^{-7.1504}
+		$$
+		$$
+		\begin{pmatrix}
+			d_1(0) \\
+			d_2(0) 
+		\end{pmatrix} = 
+		\begin{pmatrix}
+			10 \\
+			0
+		\end{pmatrix} =
+		\begin{pmatrix}
+			5 & 5\\
+			2.1504 & -4.6504
+		\end{pmatrix} 
+		\begin{pmatrix}
+			c_1 \\
+			c_2
+		\end{pmatrix}
+		$$
+		$$
+		\begin{pmatrix}
+			5 & 5 & 10\\
+			2.1504 & -4.6504 & 0
+		\end{pmatrix} \rightarrow
+		\begin{pmatrix}
+			1 & 1 & 2 \\
+			2.1504 & -4.6504 & 0
+		\end{pmatrix} \rightarrow
+		\begin{pmatrix}
+			-2.1504 & -2.1504 & -4.3008 \\
+			2.1504 & -4.6504 & 0
+		\end{pmatrix}
+		$$
+		$$
+		\begin{pmatrix}
+			1 & 1 & 2 \\
+			0 & -6.8008 & -4.3008
+		\end{pmatrix} \rightarrow
+		\begin{pmatrix}
+			1 & 1 & 2 \\
+			0 & 1 & .6324
+		\end{pmatrix} \rightarrow
+		\begin{pmatrix}
+			1 & 0 & 1.3676 \\
+			0 & 1 & .6324
+		\end{pmatrix} 
+		$$
+		\\
+		$$
+		\boldmath
+		\begin{pmatrix}
+		d_1 \\
+		d_2
+		\end{pmatrix} = 
+		1.3676
+		\begin{pmatrix}
+		5 \\
+		2.1504
+		\end{pmatrix} 
+		e^{-0.3496t} + 
+		.6324
+		\begin{pmatrix}
+		5 \\
+		-4.6504
+		\end{pmatrix}
+		e^{-7.1504}
+		$$
+\end{proof}
+\vspace{\baselineskip}
+\noindent \textbf{Problem 4: }Consider the pharmokinetic model in the previous problem (same parameters). Create a
+phase portrait and describe the qualitative behavior. On your phase portrait include the specific
+trajectory for the initial value problem above. (Slides 18-22).
+\\ \\
+The phase portrait shows of a stable node as both eigenvalues are negative.  This means as $t \rightarrow \infty$, the phase portraits approaches the origin
+
+\end{document}

@@ -1,0 +1,10 @@
+10
+0
+25
+Cannot Divide By 0
+Cannot Divide By 0
+ERROR: Invalid number: asdf
+ERROR: Invalid number: df
+ERROR: Invalid number: ERROR
+ERROR: Invalid number: ERROR
+25

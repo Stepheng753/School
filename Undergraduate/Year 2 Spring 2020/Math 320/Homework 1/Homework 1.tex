@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 1} \\
+		\textbf{Abstract Algebra} \\
+		\textbf{Math 320} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Section 1.1 Problem 9: }
+Prove that the cube of any integer $a$ has to be exactly one of these forms: $9k$ or $9k + 1$ or $9k + 8$ for some integer k.
+\\\\
+\textbf{Solution: } \\
+Let $a \in \mathbb{Z}$.  By the Division Algorithm, Let $a = 3q + r, \quad 0  \leq r < 3$. \\Remark: Integers are closed under Multiplication and Addition. \\\\
+Case ($r = 0$): \\
+	\begin{align}
+		a &= 3q \\
+		a^3 &= (3q)^3 \\
+		&= 9(3q^3) \\
+		&= \boldsymbol{9k}, \quad \text{$k \in \mathbb{Z}$}\\
+	\end{align}
+Case ($r = 1$): \\
+	\begin{align}
+		a &= 3q + 1 \\
+		a^3 &= (3q+1)^3 \\
+		&= (3q)^3 + 3 (3q)^2 + 3 (3q) + 1 \\
+		&= 9(3 q^3 + 3 (q^2) + q) + 1 \\
+		&= \boldsymbol{9k + 1}, \quad \text{$k \in \mathbb{Z}$}\\
+	\end{align}	
+Case ($r = 2$): \\
+	\begin{align}
+		a &= 3q + 2 \\
+		a^3 &= (3q+2)^3 \\
+		&= (3q)^3 + 3 (3q)^2(2) + 3 (3q)(2^2) + 2^3 \\
+		&= 9(3q^3 + 3 (q^2)(2) + (q)(2^2)) + 2^3 \\
+		&= \boldsymbol{9k + 8}, \quad \text{$k \in \mathbb{Z}$}\\
+	\end{align}	
+	
+Thus: $\forall a \in \mathbb{Z}, a^3$ can be written in the form: $9k$ or $9k + 1$ or $9k + 8$ for some integer k.
+\newpage
+\noindent \textbf{Section 1.1 Problem 10: } 
+Let $n$ be a positive integer. Prove that $a$ and $c$ leave the same remainder when divided by n if and only if $a - c = nk$ for some integer k
+\\\\
+\textbf{Solution: ($\rightarrow$)} \\
+Let $a-c = nk,$ \quad with $a,c,k,q_1,q_2,r_1,r_2 \in \mathbb{Z}$ \\
+	\begin{align}
+		a &= nq_1 + r_1 \\
+		c &= nq_2 + r_2 \\
+		a - c &= (nq_1 + r_1) - (nq_2 + r_2) \\
+		&= n(q_1 - q_2) + (r_1 - r_2) \\
+		&= nk
+	\end{align}
+Remark: 0 $\leq (r_1 - r_2) < n$.
+To have $a - c = nk$, $(r_1 - r_2) = cn$ for some $c \in \mathbb{Z}$, or have $(r_1 - r_2)$ be a multiple of n.  The only multiple of n on the interval [0,$n$) is 0. So... \\
+	\begin{align}
+		r_1 - r_2 &= 0 \\
+		\boldsymbol{r_1} &= \boldsymbol{r_2}
+	\end{align} 
+Thus $a$, $c$ share the same remainder when divided by n 
+\\\\	
+\textbf{Solution: ($\leftarrow$)} \\
+Let $a,c,k,q_1,q_2,r \in \mathbb{Z}$ \\
+Let $a$ and $c$ leave the same remainder when divided by $n$\\
+	\begin{align}
+		a &= nq_1 + r \\
+		c &= nq_2 + r \\
+		a - c &= nq_1 + r - (nq_2 + r) \\
+		&= nq_1 + r - nq_2 - r \\
+		&= nq_1 - nq_2 \\
+		&= n(q_1 - q_2) \\
+		&= nk \\
+		\boldsymbol{a - c} &= \boldsymbol{nk} 
+	\end{align}
+\newpage
+\noindent \textbf{Section 1.2 Problem 4: } \\
+a) If $a|b$ and $a|c$, prove that $a|(b + c)$. \\
+b) If $a|b$ and $a|c$, prove that $a|(br + ct)$ for any r, t $\in \mathbb{Z}$. 
+\\\\
+\textbf{Solution (a): } \\
+Let $a|b$ and $a|c$ for some $a,b,c,x_1,x_2 \in \mathbb{Z}$ \\
+	\begin{align}
+		b &= ax_1 \\
+		c &= ax_2 \\
+		b + c &= ax_1 + ax_2 \\
+		&= a(x_1 + x_2) \\
+		&= ax_3 
+		\\\\
+		\boldsymbol{a} &| \boldsymbol{(b + c)} 
+	\end{align}
+\\\\
+\textbf{Solution (b): } \\
+Let $a|b$ and $a|c$ for some $a,b,c,x_1,x_2,r,t \in \mathbb{Z}$ \\
+	\begin{align}
+		b &= ax_1 \\
+		c &= ax_2 \\
+		br + ct &= ax_1r + ax_2t \\
+		&= a(x_1r + x_2t) \\
+		&= ax_3 \\
+		\boldsymbol{a} &| \boldsymbol{(br + ct)} 
+	\end{align}
+\newpage
+\noindent \textbf{Section 1.2 Problem 5: } 
+If $a$ and $b$ are nonzero integers such that $a|b$ and $b|a$, prove that $a = \pm b$. 
+\\\\
+\textbf{Solution: } \\
+Let $a, b \in \mathbb{Z}$ \textbackslash \textbraceleft 0\textbraceright \space such that $a|b$ and $b|a$, \quad  $a,b,x_1,x_2 \in \mathbb{Z}$
+	\begin{align}
+		b &= ax_1 \\
+		a &= bx_2 \\
+		b &= (bx_2)x_1 \\
+		1 &= x_2 x_1 \\
+		x_2 &= 1 \text{ and } x_1 = 1 \\
+		&\text{ or}  \\
+		x_2 &= -1 \text{ and } x_1 = -1 \\
+		a &= b \text{ or} -b \\
+		\boldsymbol{a} &= \boldsymbol{\pm b}
+	\end{align}
+
+\end{document}

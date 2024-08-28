@@ -1,9 +1,0 @@
-10
-0
-25
-1
-0
-ERROR: Invalid number: asd
-ERROR: Invalid Expression
-ERROR: Invalid Expression
-ERROR: Invalid Operator: =

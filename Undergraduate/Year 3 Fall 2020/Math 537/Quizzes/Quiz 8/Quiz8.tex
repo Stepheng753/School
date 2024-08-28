@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 8} \\
+		\textbf{Ordinary Differential Equations} \\
+		\textbf{Math 537} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{1}
+		 Based on the recorded video (a link provided during the lecture), please answer the following questions:
+		 \begin{enumerate}[label = (\alph*)]
+		 	\item  Briefly discuss three types of solutions within the Lorenz model.
+		 	\skipline
+		 	Notice the following Lorenz Model:
+		 	\begin{align*}
+		 		\frac{dX}{dt} &= -\sigma X + \sigma Y \\
+		 		\frac{dY}{dt} &= -XZ + rX - Y \\
+		 		\frac{dZ}{dt} &= XY - bZ
+		 	\end{align*}
+	 		\\
+		 	Notice that Rayleigh number's, $r$, is a dimensionless measure of the temperature difference between the top and bottom surfaces of a liquid; proportional to effective force on a fluid.
+		 	\\ \\
+		 	The three types of solutions are the following:
+		 	\\ \\
+		 	\textbf{Steady-State Solution}: This solution comes from when $r < r_c = 24.74$. Its characteristics are that as time increases, the solution comes to an equilibrium.  This solution will lead to a point attractor, or a spiral sink. 
+		 	\\ \\
+		 	\textbf{Chaotic Solution}: This solution comes from when $24.74 = r_c < r < R_c = 313$.  Its characteristic are that as time increases, the solution begins to represent a sinusoidal function with the amplitude increasing with time.  Then at some time, the solution becomes very chaotic and the values become unpredictable.  This solution will lead to a chaotic attractor.  
+		 	\\ \\
+		 	\textbf{Limit Cycle Solution}: This solution comes when $r > R_c = 313$.  Its characteristics are that as time increases, the solution represents a sinusoidal function with a fixed amplitude.  This will lead to a periodic attractor.  A limit cycle is an isolated closed orbit with nearby trajectories converging into it. A key feature of a limit cycle is that it does not have long term memory of its initial conditions, so it is mostly determined by the structure of the system. 
+		 	\newpage
+		 	\item Briefly discuss two kinds of attractor coexistence within the generalized Lorenz model.
+		 	\skipline
+		 	The two kinds of attractor coexistence are the following:
+		 	\\ \\
+		 	\textbf{Coexistence of Chaotic and Steady-State Solutions}:  This Attractor Coexistence occurs in the 9 Dimension Lorenz Model. It indicates final state sensitivity to initial conditions. The coexistence of the chaotic and non-chaotic (Steady-State) solutions leads to distinct points of attraction. The chaotic attractor has a sensitivity dependence on the initial conditions, whereas the point attractor does not.  Also the chaotic attractor will display the BE1(butterfly effect), whereas the point attractor will not. When comparing the 9DLM with the 3DLM, we can see the 9DLM be more realistic as it shows that the BE1 does not always appear. 
+		 	\\ \\
+		 	\textbf{Coexistence of Limit Cycle and Steady-State Solutions}:  This Attractor Coexistence is a limit cycle that is an isolated closed orbit that coexists with point attractors. What happens in this Coexistence is that solutions will converge to the critical points and represent steady state solutions or they will converge into the limit cycle orbit.  
+		 \end{enumerate}
+	\end{problem}
+
+
+\end{document}

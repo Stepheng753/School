@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newcommand{\approches}{\rightarrow}
+\newcommand{\qrarrow}{\quad \rightarrow \quad}
+\newcommand{\qqrarrow}{\qquad \rightarrow \qquad}
+\newcommand{\qqtext}[1]{\qquad \text{ #1 } \qquad}
+\newcommand{\partiald}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\answer}[1]{\textbf{\boldmath #1}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Homework 3} \\
+		\textbf{Partial Differential Equations} \\
+		\textbf{Math 531} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{2.2.4}
+		In this exercise we derive superposition principles for nonhomogeneous problems.
+		\begin{enumerate}[label = (\alph*)]
+			\item Consider $L(u) = f$. If $u_p$ is a particular solution, $L(u_p) = f$, and if $u_1$ and $u_2$ are homogeneous solutions, $L(u_i) = 0$, show that $u = u_p + c_1u_1 + c_2u_2$ is another particular solution.
+			\\
+			\begin{proof}
+				Let $u_p$ be a particular solution if $L(u_p) = f$, and let $u_1$ and $u_2$ be homogeneous solutions if $L(u_i) = 0$.
+				Let $u = u_p + c_1u_1 + c_2u_2$ such that we get the following by the definition of the Linear Operator:
+				\[L(u) = L(u_p) + c_1L(u_1) + c_2L(u_2) = f\]
+				\answer{Thus, because $L(u = u_p + c_1u_1 + c_2u_2) = f$, then $u = u_p + c_1u_1 + c_2u_2$ is a particular solution from the given statement.}
+				\\ 
+			\end{proof} 
+			\skipline
+			\item If $L(u) = f_1 + f_2$, where $u_{pi}$ is a particular solution corresponding to $f_i$, what is a particular solution for $f_1 + f_2$
+			\\
+			\begin{proof}
+				Let $L(u_{p1}) = f_1, L(u_{p2}) = f_2$, and let $L(u) = f_1 + f_2$ with $u$ being the particular solution. 
+				\\ \\
+				Notice the following:
+				\[f_1 + f_2 = L(u_{p1}) + L(u_{p2}) = L(u_{p1} + u_{p2})\]
+				\answer{Thus we get that $u = u_{p1} + u_{p2}$ is a particular solution for $f_1 + f_2$ }
+				\\
+			\end{proof}
+		\end{enumerate}
+	\end{problem}
+
+	\begin{problem}{2.3.1}
+		For the following partial differential equations, what ordinary differential equations
+		are implied by the method of separation of variables?
+		\begin{enumerate}[label = (\alph*)]
+			\item[(b)] Let the following be true:
+			\[u(x,t) = \phi(x)G(t)\] 	
+			\[\partiald{u}{t} = k\partiald{^2u}{x^2} - v_0\partiald{u}{x}\]
+			Now notice the following:
+			\[\phi(x)\frac{dG}{dt} = k\frac{d^2\phi}{dx^2}G(t) - v_0\frac{d\phi}{dx}G(t)\]
+			\[\frac{1}{G}\frac{dG}{dt} = \frac{1}{\phi}\left(k\frac{d^2\phi}{dx^2}- v_0\frac{d\phi}{dx} \right) = -\lambda\]
+			\textbf{Thus we get the following ODE's:}
+			\[\boldsymbol{\frac{dG}{dt} = -\lambda G \qquad \textbf{ and } \qquad k\frac{d^2\phi}{dx^2}- v_0\frac{d\phi}{dx} + \lambda\phi = 0}\]
+			\item[(c)]	Let the following be true:
+			\[u(x,t) = \phi(x)G(y)\] 
+			\[\partiald{^2u}{x^2} + \partiald{^2u}{y^2} = 0\]
+			Now notice the following:
+			\[\frac{d^2\phi}{dx^2}G(y) + \frac{d^2G}{dy^2}\phi(x) = 0\]
+			\[\frac{d^2\phi}{dx^2}G(y) = -\frac{d^2G}{dy^2}\phi(x) \]
+			\[\frac{1}{\phi}\frac{d^2\phi}{dx^2} = -\frac{1}{G}\frac{d^2G}{dy^2} = -\lambda\]
+			\textbf{Thus we get the following ODE's:}
+			\[\boldsymbol{\frac{d^2\phi}{dx^2} + \lambda\phi = 0 \qquad \textbf{ and } \qquad \frac{d^2G}{dy^2} - \lambda G = 0}\]
+			\item[(f)]	Let the following be true:
+			\[u(x,t) = \phi(x)G(t)\]
+			\[\partiald{^2u}{t^2} = c^2\partiald{^2u}{x^2}\]
+			Now notice the following:
+			\[\frac{d^2G}{dt^2}\phi(x) = c^2\frac{d^2\phi}{dx^2}G(t)\]
+			\[\frac{1}{G}\frac{d^2G}{dt^2} = \frac{c^2}{\phi}\frac{d^2\phi}{dx^2} = -\lambda\]
+			\textbf{Thus we get the following ODE's:}
+			\[\boldsymbol{\frac{d^2G}{dt^2} + \lambda G = 0 \qquad \textbf{ and } \qquad \frac{d^2\phi}{dx^2} + \frac{\phi\lambda}{c^2} = 0}\]
+		\end{enumerate}
+	\end{problem}
+
+	\begin{problem}{2.3.8}
+		Consider
+		\[\partiald{u}{t} = k\partiald{^2u}{x^2} - \alpha u\]
+		This corresponds to a one-dimensional rod either with heat loss through the lateral
+		sides with outside temperature $0^\circ$ ($\alpha > 0$) or with insulated lateral sides with a heat
+		sink proportional to the temperature. Suppose that the boundary conditions are
+		\[u(0,t) = 0 \qqtext{and} u(L,t) = 0\]
+		\begin{enumerate}[label = (\alph*)]
+			\item What are the possible equilibrium temperature distributions if $\alpha > 0$?
+			\\ \\
+			Notice that the equilibrium temperature distributions occur as $t \approches \infty$, such that we get the following:
+			\[\partiald{u}{t} = 0 = k\partiald{^2u}{x^2} - \alpha u\]
+			\[\partiald{^2u}{x^2} - \frac{\alpha u}{k} = 0\]
+			From here notice the characteristic equation:
+			\[\lambda^2 - \frac{\alpha}{k} = 0 \qqrarrow \lambda = \pm\sqrt{\frac{\alpha}{k}}\]
+			Notice that $\alpha > 0$ and $k > 0$, so we get 2 real roots such that we get the following:
+			\[u(x) = c_1e^{\sqrt{\frac{\alpha}{k}}x} + c_2e^{-\sqrt{\frac{\alpha}{k}}x}\]
+			From here, we can use the given boundary conditions:
+			\[c_1 + c_2 = 0 \qrarrow c_2 = -c_1\]
+			\[c_1e^{\sqrt{\frac{\alpha}{k}}L} - c_1e^{-\sqrt{\frac{\alpha}{k}}L} = 0 \qrarrow  c_1e^{\sqrt{\frac{\alpha}{k}}L} = c_1e^{-\sqrt{\frac{\alpha}{k}}L}\]
+			Notice that $L \not = 0$ and $\alpha \not = 0$ and $k \not = 0$.  This means that $\sqrt{\frac{\alpha}{k}}L \not = 0$. \answer{Thus we get that the only way for the equality to be true is for $c_1 = 0 = -c_2$.  So we get the trivial solution:}.
+			\[\boldsymbol{u(x) = 0}\]
+			\newpage
+			\item Solve the time-dependent problem $[u(x, 0) = f(x)]$ if $\alpha > 0$. Analyze the temperature for large time $(t \approches \infty)$ and compare to part (a).
+			\\ \\
+			Let the following be true:
+			\[u(x,t) = \phi(x)G(t)\]
+			\[\partiald{u}{t} = k\partiald{^2u}{x^2} - \alpha u\]
+			Now notice the following:
+			\begin{align*}
+				\frac{dG}{dt}\phi  &= k\frac{d^2\phi}{dx^2}G - \alpha\phi G \\
+				&= kG\left(\frac{d^2\phi}{dx^2} - \frac{\alpha\phi}{k}\right) \\
+				\frac{1}{kG}\frac{dG}{dt} + \frac{\alpha}{k}&= \frac{1}{\phi}\frac{d^2\phi}{dx^2} = -\lambda
+			\end{align*}
+			From this, we get the following ODE's and its corresponding solutions:
+			\begin{align*}
+				\frac{1}{kG}\frac{dG}{dt} + \frac{\alpha}{k} &= -\lambda & 	\frac{1}{\phi}\frac{d^2\phi}{dx^2} &= -\lambda \\
+				\frac{dG}{G} &= (-\lambda k - \alpha)\,dt & \frac{d^2\phi}{dx^2} + \lambda\phi &= 0
+			\end{align*}
+			Notice the following cases:
+			\begin{enumerate}[label = (\roman*)]
+				\item $\lambda  = 0$:
+				\[G(t) = c_1e^{-\alpha t}\]
+				\[\phi(x) = d_1x + d_2\]
+				From here, we can use the given boundary conditions in $\phi(x)$:
+				\[\phi(0) = d_2 = 0 \qqrarrow \phi(L) = d_1L = 0\]
+				Thus, we get the trivial solution:
+				\[\boldsymbol{\phi(x) = 0}\]
+				\item $\lambda < 0$:
+				\[G(t) = c_1e^{-(\lambda k + \alpha)t}\]
+				\[\phi(x) = d_1e^{\sqrt{\lambda}x} + d_2e^{-\sqrt{\lambda}x}\]
+				From here, we can use the given boundary conditions in $\phi(x)$:
+				\[\phi(0) = 0 = d_1 + d_2 \qrarrow d_2 = -d_1\]
+				\[\phi(L) = d_1e^{\sqrt{\lambda}L} - d_1e^{-\sqrt{\lambda}L} = 0 \qrarrow d_1e^{\sqrt{\lambda}L} = d_1e^{-\sqrt{\lambda}L} \]
+				Because we know $L \not = 0$ and $\lambda \not = 0$, we get that $d_1 = d_2 = 0$, and get the trivial solution:
+				\[\boldsymbol{\phi(x) = 0}\]
+				\item $\lambda > 0$
+				\[G(t) = c_1e^{-(\lambda k + \alpha)t}\]
+				\[\phi(x) = d_1\cos(\sqrt{\lambda}x) + d_2\sin(\sqrt{\lambda}x)\]
+				From here, we can use the given boundary conditions in $\phi(x)$:
+				\[d_1 = 0 \qqrarrow d_2\sin(\sqrt{\lambda}L) = 0\]
+				From this, we notice the nontrivial solution, and get the following:
+				\[\sin(\sqrt{\lambda}L) = 0 \qqrarrow \sqrt{\lambda} = \frac{n\pi}{L} \qrarrow \lambda = \left(\frac{n\pi}{L}\right)^2, \qquad n = 1,2...\]
+				Thus, we get the following solution:
+				\[u(x,t) = G(t)\phi(x) = B_ne^{-\left(\left(\frac{n\pi}{L}\right)^2 k + \alpha\right)t}\sin\left(\frac{n\pi}{L}x\right)\]
+				We can now generalize this solution for all values of n, such that:
+				\[u(x,t) = \sum_{n=1}^{\infty}B_ne^{-\left(\left(\frac{n\pi}{L}\right)^2 k + \alpha\right)t}\sin\left(\frac{n\pi}{L}x\right)\]
+				Now we can use our initial condition:
+				\[u(x,0) = f(x) = \sum_{n=1}^{\infty}B_n\sin\left(\frac{n\pi}{L}x\right)\]
+				From, here notice by the orthogonality of sines, we get:
+				\[\int_{0}^{L} f(x)\sin\left(\frac{m\pi x}{L}\right)\,dx = \sum_{n=1}^{\infty}B_n\int_{0}^{L} \sin\left(\frac{n\pi}{L}x\right)\sin\left(\frac{m\pi x}{L}\right)\,dx = B_m\left(\frac{L}{2}\right)\]
+				From here, we get:
+				\[B_m = \frac{2}{L}\int_{0}^{L} f(x)\sin\left(\frac{m\pi x}{L}\right)\,dx \qqrarrow B_n = \frac{2}{L}\int_{0}^{L} f(x)\sin\left(\frac{n\pi x}{L}\right)\,dx\]
+				\answer{Thus we get the following solution:}
+				\[\boldsymbol{\frac{2}{L}\sum_{n=1}^{\infty}\left[\int_{0}^{L} f(x)\sin\left(\frac{n\pi x}{L}\right)\,dx\right]e^{-\left(\left(\frac{n\pi}{L}\right)^2 k + \alpha\right)t}\sin\left(\frac{n\pi}{L}x\right)}\]
+				\textbf{From here, also notice that:}
+				\[\boldsymbol{\lim\limits_{t \approches \infty} u(x,t) = 0}\]
+				\textbf{which does agree with our answer for part (a)}
+			\end{enumerate}
+			
+		\end{enumerate}
+	\end{problem}
+
+
+\end{document}

@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{enumitem}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{Quiz 12} \\
+		\textbf{Differential Equations} \\
+		\textbf{Math 337} \\
+		\textbf{Stephen Giang} \\
+	\end{center}
+
+\noindent \textbf{Problem 1: }Consider the Taylor series given by the following:
+	$$
+	f(x) = \sum_{n = 1}^{\infty} \frac{(-1)^n(x-1)^{2n-1}}{3n-1}
+	$$
+Find all values of x where this series converges absolutely, diverges, or converges conditionally. Give
+the series test that shows the convergence or divergence. What is the radius of convergence for this
+series about x = 1?
+\\ \\
+Notice the ratio test:
+	\begin{align*}
+		\lim\limits_{n \rightarrow \infty}\frac{(-1)^{n+1}(x-1)^{2n+1}}{3n+2} * \frac{3n-1}{(-1)^n(x-1)^{2n-1}} &= 
+		\lim\limits_{n \rightarrow \infty}\frac{-(x-1)^{2}(3n-1)}{3n+2} \\
+		&= -(x-1)^{2}
+	\end{align*}
+The series converges absolutely:
+	\begin{align*}
+		(x-1)^2 < 1 \\
+		|x-1| < 1 \\
+		0 < x < 2
+	\end{align*}
+The series diverges:
+	\begin{align*}
+		(x-1)^2 > 1 \\
+		|x-1| > 1 \\
+		x < 0 \text{ or } x > 2
+	\end{align*}
+The series converges conditionally at $x=0$ and $x=2$.
+\\ \\
+The radius of convergence for this series about $x=1$ is $\rho = 1$
+
+\newpage 
+
+\noindent \textbf{Problem 2: }Solve the following ODE with a power series method:
+	$$
+	(4 - x^2)y'' - xy' + 16y = 0
+	$$
+Assume a power series solution of the form:
+	$$
+	y(x) = \sum_{n = 0}^{\infty} a_nx^n
+	$$
+Clearly state the recurrence relation. Determine all the coefficients $a_n$ for $n = 2, ..., 10$ in terms
+of the two arbitrary constants, $a_0$ and $a_1$. Find the two linearly independent solutions, $y_1$ and $y_2$, up
+to and including terms of $x^{10}$. (You are not expected to find a closed form solution of any infinite
+series.) Determine all values of $x$ where your solutions $y_1$ and $y_2$ converge absolutely.
+\\ \\
+Notice the following:
+	\begin{align*}
+		y(x) = \sum_{n = 0}^{\infty} a_nx^n && y'(x) = \sum_{n = 1}^{\infty} na_nx^{n-1} && y''(x) = \sum_{n = 2}^{\infty} n(n-1)a_nx^{n-2}
+	\end{align*}
+	\begin{align*}
+		(4 - x^2)y'' - xy' + 16y &= \sum_{n = 2}^{\infty} 4n(n-1)a_nx^{n-2} - \sum_{n = 2}^{\infty} n(n-1)a_nx^{n} - \sum_{n = 1}^{\infty} na_nx^{n} + \sum_{n = 0}^{\infty} 16a_nx^n \\
+		&= \sum_{n = 0}^{\infty} 4(n+2)(n+1)a_{n+2}x^n - \sum_{n = 2}^{\infty} n(n-1)a_nx^{n} - \sum_{n = 1}^{\infty} na_nx^{n} + \sum_{n = 0}^{\infty} 16a_nx^n \\
+		&= 8a_2 + 24a_3x + \sum_{n = 2}^{\infty} 4(n+2)(n+1)a_{n+2}x^n - \sum_{n = 2}^{\infty} n(n-1)a_nx^{n} \\
+		&-a_1x - \sum_{n = 2}^{\infty} na_nx^{n} + 16a_0 + 16a_1x + \sum_{n = 2}^{\infty} 16a_nx^n \\
+		&= \sum_{n = 2}^{\infty} (4(n+2)(n+1)a_{n+2} - (n^2 - 16)a_n)x^n + (24a_3 + 15a_1)x + 8(a_2 + 2a_0) \\
+		&= 0
+	\end{align*}
+The recurrence relation is as follows:
+	\begin{align*}
+		4(n+2)(n+1)a_{n+2} - (n^2 - 16)a_n &= 0 \\
+		24a_3 + 15a_1 &= 0 \\
+		a_2 + 2a_0 &= 0
+ 	\end{align*}
+Notice we get the following from the recurrence relation:
+ 	\begin{align*}
+ 		a_{n+2} &= \frac{n^2 - 16}{4(n+2)(n+1)}a_n \\
+ 		a_2 &= -2a_0 \\
+ 		a_3 &= \frac{-5}{8}a_1
+ 	\end{align*}
+ 	
+\newpage
+
+Notice the following coefficients:
+	\begin{align*}
+		a_0 &= a_0 \\
+		a_1 &= a_1 \\
+		a_2 &= -2a_0 \\
+		a_3 &= \frac{-15}{4(3)(2)}a_1 \\
+		a_4 &= \frac{-1}{4}a_2 = \frac{-1}{4}(-2a_0) = \frac{1}{2}a_0 \\
+		a_5 &= \frac{-7}{4(5)(4)}a_3 = \frac{-7}{4(5)(4)}\left(\frac{-15}{4(3)(2)}a_1\right) \\
+		a_6 &= 0a_4 \\
+		a_7 &= \frac{9}{4(7)(6)}a_5 =\frac{9}{4(7)(6)}\left( \frac{-7}{4(5)(4)}\right)\left(\frac{-15}{4(3)(2)}a_1\right) \\
+		a_8 &= \frac{5}{56}a_6 = 0 \\
+		a_9 &= \frac{33}{4(9)(8)}a_7 = \frac{33}{4(9)(8)}\left(\frac{9}{4(7)(6)}\right)\left( \frac{-7}{4(5)(4)}\right)\left(\frac{-15}{4(3)(2)}a_1\right) \\
+		a_{10} &= \frac{2}{15}a_8 = 0
+	\end{align*}
+So we get the following:
+	\begin{align*}
+		y(x) &= a_0\left(1 - 2x^2 + \frac{1}{2}x^4\right) + a_1\left(x + \sum_{n = 1}^{\infty}\frac{[(2n - 1)^2 - 16][(2n-3)^2-16]......[1 - 16]}{4^n (2n+1)!}x^{2n+1}\right)
+	\end{align*}
+So thus we get:
+	\begin{align*}
+		y_1 = 1 - 2x^2 + \frac{1}{2}x^4 && y_2 = x + \frac{-5}{8}x^3 + \frac{7}{128}x^5 + \frac{3}{1024}x^7 + \frac{33}{98304}x^9
+	\end{align*}
+Notice that through the ratio test of 
+	\begin{align*}
+		\lim\limits_{n \rightarrow \infty} \left|\frac{a_n+2}{a_n}\right|x^{2}= \lim\limits_{n \rightarrow \infty} \left|\frac{n^2 - 16}{4(n+2)(n+1)}\right|x^{2} = \frac{x^2}{4} < 1
+	\end{align*}
+So we get that $y_2$ converges absolutely for $|x| < 2$ and $y_1$ converges for all x
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
