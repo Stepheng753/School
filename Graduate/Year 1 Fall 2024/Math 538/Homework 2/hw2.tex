@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+
+% ------ Codoing Packages ------ %
+
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+\lstset{style=mystyle}
+
+% ------ Codoing Packages ------ %
+
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newcommand{\qrarrow}{\quad \rightarrow \quad}
+\newcommand{\qqrarrow}{\qquad \rightarrow \qquad}
+\newcommand{\partiald}[2]{\frac{\partial #1}{\partial #2}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+\newenvironment{alist}{\begin{enumerate}[label=(\alph*)]}{\end{enumerate}}
+\newenvironment{rlist}{\begin{enumerate}[label=(\roman*)]}{\end{enumerate}}
+
+\begin{document}
+
+	\begin{center}
+		\textbf{Homework 2} \\
+		\textbf{Discrete Dynamical Systems and Chaos} \\
+		\textbf{Math 538} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+	\begin{problem}{T1.3}
+		Solve the inequality $|f(x) - 0| > |x - 0|$, where $f(x) = \frac{3x - x^3}{2}$. This identifies points whose distance from 0 increases on each iteration. Use the result to find a large set of initial conditions that do not converge to any sink of $f$.
+		\\ \\
+		Lets solve the given equality:
+		\[\left|\frac{3x - x^3}{2}\right| > |x|\]
+		\begin{align*}
+			\left(\frac{3x - x^3}{2}\right)^2 &> x^2 \\
+			\left(3x - x^3\right)^2 &> 4x^2 \\
+			x^6 - 6x^4 + 9x^2 &> 4x^2 \\
+			x^6 - 6x^4 + 5x^2 &> 0 \\
+			x^2(x^4 - 6x^2 + 5) &> 0 \\
+			x^2(x^2 - 5)(x^2 - 1) &> 0 \\
+			x^2(x - \sqrt{5})(x + \sqrt{5})(x - 1)(x + 1) &> 0
+		\end{align*}
+		Looking at a number line, we can see that the solution is the following:
+		\[ (-\infty, -\sqrt{5}) \cup (-1, 0) \cup (0, 1) \cup (\sqrt{5}, \infty) \]
+		We can see that for fixed points $x^* = 0, -1, 1$, $x^* = 0$ is a source that makes $f(x)$ converge to the sinks of $x^* = 1$ and $x^* = -1$.
+		\\ \\
+		We can see that for all values $|x| > \sqrt{5}$, we get that:
+		\[|f^{(k+1)}(x)| > |f^{(k)}(x)| \qrarrow \lim_{k \rightarrow \infty} |f^k(x)| = \infty\]
+		which shows that for $|x| > \sqrt{5}$, $x$ does not converge to any sink of $f$.
+	\end{problem}
+
+	\begin{problem}{T1.4}
+		Let $p$ be a fixed point of a map $f$. Given some $\epsilon > 0$, find a geometric condition under which all points $x$ in $N_\epsilon(p)$ are in the basin of $p$. Use cobweb plot analysis to explain your reasoning.
+		\\ \\
+		We can informally define basin of $p$ to be the set of initial points that converge into the sink $x^* = p$
+		\\ \\
+		Let $\epsilon > 0$ such that all values $N_\epsilon(p) = (p, p + \epsilon)$.  We can choose some $0< \delta < \epsilon$ such that $x = p + \delta \in N_\epsilon(p)$.
+		\\ \\
+		If we evaluate the sink condition of Theorem 1.5, we get:
+		\[\frac{|f(p + \delta) - f(p)|}{|p + \delta - p|} < 1\]
+		such that the geometric condition under which all points $x$ in $N_\epsilon(p)$ are in the basin of $p$ is as follows:
+		\[|f(p + \delta) - f(p)| < \delta < \epsilon\]
+		\\ \\
+		Notice for the example: $g(x) = 2x(1-x)$, we get a sink at $x = \frac{1}{2}$ because the $\Delta g(x) > \Delta x$ near $x = \frac{1}{2}$.
+		\begin{figure}[h!]
+			\centering
+			\includegraphics*[width=0.5\linewidth]{../Homework 1/textbook-1.2.png}
+		\end{figure}
+	\end{problem}
+
+	\begin{problem}{1.1}
+		Let $\ell(x) = ax + b$, where $a$ and $b$ are constants. For which values of $a$ and $b$ does $\ell$ have an attracting fixed point? A repelling fixed point?
+		\\ \\
+		First, notice the following:
+		\[\ell(x) = ax + b \qqrarrow \ell'(x) = a\]
+		Consider the following values for $a$ and $b$:
+		\begin{alist}
+			\item $(|a| < 1, b \in \mathbb{R})$ \\ \\
+			by Th. 1.5: $\ell$ has a stable/attracting fixed point.
+			\item $(|a| > 1, b \in \mathbb{R})$ \\ \\
+			by Th. 1.5: $\ell$ has an unstable/repelling fixed point.
+			\item $(a = -1, b \in \mathbb{R})$ \\ \\
+			Because $\ell(x) = -x + b$, there exists a period 2 orbit around the fixed point $x^* = b/2$
+			\item $(a = 1, b = 0)$ \\ \\
+			Because $\ell(x) = x$, every point is a fixed point, but none are either a stable/attracting or an unstable/repelling fixed point.
+			\item $(a = 1, b \in \mathbb{R}\backslash\{0\})$ \\ \\
+			Because $\ell(x) || x$, there are no fixed points.
+		\end{alist}
+	\end{problem}
+
+	\begin{problem}{1.2}
+		\begin{alist}
+			\item Let $f(x) = x - x^2$. Show that $x = 0$ is a fixed point of $f$, and describe the dynamical behavior of points near 0.
+			\\ \\
+			To show that $x = 0$ is a fixed point, we need to solve the following equality:
+			\[f(x) = x \qrarrow x - x^2 = x \qrarrow -x^2 = 0 \qrarrow x^* = 0\]
+			Notice the following behavior:
+			\begin{rlist}
+				\item For $x < 0$, we get that $f(x) < 0$ and:
+				\[|f^{(k+1)}(x)| > |f^{(k)}(x)| \qrarrow \lim_{k \rightarrow \infty} |f^k(x)| = \infty\]
+				Meaning $x^* = 0$ is being repelling on the interval: $(-\infty, 0)$
+				\item For $0 < x < 1$, we get that $f(x) > 0$ and:
+				\[|f^{(k+1)}(x)| < |f^{(k)}(x)| \qrarrow \lim_{k \rightarrow \infty} |f^k(x)| = 0\]
+				Meaning $x^* = 0$ is being attracting on the interval: $(0, 1)$
+				\item For $x > 1$, we get that $f(x) < 0$, which then maps to the first case, such that $x^* = 0$ is being repelling on the interval: $(0, \infty)$
+			\end{rlist}
+			\item Let $g(x) = \tan x, -\pi/2 < x < \pi/2$. Show that $x = 0$ is a fixed point of $g$, and describe the dynamical behavior of points near 0.
+			\\ \\
+			To show that $x = 0$ is a fixed point, we need to solve the following equality:
+			\[f(x) = x \qrarrow \tan x = x \qrarrow  \tan 0 = 0\]
+			Notice the following behavior:
+			\begin{rlist}
+				\item For $x < 0$, we get that $f(x) < 0$ and:
+				\[|f^{(k+1)}(x)| > |f^{(k)}(x)| \qrarrow \lim_{k \rightarrow \infty} |f^k(x)| = \infty\]
+				Meaning $x^* = 0$ is being repelling on the interval: $(-\infty, 0)$
+				\item For $x > 0$, we get that $f(x) < 0$ and:
+				\[|f^{(k+1)}(x)| > |f^{(k)}(x)| \qrarrow \lim_{k \rightarrow \infty} |f^k(x)| = \infty\]
+				Meaning $x^* = 0$ is being repelling on the interval: $(-\infty, 0)$
+			\end{rlist}
+			Thus, giving us that $x^* = 0$ is a source on the domain $-\pi/2 < x < \pi/2$.
+			\newpage
+			\item Give an example of a function $h$ for which $h'(0) = 1$ and $x = 0$ is an attracting fixed point.
+			\\ \\
+			Notice the following stable attracting fixed point at $x = 0$ of $h(x) = \sin x$
+			\begin{figure}[h!]
+				\centering
+				\includegraphics*[width=0.45\linewidth]{Prob1.2c1.PNG}
+				\includegraphics*[width=0.45\linewidth]{Prob1.2c2.PNG}
+			\end{figure}
+			\item Give an example of a function $h$ for which $h'(0) = 1$ and $x = 0$ is a repelling fixed point.
+			\\ \\
+			Notice the following stable attracting fixed point at $x = 0$ of $h(x) = x^4 + x^3 + x$
+			\begin{figure}[h!]
+				\centering
+				\includegraphics*[width=0.45\linewidth]{Prob1.2d1.PNG}
+				\includegraphics*[width=0.45\linewidth]{Prob1.2d2.PNG}
+			\end{figure}
+		\end{alist}
+	\end{problem}
+
+	\begin{problem}{1.3}
+		Let $f(x) = x^3 + x$. Find all fixed points of $f$ and decide whether they are sinks or sources. You will have to work without Theorem 1.5, which does not apply.
+		\\ \\
+		To find a fixed point, we set the following to be true and solve:
+		\[f(x) = x \qqrarrow x^3 + x = x \qqrarrow x^3 = 0 \qqrarrow x^* = 0\]
+		Notice the following inequality:
+		\[|x^3 + x - 0| = |x(x^2 + 1)| = |x|(x^2 + 1) > |x| \qrarrow (x^2 + 1) > 1\]
+		By definition of a source, we can see that the distance between $f(x)$ and $0$ is always greater than the distance between $x$ and $0$ such that:
+		\[\lim_{k \rightarrow \infty} |f^{k}(x)| = \infty\]
+	\end{problem}
+
+	\begin{problem}{(EXTRA)}
+		State and Prove a nonlinear version of the Stability Theorem (Theorem 1.5) when linear stability fails (i.e., $|f '(x^*)|=1$).
+		\\ \\
+		Let $x = x^*$ be a fixed point such that $f(x^*) = x^*$. Let $|f '(x^*)|=1$. Let there also exist a $\epsilon > 0$ such that $x^* \in N_{\epsilon}(x^*)$.
+		\\ \\
+		We can take any function and expand it to its taylor series:
+		\[f(x^* + \epsilon) = f(x^*) + f'(x^*)\epsilon + \frac{f''(x^*)}{2}\epsilon^2 + ... + \frac{f^{(n)}(x^*)}{n!}\epsilon^n\]
+		Moving some terms to the other side and setting $f'(x^*) = 1$, we get:
+		\[f(x^* + \epsilon) - f(x^*) = \epsilon + \frac{f''(x^*)}{2}\epsilon^2 + ... + \frac{f^{(n)}(x^*)}{n!}\epsilon^n = \epsilon + \sum_{n = 2}^{\infty} \frac{f^{(n)}(x^*)}{n!}\epsilon^n\]
+		Taking the absolute value of both sides and dividing by $\epsilon$, we get the result from Theorem 1.5:
+		\[\frac{|f(x^* + \epsilon) - f(x^*)|}{\epsilon} = \frac{1}{\epsilon} \left|\epsilon + \sum_{n = 2}^{\infty} \frac{f^{(n)}(x^*)}{n!}\epsilon^n \right| = \left|1 + \sum_{n = 2}^{\infty} \frac{f^{(n)}(x^*)}{n!}\epsilon^{n - 1} \right|\]
+		Looking at Theorem 1.5, we get the following conclusion:
+		\begin{alist}
+			\item $x^*$ is a sink:
+			\[\left|1 + \sum_{n = 2}^{\infty} \frac{f^{(n)}(x^*)}{n!}\epsilon^{n - 1} \right| < 1 \]
+			\item $x^*$ is a source:
+			\[\left|1 + \sum_{n = 2}^{\infty} \frac{f^{(n)}(x^*)}{n!}\epsilon^{n - 1} \right| > 1\]
+		\end{alist}
+
+	\end{problem}
+
+
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+% ------ Codoing Packages ------ %
+
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+\lstset{style=mystyle}
+
+% ------ Codoing Packages ------ %
+
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newcommand{\qrarrow}{\quad \rightarrow \quad}
+\newcommand{\qqrarrow}{\qquad \rightarrow \qquad}
+\newcommand{\partiald}[2]{\frac{\partial #1}{\partial #2}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+\newenvironment{alist}{\begin{enumerate}[label=(\alph*)]}{\end{enumerate}}
+\newenvironment{rlist}{\begin{enumerate}[label=(\roman*)]}{\end{enumerate}}
+\newenvironment{nlist}{\begin{enumerate}[label=(\arabic*)]}{\end{enumerate}}
+
+\begin{document}
+
+	\begin{center}
+		\textbf{Homework 1} \\
+		\textbf{Math Modeling} \\
+		\textbf{Math 636} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+    \begin{problem}{1}
+        A ball is thrown directly upward from the surface of the Earth. Assuming that the maximum height reached is a monomial function of the acceleration due to gravity, the mass of the ball and the initial velocity, use dimensional analysis to approximate the expression for the maximum height reached.
+    \end{problem}
+
+    \begin{problem}{2}
+        Non-dimensionalize the following equations:
+        \begin{alist}
+            \item \[\frac{dy}{dt} = ry(1 - \frac{y}{K}) \text{, where $r$ and $K$ are constant}\]
+            \item \[\frac{dy}{dt} = sy(a - y)(y - b) \text{, where $s$, $a$, $b$ are constants}\]
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{3}
+        For a given model equation
+        \[\frac{dN(t)}{dt} = r_BN(t)\left[1 - \frac{N(t)}{K_B}\right] - B\frac{N(t)^2}{A^2 + N(t)^2}\]
+        perform dimensional analysis to reduce the equation to the form
+        \[\frac{du}{dr} = ru\left(1 - \frac{u}{q}\right) - \frac{u^2}{1 + u^2}\]
+    \end{problem}
+
+    \begin{problem}{4}
+        For the damp pendulum equation
+        \[\ddot{\theta} + \alpha \dot{\theta} + \beta \sin \gamma \theta = 0, \quad \theta(0) = 0, \quad \dot{\theta}(0) = 1 \]
+        find suitable rescaling for the following cases:
+        \begin{alist}
+            \item \[\alpha, \gamma = \mathcal{O}, \quad \beta >> 1\]
+            \item \[\alpha, \beta = \mathcal{O}, \quad \gamma >> 1\]
+            \item \[\alpha ~ \beta\gamma ~ 1/\gamma >> 1\]
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{5}
+        Consider the following model equation:
+        \[\partiald{y}{t} = D\partiald{^2 y}{x^2} + \gamma y^3\]
+        \[y(x,0) = 0, \quad 0 < x < \infty\]
+        \[y(0,t) = y_0, \quad t > 0, \quad y(\infty, t) = 0, \quad t > 0\]
+        \begin{alist}
+            \item Write the dimensions of each variable, parameter, and term in the equation.
+            \item Non-dimensionalize the equation.
+            \item Analyze the non-dimensionalized parameters to find out what parameters to choose to make (relative) small diffusion or (relative) large diffusion.
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{6}
+        According to the radioactive decay law, the per capita decay rate of the amount $A(t)$ of $C^{14}$ (Carbon 14) is $-\lambda$. Suppose that an archeologist excavates a bone and measures its content for $C^{14}$. If the result is 25\% of the carbon present in bones of a living organism, what can be said about the age of the bone? The half-life of $C^{14}$ is 5730 years
+    \end{problem}
+\end{document}

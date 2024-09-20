@@ -1,0 +1,2181 @@
+
+<!-- saved from url=(0074)https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Simple mathematical models with very complicated dynamics - R.May</title>
+</head>
+
+<body background="./Simple mathematical models with very complicated dynamics - R.May_files/Paper12l.jpg" bgcolor="#ffffff" text="navy">
+
+<font color="#FF00000">
+<b>
+PDF version of this manuscript: 
+[<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.pdf">PDF</a>]<br>
+</b>
+</font>
+
+<p>
+Published in Nature, Vol. 261, p.459, June 10 1976.
+</p><p>
+<!--
+For a Postscript version of the article, click
+<a href="May.ps">here</a>.</font>
+-->
+
+</p><p>
+<br>
+</p><p>
+</p><center>
+<h1>SIMPLE MATHEMATICAL MODELS WITH VERY COMPLICATED DYNAMICS</h1>
+<h3>Robert M. May*</h3>
+</center>
+
+<p>
+<br>
+</p><p align="justify">
+<b>Abstract.</b> First-order difference equations arise in many contexts
+in the biological, economic and social sciences. 
+Such equations, even though simple and deterministic, can exhibit a
+surprising array of dynamical 
+behaviour, from stable points, to a bifurcating hierarchy of stable
+cycles, to apparently random 
+fluctuations. There are consequently many fascinating problems, some
+concerned with delicate 
+mathematical aspects of. the fine structure of the trajectories, and
+some concerned with the practical 
+implications and applications. This is an interpretive review of them.
+
+<!--
+<p>
+<br>
+<p>
+<b>Table of Contents</b>
+<p>
+<dl>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May1.html">INTRODUCTION</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May2.html">FIRST-ORDER DIFFERENCE EQUATIONS</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May3.html">DYNAMIC PROPERTIES OF EQUATION (1)</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May4.html">FINE STRUCTURE OF THE CHAOS</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May5.html">PRACTICAL PROBLEMS</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May6.html">MATHEMATICAL CURIOSITIES</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May7.html">APPLICATIONS</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May8.html">RELATED PHENOMENA IN HIGHER DIMENSIONS</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May9.html">CONCLUSION</a>
+<p>
+<dd><img src="GIFS/ball2.gif" align=top> <a
+href="May_refs.html">REFERENCES</a>
+</dl>
+-->
+
+<!--
+<p>
+For a Postscript version of the article, click
+<a href="May.ps">here</a>.
+-->
+
+
+</p><p>
+<br>
+</p><p align="justify">
+* King's College Research Centre, Cambridge CB2 1ST; on leave
+front Biology Department, Princeton University, Princeton 08540.
+</p><p>
+</p><hr align="left" width="15%">
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p>This page is maintained by Cren Frayer
+<br>Last modified: 15-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+<p>
+
+
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><h3>1. INTROUCTION</h3>
+<p align="justify">
+There are many situations, in many disciplines, which can be 
+described, at least to a crude first approximation, by a simple
+first-order difference equation. Studies of the dynamical
+properties of such models usually consist of finding constant
+equilibrium solutions, and then conducting a linearised analysis
+to determine their stability with respect to small disturbances:
+explicitly nonlinear dynamical features are usually not
+considered.
+
+</p><p align="justify">
+Recent studies have, however, shown that the very simplest
+nonlinear difference equations can possess an extraordinarily
+rich spectrum of dynamical behaviour, from stable points,
+through cascades of stable cycles, to a regime in which the
+behaviour (although fully deterministic) is in many respects
+"chaotic", or indistinguishable from the sample function of a
+random process.
+
+</p><p>
+This review article has several aims.
+
+</p><p align="justify">
+First, although the main features of these nonlinear 
+phenomena have been discovered and independently rediscovered by
+several people, I know of no source where all the main results
+are collected together. I have therefore tried to give such a
+synoptic account. This is done in a brief and descriptive way,
+and includes some new material: the detailed mathematical
+proofs are to be found in the technical literature, to which
+signposts are given.
+
+</p><p align="justify">
+Second, I indicate some of the interesting mathematical
+questions which do not seem to be fully resolved, Some of these
+problems are of a practical kind, to do with providing a 
+probabilistic desciiption for trajectories which seem random, even
+though their underlying structure is deterministic. Other
+problems are of intrinsic mathematical interest, and treat such
+things as the pathology of the bifurcation structure, or the truly
+random behaviour, that can arise when the nonlinear function
+<i>F(X)</i> of equation (1) is not analytical. One aim here is to stimulate
+research on these questions, particularly on the empirical
+questions which relate to processing data.
+
+</p><p align="justify">
+Third, consideration is given to some fields where these
+notions may find practical application. Such applications range
+from the abstractly metaphorical (where, for example, the
+transition from a stable point to "chaos" serves as a metaphor
+for the onset of turbulence in a fluid), to models for the dynamic
+behaviour of biological populations (where one can seek to use
+field or laboratory data to estimate the values of the parameters
+in the difference equation).
+
+</p><p align="justify">
+Fourth, there is a very brief review of the literature pertaining
+to the way this spectrum of behaviour - stable points, stable
+cycles, chaos - can arise in second or higher order difference
+equations (that is, two or more dimensions; two or more
+interacting species), where the onset of chaos usually requires
+less severe nonlinearities. Differential equations are also
+surveyed in this light; it seems that a three-dimensional system
+of first-order ordinary differential equations is required for the
+manifestation of chaotic behaviour.
+
+</p><p align="justify">
+The review ends with an evangelical plea for the introduction
+of these difference equations into elementary mathematics
+courses, so that students' intuition may be enriched by seeing
+the wild things that simple nonlinear equations can do.
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p>This page is maintained by Cren Frayer
+<br>Last modified: 15-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+</p><p>
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><p>
+</p><h3>2. FIRST-ORDER DIFFERENCE EQUATIONS</h3>
+<p align="justify">
+One of the simplest systems an ecologist can study is a seasonally 
+breeding population in which generations do not overlap
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a></sup>.
+Many natural populations, particularly among temperate zone
+insects (including many economically important crop and
+orchard pests), are of this kind, In this situation, the 
+observational data will usually consist of information about 
+the maximum, or the average, or the total population in each
+generation. The theoretician seeks to understand how the
+magnitude of the population in generation <i>t</i>+1,
+<i>X</i><sub>t+1</sub>, is 
+related to the magnitude of the population in the preceding
+generation <i>t, X</i><sub>t</sub>: such a relationship may be expressed
+in the general form
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+1</sub> = <i>F</i>(<i>X</i><sub>t</sub>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)
+</center>
+
+<p align="justify">
+The function <i>F(X)</i> will usually be what a biologist calls "density
+dependent", and a mathematician calls nonlinear; equation (1) is
+then a first-order, nonlinear difference equation.
+
+</p><p align="justify">
+Although I shall henceforth adopt the habit of referring to the
+variable <i>X</i> as "the population", there are countless situations
+outside population biology where the basic equation (1),
+applies. There are other examples in biology, as, for example
+in genetics <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#5" target="ads_dw">5</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#6" target="ads_dw">6</a></sup>
+(where the equation describes the change in gene
+frequency in time) or in epidemiology
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#7" target="ads_dw">7</a></sup> (with
+<i>X</i> the fraction of 
+the population infected at time <i>t</i>). Examples in economics
+include models for the relationship between commodity
+quantity and price
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#8" target="ads_dw">8</a></sup>, for the
+theory of business cycles
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#9" target="ads_dw">9</a></sup>, and for
+the temporal sequences generated by various other economic
+quantities <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#10" target="ads_dw">10</a></sup>.
+The general equation (1) also is germane to the social sciences
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#11" target="ads_dw">11</a></sup>,
+where it arises, for example, in theories of
+learning (where <i>X</i> may be the number of bits of information that
+can be remembered after an interval <i>t</i>), or in the propagation of
+rumours in variously structured societies (where <i>X</i> is the
+number of people to have heard the rumour after time <i>t</i>). The
+imaginative reader will be able to invent other contexts for
+equation (1).
+
+</p><p align="justify">
+In many of these contexts, and for biological populations in
+particular, there is a tendency for the variable <i>X</i> to increase
+from one generation to the next when it is small, and for it to
+decrease when it is large. That is, the nonlinear function <i>F(X)</i>
+often has the following properties: <i>F</i>(0)=0; <i>F(X)</i> increases
+monotonically as <i>X</i> increases through the range 0 &lt; <i>X &lt; A</i>
+(with <i>F(X)</i> attaining its maximum value at <i>X = A</i>); and
+<i>F(X)</i> 
+decreases monotonically as <i>X</i> increases beyond <i>X = A</i>. 
+Moreover, <i>F(X)</i> will usually contain one or more parameters which
+"tune" the severity of this nonlinear behaviour; parameters
+which tune the steepness of the hump in the <i>F(X)</i> curve. These
+parameters will typically have some biological or economic or
+sociological significance.
+
+</p><p align="justify">
+A specific example is afforded by the equation
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#12" target="ads_dw">12</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#23" target="ads_dw">23</a></sup>
+
+</p><p>
+</p><center>
+<i>N</i><sub>t+1</sub> = <i>N</i><sub>t</sub> (<i>a</i> - <i>b</i>
+<i>N</i><sub>t</sub>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)
+</center>
+
+<p align="justify">
+This is sometimes called the "logistic" difference equation. In
+the limit <i>b</i> = 0, it describes a population growing purely 
+exponentially (for <i>a</i> &gt; 1); for <i>b</i>
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/neq.gif" alt="neq"> 0, the quadratic nonlinearity 
+produces a growth curve with a hump, the steepness of which is
+tuned by the parameter <i>a</i>. By writing <i>X = bN/a</i>, the
+equation may be brought into canonical form
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#12" target="ads_dw">12</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#23" target="ads_dw">23</a></sup>
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+1</sub> = <i>a</i><i>X</i><sub>t</sub> (1 -
+<i>X</i><sub>t</sub>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)
+</center>
+
+<p align="justify">
+In this form, which is illustrated in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%201">Fig. 1</a>, it
+is arguably the 
+simplest nonlinear difference equation. I shall use equation (3)
+for most of the numerical examples and illustrations in this
+article. Although attractive to mathematicians by virtue of its
+extreme simplicity, in practical applications equation (3) has the
+disadvantage that it requires <i>X</i> to remain on the interval
+0 &lt; <i>X</i> &lt; 1; if <i>X</i> ever exceeds unity, subsequent iterations
+diverge 
+towards - <img src="./Simple mathematical models with very complicated dynamics - R.May_files/infty.gif" alt="infty"> (which means the
+population becomes extinct). 
+Furthermore, <i>F(X)</i> in equation (3) attains a maximum value of
+<i>a</i>/4 (at <i>X</i> = 1/2); the equation therefore possesses non-trivial
+dynamical behaviour only if <i>a</i> &lt; 4. On the other hand, all
+trajectories are attracted to <i>X</i> = 0 if <i>a</i> &lt; 1. Thus for
+non-trivial dynamical behaviour we require 1 &lt; <i>a</i> &lt; 4; failing
+this, the population becomes extinct.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p><p>
+</p><center>
+<a name="Figure 1"><table border="0" width="40%">
+<tbody><tr>
+ <td><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/Figures/figure1.jpg"><img src="./Simple mathematical models with very complicated dynamics - R.May_files/fig1.jpg" alt="Figure 1"></a>
+</td></tr><tr>
+ <td><p align="justify"><b>Figure 1.</b> A typical form for the
+ relationship between <i>X</i><sub>t+1</sub> and <i>X</i><sub>t</sub> 
+ described by equation (1). The curves are for equation (3), with
+ <i>a</i> = 2.707 (<i>a</i>); and <i>a</i> = 3.414 (<i>b</i>). The
+ dashed lines indicate the 
+ slope at the "fixed points" where <i>F(X)</i> intersects the 45° line:
+ for the case <i>a</i> this slope is less steep than -45° and the fixed
+ point is stable; for <i>b</i> the slope is steeper than  -45°, and the
+ point is unstable.
+</p></td></tr></tbody></table>
+</a></center><a name="Figure 1">
+
+</a><p align="justify"><a name="Figure 1">
+Another example, with a more secure provenance in the biological literature
+<sup></sup></a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#23" target="ads_dw">23</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#27" target="ads_dw">27</a>, is the equation
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+1</sub> = <i>X</i><sub>t</sub> exp[<i>r</i> (1 -
+<i>X</i><sub>t</sub>)]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)
+</center>
+
+<p align="justify">
+This again describes a population with a propensity to simple
+exponential growth at low densities, and a tendency to decrease
+at high densities. The steepness of this nonlinear behaviour is
+tuned by the parameter <i>r</i>. The model is plausible for a single
+species population which is regulated by an epidemic disease at
+high density <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#28" target="ads_dw">28</a></sup>.
+The function <i>F(X)</i> of equation (4) is slightly more 
+complicated than that of equation (3), but has the compensating
+advantage that local stability implies global stability<sup>1</sup> for all
+<i>X</i> &gt; 0.
+
+</p><p align="justify">
+The forms (3) and (4) by no means exhaust the list of single-humped 
+functions <i>F(X)</i> for equation (1) which can be culled
+from the ecological literature. A fairly full such catalogue is
+given, complete with references, by May and Oster
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a></sup>. Other similar
+mathematical functions are given by Metropolis et al.
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a></sup>. Yet
+other forms for <i>F(X)</i> are discussed under the heading of
+"mathematical curiosities" below.
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 15-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><p>
+</p><h3>3. DYNAMIC PROPERTIES OF EQUATION (1)</h3>
+<p align="justify">
+Possible constant, equilibrium values (or "fixed points") of <i>X</i> in
+equation (1) may be found algebraically by putting
+<i>X</i><sub>t+1</sub> = <i>X</i><sub>t</sub> = 
+<i>X</i>*, and solving the resulting equation
+
+</p><p>
+</p><center>
+<i>X</i>* = <i>F</i>(<i>X</i>*)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5)
+</center>
+
+<p align="justify">
+An equivalent graphical method is to find the points where the
+curve <i>F(X)</i> that maps <i>X</i><sub>t</sub> into
+<i>X</i><sub>t+1</sub> intersects the 45° line, 
+<i>X</i><sub>t+1</sub> = <i>X</i><sub>t</sub> which corresponds to the
+ideal nirvana of zero 
+population growth; see <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig. 1</a>. For the
+single-hump curves 
+discussed above, and exemplified by equations (3) and (4), there
+are two such points: the trivial solution <i>X</i> = 0, and a non-trivial
+solution <i>X</i>* (which for equation (3) is <i>X</i>* = 1 - (1/<i>a</i>).
+
+</p><p align="justify">
+The next question concerns the stability of the equilibrium
+point <i>X</i>*. This can be seen
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#24" target="ads_dw">24</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#25" target="ads_dw">25</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#19" target="ads_dw">19</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#21" target="ads_dw">21</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a></sup> to depend on the slope
+of the <i>F(X)</i> curve at <i>X</i>*. This slope, which is illustrated
+by the dashed lines in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig. 1</a>, can be
+designated 
+
+</p><p>
+</p><center>
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">(<i>X</i>*) = [d<i>F</i> /
+d<i>X</i>]<sub>x = x*</sub>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(6)
+</center>
+
+<p align="justify">
+So long as this slope lies between 45° and  -45° (that is,
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup>
+between +1 and  -1), making an acute angle with the 45° ZPG
+line, the equilibrium point <i>X</i>* will be at least locally stable,
+attracting all trajectories in its neighbourhood. In equation (3),
+for example, this slope is
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup> = 2 -
+<i>a</i>: the equilibrium point is 
+therefore stable, and attracts all trajectories originating in the
+interval 0 &lt; <i>X</i> &lt; 1, if and only if 1 &lt; <i>a</i> &lt; 3.
+
+</p><p align="justify">
+As the relevant parameters are tuned so that the curve <i>F(X)</i>
+becomes more and more steeply humped, this stability-determining 
+slope at <i>X</i>* may eventually steepen beyond  -45° (that is,
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup> &lt; -1),
+whereupon the equilibrium point <i>X</i>* is no longer stable.
+
+</p><p align="justify">
+What happens next? What happens, for example, for <i>a</i> &gt; 3 in
+equation (3)?
+
+</p><p align="justify">
+To answer this question, it is helpful to look at the map which
+relates the populations at successive intervals 2 generations
+apart; that is, to look at the function which relates
+<i>X</i><sub>t+2</sub> to <i>X</i><sub>t</sub>. 
+This second iterate of equation (1) can be written
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+2</sub> = <i>F</i>[<i>F</i>(<i>X</i><sub>t</sub>)]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(7)
+</center>
+
+<p>
+or, introducing an obvious piece of notation,
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+2</sub> = <i>F</i><sup>(2)</sup>(<i>X</i><sub>t</sub>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(8)
+</center>
+
+<p>
+The map so derived from equation (3) is illustrated in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">Figs 2</a> and <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">3</a>.
+
+</p><p>
+</p><center>
+<a name="Figure 2"><table border="0" width="40%">
+<tbody><tr>
+ <td><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/Figures/figure3.jpg"><img src="./Simple mathematical models with very complicated dynamics - R.May_files/fig3.jpg" alt="Figure 2"></a>
+</td></tr><tr>
+ <td><p align="justify"><b>Figure 2.</b> The map relating
+ <i>X</i><sub>t+2</sub> to <i>X</i><sub>t</sub>, obtained by two
+ iterations of equation (3). This figure is for the case (<i>a</i>) of
+ <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig. 1</a>, <i>a</i> = 2.707:
+ the basic fixed point is stable, and it is the only point at which
+ <i>F</i><sup>(2)</sup><i>(X)</i> intersects the 45° line (where
+ its slope, shown by the dashed line, is less steep than 45°).
+</p></td></tr></tbody></table>
+</a></center><a name="Figure 2">
+
+<p>
+</p></a><center><a name="Figure 2">
+</a><a name="Figure 3"><table border="0" width="40%">
+<tbody><tr>
+ <td><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/Figures/figure2.jpg"><img src="./Simple mathematical models with very complicated dynamics - R.May_files/fig2.jpg" alt="Figure 3"></a>
+</td></tr><tr>
+ <td><p align="justify"><b>Figure 3.</b> As for
+ <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">Fig. 2</a>, except that here <i>a</i> = 3.414, as
+ in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig. 1b</a>. 
+ The basic fixed point is now unstable: the slope of
+ <i>F</i><sup>(2)</sup><i>(X)</i> at 
+ this point steepens beyond 45°, leading to the appearance of
+ two new solutions of period 2.
+</p></td></tr></tbody></table>
+</a></center><a name="Figure 3">
+
+<p align="justify">
+Population values which recur every second generation (that
+is, fixed points with period 2) may now be written as
+<i>X</i>*<sub>2</sub>, and found either algebraically from
+
+</p><p>
+</p><center>
+<i>X</i>*<sub>2</sub> = <i>F</i><sup>(2)</sup> (<i>X</i>*<sub>2</sub>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(9)
+</center>
+
+</a><p align="justify"><a name="Figure 3">
+or graphically from the intersection between the map
+<i>F</i><sup>(2)</sup><i>(X)</i> 
+and the 45° line, as shown in </a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">Figs 2</a> and
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">3</a>. Clearly the 
+equilibrium point <i>X</i>* of equation (5) is a solution of equation (9);
+the basic fixed point of period 1 is a degenerate case of a period
+2 solution. We now make a simple, but crucial, observation
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a></sup>:
+the slope of the curve <i>F</i><sup>(2)</sup><i>(X)</i> at the point
+<i>X</i>*, defined as 
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(2)</sup>(<i>X</i>*)
+and illustrated by the dashed lines in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">Figs 2</a>
+and <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">3</a>, is
+the square of the corresponding slope of <i>F(X)</i>
+
+</p><p>
+</p><center>
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(2)</sup> (<i>X</i>*)
+= [<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup>
+(<i>X</i>*)]<sup>2</sup>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(10)
+</center>
+
+<p align="justify">
+This fact can now be used to make plain what happens when the
+fixed point <i>X</i>* becomes unstable. If the slope of <i>F(X)</i> is
+less than -45° (that is,
+|<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup>| &lt; 1),
+as illustrated by curve <i>a</i> in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig. 1</a>,
+then <i>X</i>* is stable. Also, from equation (10), this implies 0 &lt;
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(2)</sup> &lt; 1
+corresponding to the slope of <i>F</i><sup>(2)</sup> at <i>X</i>* lying
+between 0° and 
+45°, as shown in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">Fig. 2</a>. As long as the
+fixed point <i>X</i>* is stable, it 
+provides the only non-trivial solution to equation (9). On the
+other hand, when
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup> steepens
+beyond  -45° (that is, 
+|<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup>| &gt; 1),
+as illustrated by curve <i>b</i> in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig 1</a>, <i>X</i>* becomes
+unstable. At the same time, from equation (10) this implies
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(2)</sup> &gt; 1,
+corresponding to the slope of <i>F</i><sup>(2)</sup> at <i>X</i>*
+steepening beyond 45°, as shown in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">Fig. 3</a>. As this happens, the curve 
+<i>F</i><sup>(2)</sup><i>(X)</i> must develop a "loop", and two new
+fixed points of 
+period 2 appear, as illustrated in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">Fig. 3</a>.
+
+</p><p align="justify">
+In short, as the nonlinear function <i>F(X)</i> in equation (1)
+becomes more steeply humped, the basic fixed point <i>X</i>* may
+become unstable. At exactly the stage when this occurs, there
+are born two new and initially stable fixed points of period 2,
+between which the system alternates in a stable cycle of period 2. 
+The sort of graphical analysis indicated by
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Figs 1</a>, <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">2</a> and
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">3</a>, along
+with the equation (10), is all that is needed to establish this
+generic result <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a></sup>.
+
+</p><p align="justify">
+As before, the stability of this period 2 cycle depends on the
+slope of the curve <i>F</i><sup>(2)</sup><i>(X)</i> at the 2
+points. (This slope is easily shown to be the same at both points
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#20" target="ads_dw">20</a></sup>,
+and more generally to
+be the same at all <i>k</i> points on a period <i>k</i> cycle.)
+Furthermore, as 
+is clear by imagining the intermediate stages between
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%202">Figs 2</a> and
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%203">3</a>, this stability-determining slope has the value
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> = +1 at the
+birth of the 2-point cycle, and then decreases through zero
+towards <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> = -1 as the hump
+in <i>F(X)</i> continues to steepen. 
+Beyond this point the period 2 points will in turn become 
+unstable, and bifurcate to give an initially stable cycle of period 4.
+This in turn gives way to a cycle of period 8, and thence to a
+hierarchy of bifurcating stable cycles of periods 16, 32, 64,...,
+2<sup>n</sup>. In each case, the way in which a stable cycle of period
+<i>k</i> 
+becomes unstable, simultaneously bifurcating to produce a new
+and initially stable cycle of period 2<i>k</i>, is basically similar to the
+process just adumbrated for <i>k</i> = 1. A more full and rigorous
+account of the material covered so far is in ref. 1.
+
+</p><p align="justify">
+This "very beautiful bifurcation phenomenon"
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a></sup> is depicted
+in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%204">Fig. 4</a>, for the example equation (3). It
+cannot be too strongly 
+emphasised that the process is generic to most functions <i>F(X)</i>
+with a hump of tunable steepness. Metropolis et al.
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a></sup> refer to
+this hierarchy of cycles of periods 2<sup>n</sup> as the harmonics of the
+fixed point <i>X</i>*.
+
+</p><p>
+</p><center>
+<a name="Figure 4"><table border="0" width="40%">
+<tbody><tr>
+ <td><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/Figures/figure4.jpg"><img src="./Simple mathematical models with very complicated dynamics - R.May_files/fig4.jpg" alt="Figure 4"></a>
+</td></tr><tr>
+ <td><p align="justify"><b>Figure 4.</b> This figure illustrates some of
+ the stable ( ___ ) and 
+ unstable (----) fixed points of various periods that can
+ arise by bifurcation processes in equation (1) in general, and
+ equation (3) in particular. To the left, the basic stable fixed point
+ becomes unstable and gives rise by a succession of pitchfork
+ bifurcations to stable harmonics of period 2<sup>n</sup>; none of these
+ cycles is stable beyond <i>a</i> = 3.5700. To the right, the two period
+ 3 cycles appear by tangent bifurcation: one is initially unstable;
+ the other is initially stable, but becomes unstable and gives way
+ to stable harmonics of period 3 × 2<sup>n</sup>, which have a point of
+ accumulation at <i>a</i> = 3.8495. Note the change in scale on the
+ <i>a</i> axis, needed to put both examples on the same figure. There
+ are infinitely many other such windows, based on cycles of
+ higher periods.
+</p></td></tr></tbody></table>
+</a></center><a name="Figure 4">
+
+<p align="justify">
+Although this process produces an infinite sequence of cycles
+with periods 2<sup>n</sup> (<i>n</i> -&gt;
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/infty.gif" alt="infty">), the "window" of parameter
+values 
+wherein any one cycle is stable progressively diminishes, so that
+the entire process is a convergent one, being bounded above by
+some critical parameter value. (This is true for most, but not
+all, functions <i>F(X)</i>: see equation (17) below.) This critical
+parameter value is a point of accumulation of period 2<sup>n</sup> cycles.
+For equation (3) it is denoted <i>a</i><sub>c</sub> :
+<i>a</i><sub>c</sub> = 3.5700...
+
+</p></a><p align="justify"><a name="Figure 4">
+Beyond this point of accumulation (for example, for <i>a</i> &gt;
+<i>a</i><sub>c</sub> in 
+equation (3)) there are an infinite number of fixed points with
+different periodicities, and an infinite number of different
+periodic cycles. There are also an uncountable number of initial
+points <i>X</i><sub>0</sub> which give totally aperiodic (although bounded)
+trajectories; no matter how long the time series generated by
+<i>F(X)</i> is run out, the pattern never repeats. These facts may be
+established by a variety of methods
+<sup></sup></a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#20" target="ads_dw">20</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#29" target="ads_dw">29</a>. Such a situation,
+where an infinite number of different orbits can occur, has been
+christened "chaotic" by Li and Yorke<sup>20</sup>.
+
+</p><p align="justify">
+As the parameter increases beyond the critical value, at first
+all these cycles have even periods, with <i>X</i><sub>t</sub>
+alternating up and 
+down between values above, and values below, the fixed point
+<i>X</i>*. Although these cycles may in fact be very complicated
+(having a non-degenerate period of, say, 5,726 points before
+repeating), they will seem to the casual observer to be rather like
+a somewhat "noisy" cycle of period 2. As the parameter value
+continues to increase, there comes a stage (at <i>a</i> = 3.6786.. for
+equation (3)) at which the first odd period cycle appears. At
+first these odd cycles have very long periods, but as the 
+parameter value continues to increase cycles with smaller and
+smaller odd periods are picked up, until at last the three-point
+cycle appears (at <i>a</i> = 3.8284 . . for equation (3)). Beyond this
+point, there are cycles with every integer period, as well as an
+uncountable number of asymptotically aperiodic trajectories:
+Li and Yorke <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#20" target="ads_dw">20</a></sup>
+entitle their original proof of this result "Period
+Three Implies Chaos".
+
+</p><p align="justify">
+The term "chaos" evokes an image of dynamical trajectories
+which are indistinguishable from some stochastic process.
+Numerical simulations
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#12" target="ads_dw">12</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#15" target="ads_dw">15</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#21" target="ads_dw">21</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#23" target="ads_dw">23</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#25" target="ads_dw">25</a></sup>
+of the dynamics of equation
+(3), (4) and other similar equations tend to confirm this impression. 
+But, for smooth and "sensible" functions <i>F(X)</i> such as in
+equations (3) and (4), the underlying mathematical fact is that
+for any specified parameter value there is one unique cycle that
+is stable, and that attracts essentially all initial points
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#29" target="ads_dw">29</a></sup> (see
+ref. 4, appendix A, for a simple and lucid exposition). That is,
+there is one cycle that "owns" almost all initial points; the
+remaining infinite number of other cycles, along with the
+asymptotically aperiodic trajectories, own a set of points which,
+although uncountable, have measure zero.
+
+</p><p align="justify">
+As is made clear by <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Table%203">Tables 3</a> and
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Table%204">4</a> below, any one particular
+stable cycle is likely to occupy an extraordinarily narrow
+window of parameter values. This fact, coupled with the long
+time it is likely to take for transients associated with the initial
+conditions to damp out, means that in practice the unique
+cycle is unlikely to be unmasked, and that a stochastic description 
+of the dynamics is likely to be appropriate, in spite of the
+underlying deterministic structure. This point is pursued further
+under the heading "practical applications", below.
+
+</p><p align="justify">
+The main messages of this section are summarised in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%201">Table 1</a>, which sets out the various domains of
+dynamical behaviour 
+of the equations (3) and (4) as functions of the parameters, <i>a</i>
+and <i>r</i> respectively, that determine the severity of the nonlinear
+response. These properties can be understood qualitatively in a
+graphical way, and are generic to any well behaved <i>F(X)</i> in
+equation (1).
+
+</p><p>
+</p><center>
+<a name="Table 1"><table border="0" width="100%">
+<caption align="top"><b>Table 1.</b> Summary of the way various
+"single-hump" functions <i>F(X)</i>, from equation (1), behave in the
+chaotic region, distinguishing the dynamical 
+properties which are generic from those which are not</caption>
+<tbody><tr>
+ <td colspan="5"><hr>
+</td></tr><tr>
+ <td align="center">The function <i>F(X)</i>
+ </td><td>
+ </td><td>
+ </td><td><i>aX</i>; if <i>X</i>&nbsp;&lt;&nbsp;½
+ </td><td><img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><i>X</i>; if
+ <i>X</i>&nbsp;&lt;&nbsp;1 
+</td></tr><tr>
+ <td align="center">of equation (1)
+ </td><td><i>aX(1 - X)</i>
+ </td><td><i>X</i> exp[<i>r</i>(1 - <i>X</i>)]
+ </td><td><i>a(1 - X)</i>; if <i>X</i>&nbsp;&gt;&nbsp;½ 
+ </td><td><img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><i>X</i><sup>1-b</sup>;
+ if <i>X</i>&nbsp;&gt;&nbsp;1 
+</td></tr><tr>
+ <td>Tunable parameter
+ </td><td><i>a</i>
+ </td><td><i>r</i>
+ </td><td><i>a</i>
+ </td><td><i>b</i>
+</td></tr><tr>
+ <td>Fixed point becomes unstable
+ </td><td>3.0000 
+ </td><td>2.0000
+ </td><td>1.0000*
+ </td><td>2.0000
+</td></tr><tr>
+ <td>"Chaotic" region begins
+ </td><td>    </td><td> </td><td> </td><td>
+</td></tr><tr>
+ <td>[point of accumulation of cycles of period 2<sup>n</sup>]
+ </td><td>3.5700
+ </td><td>2.6924
+ </td><td>1.0000
+ </td><td>2.0000
+</td></tr><tr>
+ <td>First odd-period cycle appears
+ </td><td>3.6786
+ </td><td>2.8332
+ </td><td>1.4142
+ </td><td>2.6180
+</td></tr><tr>
+ <td>Cycle with period 3 appears
+ </td><td>    </td><td> </td><td> </td><td>
+</td></tr><tr>
+ <td>[and therefore every integer period present]
+ </td><td>3.8284
+ </td><td>3.1024
+ </td><td>1.6180
+ </td><td>3.0000
+</td></tr><tr>
+ <td>"Chaotic" region ends
+ </td><td>4.0000†
+ </td><td><img src="./Simple mathematical models with very complicated dynamics - R.May_files/infty.gif" alt="infty">‡
+ </td><td>2.000†
+ </td><td><img src="./Simple mathematical models with very complicated dynamics - R.May_files/infty.gif" alt="infty">‡
+</td></tr><tr>
+ <td>Are there stable cycles in the chaotic region?
+ </td><td>Yes   </td><td>Yes
+ </td><td>No    </td><td>No
+</td></tr><tr>
+ <td colspan="5"><hr>
+</td></tr><tr>
+ <td colspan="5">*  Below this <i>a</i> value, <i>X</i> = 0 is stable.
+</td></tr><tr>
+ <td colspan="5"> †  All solutions are attracted to
+ -<img src="./Simple mathematical models with very complicated dynamics - R.May_files/infty.gif" alt="infty"> for <i>a</i> values
+ beyond this.
+</td></tr><tr>
+ <td colspan="5"> ‡  In practice, as <i>r</i> or <i>b</i> becomes
+ large enough, <i>X</i> will eventually be carried so low as to be
+ effectively zero, thus producing extinction in models 
+ of biological populations.
+</td></tr></tbody></table>
+</a></center><a name="Table 1">
+
+</a><p align="justify"><a name="Table 1">
+We now proceed to a more detailed discussion of the mathematical 
+structure of the chaotic regime for analytical functions,
+and then to the practical problems alluded to above and to a
+consideration of the behavioural peculiarities exhibited by 
+non-analytical functions (such as those in the two right hand columns
+of </a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%201">Table 1</a>).
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 15-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+</p><p>
+
+
+</p><p>
+
+
+
+</p><p>
+</p><p>
+<br>
+<br>
+<br>
+</p><h3>4. FINE STRUCTURE OF THE CHAOTIC REGIME</h3>
+<p align="justify">
+We have seen how the original fixed point <i>X</i>* bifurcates to give
+harmonics of period 2<sup>n</sup>. But how do new cycles of period <i>k</i>
+arise?
+
+</p><p align="justify">
+The general process is illustrated in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%205">Fig. 5</a>,
+which shows how
+period 3 cycles originate. By an obvious extension of the
+notation introduced in equation (8). populations three generations 
+apart are related by
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+3</sub> = <i>F</i><sup>(3)</sup> (<i>X</i><sub>t</sub>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(11)
+</center>
+
+<p align="justify">
+If the hump in <i>F(X)</i> is sufficiently steep, the threefold iteration
+will produce a function <i>F</i><sup>(3)</sup><i>(X)</i> with 4 humps,
+as shown in 
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%205">Fig. 5</a> for the <i>F(X)</i> of equation (3). At
+first (for <i>a</i> &lt; 3.8284 . . in
+equation 3) the 45° line intersects this curve only at the single
+point <b>X*</b> (and at <i>X</i> = 0), as shown by the solid curve in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%205">Fig. 5</a>.
+As the hump in <i>F(X)</i> steepens, the hills and valleys in <i>F</i><sup>(3)</sup><i>(X)</i>
+become more pronounced, until simultaneously the first two
+valleys sink and the final hill rises to touch the 45° line, and then
+to intercept it at 6 new points, as shown by the dashed curve in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%205">Fig. 5</a>. These 6 points divide into two distinct
+three-point cycles. As can be made plausible by imagining the
+intermediate stages in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%205">Fig. 5</a>, it can be shown
+that the stability-determining slope of 
+<i>F</i><sup>(3)</sup><i>(X)</i> at three of these points has a common
+value, which is 
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(3)</sup> = +1 at
+their birth, and thereafter steepens beyond +1: 
+this period 3 cycle is never stable. The slope of
+<i>F</i><sup>(3)</sup><i>(X)</i> at the other three points begins at
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(3)</sup> = +1, and
+then decreases 
+towards zero, resulting in a stable cycle of period 3. As <i>F(X)</i>
+continues to steepen, the slope
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(3)</sup> for this
+initially stable 
+three-point cycle decreases beyond -1; the cycle becomes
+unstable, and gives rise by the bifurcation process discussed in
+the previous section to stable cycles of period 6, 12, 24, ...,
+3 × 2<sup>n</sup>. This birth of a stable and unstable pair of period 3
+cycles, and the subsequent harmonics which arise as the
+initially stable cycle becomes unstable, are illustrated to the right
+of <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May3.html#Figure%204">Fig. 4</a>.
+
+</p><p>
+</p><center>
+<a name="Figure 5"><table border="0" width="40%">
+<tbody><tr>
+ <td><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/Figures/figure5.jpg"><img src="./Simple mathematical models with very complicated dynamics - R.May_files/fig5.jpg" alt="Figure 5"></a>
+</td></tr><tr>
+ <td><p align="justify"><b>Figure 5.</b> The relationship between
+ <i>X</i><sub>t+3</sub> and <i>X</i><sub>t</sub>, obtained by three 
+ iterations of equation (3). The solid curve is for <i>a</i> = 3.7, and
+ only intersects the 45° line once. As <i>a</i> increases, the
+ hills and valleys become more pronounced. The dashed curve is for
+ <i>a</i> = 3.9, and six new period 3 points have appeared (arranged
+ as two cycles, each of period 3).
+</p></td></tr></tbody></table>
+</a></center><a name="Figure 5">
+
+</a><p align="justify"><a name="Figure 5">
+There are, therefore, two basic kinds of bifurcation 
+processes <sup></sup></a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>
+for first order difference equations. Truly new cycles of
+period <i>k</i> arise in pairs (one stable, one unstable) as the hills and
+valleys of higher iterates of <i>F(X)</i> move, respectively, up and
+down to intercept the 45° line, as typified by
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%205">Fig. 5</a>. Such cycles
+are born at the moment when the hills and valleys become
+tangent to the 45° line, and the initial slope of the curve
+<i>F</i><sup>(k)</sup> at the points is thus
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup> = +1: this
+type of bifurcation may be called
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a></sup>
+a tangent bifurcation or a <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">
+= +1 bifurcation.  
+Conversely, an originally stable cycle of period <i>k</i> may become
+unstable as <i>F(X)</i> steepens. This happens when the slope of
+<i>F</i><sup>(k)</sup> 
+at these period <i>k</i> points steepens beyond
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup> = -1, whereupon
+a new and initially stable cycle of period 2<i>k</i> is born in the way
+typified by <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May3.html#Figure%202">Figs 2</a> and
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May3.html#Figure%203">3</a>. This type of bifurcation may be
+called a pitchfork bifurcation (borrowing an image from the
+left hand side of <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May3.html#Figure%204">Fig. 4</a>) or a
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> = -1 bifurcation
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a></sup>.
+
+</p><p align="justify">
+Putting all this together, we conclude that as the parameters 
+in <i>F(X)</i> are varied the fundamental, stable dynamical units are
+cycles of basic period <i>k</i>, which arise by tangent bifurcation,
+along with their associated cascade of harmonics of periods
+<i>k</i>2<sup>n</sup>, which arise by pitchfork bifurcation. On this
+basis, the 
+constant equilibrium solution <i>X</i>* and the subsequent hierarchy
+of stable cycles of periods 2<sup>n</sup> is merely a special case, albeit a
+conspicuously important one (namely <i>k</i> = 1), of a general
+phenomenon. In addition, remember
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#29" target="ads_dw">29</a></sup> that for sensible,
+analytical functions (such as, for example, those in equations
+(3) and (4)) there is a unique stable cycle for each value of the
+parameter in <i>F(X)</i>. The entire range of parameter values
+(1 &lt; <i>a</i> &lt; 4 in equation (3), 0 &lt; <i>r</i> in equation
+(4)) may thus be 
+regarded as made up of infinitely many windows of parameter
+values - some large, some unimaginably small - each corresponding 
+to a single one of these basic dynamical units.
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%203">Tables 3</a>
+and <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%204">4</a>, below, illustrate this notion. These
+windows are divided 
+from each other by points (the points of accumulation of the
+harmonics of period <i>k</i>2<sup>n</sup>) at which the system is truly
+chaotic, with no attractive cycle: although there are infinitely many such
+special parameter values, they have measure zero on the
+interval of all values.
+
+</p><p align="justify">
+How are these various cycles arranged along the interval of
+relevant parameter values? This question has to my knowledge
+been answered independently by at least 6 groups of people,
+who have seen the problem in the context of combinatorial
+theory <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#30" target="ads_dw">30</a></sup>,
+numerical analysis<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#13" target="ads_dw">13</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#14" target="ads_dw">14</a></sup>,
+population biology
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a></sup>, and
+dynamical systems theory
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#31" target="ads_dw">31</a></sup> (broadly defined).
+
+</p><p align="justify">
+A simple-minded approach (which has the advantage of
+requiring little technical apparatus, and the disadvantage of
+being rather clumsy) consists of first answering the question,
+how many period <i>k</i> points can there be? That is, how many
+distinct solutions can there be to the equation
+
+</p><p>
+</p><center>
+<i>X</i>*<sub>k</sub> = <i>F</i><sup>(k)</sup> (<i>X</i>*<sub>k</sub>)?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(12)
+</center>
+
+<p align="justify">
+If the function <i>F(X)</i> is sufficiently steeply humped, as it will be
+once the parameter values are sufficiently large, each successive
+iteration doubles the number of humps, so that
+<i>F</i><sup>(k)</sup><i>(X)</i> has 
+2<sup>k-1</sup> humps. For large enough parameter values, all these hills
+and valleys will intersect the 45° line, producing 2<sup>k</sup>
+fixed points 
+of period <i>k</i>. These are listed for <i>k</i>
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/leq.gif" alt="leq"> 12 in the top row of
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>.
+Such a list includes degenerate points of period <i>k</i>, whose period
+is a submultiple of <i>k</i>; in particular, the two period 1 points
+(<i>X</i> = 0 and <i>X</i>*) are degenerate solutions of equation (12)
+for all <i>k</i>. By working from left to right across
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>, these degenerate
+points can be subtracted out, to leave the total number of 
+non-degenerate points of basic period <i>k</i>, as listed in the second row
+of <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>. More sophisticated ways of arriving
+at this result are given elsewhere
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#13" target="ads_dw">13</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#14" target="ads_dw">14</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#30" target="ads_dw">30</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#31" target="ads_dw">31</a></sup>.
+
+</p><p>
+</p><center>
+<a name="Table 2"><table border="0" width="100%">
+<caption align="top"><b>Table 2.</b> Catalogue of the number of periodic
+points, and of the various cycles (with periods <i>k</i> = 1 up to 12),
+arising from equation (1) with a single-humped function
+<i>F(X)</i></caption>
+<tbody><tr>
+ <td colspan="13"><hr>
+</td></tr><tr valign="top">
+ <td align="center"><i>k</i>   </td><td>1  </td><td>2  </td><td>3  </td><td>4  </td><td>5  </td><td>6  </td><td>7
+ </td><td>8  </td><td>9  </td><td>10  </td><td>11  </td><td>12
+</td></tr><tr valign="top">
+ <td>Possible total number of points with period <i>k</i>
+ </td><td>2  </td><td>4  </td><td>8  </td><td>16 </td><td>32 </td><td>64 </td><td>128  </td><td>256
+ </td><td>512</td><td>1,024    </td><td>2,048    </td><td>4,096
+</td></tr><tr valign="top">
+ <td>Possible total number of points with non-degenerate period <i>k</i>
+ </td><td>2    </td><td>2  </td><td>6  </td><td>12 </td><td>30 </td><td>54 </td><td>126
+ </td><td>240  </td><td>504  </td><td>990 </td><td>2,046    </td><td>4,020
+</td></tr><tr valign="top">
+ <td>Total number of cycles of period <i>k</i>, including those which
+ are degenerate and/or harmonics and/or never locally stable
+ </td><td>2  </td><td>3  </td><td>4  </td><td>6  </td><td>8  </td><td>14  </td><td>20  </td><td>36  </td><td>60
+ </td><td>108  </td><td>188  </td><td>352
+</td></tr><tr valign="top">
+ <td>Total number of non-degenerate cycles (including harmonics and
+ unstable cycles)
+ </td><td>2  </td><td>1  </td><td>2  </td><td>3  </td><td>6  </td><td>9  </td><td>18 </td><td>30 </td><td>56
+ </td><td>99  </td><td>186 </td><td>335
+</td></tr><tr valign="top">
+ <td>Total number of non-degenerate, stable cycles (including harmonics)
+ </td><td>1    </td><td>1  </td><td>1  </td><td>2  </td><td>3  </td><td>5  </td><td>9  </td><td>16 </td><td>28
+ </td><td>51  </td><td>93  </td><td>170
+</td></tr><tr valign="top">
+ <td>Total number of non-degenerate, stable cycles whose basic period is
+ <i>k</i> (that is, excluding harmonics)
+ </td><td>1  </td><td>-  </td><td>1  </td><td>1  </td><td>3  </td><td>4  </td><td>9  </td><td>14  </td><td>28
+ </td><td>48  </td><td>93  </td><td>165
+</td></tr><tr>
+ <td colspan="13"><hr>
+</td></tr></tbody></table>
+</a></center><a name="Table 2">
+
+<p align="justify">
+For example, there eventually are 2<sup>6</sup> = 64 points with period
+6. These include the two points of period 1, the period 2
+"harmonic" cycle, and the stable and unstable pair of triplets of
+points with period 3, for a total of 10 points whose basic period
+is a submultiple of 6; this leaves 54 points whose basic period is 6.
+
+</p></a><p align="justify"><a name="Table 2">
+The 2<sup>k</sup> period <i>k</i> points are arranged into various cycles of
+period <i>k</i>, or submultiples thereof, which appear in succession
+by either tangent or pitchfork bifurcation as the parameters in
+<i>F(X)</i> are varied. The third row in </a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>
+catalogues the total
+number of distinct cycles of period <i>k</i> which so appear. In the
+fourth row <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#14" target="ads_dw">14</a></sup>,
+the degenerate cycles are subtracted out, to give
+the total number of non-degenerate cycles of period <i>k</i>: these
+numbers must equal those of the second row divided by <i>k</i>.
+This fourth row includes the (stable) harmonics which arise by
+pitchfork bifurcation, and the pairs of stable-unstable cycles
+arising by tangent bifurcation. By subtracting out the cycles
+which are unstable from birth, the total number of possible
+stable cycles is given in row five; these figures can also be
+obtained by less pedestrian methods
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#13" target="ads_dw">13</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#30" target="ads_dw">30</a></sup>. Finally we may
+subtract out the stable cycles which arise by pitchfork bifurcation, 
+as harmonics of some simpler cycle, to arrive at the final
+row in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>, which lists the number of stable
+cycles whose basic period is <i>k</i>.
+
+</p><p align="justify">
+Returning to the example of period 6, we have already noted
+the five degenerate cycles whose periods are submultiples of 6.
+The remaining 54 points are parcelled out into one cycle of
+period 6 which arises as the harmonic of the only stable three-point 
+cycle, and four distinct pairs of period 6 cycles (that is,
+four initially stable ones and four unstable ones) which arise by
+successive tangent bifurcations. Thus, reading from the foot of
+the column for period 6 in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>, we get the
+numbers 4, 5, 9, 14.
+
+</p><p align="justify">
+Using various labelling tricks, or techniques from combinatorial 
+theory, it is also possible to give a generic list of the order
+in which the various cycles appear
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#13" target="ads_dw">13</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a></sup>. For example, the
+basic stable cycles of periods 3, 5, 6 (of which there are respectively 
+1, 3, 4) must appear in the order 6, 5, 3, 5, 6, 6, 5, 6:
+compare <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%203">Tables 3</a> and <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%204">4</a>.
+Metropolis et al.
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a></sup> give the
+explicit such generic list for all cycles of period k
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/leq.gif" alt="leq"> 11.
+
+</p><p>
+</p><center>
+<a name="Table 3"><table border="0" width="100%">
+<caption align="top"><b>Table 3</b> A catalogue of the stable cycles (with
+basic periods up to 6) for the equation <i>X</i><sub>t+1</sub> =
+<i>aX</i><sub>t</sub>(1 - <i>X</i><sub>t</sub>)</caption>
+<tbody><tr>
+ <td colspan="5"><hr>
+</td></tr><tr valign="top" align="center">
+ <td>    </td><td> </td><td> </td><td>    </td><td>Width of the range
+</td></tr><tr valign="top" align="center">
+ <td>    </td><td colspan="2" align="center"><i>a</i> value at which:
+ </td><td>Subsequent cascade
+ </td><td>of <i>a</i> values over
+</td></tr><tr valign="top" align="center">
+ <td>    </td><td> </td><td> </td><td>of "harmonics" with </td><td>which the basic cycle,
+</td></tr><tr valign="top" align="center">
+ <td>Period of
+ </td><td>Basic cycle
+ </td><td>Basic cycle
+ </td><td>period <i>k</i>2<sup>n</sup> all
+ </td><td>or one of its harmonics,
+</td></tr><tr valign="top" align="center">
+ <td>basic cycle
+ </td><td>first appears
+ </td><td>becomes unstable
+ </td><td>become unstable
+ </td><td>is attractive
+</td></tr><tr valign="top" align="center">
+ <td>1   </td><td>1.0000   </td><td>3.0000  </td><td>3.5700   </td><td>2.5700
+</td></tr><tr valign="top" align="center">
+ <td>3    </td><td>3.8284  </td><td>3.8415  </td><td>3.8495   </td><td>0.0211
+</td></tr><tr valign="top" align="center">
+ <td>4    </td><td>3.9601  </td><td>3.9608  </td><td>3.9612   </td><td>0.0011
+</td></tr><tr valign="top" align="center">
+ <td>5(a) </td><td>3.7382  </td><td>3.7411  </td><td>3.7430   </td><td>0.0048
+</td></tr><tr valign="top" align="center">
+ <td>5(b) </td><td>3.9056  </td><td>3.9061  </td><td>3.9065   </td><td>0.0009
+</td></tr><tr valign="top" align="center">
+ <td>5(c) </td><td>3.99026 </td><td>3.99030 </td><td>3.99032  </td><td>0.00006
+</td></tr><tr valign="top" align="center">
+ <td>6(a) </td><td>3.6265  </td><td>3.6304  </td><td>3.6327   </td><td>0.0062
+</td></tr><tr valign="top" align="center">
+ <td>6(b) </td><td>3.937516 </td><td>3.937596   </td><td>3.937649 </td><td>0.000133
+</td></tr><tr valign="top" align="center">
+ <td>6(c) </td><td>3.977760 </td><td>3.977784   </td><td>3.977800 </td><td>0.000040
+</td></tr><tr valign="top" align="center">
+ <td>6(d) </td><td>3.997583 </td><td>3.997585   </td><td>3.997586 </td><td>0.000003
+</td></tr><tr>
+ <td colspan="5"><hr>
+</td></tr></tbody></table>
+</a></center><a name="Table 3">
+
+</a><p align="justify"><a name="Table 3">
+As a corollary it follows that, given the most recent cycle to
+appear, it is possible (at least in principle) to catalogue all the
+cycles which have appeared up to this point. An especially
+elegant way of doing this is given by Smale and Williams
+<sup></sup></a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#22" target="ads_dw">22</a>,
+who show, for example, that when the stable cycle of period 3
+first originates, the total number of other points with periods
+<i>k, N</i><sub>k</sub>, which have appeared by this stage satisfy the
+Fibonacci 
+series, <i>N</i><sub>k</sub> = 2, 4, 5, 8, 12, 19, 30, 48, 77, 124, 200,
+323 for 
+<i>k</i> = 1, 2, ..., 12: this is to be contrasted with the total number of
+points of period <i>k</i> which will eventually appear (the top row of
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>) as <i>F(X)</i> continues to steepen.
+
+</p><p>
+</p><center>
+<a name="Table 4"><table border="0" width="100%">
+<caption aign="top"><b>Table 4.</b> Catalogue of the stable cycles (with
+basic periods up 
+to 6) for the equation <i>X</i><sub>t+1</sub> = <i>X</i><sub>t</sub>
+exp[<i>r(1 - X</i><sub>t</sub>)]</caption>
+<tbody><tr>
+ <td colspan="5"><hr>
+</td></tr><tr align="center">
+ <td>    </td><td> </td><td> </td><td> </td><td>Width of the range
+</td></tr><tr align="center">
+ <td>    </td><td colspan="2" align="center"><i>r</i> value at which:
+ </td><td>Subsequent cascade  </td><td>of <i>r</i> values over
+</td></tr><tr align="center">
+ <td>    </td><td> </td><td> </td><td>of "harmonics" with  </td><td>which the basic cycle,
+</td></tr><tr align="center">
+ <td>Period of </td><td>Basic cycle </td><td>Basic cycle
+ </td><td>period <i>k</i>2<sup>n</sup> all  </td><td>or one of its harmonics,
+</td></tr><tr align="center">
+ <td>basic cycle   </td><td>first appears </td><td>becomes unstable
+ </td><td>become unstable    </td><td>is attractive
+</td></tr><tr align="center">
+ <td>1   </td><td>0.0000 </td><td>2.0000</td><td>2.6924   </td><td>2.6924
+</td></tr><tr align="center">
+ <td>3   </td><td>3.1024 </td><td>3.1596</td><td>3.1957   </td><td>0.0933
+</td></tr><tr align="center">
+ <td>4   </td><td>3.5855 </td><td>3.6043</td><td>3.6153   </td><td>0.0298
+</td></tr><tr align="center">
+ <td>5(a)</td><td>2.9161 </td><td>2.9222</td><td>2.9256   </td><td>0.0095
+</td></tr><tr align="center">
+ <td>5(b)</td><td>3.3632 </td><td>3.3664</td><td>3.3682   </td><td>0.0050
+</td></tr><tr align="center">
+ <td>5(c)</td><td>3.9206 </td><td>3.9295</td><td>3.9347   </td><td>0.0141
+</td></tr><tr align="center">
+ <td>6(a)</td><td>2.7714 </td><td>2.7761</td><td>2.7789   </td><td>0.0075
+</td></tr><tr align="center">
+ <td>6(b)</td><td>3.4558 </td><td>3.4563</td><td>3.4567   </td><td>0.0009
+</td></tr><tr align="center">
+ <td>6(c)</td><td>3.7736 </td><td>3.7745</td><td>3.7750   </td><td>0.0014
+</td></tr><tr align="center">
+ <td>6(d)</td><td>4.1797 </td><td>4.1848</td><td>4.1880   </td><td>0.0083
+</td></tr><tr>
+ <td colspan="5"><hr>
+</td></tr></tbody></table>
+</a></center><a name="Table 4">
+
+<p align="justify">
+Such catalogues of the total number of fixed points, and of
+their order of appearance, are relatively easy to construct. For
+any particular function <i>F(X)</i>, the numerical task of finding the
+windows of parameter values wherein any one cycle or its
+harmonics is stable is, in contrast, relatively tedious and
+inelegant. Before giving such results, two critical parameter
+values of special significance should be mentioned.
+
+</p></a><p align="justify"><a name="Table 4">
+Hoppensteadt and Hyman
+<sup></sup></a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#21" target="ads_dw">21</a> 
+have given a simple graphical
+method for locating the parameter value in the chaotic regime
+at which the first odd period cycle appears. Their analytic
+recipe is as follows. Let <img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha">
+be the parameter which tunes the 
+steepness of <i>F(X)</i> (for example,
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha"> = <i>a</i> for equation
+(3), <img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha"> = <i>r</i> for
+equation (4)), <i>X</i>*(<img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha">)
+be the fixed point of period 1 (the  
+non-trivial solution of equation (5)), and
+<i>X</i><sub>max</sub>(<img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha">) the
+maximum 
+value attainable from iterations of equation (1) (that is, the
+value of <i>F(X)</i> at its hump or stationary point). The first odd
+period cycle appears for that value of
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha"> which satisfies
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#21" target="ads_dw">21</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#31" target="ads_dw">31</a></sup>
+
+</p><p>
+</p><center>
+<i>X</i>*(<img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha">) =
+<i>F</i><sup>(2)</sup> (<i>X</i><sub>max</sub>
+(<img src="./Simple mathematical models with very complicated dynamics - R.May_files/alpha.gif" alt="alpha">))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(13)
+</center>
+
+<p align="justify">
+As mentioned above, another critical value is that where the
+period 3 cycle first appears. This parameter value may be found
+numerically from the solutions of the third iterate of equation
+(1): for equation (3) it is
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#14" target="ads_dw">14</a></sup> <i>a</i> = 1 +
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/sqrt.gif" alt="sqrt">8.
+
+</p><p align="justify">
+Myrberg <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#14" target="ads_dw">13</a></sup>
+(for all k <img src="./Simple mathematical models with very complicated dynamics - R.May_files/leq.gif" alt="leq"> 10) and Metropolis
+et al.
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#16" target="ads_dw">16</a></sup>. (for all
+k <img src="./Simple mathematical models with very complicated dynamics - R.May_files/leq.gif" alt="leq"> 7) have given numerical
+information about the stable cycles 
+in equation (3). They do not give the windows of parameter
+values, but only the single value at which a given cycle is
+maximally stable; that is, the value of <i>a</i> for which the 
+stability-determining slope of <i>F</i><sup>(k)</sup><i>(X)</i> is zero,
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup> = 0. Since
+the slope 
+of the <i>k</i>-times iterated map <i>F</i><sup>(k)</sup> at any point
+on a period <i>k</i> cycle 
+is simply equal to the product of the slopes of <i>F(X)</i> at each of
+the points <i>X</i>*<sub>k</sub> on this cycle
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#8" target="ads_dw">8</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#20" target="ads_dw">20</a></sup>, the requirement
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup> = 0
+implies that <i>X</i> = A (the stationary point of <i>F(X)</i>, where
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(1)</sup> = 0)
+is one of the periodic points in question, which considerably
+simplifies the numerical calculations.
+
+</p><p align="justify">
+For each basic cycle of period <i>k</i> (as catalogued in the last
+row of <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%202">Table 2</a>), it is more interesting to know
+the parameter 
+values at which: (1) the cycle first appears (by tangent bifurcation); 
+(2) the basic cycle becomes unstable (giving rise by successive 
+pitchfork bifurcations to a cascade of harmonics of
+periods <i>k</i>2<sup>n</sup>); (3) all the harmonics become unstable
+(the point 
+of accumulation of the period <i>k</i>2<sup>n</sup> cycles).
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%203">Tables 3</a> and <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Table%204">4</a> extend
+the work of May and Oster<sup>1</sup>, to give this numerical information
+for equations (3) and (4), respectively. (The points of
+accumulation are not ground out mindlessly, but are calculated
+by a rapidly convergent iterative procedure, see ref. 1, appendix
+A.) Some of these results have also been obtained by
+Gumowski and Mira
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#32" target="ads_dw">32</a></sup>.
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 15-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+</p><p>
+
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><p>
+</p><h3>5. PRACTICAL PROBLEMS</h3>
+<p align="justify">
+Referring to the paradigmatic example of equation (3), we can
+now see that the parameter interval 1 &lt; <i>a</i> &lt; 4 is made up of a
+one-dimensional mosaic of infinitely many windows of <i>a</i>-values,
+in each of which a unique cycle of period <i>k</i>, or one of its
+harmonics, attracts essentially all initial points. Of these
+windows, that for 1 &lt; <i>a</i> &lt; 3.5700 . . corresponding to
+<i>k</i> = 1 and 
+its harmonics is by far the widest and most conspicuous. Beyond
+the first point of accumulation, it can be seen from
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Table%203">Table 3</a> that
+these windows are narrow, even for cycles of quite low periods,
+and the windows rapidly become very tiny as <i>k</i> increases.
+
+</p><p align="justify">
+As a result, there develops a dichotomy between the underlying 
+mathematical behaviour (which is exactly determinable)
+and the "commonsense" conclusions that one would draw from
+numerical simulations. If the parameter <i>a</i> is held constant at one
+value in the chaotic region, and equation (3) iterated for an
+arbitrarily large number of generations, a density plot of the
+observed values of <i>X</i><sub>t</sub> on the interval 0 to 1 will
+settle into <i>k</i> 
+equal spikes (more precisely, delta functions) corresponding to
+the <i>k</i> points on the stable cycle appropriate to this
+<i>a</i>-value. But 
+for most <i>a</i>-values this cycle will have a fairly large period, and
+moreover it will typically take many thousands of generations
+before the transients associated with the initial conditions are
+damped out: thus the density plot produced by numerical
+simulations usually looks like a sample of points taken from
+some continuous distribution.
+
+</p><p align="justify">
+An especially interesting set of numerical computations are
+due to Hoppensteadt (personal communication) who has
+combined many iterations to produce a density plot of
+<i>X</i><sub>t</sub> for 
+each one of a sequence of <i>a</i>-values, gradually increasing from
+3.5700 . . to 4. These results are displayed as a movie. As can
+be expected from <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Table%203">Table 3</a>, some of the
+more conspicuous cycles 
+do show up as sets of delta functions: the 3-cycle and its first
+few harmonics; the first 5-cycle; the first 6-cycle. But for most
+values of <i>a</i> the density plot looks like the sample function of a
+random process. This is particularly true in the neighbourhood
+of the <i>a</i>-value where the first odd cycle appears (<i>a</i> =
+3.6786..), 
+and again in the neighbourhood of <i>a</i> = 4: this is not surprising,
+because each of these locations is a point of accumulation of
+points of accumulation. Despite the underlying discontinuous
+changes in the periodicities of the stable cycles, the observed
+density pattern tends to vary smoothly. For example, as <i>a</i>
+increases toward the value at which the 3-cycle appears, the
+density plot tends to concentrate around three points, and it
+smoothly diffuses away from these three points after the 3-cycle
+and all its harmonics become unstable.
+
+</p><p align="justify">
+I think the most interesting mathematical problem lies in
+designing a way to construct some approximate and "effectively
+continuous" density spectrum, despite the fact that the exact
+density function is determinable and is always a set of delta
+functions. Perhaps such techniques have already been developed 
+in ergodic theory
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#33" target="ads_dw">33</a></sup> (which lies
+at the foundations of 
+statistical mechanics), as for example in the use of "coarse-grained 
+observers". I do not know.
+
+</p><p align="justify">
+Such an effectively stochastic description of the dynamical
+properties of equation (4) for large <i>r</i> has been provided
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#28" target="ads_dw">28</a></sup>, albeit
+by tactical tricks peculiar to that equation rather than by any
+general method. As <i>r</i> increases beyond about 3, the trajectories
+generated by this equation are, to an increasingly good approximation, 
+almost periodic with period (1 / <i>r</i>) exp(<i>r</i> - 1).
+
+</p><p align="justify">
+The opinion I am airing in this section is that although the
+exquisite fine structure of the chaotic regime is mathematically
+fascinating, it is irrelevant for most practical purposes. What
+seems called for is some effectively stochastic description of the
+deterministic dynamics. Whereas the various statements about
+the different cycles and their order of appearance can be made
+in generic fashion, such stochastic description of the actual
+dynamics will be quite different for different <i>F(X)</i>: witness the
+difference between the behaviour of equation (4), which for
+large <i>r</i> is almost periodic "outbreaks" spaced many generations
+apart, versus the behaviour of equation (3), which for <i>a</i> -&gt; 4 is
+not very different from a series of Bernoulli coin flips.
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 15-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+</p><p>
+
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><p>
+<br>
+<br>
+</p><h3>6. MATHEMATICAL CURIOSITIES</h3>
+<p align="justify">
+As discussed above, the essential reason for the existence of a
+succession of stable cycles throughout the "chaotic" regime is
+that as each new pair of cycles is born by tangent bifurcation
+(see <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Figure%205">Fig. 5</a>), one of them is at first
+stable, by virtue of the way 
+the smoothly rounded hills and valleys intercept the 45° line.
+For analytical functions <i>F(X)</i>, the only parameter values for
+which the density plot or "invariant measure" is continuous
+and truly ergodic are at the points of accumulation of
+harmonics, which divide one stable cycle from the next. Such
+exceptional parameter values have found applications, for
+example, in the use of equation (3) with <i>a</i> = 4 as a random
+number generator <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#34" target="ads_dw">34</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#35" target="ads_dw">35</a></sup>:
+it has a continuous density function
+proportional to [<i>X(1 - X)</i>]<sup>-1/2</sup> in the interval 0 &lt;
+<i>X</i> &lt; 1.
+
+</p><p align="justify">
+Non-analytical functions <i>F(X)</i> in which the hump is in fact a
+spike provide an interesting special case. Here we may imagine
+spikey hills and valleys moving to intercept the 45° line in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Figure%205">Fig. 5</a>,
+and it may be that both the cycles born by tangent bifurcation
+are unstable from the outset (one having
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup> &gt; 1, the
+other <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup> &lt; -1),
+for all <i>k</i> &gt; 1. There are then no stable cycles in the
+chaotic regime, which is therefore literally chaotic with a
+continuous and truly ergodic density distribution function.
+
+</p><p>
+One simple example is provided by
+
+</p><p>
+</p><center>
+<table border="0">
+ <tbody><tr><td><i>X</i><sub>t+1</sub> = <i>a</i> <i>X</i><sub>t</sub> ; if
+ <i>X</i><sub>t</sub> &lt; 1/2
+</td></tr><tr>
+ <td><i>X</i><sub>t+1</sub> = <i>a</i>(1 - <i>X</i><sub>t</sub>) ; if
+ <i>X</i><sub>t</sub> &gt; 1/2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(14)
+</td></tr></tbody></table>
+</center>
+
+<p align="justify">
+defined on the interval 0 &lt; <i>X</i> &lt; 1. For 0 &lt; <i>a</i> &lt;
+1, all trajectories 
+are attracted to <i>X</i> = 0; for 1 &lt; <i>a</i> &lt; 2, there are
+infinitely many 
+periodic orbits, along with an uncountable number of aperiodic
+trajectories, none of which are locally stable. The first odd
+period cycle appears at <i>a</i> =
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/sqrt.gif" alt="sqrt">2, and all integer periods are
+represented beyond <i>a</i> = (1 +
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/sqrt.gif" alt="sqrt">5)/2. Kac<sup>36</sup> has
+given a careful 
+discussion of the case <i>a</i> = 2. Another example, this time with an
+extensive biological pedigree
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#3" target="ads_dw">3</a></sup>, is the equation
+
+</p><p>
+</p><center>
+<table border="0">
+<tbody><tr>
+ <td><i>X</i><sub>t+1</sub> = <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">
+ <i>X</i><sub>t</sub> ; if <i>X</i><sub>t</sub> &lt; 1
+</td></tr><tr>
+ <td><i>X</i><sub>t+1</sub> = <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">
+ <i>X</i><sub>t</sub><sup>1-b</sup> ; if <i>X</i><sub>t</sub> &gt; 1
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(15)
+</td></tr></tbody></table>
+</center>
+
+<p align="justify">
+If <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> &gt; 1 this possesses
+a globally stable equilibrium point for 
+<i>b</i> &lt; 2. For <i>b</i> &gt; 2 there is again true chaos, with no
+stable cycles: 
+the first odd cycle appears at <i>b</i> = (3 +
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/sqrt.gif" alt="sqrt">5)/2, and all integer
+periods are present beyond <i>b</i> = 3. The dynamical properties of
+equations (14) and (15) are summarised to the right of
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May4.html#Table%202">Table 2</a>.
+
+</p><p align="justify">
+The absence of analyticity is a necessary, but not a sufficient,
+condition for truly random behaviour
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#31" target="ads_dw">31</a></sup>. Consider,
+for example, 
+
+</p><p>
+</p><center>
+<table border="0">
+<tbody><tr>
+ <td><i>X</i><sub>t+1</sub> = (<i>a</i> / 2) <i>X</i><sub>t</sub> ; if
+ <i>X</i><sub>t</sub> &lt; ½
+</td></tr><tr>
+ <td><i>X</i><sub>t+1</sub> = <i>a</i> <i>X</i><sub>t</sub> (1 -
+ <i>X</i><sub>t</sub>) ; if <i>X</i><sub>t</sub> &gt; ½
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(16)
+</td></tr></tbody></table>
+</center>
+
+<p align="justify">
+This is the parabola of equation (3) and
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May2.html#Figure%201">Fig. 1</a>, but with the
+left hand half of <i>F(X)</i> flattened into a straight line. This equation
+does possess windows of <i>a</i> values, each with its own stable
+cycle, as described generically above. The stability-determining
+slopes <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"><sup>(k)</sup>
+vary, however, discontinuously with the parameter <i>a</i>, 
+and the widths of the simpler stable regions are narrower than
+for equation (3): the fixed point becomes unstable at <i>a</i> = 3; the
+point of accumulation of the subsequent harmonics is at
+<i>a</i> = 3.27 . .; the first odd cycle appears at <i>a</i> = 3.44 . .; the
+3-point cycle at <i>a</i> = 3.67. . (compare the first column in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May3.html#Table%201">Table 1</a>).
+
+</p><p align="justify">
+These eccentricities of behaviour manifested by 
+non-analytical functions may be of interest for exploring formal
+questions in ergodic theory. I think, however, that they have no
+relevance to models in the biological and social sciences, where
+functions such as <i>F(X)</i> should be analytical. This view is
+elaborated elsewhere
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#37" target="ads_dw">37</a></sup>.
+
+</p><p>
+As a final curiosity, consider the equation
+
+</p><p>
+</p><center>
+<i>X</i><sub>t+1</sub> = <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">
+<i>X</i><sub>t</sub> [1 +
+<i>X</i><sub>t</sub>]<sup>-<img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta"></sup>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(17)
+</center>
+
+<p align="justify">
+This has been used to fit a considerable amount of data on
+insect populations <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#38" target="ads_dw">38</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#39" target="ads_dw">39</a></sup>.
+Its stability behaviour, as a function of
+the two parameters <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> and
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">, is illustrated in
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May.html#Figure%206">Fig. 6</a>. Notice that
+for <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> &lt; 7.39 . . there
+is a globally stable equilibrium point for 
+all <img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">; for 7.39. . &lt;
+<i>X</i> &lt; 12.50. . this fixed point becomes unstable 
+for sufficiently large <img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">,
+bifurcating to a stable 2-point cycle 
+which is the solution for all larger
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">; as increases through the
+range 12.50 . . &lt; <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> &lt;
+14.77 . . various other harmonics of 
+period 2<sup>n</sup> appear in turn. The hierarchy of bifurcating cycles of
+period 2<sup>n</sup> is thus truncated, and the point of accumulation and
+subsequent regime of chaos is not achieved (even for arbitrarily
+large <img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">) until
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> &gt; 14.77...
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</p><p>
+</p><center>
+<a name="Figure 6"><table border="0" width="40%">
+<tbody><tr>
+ <td><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/Figures/figure6.jpg"><img src="./Simple mathematical models with very complicated dynamics - R.May_files/fig6.jpg" alt="Figure 6"></a>
+</td></tr><tr>
+ <td><p align="justify"><b>Figure 6.</b> The solid lines demarcate the
+ stability domains for the 
+ density dependence parameter,
+ <img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">, and the population growth
+ rate, <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">, in equation (17);
+ the dashed line shows where 2-point 
+ cycles give way to higher cycles of period 2<sup>n</sup>. The solid circles
+ come from analyses of life table data on field populations, and
+ the open circles from laboratory populations (from ref. 3,
+ after ref. 39).
+</p></td></tr></tbody></table>
+</a></center><a name="Figure 6">
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 16-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+<p>
+
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><p>
+</p><h3>7. APPLICATIONS</h3>
+</a><p align="justify"><a name="Figure 6">
+The fact that the simple and deterministic equation (1) can
+possess dynamical trajectories which look like some sort of
+random noise has disturbing practical implications. It means,
+for example, that apparently erratic fluctuations in the census
+data for an animal population need not necessarily betoken
+either the vagaries of an unpredictable environment or sampling
+errors: they may simply derive from a rigidly deterministic
+population growth relationship such as equation (1). This point
+is discussed more fully and carefully elsewhere
+<sup></sup></a><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>.
+
+</p><p align="justify">
+Alternatively, it may be observed that in the chaotic regime
+arbitrarily close initial conditions can lead to trajectories
+which, after a sufficiently long time, diverge widely. This means
+that, even if we have a simple model in which all the parameters
+are determined exactly, long term prediction is nevertheless
+impossible. In a meteorological context, Lorenz
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#15" target="ads_dw">15</a></sup> has called
+this general phenomenon the "butterfly effect": even if the
+atmosphere could be described by a deterministic model in
+which all parameters were known, the fluttering of a butterfly's
+wings could alter the initial conditions, and thus (in the chaotic
+regime) alter the long term prediction.
+
+</p><p align="justify">
+Fluid turbulence provides a classic example where, as a
+parameter (the Reynolds number) is tuned in a set of deterministic 
+equations (the Navier-Stokes equations), the motion
+can undergo an abrupt transition from some stable configuration 
+(for example, laminar flow) into an apparently stochastic,
+chaotic regime. Various models, based on the Navier-Stokes
+differential equations, have been proposed as mathematical
+metaphors for this process
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#15" target="ads_dw">15</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#40" target="ads_dw">40</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#41" target="ads_dw">41</a></sup>. In a recent
+review of the theory of turbulence, Martin
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#42" target="ads_dw">42</a></sup> has
+observed that the  
+one-dimensional difference equation (1) may be useful in this
+context. Compared with the earlier models
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#15" target="ads_dw">15</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#40" target="ads_dw">40</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#41" target="ads_dw">41</a></sup>, it has the
+disadvantage of being even more abstractly metaphorical, and
+the advantage of having a spectrum of dynamical behaviour
+which is more richly complicated yet more amenable to
+analytical investigation.
+
+</p><p align="justify">
+A more down-to-earth application is possible in the use of
+equation (1) to fit data
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#1" target="ads_dw">1</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#2" target="ads_dw">2</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#3" target="ads_dw">3</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#38" target="ads_dw">38</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#39" target="ads_dw">39</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#43" target="ads_dw">43</a></sup>
+on biological populations
+with discrete, non-overlapping generations, as is the case for
+many temperate zone arthropods. <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May6.html#Figure%206">Figure 6</a>
+shows the parameter values <img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda">
+and <img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta"> that are
+estimated <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#39" target="ads_dw">39</a></sup>
+for 24 natural populations 
+and 4 laboratory populations when equation (17) is fitted to the
+available data. The figure also shows the theoretical stability
+domains: a stable point; its stable harmonics (stable cycles of
+period 2<sup>n</sup>); chaos. The natural populations tend to have stable
+equilibrium point behaviour. The laboratory populations tend
+to show oscillatory or chaotic behaviour; their behaviour may
+be exaggeratedly nonlinear because of the absence, in a
+laboratory setting, of many natural mortality factors. It is
+perhaps suggestive that the most oscillatory natural population
+(labelled <i>A</i> in <a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May6.html#Figure%206">Fig. 6</a>) is the
+Colorado potato beetle, whose 
+present relationship with its host plant lacks an evolutionary
+pedigree. These remarks are only tentative, and must be treated
+with caution for several reasons. Two of the main caveats are
+that there are technical difficulties in selecting and reducing the
+data, and that there are no single species populations in the
+natural world: to obtain a one-dimensional difference equation
+by replacing a population's interactions with its biological and
+physical environment by passive parameters (such as
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/lambda.gif" alt="lambda"> and
+<img src="./Simple mathematical models with very complicated dynamics - R.May_files/beta.gif" alt="beta">)
+may do great violence to the reality.
+
+</p><p align="justify">
+Some of the many other areas where these ideas have found
+applications were alluded to in the second section, above
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#5" target="ads_dw">5</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#11" target="ads_dw">11</a></sup>.
+One aim of this review article is to provoke applications in yet
+other fields.
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 16-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+</p><p>
+
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><p>
+<br>
+<br>
+</p><h3>8. RELATED PHENOMENA IN HIGHER DIMENSIONS</h3>
+<p align="justify">
+Pairs of coupled, first-order difference equations (equivalent to
+a single second-order equation) have been investigated in
+several contexts <sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#44" target="ads_dw">44</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#46" target="ads_dw">46</a></sup>,
+particularly in the study of temperate
+zone arthropod prey-predator systems
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#2" target="ads_dw">2</a> -
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#23" target="ads_dw">23</a>,
+<a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#47" target="ads_dw">47</a></sup>. In these 
+two-dimensional systems, the complications in the dynamical
+behaviour are further compounded by such facts as: (1) even
+for analytical functions, there can be truly chaotic behaviour
+(as for equations (14) and (15)), corresponding to so-called
+"strange attractors"; and (2) two or more different stable states
+(for example, a stable point and a stable cycle of period 3) can
+occur together for the same parameter values
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#4" target="ads_dw">4</a></sup>. In addition, the
+manifestation of these phenomena usually requires less severe
+nonlinearities (less steeply humped <i>F(X)</i>) than for the 
+one-dimensional case.
+
+</p><p align="justify">
+Similar systems of first-order ordinary differential equations,
+or two coupled first-order differential equations, have much
+simpler dynamical behaviour, made up of stable and unstable
+points and limit cycles
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#48" target="ads_dw">48</a></sup>. This is
+basically because in continuous 
+two-dimensional systems the inside and outside of closed curves
+can be distinguished; dynamic trajectories cannot cross each
+other. The situation becomes qualitatively more complicated
+and in many ways analogous to first-order difference equations
+when one moves to systems of three or more coupled, first-order
+ordinary differential equations (that is, three-dimensional
+systems of ordinary differential equations). Scanlon (personal
+communication) has argued that chaotic behaviour and
+"strange attractors", that is solutions which are neither points
+nor periodic orbits
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#48" target="ads_dw">48</a></sup>, are
+typical of such systems. Some well 
+studied examples arise in models for reaction-diffusion systems
+in chemistry and biology
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#49" target="ads_dw">49</a></sup>, and in the
+models of Lorenz
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#15" target="ads_dw">15</a></sup>
+(three dimensions) and Ruelle and Takens
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#40" target="ads_dw">40</a></sup> (four
+dimensions) 
+referred to above. The analysis of these systems is, by virtue
+of their higher dimensionality, much less transparent than for
+equation (1).
+
+</p><p align="justify">
+An explicit and rather surprising example of a system which
+has recently been studied from this viewpoint is the ordinary
+differential equations used in ecology to describe competing
+species. For one or two species these systems are very tame:
+dynamic trajectories will converge on some stable equilibrium
+point (which may represent coexistence, or one or both species
+becoming extinct). As Smale
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#50" target="ads_dw">50</a></sup> has
+recently shown, however, 
+for 3 or more species these general equations can, in a certain
+reasonable and well-defined sense, be compatible with any
+dynamical behaviour. Smale's
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#50" target="ads_dw">50</a></sup> discussion
+is generic and 
+abstract: a specific study of the very peculiar dynamics which
+can be exhibited by the familiar Lotka-Volterra equations
+once there are 3 competitors is given by May and Leonard
+<sup><a href="https://carretero.sdsu.edu/teaching/M-538/lectures/references/May/May_refs.html#51" target="ads_dw">51</a></sup>.
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 16-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+</p><p>
+
+
+
+
+<title>Simple mathematical models with very complicated dynamics -
+R.M. May</title>
+
+
+
+
+</p><p>
+</p><h3>REFERENCES</h3>
+<p align="justify">
+</p><ol>
+<a name="1"></a><li><a name="1"></a>May, R. M., and Oster, G. F.,
+<i>Am. Nat.</i>, <b>110</b> (in the press).
+
+<a name="2"></a></li><li>Varley, G. C., Gradwell, G. R., and Hassell, M. P.,
+<i>Insect Population Ecology</i>
+(Blackwell, Oxford. 1973).
+
+<a name="3"></a></li><li>May, R. M. (ed.),
+<i>Theoreticol Ecology: Principles and Applications</i> (Blackwell,
+Oxford, 1976).
+
+<a name="4"></a></li><li>Guckenheimer, J., Oster, G. F., and Ipaktchi, A.,
+<i>Theor. Pop. Biol.</i> (in the press).
+
+<a name="5"></a></li><li>Oster, G. F., Ipaktchi, A., and Rocklin, I.,
+<i>Theor. Pop. Biol. </i> (in the press).
+
+<a name="6"></a></li><li>Asmussen, M. A., and Feldman, M. W.,
+<i>J. theor. Biol.</i> (in the press).
+
+<a name="7"></a></li><li>Hoppensteadt, F. C;
+<i>Mathematical Theories of Populations: Demographics,
+Genetics and Epidemics</i> (SIAM, Philadelphia, 1975).
+
+<a name="8"></a></li><li>Samuelson, P. A.,
+<i>Foundations of Economic Analysis</i> (Harvard University Press,
+Cambridge, Massachusetts, 1947).
+
+<a name="9"></a></li><li>Goodwin, R. E.,
+<i>Econometrica</i>, <b>19</b>, 1-17 (1951).
+
+<a name="10"></a></li><li>Baumol, W. J.,
+<i>Economnic Dynamics</i>, 3rd ed. (Macmillan, New York, 1970).
+
+<a name="11"></a></li><li>See, for example, Kemeny, J., and Snell, J. L.,
+<i>Mathematical Models in the Social
+Sciences</i> (MIT Press, Cambridge, Massachusetts, 1972).
+
+<a name="12"></a></li><li>Chaundy, T. W., and Phillips, E.,
+<i>Q. JI Math. Oxford</i>, <b>7</b>, 74-80 (1936).
+
+<a name="13"></a></li><li>Myrberg, P. J.,
+<i>Ann. Akad. Sc. Fennicae, A</i>, I, No. 336/3 (1963).
+
+<a name="14"></a></li><li>Myrberg, P. J.,
+<i>Ann. Akad. Sc. Fennicae, A</i>, I, No. 259 (1958).
+
+<a name="15"></a></li><li>Lorenz, E. N.,
+<i>J. Atmos. Sci.</i>, <b>20</b>, 130-141 (1963);
+<i>Tellus</i>, <b>16</b>, 1-11 (1964).
+
+<a name="16"></a></li><li>Metropolis, N., Stein, M. L., and Stein, P. R.,
+<i>J. Combinatorial Theory</i>, <b>15(A)</b>, 25-44 (1973).
+
+<a name="17"></a></li><li>Maynard Smith, J.,
+<i>Mathematical Ideas in Biology</i> (Cambridge University Press,
+Cambridge, 1968).
+
+<a name="18"></a></li><li>Krebs, C. J.,
+<i>Ecology</i> (Harper and Row, New York, 1972).
+
+<a name="19"></a></li><li>May, R. M.,
+<i>Am. Nat.</i>, <b>107</b>, 46-57 (1972).
+
+<a name="20"></a></li><li>Li, T-Y., and Yorke, J. A.,
+<i>Am. Math. Monthly</i>, <b>82</b>, 985-992 (1975).
+
+<a name="21"></a></li><li>Hoppensteadt, F. C., and Hyman, J. M. (Courant
+Institute, New York University: preprint, 1975).
+
+<a name="22"></a></li><li>Smale, S., and Williams, R. (Department of
+Mathematics, Berkeley: preprint, 1976).
+
+<a name="23"></a></li><li>May, R. M.,
+<i>Science</i>, <b>186</b>, 645-647 (1974).
+
+<a name="24"></a></li><li>Moran, P. A. P.,
+<i>Biometrics</i>, <b>6</b>, 250-258 (1950).
+
+<a name="25"></a></li><li>Ricker. W. E.,
+<i>J. Fish. Res. Bd. Can.</i>, <b>11</b>, 559-623 (1954).
+
+<a name="26"></a></li><li>Cook, L. M.,
+<i>Nature</i>, <b>207</b>, 316 (1965).
+
+<a name="27"></a></li><li>Macfadyen, A.,
+<i>Animal Ecology: Aims amid Methods</i> (Pitman, London, 1963).
+
+<a name="28"></a></li><li>May, R. M.,
+<i>J. theor. Biol.</i>, <b>51</b>, 511-524 (1975).
+
+<a name="29"></a></li><li>Guckenheimer, J.,
+<i>Proc. AMS Symposia in Pure Math., XIV</i>, 95-124 (1970).
+
+<a name="30"></a></li><li>Gilbert, E. N., and Riordan, J.,
+<i>Illinois J. Math.</i>, <b>5</b>, 657-667 (1961).
+
+<a name="31"></a></li><li>Preston, C. J. (King's College, Cambridge:
+preprint, 1976). 
+
+<a name="32"></a></li><li>Gumowski, I., and Mira, C.,
+<i>C. r. hebd. Séanc. Acad. Sci., Paris</i>, <b>281a</b>, 45-48
+(1975); <b>282a</b>, 219-222 (1976).
+
+<a name="33"></a></li><li>Layzer, D.,
+<i>Sci. Am.</i>, <b>233</b>(6), 56-69 (1975).
+
+<a name="34"></a></li><li>Ulam, S. M.,
+<i>Proc. Int. Congr. Math. 1950, Cambridge, Mass.; Vol. II</i>, pp. 264-273
+(AMS, Providence R.I., 1950).
+
+<a name="35"></a></li><li>Ulam, S. M., and von Neumann, J.,
+<i>Bull. Am. math. Soc.</i> (abstr.), <b>53</b>, 1120 (1947).
+
+<a name="36"></a></li><li>Kac, M.,
+<i>Ann. Math.</i>, <b>47</b>, 33-49 (1946).
+
+<a name="37"></a></li><li>May, R. M.,
+<i>Science</i>, <b>181</b>, 1074 (1973).
+
+<a name="38"></a></li><li>Hassell, M. P.,
+<i>J. Amin. Ecol.</i>, <b>44</b>, 283-296 (1974).
+
+<a name="39"></a></li><li>Hassell, M. P., Lawton, J. H., and May. R. M.,
+<i>J. Anim. Ecol.</i> (in the press).
+
+<a name="40"></a></li><li>Ruelle, D., and Takens, F.,
+<i>Comm. math. Phys.</i>, <b>20</b>, 167-192 (1971).
+
+<a name="41"></a></li><li>Landau, L. D., and Lifshitz, E. M.,
+<i>Fluid Mechanics</i> (Pergamon, London, 1959).
+
+<a name="42"></a></li><li>Martin, P. C.,
+<i>Proc. Int. Conf. on Statistical Physics, 1975, Budapest</i> (Hungarian
+Acad. Sci., Budapest, in the press).
+
+<a name="43"></a></li><li>Southwood, T. R. E., in
+<i>Insects, Science and Society</i> (edit. by Pimentel, D.),
+151-199 (Academic, New York, 1975).
+
+<a name="44"></a></li><li>Metropolis, N., Stein, M. L., and Stein, P. R.,
+<i>Numer. Math.</i>, <b>10</b>, 1-19 (1967).
+
+<a name="45"></a></li><li>Gumowski, I., and Mira, C.,
+<i>Automatica</i>, <b>5</b>, 303-317 (1969).
+
+<a name="46"></a></li><li>Stein, P. R., and Ulam, S. M.,
+<i>Rosprawy Mat.</i>, <b>39</b>, 1-66 (1964).
+
+<a name="47"></a></li><li>Beddington, J. R., Free, C. A., and Lawton, J. H.,
+<i>Nature</i>, <b>255</b>, 58-60 (1975).
+
+<a name="48"></a></li><li>Hirsch, M. W., and Smale, S.,
+<i>Differential Equations, Dynamical Systems and
+Linear Algebra</i> (Academic, New York, 1974).
+
+<a name="49"></a></li><li>Kolata, G. B.,
+<i>Science</i>, <b>189</b>, 984-985 (1975).
+
+<a name="50"></a></li><li>Smale, S. (Department of Mathematics, Berkeley:
+preprint, 1976). 
+
+<a name="51"></a></li><li>May, R. M., and Leonard, W. J.,
+<i>SIAM J. Appl. Math.</i>, <b>29</b>, 243-253 (1975).
+</li></ol>
+
+<!--
+<spacer type=vertical size=30>
+<font color="brown">
+<center>*****</center>
+<p align=justify>This page is maintained by Cren Frayer
+<br>Last modified: 16-Oct-01
+<address>
+Cren Frayer</font> <a href="mailto:cd@ipac.caltech.edu">cd@ipac.caltech.edu</a>
+</address>
+-->
+
+<p>
+
+
+
+</p></body></html>
