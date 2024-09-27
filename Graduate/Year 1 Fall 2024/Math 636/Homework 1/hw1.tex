@@ -66,13 +66,70 @@
 
     \begin{problem}{1}
         A ball is thrown directly upward from the surface of the Earth. Assuming that the maximum height reached is a monomial function of the acceleration due to gravity, the mass of the ball and the initial velocity, use dimensional analysis to approximate the expression for the maximum height reached.
+        \\ \\
+        Let the maximum height, $h_m$, be a function of the acceleration due to gravity, the mass of the ball and the initial velocity such that:
+        \[[h_m] = [g^a m^b v_0^c]\]
+        \begin{align*}
+            [h_m] &= [g^a m^b v_0^c] \\
+            L &= \left(\frac{L}{T^2}\right)^a (M^b) \left(\frac{L}{T}\right)^c \\
+            L &= \frac{L^a}{T^{2a}} (M^b) \frac{L^c}{T^c} \\
+            L &= \frac{L^{a + c}}{T^{2a + c}} (M^b)
+        \end{align*}
+        where $g$ is the acceleration due to gravity, $m$ is the mass of the ball, $v_0$ is the initial velocity, $L$ represents length, $T$ represents time, $M$ represents mass
+        \\ \\
+        Looking at the above equation, we get the following system of equations:
+        \[
+        \begin{cases}
+            b = 0 \\
+            2a + c = 0 \\
+            a + c = 1
+        \end{cases}
+        \]
+        Simple algebra shows the following:
+        \begin{align*}
+            c &= -2a \\
+            a - 2a &= 1 \\
+            a &= -1 \\
+            c &= 2 \\
+            b &= 0
+        \end{align*}
+        Such that the maximum height reached is a monomial function of the acceleration due to gravity, the mass of the ball and the initial velocity is:
+        \[[h_m] = [g^{-1} v_0^2] \qqrarrow h_m(g, v_0, h_0) = \frac{h_0v_0^2}{g}\]
     \end{problem}
 
     \begin{problem}{2}
         Non-dimensionalize the following equations:
         \begin{alist}
             \item \[\frac{dy}{dt} = ry(1 - \frac{y}{K}) \text{, where $r$ and $K$ are constant}\]
+            Let the following be true:
+            \[t = [t]t^* \qquad y = [y]y^*\]
+            Now we can start to non-dimensionalize the equation:
+            \begin{align*}
+                \frac{dy}{dt} &= \frac{dy}{dy^*}\frac{dy^*}{dt^*}\frac{dt^*}{dt} \\
+                r[y]y^*(1 - \frac{[y]y^*}{K}) &= [y]\frac{dy^*}{dt^*}\frac{1}{[t]} \\
+                r[t]y^*(1 - \frac{[y]y^*}{K}) &= \frac{dy^*}{dt^*} \\
+                r[t]y^* - \frac{r[t][y](y^*)^2}{K} &= \frac{dy^*}{dt^*}
+            \end{align*}
+            Now to cancel out the dimension scales, we can set the following to be true:
+            \[r = \frac{1}{[t]} \qquad K = [y]\]
+            such that we get:
+            \[y^* - {y^*}^2 = \frac{dy^*}{dt^*}\]
             \item \[\frac{dy}{dt} = sy(a - y)(y - b) \text{, where $s$, $a$, $b$ are constants}\]
+            Let the following be true:
+            \[t = [t]t^* \qquad y = [y]y^*\]
+            Now we can start to non-dimensionalize the equation:
+            \begin{align*}
+                \frac{dy}{dt} &= \frac{dy}{dy^*}\frac{dy^*}{dt^*}\frac{dt^*}{dt} \\
+                s[y]y^*(a - [y]y^*)([y]y^* - b) &= [y]\frac{dy^*}{dt^*}\frac{1}{[t]} \\
+                s[t]y^*(a - [y]y^*)([y]y^* - b) &= \frac{dy^*}{dt^*} \\
+                -s[t]y^*([y]y^* - a)([y]y^* - b) &= \frac{dy^*}{dt^*} \\
+                -s[t]y^*(([y]y^*)^2 - (a+b)[y]y^* + ab) &= \frac{dy^*}{dt^*} \\
+                -s[t][y]^2{y^*}^3 + s[t](a+b)[y]{y^*}^2 -s[t]y^*ab &= \frac{dy^*}{dt^*}
+            \end{align*}
+            Now to cancel out the dimension scales, we can set the following to be true:
+            \[s = \frac{1}{[t][y]^2} \qquad a+b = \frac{1}{s[t][y]} = [y] \qquad ab = \frac{1}{s[t]} = [y]^2\]
+            such that:
+            \[\frac{dy^*}{dt^*} = -{y^*}^3 + {y^*}^2 -y^*\]
         \end{alist}
     \end{problem}
 
@@ -80,7 +137,20 @@
         For a given model equation
         \[\frac{dN(t)}{dt} = r_BN(t)\left[1 - \frac{N(t)}{K_B}\right] - B\frac{N(t)^2}{A^2 + N(t)^2}\]
         perform dimensional analysis to reduce the equation to the form
-        \[\frac{du}{dr} = ru\left(1 - \frac{u}{q}\right) - \frac{u^2}{1 + u^2}\]
+        \[\frac{du}{d\tau} = ru\left(1 - \frac{u}{q}\right) - \frac{u^2}{1 + u^2}\]
+        First we let the following be true:
+        \[N = [N]u \qquad t = [t]\tau\]
+        such that we get:
+        \begin{align*}
+            \frac{dN(t)}{dt} &= \frac{dN}{du}\frac{du}{d\tau}\frac{d\tau}{dt} \\
+            r_B[N]u\left[1 - \frac{[N]u}{K_B}\right] - B\frac{[N]^2u^2}{A^2 + [N]^2u^2} &= \frac{[N]}{[t]}\frac{du}{d\tau} \\
+            r_B[t]u\left[1 - \frac{[N]u}{K_B}\right] - B\frac{[t]u^2}{A^2 + [N]^2u^2} &= \frac{du}{d\tau} \\
+            (r_B[t])u\left[1 - \frac{u}{(K_B / [N])}\right] - \frac{B[t]}{[N]^2}\frac{u^2}{(A/[N])^2 + u^2} &= \frac{du}{d\tau}
+        \end{align*}
+        Now to cancel out the dimension scales, we can set the following to be true:
+        \[r_B = \frac{r}{[t]} \qquad K_B = [N]q \qquad B = \frac{[N]^2}{[t]} \qquad A = [N]\]
+        such that we get:
+        \[\frac{du}{d\tau} = ru\left(1 - \frac{u}{q}\right) - \frac{u^2}{1 + u^2}\]
     \end{problem}
 
     \begin{problem}{4}
@@ -88,9 +158,47 @@
         \[\ddot{\theta} + \alpha \dot{\theta} + \beta \sin \gamma \theta = 0, \quad \theta(0) = 0, \quad \dot{\theta}(0) = 1 \]
         find suitable rescaling for the following cases:
         \begin{alist}
-            \item \[\alpha, \gamma = \mathcal{O}, \quad \beta >> 1\]
-            \item \[\alpha, \beta = \mathcal{O}, \quad \gamma >> 1\]
+            \item \[\alpha, \gamma = \mathcal{O}(1), \quad \beta >> 1\]
+            Because the damp pendulum equation is already dimensionalized, we can rewrite the equation as:
+            \[\frac{d^2\theta}{{dt^*}^2} + \alpha\frac{d\theta}{dt^*} + \beta \sin \gamma \theta  = 0, \qquad \theta(t^* = 0) = 0 \qquad \frac{d\theta(0)}{dt^*} = 1\]
+            To rescale, we just set the following:
+            \[t^* = [t^*]\tau, \qquad \frac{d\theta}{dt^*} = \frac{d\theta}{d\tau}\frac{d\tau}{dt^*} = \frac{1}{[t^*]}\frac{d\theta}{d\tau}, \qquad \frac{d^2\theta}{{dt^*}^2} = \frac{d}{d\tau}\frac{d\theta}{dt^*}\frac{d\tau}{dt^*} = \frac{d}{d\tau}\left(\frac{1}{[t^*]}\frac{d\theta}{d\tau}\right)\frac{1}{[t^*]} = \frac{1}{[t^*]^2}\frac{d^2\theta}{d\tau^2}\]
+            Substituting we get:
+            \begin{align*}
+                \frac{1}{[t^*]^2}\frac{d^2\theta}{d\tau^2} + \frac{\alpha}{[t^*]}\frac{d\theta}{d\tau} + \beta \sin \gamma \theta &= 0 \\
+                \frac{d^2\theta}{d\tau^2} + \alpha[t^*]\frac{d\theta}{d\tau} + [t^*]^2\beta \sin \gamma \theta &= 0
+            \end{align*}
+            Thus, we get that:
+            \[[t^*] = \frac{1}{\sqrt{\beta}}\]
+            such that:
+            \[\frac{d^2\theta}{d\tau^2} + \eta\frac{d\theta}{d\tau} + \sin \gamma \theta = 0, \qquad \eta = \frac{\alpha}{\sqrt{\beta}}\]
+            and
+            \[\theta(0) = 0 \qquad \frac{d\theta(0)}{dt^*} = \sqrt{\beta}\frac{d\theta(0)}{d\tau} = 1 \qrarrow \frac{d\theta(0)}{d\tau} = \frac{1}{\sqrt{\beta}}\]
+            \item \[\alpha, \beta = \mathcal{O}(1), \quad \gamma >> 1\]
+            To rescale, we just set the following:
+            \[t^* = [t^*]\tau, \theta^* = [\theta^*]\tilde{\theta}, \qquad \frac{d\theta}{dt^*} = \frac{d\theta}{d\tilde{\theta}}\frac{d\tilde{\theta}}{d\tau}\frac{d\tau}{dt^*} = \frac{[\theta]}{[t^*]}\frac{d\tilde{\theta}}{d\tau}, \qquad \frac{d^2\theta}{{dt^*}^2} = \frac{[\theta]}{[t^*]^2}\frac{d\tilde{\theta}}{d\tau}\]
+            Substituting we get:
+            \[\frac{[\theta]}{[t^*]^2}\frac{d^2\tilde{\theta}}{d\tau^2} + \frac{\alpha [\theta]}{[t^*]}\frac{d\tilde{\theta}}{d\tau} + \beta \sin \gamma [\theta]\tilde{\theta} = 0\]
+            Thus we get that:
+            \[[\theta] = \frac{1}{\gamma} \qquad [t^*] = \frac{1}{\sqrt{\gamma}}\]
+            such that:
+            \[\frac{d^2\tilde{\theta}}{d\tau^2} + \eta \frac{d\tilde{\theta}}{d\tau} + \beta \sin \tilde{\theta} = 0, \qquad \eta = \frac{\alpha}{\gamma}\]
+            and
+            \[\theta(0) = 0 \qquad \frac{d\theta(0)}{dt^*} = \frac{1}{\sqrt{\gamma}}\frac{d\theta(0)}{d\tau} = 1 \qrarrow \frac{d\theta(0)}{d\tau} = \sqrt{\gamma}\]
             \item \[\alpha ~ \beta\gamma ~ 1/\gamma >> 1\]
+            We can let the following to be true:
+            \[t^* = [t^*]\tau, \theta^* = [\theta^*]\tilde{\theta}, \qquad \frac{d\theta}{dt^*} = \frac{d\theta}{d\tilde{\theta}}\frac{d\tilde{\theta}}{d\tau}\frac{d\tau}{dt^*} = \frac{[\theta]}{[t^*]}\frac{d\tilde{\theta}}{d\tau}, \qquad \frac{d^2\theta}{{dt^*}^2} = \frac{[\theta]}{[t^*]^2}\frac{d\tilde{\theta}}{d\tau}\]
+            Such that, as seen from the previous part:
+            \begin{align*}
+                \frac{[\theta]}{[t^*]^2}\frac{d^2\tilde{\theta}}{d\tau^2} + \frac{\alpha [\theta]}{[t^*]}\frac{d\tilde{\theta}}{d\tau} + \beta \sin \gamma [\theta]\tilde{\theta} &= 0 \\
+                \frac{1}{[t^*]^2}\frac{d^2\tilde{\theta}}{d\tau^2} + \frac{\alpha}{[t^*]}\frac{d\tilde{\theta}}{d\tau} + \frac{\beta}{[\theta]} \sin \gamma [\theta]\tilde{\theta} &= 0
+            \end{align*}
+            From here, we can set the following:
+            \[[\theta] = \frac{\beta}{\gamma} \qquad [t^*] = \alpha\]
+            such that we get:
+            \[\frac{1}{\alpha^2}\frac{d^2\tilde{\theta}}{d\tau^2} + \frac{d\tilde{\theta}}{d\tau} + \gamma \sin \beta\tilde{\theta} = 0\]
+            and
+            \[\theta(0) = 0 \qquad \frac{d\theta(0)}{dt^*} = \frac{\beta}{\alpha \gamma}\frac{d\theta(0)}{d\tau} = 1 \qrarrow \frac{d\theta(0)}{d\tau} = \frac{\alpha \gamma}{\beta}\]
         \end{alist}
     \end{problem}
 
@@ -101,12 +209,49 @@
         \[y(0,t) = y_0, \quad t > 0, \quad y(\infty, t) = 0, \quad t > 0\]
         \begin{alist}
             \item Write the dimensions of each variable, parameter, and term in the equation.
+            \\ \\
+            Notice the following dimensions:
+            \[y = [y] \qquad t = [t] \qquad \frac{dy}{dt} = \frac{[y]}{[t]} \qquad \partiald{^2 y}{x^2} = \frac{[y]}{[x]^2} \]
+            Substituting the following, we get:
+            \[\frac{[y]}{[t]} = D\frac{[y]}{[x]^2} + \gamma [y]^3\]
+            Thus, we can see the following parameters are:
+            \[D = \frac{[x]^2}{[t]} \qquad \gamma = \frac{1}{[t][y]^2}\]
             \item Non-dimensionalize the equation.
+            \\ \\
+            Taking what we did from earlier, we can add to it and say:
+            \[y = [y]y^* \qquad t = [t]t^* \qquad \frac{dy}{dt} = \frac{[y]}{[t]}\frac{dy^*}{dt^*} \qquad \partiald{^2 y}{x^2} = \frac{[y]}{[x]^2}\frac{dy^*}{d{x^*}^2}\]
+            \begin{align*}
+                \frac{[y]}{[t]}\frac{dy^*}{dt^*} &= \frac{[x]^2}{[t]}\frac{[y]}{[x]^2}\frac{dy^*}{d{x^*}^2} + \frac{1}{[t][y]^2}[y]^3{y^*}^3 \\
+                \frac{[y]}{[t]}\frac{dy^*}{dt^*} &= \frac{[y]}{[t]}\frac{dy^*}{d{x^*}^2} + \frac{[y]}{[t]}{y^*}^3 \\
+                \frac{dy^*}{dt^*} &= \frac{dy^*}{d{x^*}^2} + {y^*}^3
+            \end{align*}
+
             \item Analyze the non-dimensionalized parameters to find out what parameters to choose to make (relative) small diffusion or (relative) large diffusion.
+            \\ \\
+            \[\lim_{t \rightarrow \pm\infty} D = \lim_{t \rightarrow \pm\infty} \gamma = \lim_{y \rightarrow \pm\infty} \gamma = 0 \qquad \lim_{x \rightarrow \pm \infty} = \infty\]
         \end{alist}
     \end{problem}
 
     \begin{problem}{6}
-        According to the radioactive decay law, the per capita decay rate of the amount $A(t)$ of $C^{14}$ (Carbon 14) is $-\lambda$. Suppose that an archeologist excavates a bone and measures its content for $C^{14}$. If the result is 25\% of the carbon present in bones of a living organism, what can be said about the age of the bone? The half-life of $C^{14}$ is 5730 years
+        According to the radioactive decay law, the per capita decay rate of the amount $A(t)$ of $C^{14}$ (Carbon 14) is $-\lambda$. Suppose that an archeologist excavates a bone and measures its content for $C^{14}$. If the result is 25\% of the carbon present in bones of a living organism, what can be said about the age of the bone? The half-life of $C^{14}$ is 5730 years.
+        \\ \\
+        The following equation can be modeled:
+        \begin{align*}
+            \frac{dA}{dt} &= -\lambda A \\
+            \int \frac{1}{A}\,dA &= \int -\lambda \,dt \\
+            \ln |A| &= e^{-\lambda t + C} \\
+            A = A_0e^{-\lambda t}
+        \end{align*}
+        To find $\lambda$, we use the half-life, $t_{1/2} = 5730$:
+        \begin{align*}
+            \frac{A_0}{2} &= A_0e^{-\lambda t_{1/2}} \\
+            \frac{1}{2} &= e^{-\lambda t_{1/2}} \\
+            \ln \frac{1}{2} &= -\lambda t_{1/2} \\
+            \frac{-1}{t_{1/2}} \ln \frac{1}{2} &= \lambda
+        \end{align*}
+        such that we get:
+        \[\lambda = \frac{-1}{t_{1/2}} \ln \frac{1}{2} = \frac{-1}{5730} \ln \frac{1}{2} = 0.000120968094339\]
+        To find the age of the bone, we get:
+        \[t = \frac{-1}{\lambda}\ln \frac{0.25A_0}{A_0} = 11460\]
     \end{problem}
 \end{document}
