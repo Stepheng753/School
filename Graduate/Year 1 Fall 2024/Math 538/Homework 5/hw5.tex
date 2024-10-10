@@ -1,0 +1,355 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+% ------ Codoing Packages ------ %
+
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+\lstset{style=mystyle}
+
+% ------ Codoing Packages ------ %
+
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newcommand{\qrarrow}{\quad \rightarrow \quad}
+\newcommand{\qqrarrow}{\qquad \rightarrow \qquad}
+\newcommand{\partiald}[2]{\frac{\partial #1}{\partial #2}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+\newenvironment{alist}{\begin{enumerate}[label=(\alph*)]}{\end{enumerate}}
+\newenvironment{rlist}{\begin{enumerate}[label=(\roman*)]}{\end{enumerate}}
+\newenvironment{nlist}{\begin{enumerate}[label=(\arabic*)]}{\end{enumerate}}
+
+\begin{document}
+
+	\begin{center}
+		\textbf{Homework 4} \\
+		\textbf{Discrete Dynamical Systems and Chaos} \\
+		\textbf{Math 538} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+    \begin{problem}{2.3}
+        Let $g(x, y) = (x^2 - 5x + y, x^2)$. Find and classify the fixed points of $g$ as sinks, sources, or saddles.
+        \\ \\
+        To find the fixed points, we set $g(x,y) = (x,y)$ such that:
+        \begin{align*}
+            x^2 - 5x + y &= x \\
+            x^2 &= y \\
+            x^2 - 6x + x^2 &= 0 \\
+            2x^2 - 6x &= 0 \\
+            2x(x - 3) &= 0
+        \end{align*}
+        Thus we get the fixed points:
+        \[(x_1, y_1) = (0, 0) \qquad (x_2, y_2) = (3, 9)\]
+        To find the classification, we find the eigenvalues of the evaluated Jacobian:
+        \[Dg(x,y) = \begin{pmatrix}
+            2x - 5 & 1 \\
+            2x & 0
+        \end{pmatrix}\]
+        \begin{alist}
+            \item $(x_1, y_1) = (0, 0)$ - Saddle
+            \[|Dg(0,0) - \lambda I| = \left|\begin{pmatrix}
+                - 5 - \lambda & 1 \\
+                0 & 0 - \lambda
+            \end{pmatrix}\right| = (-5 -\lambda)(-\lambda) = 0 \qquad \lambda = 0, -5\]
+            \item $(x_2, y_2) = (3, 9)$ - Source
+            \[|Dg(3,9) - \lambda I| = \left|\begin{pmatrix}
+                1 - \lambda & 1 \\
+                6 & 0 - \lambda
+            \end{pmatrix}\right| = (1 -\lambda)(-\lambda) - 6 = \lambda^2 - \lambda - 6 = 0 \qquad \lambda = 3, -2\]
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{2.5}
+        Let $f(x, y, z) = (x^2y, y^2, xz + y)$ be a map on $\mathbb{R}^3$. Find and classify the fixed points of $f$.
+        \\ \\
+        To find the fixed points, we set $f(x,y,z) = (x,y,z)$ such that:
+        \begin{align*}
+            x^2y &= x & x^2y - x &= 0\\
+            y^2 &= y & y^2 - y &= 0\\
+            xz + y &= z & (x-1)z + y &= 0
+        \end{align*}
+        Looking at the following equation, we get the following values:
+        \[y^2 - y = 0 \qrarrow y = 0 \text{ or } y = 1\]
+        Notice the cases:
+        \begin{alist}
+            \item y = 0
+            \[x^2y - x = -x = 0 \qrarrow x = 0 \qquad (x - 1)z + y = -z = 0 \qrarrow z = 0\]
+            such that a fixed point would be:
+            \[(x_1, y_1, z_1) = (0,0,0)\]
+            \item y = 1
+            \[x^2y - x = x^2 - x = 0 \qrarrow x = 0 \text{ or } x = 1\]
+            \begin{rlist}
+                \item x = 0
+                \[(x - 1)z + y = -z + 1 = 0 \qrarrow z = 1\]
+                such that another fixed point would be:
+                \[(x_2, y_2, z_2) = (0, 1, 1)\]
+                \item x = 1
+                \[(x-1)z + y = 0 \qrarrow 1 = 0\]
+                From this, we do not get any fixed point when $x = 1, y = 1$
+            \end{rlist}
+        \end{alist}
+        To find the classification, we find the eigenvalues of the evaluated Jacobian:
+        \[Df(x,y,z) = \begin{pmatrix}
+            2xy & x^2 & 0 \\
+            0 & 2y & 0 \\
+            z & 1 & x
+        \end{pmatrix}\]
+        \begin{alist}
+            \item $(x_1, y_1) = (0, 0, 0)$ - Sink
+            \[|Df(0,0,0) - \lambda I| = \left|\begin{pmatrix}
+                0 - \lambda & 0 & 0 \\
+                0 & 0 - \lambda & 0 \\
+                0 & 1 & 0- \lambda
+            \end{pmatrix}\right| = (-\lambda)^3 = 0 \qquad \lambda = 0\]
+            \item $(x_2, y_2) = (0, 1, 1)$ - Saddle
+            \[|Df(0,1,1) - \lambda I| = \left|\begin{pmatrix}
+                0 - \lambda & 0 & 0 \\
+                0 & 2 - \lambda & 0 \\
+                1 & 1 & 0 - \lambda
+            \end{pmatrix}\right| = (-\lambda)(2 -\lambda)(- \lambda) = 0 \qquad \lambda = 0, 2\]
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{2.6}
+        Let $f(x, y) = (\sin \frac{\pi}{3} x, \frac{y}{2})$. Find all fixed points and their stability. Where does the orbit of each initial value go?
+        \\ \\
+        To find the fixed points, we set $f(x,y) = (x,y)$ such that:
+        \begin{align*}
+            \sin \frac{\pi x}{3} &= x \\
+            \frac{y}{2} &= y \\
+            y &= 0
+        \end{align*}
+        By observation, we can see the fixed point:
+        \[(x_1, y_1) = \left(\frac{1}{2}, 0\right) \qquad (x_2, y_2) = \left(-\frac{1}{2}, 0\right) \qquad (x_3, y_3) = \left(0, 0\right)\]
+        To find the classification, we find the eigenvalues of the evaluated Jacobian:
+        \[Df(x,y) = \begin{pmatrix}
+            \frac{\pi}{3}\cos \frac{\pi}{3}x & 0 \\
+            0 & \frac{1}{2}
+        \end{pmatrix}\]
+        \begin{alist}
+            \item $(x_1, y_1) = \left(\frac{1}{2}, 0\right)$ - Sink
+            \[|Df\left(\frac{1}{2}, 0\right) - \lambda I| = \left|\begin{pmatrix}
+                \frac{\sqrt{3}\pi}{6} - \lambda & 0 \\
+                0 & \frac{1}{2} - \lambda
+            \end{pmatrix}\right| = \left(\frac{\sqrt{3}\pi}{6} - \lambda\right)\left(\frac{1}{2} - \lambda\right) = 0 \qquad \lambda = \frac{\sqrt{3}\pi}{6}, \frac{1}{2}\]
+            \item $(x_2, y_2) = \left(-\frac{1}{2}, 0\right)$ - Sink
+            \[|Df\left(-\frac{1}{2}, 0\right) - \lambda I| = \left|\begin{pmatrix}
+                \frac{\sqrt{3}\pi}{6} - \lambda & 0 \\
+                0 & \frac{1}{2} - \lambda
+            \end{pmatrix}\right| = \left(\frac{\sqrt{3}\pi}{6} - \lambda\right)\left(\frac{1}{2} - \lambda\right) = 0 \qquad \lambda = \frac{\sqrt{3}\pi}{6}, \frac{1}{2}\]
+            \item $(x_3, y_3) = \left(0, 0\right)$ - Saddle
+            \[|Df\left(0, 0\right) - \lambda I| = \left|\begin{pmatrix}
+                \frac{\pi}{3} - \lambda & 0 \\
+                0 & \frac{1}{2} - \lambda
+            \end{pmatrix}\right| = \left(\frac{\pi}{3} - \lambda\right)\left(\frac{1}{2} - \lambda\right) = 0 \qquad \lambda = \frac{\pi}{3}, \frac{1}{2}\]
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{T2.2}
+        Show that the map in (2.14) has exactly two fixed points, $(0, 0)$ and $(-0.6, -0.6)$.
+        \[ f(x,y) = (-x^2 + 0.4y, x) \tag{2.14} \]
+        \\ \\
+        Notice to find the fixed points, we do the following:
+        \begin{align*}
+            -x^2 + 0.4y &= x \\
+            x &= y \\
+            -x^2  + 0.4x &= x \\
+            x^2 + 0.6x &= 0 \\
+            x(x + 0.6) &= 0
+        \end{align*}
+        Such that our fixed points are:
+        \[x = y = 0, -0.6 \qqrarrow (x_1, y_1) = (0, 0) \quad (x_2, y_2) = (-0.6, -0.6)\]
+    \end{problem}
+
+    \begin{problem}{T2.3}
+        \begin{alist}
+            \item Verify equation (2.20).
+            \[ A^n = a^{n-1}
+            \begin{pmatrix}
+            a & n \\ 0 & a
+            \end{pmatrix} \tag{2.20} \]
+            Notice that for $n = 2$, we have:
+            \[A^2 = AA = \begin{pmatrix}
+                a & 1 \\ 0 & a
+                \end{pmatrix}\begin{pmatrix}
+                    a & 1 \\ 0 & a
+                    \end{pmatrix} = \begin{pmatrix}
+                        a^2 & 2a \\ 0 & a^2
+                        \end{pmatrix}\]
+            Notice that for any $k$, we have:
+            \[A^k = \begin{pmatrix}
+                a^k & ka^{k-1} \\ 0 & a^k
+            \end{pmatrix}\]
+            Now notice that this can be applied for any $k + 1$:
+            \[AA^k = \begin{pmatrix}
+                a & 1 \\ 0 & a
+            \end{pmatrix}\begin{pmatrix}
+                a^k & ka^{k-1} \\ 0 & a^k
+            \end{pmatrix} = \begin{pmatrix}
+                a^{k + 1} & (k + 1)a^{k} \\ 0 & a^{k + 1}
+            \end{pmatrix} = a^{k}
+            \begin{pmatrix}
+            a & k + 1\\ 0 & a
+            \end{pmatrix}\]
+            \item Use equation (2.21) to show that the fixed point $(0, 0)$ is a sink if $|a| < 1$ and a source if $|a| > 1$.
+            \[ A^n\begin{pmatrix} x \\ y \end{pmatrix} =
+            a^{n - 1}\begin{pmatrix}
+            ax + ny \\ ay
+            \end{pmatrix} \tag{2.21} \]
+            Notice, we can factor out another $a$, such that:
+            \[ A^n\begin{pmatrix} x \\ y \end{pmatrix} =
+            a^{n}\begin{pmatrix}
+            x + \frac{n}{a}y \\ y
+            \end{pmatrix}\]
+            Now if we notice that if $|a| < 1$, we get that the entire equation goes to 0 (Sink), as this equation is most heavily influenced by the $a^n$ term as it is exponential whereas the other values are linear.
+            \\ \\
+            Now if we notice that if $|a| > 1$, we get that the entire equation goes to $\infty$ (Source), as this equation is most heavily influenced by the $a^n$ term as it is exponential whereas the other values are linear.
+        \end{alist}
+    \end{problem}
+
+    \begin{problem}{T2.4}
+        Verify that multiplication by $A$ rotates a vector by $\arctan(b/a)$ and stretches by a factor of $\sqrt{a^2 + b^2}$
+        \\ \\
+        Let the following be true:
+        \[A = \begin{pmatrix}
+            a & -b \\
+            b & a
+        \end{pmatrix} \qquad r = \sqrt{a^2 + b^2}\]
+        We can then factor out $r$ such that:
+        \[A = r \begin{pmatrix}
+            a/r & -b/r \\
+            b/r & a/r
+        \end{pmatrix} =  \sqrt{a^2 + b^2} \begin{pmatrix}
+            a/\sqrt{a^2 + b^2} & -b/\sqrt{a^2 + b^2} \\
+            b/\sqrt{a^2 + b^2} & a/\sqrt{a^2 + b^2}
+        \end{pmatrix} = \sqrt{a^2 + b^2} \begin{pmatrix}
+            \cos\theta & -\sin\theta \\
+            \sin\theta & \cos\theta
+        \end{pmatrix} \]
+        Now we can notice that $A$ is being stretched by $r$ and we can also see the rotation of $\theta$
+        \[r = \sqrt{a^2 + b^2} \qquad \theta = \arctan(b/a)\]
+    \end{problem}
+
+    \begin{problem}{T2.5}
+        Prove that the Henon map has a period-two orbit if and only if $4a > 3(1 - b)^2$.
+        \\ \\
+        Notice the solutions for the fixed points of the Henon Map:
+        \begin{align*}
+            a - x^2 + by &= x \\
+            x &= y \\
+            a - x^2 + bx &= x \\
+            a - x^2 + (b - 1)x &= 0 \\
+            x^2 + (1 - b)x - a &= 0
+        \end{align*}
+        Thus, we get the following solutions for the fixed points:
+        \[x_{1-1/2} = y_{1-1/2} = \frac{-(1 - b) \pm \sqrt{(1 - b)^2 + 4a}}{2}\]
+        Now notice the solutions for the period 2 orbits of the Henon Map:
+        \begin{align*}
+            a - (a - x^2 + by)^2 + bx &= x \\
+            a - x^2 + by &= y
+        \end{align*}
+        Simplifying this, we get:
+        \[\bigg(x^2 - (1 - b)x - a + (1 - b)^2\bigg)\bigg(x^2 + (1 - b)x - a\bigg) = 0\]
+        We can see that the right factor is the previous fixed point equations, so we can find the period-two orbits from the left factor such that:
+        \[x_{2-1/2} = \frac{(1 - b) \pm \sqrt{(1 - b)^2 - 4(-a+(1-b)^2)}}{2} = \frac{(1 - b) \pm \sqrt{4a - 3(1-b)^2}}{2}\]
+        We can see that we only get real valued period 2 orbits when:
+        \[4a - 3(1-b)^2 > 0 \qqrarrow 4a > 3(1-b)^2\]
+    \end{problem}
+
+    \begin{problem}{T2.7}
+        Set $b = 0.4$.
+        \begin{alist}
+            \item Prove that for $0.09 < a < 0.27$, the Henon map $f$ has one sink fixed point and one saddle fixed point.
+            \\ \\
+            To find the fixed points, we set $f(x,y) = (x,y)$ such that:
+            \begin{align*}
+                a - x^2 + 0.4y &= x \\
+                x &= y \\
+                a - x^2 + 0.4x &= x \\
+                a - x^2 - 0.6x &= 0 \\
+                x^2 + 0.6x - a &= 0
+            \end{align*}
+            To get real valued fixed points, we get:
+            \[x = \frac{-0.6 \pm \sqrt{0.36 + 4a}}{2} = -0.3 \pm \sqrt{0.09 + a} \qquad 0.36 + 4a > 0 \qrarrow a > -0.9\]
+            \item Find the largest magnitude eigenvalue of the Jacobian matrix at the first fixed point when $a = 0.27$. Explain the loss of stability of the sink.
+            \\ \\
+            Notice the Jacobian of the Henon:
+            \[Df(x,y) = \begin{pmatrix}
+                -2x & 0.4 \\
+                1 & 0
+            \end{pmatrix}\]
+            Now when $a = 0.27$, we get the fixed points:
+            \[x = y = -0.3 \pm \sqrt{0.09 + 0.27} = -0.9, 0.3\]
+            Now we can evaluate the Jacobian at $(x_1, y_1) = (-0.9, -0.9)$:
+            \[|Df(-0.9,-0.9) - \lambda I| = \left|\begin{pmatrix}
+                1.8 - \lambda & 0.4 \\
+                1 & 0 - \lambda
+            \end{pmatrix}\right| = (1.8 - \lambda)(-\lambda) - 0.4 = \lambda^2 - 1.8\lambda - 0.4 = 0\]
+            Solving for $\lambda$ gives us:
+            \[\lambda = \frac{1.8 \pm \sqrt{3.24 - 4(-0.4)}}{2} = 0.9 \pm 1.1\]
+            The largest magnitude eigenvalue gets us:
+            \[\lambda = 1\]
+            At this value, the sink is at the edge case between a sink ($\lambda < 1$) and a source ($\lambda > 1$)
+            \newpage
+            \item Prove that for $0.27 < a < 0.85$, $f$ has a period-two sink.
+            \\ \\
+            Notice the period-two orbits:
+            \[x_{2-1/2} = \frac{0.6 \pm \sqrt{4a - 3(0.6)^2}}{2} = \frac{0.6 \pm \sqrt{4a - 1.08}}{2}\]
+            To get real valued period-two orbits, the following must be true:
+            \[4a - 1.08 > 0 \qquad a > 0.27\]
+            \item Find the largest magnitude eigenvalue of $Df^2$, the Jacobian of $f^2$ at the period-two orbit, when $a = 0.85$.
+            \\ \\
+            Notice the Jacobian of the Henon Squared with $a = 0.85, b = 0.4$:
+            \[Df^2(x,y) = \begin{pmatrix}
+                4x(0.85 - x^2 + 0.4y) + 0.4 & 0.8(0.85 - x^2 + 0.4y) \\
+                -2x & 0.4
+            \end{pmatrix}\]
+            Using the result from the previous problem, we can see the period-2 orbit with $a = 0.85, b = 0.4$:
+            \[x_{2-1/2} = \frac{0.6 \pm \sqrt{4(0.85) - 3(0.6)^2}}{2} = -0.461577310586, 1.06157731059\]
+            \[y_{2-1/2} = \frac{0.85 - x_{2-1/2}^2}{0.4} = -0.138473193176, 0.318473193176\]
+            Now we can evaluate the Jacobian at $(x_1, y_1) = (-0.461577310586, -0.138473193176)$:
+            \[|Df^2(x_1,y_1) - \lambda I| = \begin{pmatrix}
+                -1.0112 - \lambda & -0.265868530898 \\
+                -2.12315462117 & 0.4 - \lambda
+            \end{pmatrix} \qquad \lambda = -1.33630430, 0.72510430\]
+        \end{alist}
+    \end{problem}
+
+\end{document}

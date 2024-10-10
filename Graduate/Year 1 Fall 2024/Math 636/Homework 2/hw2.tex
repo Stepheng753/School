@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+% ------ Codoing Packages ------ %
+
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+\lstset{style=mystyle}
+
+% ------ Codoing Packages ------ %
+
+\newcommand{\skipline}{\vspace{\baselineskip}}
+\newcommand{\spacer}{\noalign{\medskip}}
+\newcommand{~}{\sim}
+\newcommand{\qrarrow}{\quad \rightarrow \quad}
+\newcommand{\qqrarrow}{\qquad \rightarrow \qquad}
+\newcommand{\partiald}[2]{\frac{\partial #1}{\partial #2}}
+\newenvironment{problem}[1]{\textbf{Problem #1: }}{\newpage}
+\newenvironment{alist}{\begin{enumerate}[label=(\alph*)]}{\end{enumerate}}
+\newenvironment{rlist}{\begin{enumerate}[label=(\roman*)]}{\end{enumerate}}
+\newenvironment{nlist}{\begin{enumerate}[label=(\arabic*)]}{\end{enumerate}}
+
+\begin{document}
+
+	\begin{center}
+		\textbf{Homework 2} \\
+		\textbf{Math Modeling} \\
+		\textbf{Math 636} \\
+		\textbf{Stephen Giang RedID: 823184070} \\
+		\skipline \skipline
+	\end{center}
+
+    \begin{problem}{1}
+        The dynamics of the number of photons $n(t)$ in a laser field is given by
+        \[\frac{dn}{dt} = (GN_0 - k)n - \alpha Gn^2\]
+        where $G$ is the gain coefficient for simulated emission, $k$ is the decay rate due to photon loss by scattering, $\alpha$ is the rate at which atoms drop back to their ground states and in the absence of a laser field, the number of excited atoms is kept fixed at $N_0$.
+        \begin{rlist}
+            \item Find the equilibrium points of the system and comment on its stability.
+            \begin{align*}
+                0 &= (GN_0 - k)n - \alpha Gn^2 \\
+                0 &= n((GN_0 - k) - \alpha Gn)
+            \end{align*}
+            Notice the equilibrium points of the system:
+            \[n_1 = 0 \qquad n_2 = \frac{GN_0 - k}{\alpha}\]
+            Let the following be true:
+            \[f(n) = (GN_0 - k)n - \alpha Gn^2 \qquad \frac{df}{dn} = (GN_0 - k) - 2\alpha G n\]
+            Such that the stability of each point can be found:
+            \begin{alist}
+                \item $n = 0$
+                \[\left.\frac{df}{dn}\right|_{n = 0} = GN_0 - k\]
+                We get a stable point if $GN_0 > k$ and an unstable point if $GN_0 < k$.
+                \item $n = \frac{GN_0 - k}{\alpha}$
+                \[\left.\frac{df}{dn}\right|_{n = \frac{GN_0 - k}{\alpha}} = GN_0 - k - 2G(GN_0 - k) = (1 - 2G)(GN_0 - k)\]
+                We get a stable point if $GN_0 > k$ and $G < \frac{1}{2}$, or $GN_0 < k$ and $G > \frac{1}{2}$. \\ \\
+                We get an unstable point if $GN_0 > k$ and $G > \frac{1}{2}$, or $GN_0 < k$ and $G < \frac{1}{2}$.
+            \end{alist}
+            \item Show that the system undergoes a transcritical bifurcation at $N_0 = k /G$.
+            \\ \\
+            Notice that when $N_0 = k /G$, we get:
+            \[n_1 = n_2 = 0\]
+            Notice that because we get a solution of a multiplicity of 2, the system undergoes a transcritical bifurcation.
+        \end{rlist}
+    \end{problem}
+
+    \begin{problem}{2}
+        The following system of differential equations describe the motions of a certain pendulum:
+        \begin{align*}
+            \frac{d\theta}{dt} &= y, \\
+            \frac{dy}{dt} &= -5\sin\theta-\frac{9}{13}y,
+        \end{align*}
+        where $\theta$ is the angle between the rod and the downward vertical direction and $\frac{d\theta}{dt}$ is the speed at which the angle changes. Find all the steady state solutions for the system. Also, identify if the steady state solutions are stable.
+        \begin{align*}
+            0 &= y \\
+            0 &= -5\sin\theta-\frac{9}{13}y \\
+            0 &= -5\sin\theta \\
+            \theta &= n\pi \qquad n \in \mathbb{Z}
+        \end{align*}
+        We reach a steady state when $\theta = n\pi$ for $n \in \mathbb{Z}$.
+        \\ \\
+        Notice the Jacobian of the system:
+        \[J(\theta, y) = \begin{pmatrix}
+            0 & 1 \\ -5\cos\theta & -\frac{9}{13}
+        \end{pmatrix}\]
+        Finding the eigenvalues at the given solutions will show us stability:
+        \[|J(n\pi, 0) - \lambda I| = \begin{pmatrix}
+            0 - \lambda & 1 \\ -1^{n}(5) & \frac{-9}{13} - \lambda
+        \end{pmatrix} = \lambda^2 + \frac{9}{13}\lambda + (-1)^{n}(5) = 0\]
+        Thus, we get:
+        \[\lambda = \frac{-(9/13) \pm \sqrt{(9/13)^2 - 4((-1)^{n}(5))}}{2} = \frac{-(9/13) \pm \sqrt{(9/13)^2 + ((-1)^{n+1}(20))}}{2}\]
+        If $n$ is even, we get complex eigenvalues with negative real parts, such that $(n,\theta)$ would be stable solutions.
+        \\ \\
+        If $n$ is odd, we get real eigenvalues that are postive and negative, such that $(n,\theta)$ would be unstable solutions.
+    \end{problem}
+
+    \begin{problem}{3}
+        A hypothetical reaction in the study of isothermal autocatalytic reactions was considered by Gray and Scott (1985), whose kinetics in dimensionless form are given as follows:
+        \begin{align*}
+            \frac{dx}{dt} &= a(1 - x) - xy^2, \\
+            \frac{dy}{dt} &= xy^2 - (a + k)y,
+        \end{align*}
+        where $a$ and $k$ are positive parameters. Show that the saddle node bifurcation occurs at $k = -a \pm \frac{\sqrt{a}}{2}$.
+        \begin{align*}
+            0 &= a(1 - x) - xy^2 \\
+            0 &= xy^2 - (a + k)y \\
+            0 &= y(xy - (a + k))
+        \end{align*}
+        We get the following solutions from $y = 0$:
+        \[y = 0 \text{ with } x = 1 \qquad \]
+        Solving for the other solution we get:
+        \begin{align*}
+            y &= \frac{a + k}{x} \\
+            0 &= a - ax - x\left(\frac{a + k}{x}\right)^2 \\
+            0 &= a - ax - \frac{(a + k)^2}{x} \\
+            0 &= ax - ax^2 - (a + k)^2 \\
+            0 &= ax^2 - ax + (a + k)^2
+        \end{align*}
+        Such that we get:
+        \[x = \frac{a \pm \sqrt{a^2 - 4a(a+k)^2}}{2a} \text{ with } y = \frac{a + k}{x}\]
+        Evaluating at $k = -a \pm \frac{\sqrt{a}}{2}$, we get:
+        \[x = \frac{a}{2a} = \frac{1}{2} \text{ with } y = \pm \sqrt{a}\]
+        Notice how the double solution became a single solution of multiplicity 2 at $k = -a \pm \frac{\sqrt{a}}{2}$, which shows the saddle node bifurcation.
+    \end{problem}
+
+    \begin{problem}{4}
+        The favorite food of the tiger shark is the sea turtle. A two-species prey-predator model is given by
+        \begin{align*}
+            \frac{dP}{dt} &= P(a - bP -cS), \\
+            \frac{dS}{dt} &= S(-k + \lambda P),
+        \end{align*}
+        where $P$ is the sea turtle, $S$ is the shark and $a,b,c,k,\lambda > 0$.
+        \begin{rlist}
+            \item Let $b = 0$ and the value of $k$ is increased. Ecologically, what is the interpretation of increasing $k$ and what is its effect on the non-zero equilibrium populations of sea turtles and sharks?
+            \\ \\
+            If we increase $k$, we can see a decrease in the rate of shark population over time.  We can also see that the turtle population increases as seen in part (ii)(a).
+            \item Obtain all the equilibrium solutions for $b = 0$ and $b \not = 0$.
+            \begin{alist}
+                \item $b = 0$
+                \begin{align*}
+                    0 &= P(a -cS), \\
+                    0 &= S(-k + \lambda P),
+                \end{align*}
+                Such that we get:
+                \[P = 0 \text{ with } S = 0 \qquad S = \frac{a}{c} \text{ with } P = \frac{k}{\lambda}\]
+                \item $b \not= 0$
+                \begin{align*}
+                    0 &= P(a -bP -cS), \\
+                    0 &= S(-k + \lambda P),
+                \end{align*}
+                One solution, we get is:
+                \[P = 0 \text{ with } S = 0\]
+                Notice to find the other solutions:
+                \begin{align*}
+                    0 &= a -bP -cS \\
+                    S &= \frac{a-bP}{c} \\
+                    0 &= \frac{-k(a-bP)}{c} + \frac{\lambda P(a-bP)}{c} \\
+                    &= -k(a-bP) + \lambda P(a-bP) \\
+                    &= -ka + kbP + a\lambda P - b\lambda P^2 \\
+                    &= ka - (kbP + a\lambda P) + b\lambda P^2
+                \end{align*}
+                Such that we get the other solutions to be:
+                \[S = \frac{a-bP}{c} \text{ with } P = \frac{(a\lambda + bk) \pm \sqrt{(a\lambda + bk)^2 - 4abk\lambda}}{2b\lambda}\]
+            \end{alist}
+            \item Obtain the linearized system of differential equations about the equilibrium point $P^* = \frac{k}{\lambda}$ and $S^* = \frac{a}{c} - \frac{bk}{c\lambda} > 0$, which can be put in the form
+            \begin{align*}
+                \frac{dP_1}{dt} &= \frac{k}{\lambda}(-bP_1 - cS_1), \\
+                \frac{dS_1}{dt} &= \lambda P_1 (\frac{a}{c} - \frac{bk}{c\lambda}).
+            \end{align*}
+            \item Obtain the condition(s) for which the linearized system is stable.
+            \item Draw the solution curves in the phase plane with $a = 0.5, b = 0.5, c = 0.01, k = 0.3, \lambda = 0.01$. What do you expect to happen to the dynamics of the model if $c = 0$?
+        \end{rlist}
+    \end{problem}
+
+    \begin{problem}{5}
+        The spruce budworm model
+        \[\frac{dN(t)}{dt} = r_BN(t)\left[1 - \frac{N(t)}{K_B}\right] - B\frac{N(t)^2}{A^2 + N(t)^2}\]
+        can be reduced to the following scaled equation (see HW-1):
+        \[\frac{du}{d\tau} = ru\left(1 - \frac{u}{q}\right) - \frac{u^2}{1 + u^2}\]
+        Perform the stability analysis and the bifurcation analysis with the parameter $r$ fixed and the parameter $q$ as a bifurcation parameter. Also, plot the bifurcation diagram.
+        \\ \\
+        Notice the equilibrium points:
+        \begin{align*}
+            0 &= ru\left(1 - \frac{u}{q}\right) - \frac{u^2}{1 + u^2} \\
+            0 &= u\left(r\left(1 - \frac{u}{q}\right) - \frac{u}{1 + u^2}\right) \\
+            0 &= u \\
+            0 &= r\left(1 - \frac{u}{q}\right) - \frac{u}{1 + u^2} \\
+            0 &= r(1 + u^2)\left(1 - \frac{u}{q}\right) - u \\
+            0 &= (r + ru^2)\left(1 - \frac{u}{q}\right) - u \\
+            0 &= r - \frac{r}{q}u + ru^2 - \frac{r}{q}u^3 - u \\
+            0 &= r - \left(\frac{r}{q} + 1\right)u + ru^2 - \frac{r}{q}u^3 \\
+            0 &= \frac{r}{q}u^3 - ru^2 + \left(\frac{r}{q} + 1\right)u - r \\
+        \end{align*}
+    \end{problem}
+
+    \begin{problem}{6}
+        Matured insects lay eggs with per capita rate of $r$, which survive and hatch to immature population with survival rate $e^{-\psi x}$, where $x$ is a number of eggs. The immature insects become matured with per capita maturation rate $\gamma$. Assume that $\delta$ and $\mu$ are per capita mortality rate of immature and mature insect populations, respectively.
+        \begin{rlist}
+            \item Develop a patchy model with two patches, one representing immature insects and another representing mature insects.
+            \item Consider a control mechanism which results in the reduction of the egg laying rate, i.e., $r \rightarrow (1 - \theta)r$ with the control level $\theta$. Perform bifurcation analysis of the model to identify the level of control mechanism for extinction and for persistence of the insect population.
+        \end{rlist}
+    \end{problem}
+
+
+\end{document}
